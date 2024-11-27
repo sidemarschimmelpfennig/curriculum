@@ -16,7 +16,7 @@ export default {
   },
   data() {
     return {
-      walpapper: './assets/image/walpapper.jpg',
+
     };
   },
   methods: {

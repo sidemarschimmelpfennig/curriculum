@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <NavBar />
+  <div id="app">
+    <NavBar/>
     <router-view/>
     <FooterComponent/>
   </div>
@@ -15,6 +15,8 @@ export default {
     NavBar,
     FooterComponent,
   },
+  data(){
+  }
 };
 </script>
 <style lang="scss">
