@@ -1,6 +1,7 @@
 import HomeView from '@/views/HomeView.vue';
 import JobListingView from '@/views/JobListingView/JobListingView.vue';
 import JobPositionView from '@/views/JobPositionView/JobPositionView.vue';
+import login from '@/views/LoginAcess/login.vue'
 import { createRouter, createWebHistory } from 'vue-router';
 
 const routes = [
@@ -18,6 +19,11 @@ const routes = [
     path: '/jobposition',
     name: 'jobposition',
     component: JobPositionView,
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: login,
   },
 ];
 
