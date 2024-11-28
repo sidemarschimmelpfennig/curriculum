@@ -14,7 +14,7 @@ class JobVacanciesSeed extends Seeder
     public function run(): void
     {
 		$department_categories = [
-				'name' => 'Backend'
+				'name' => 'Front'
 		];
         $department_categoriesID = DepartmentCategory::create($department_categories);
 
@@ -25,17 +25,17 @@ class JobVacanciesSeed extends Seeder
         ];	
         
         $departmentsID = Departments::create($departments);
-        
-
+    
 	    $job = [
-			'name' => 'Desenvolvedor Backend',
+			'name' => 'Desenvolvedor Front',
 			'department' => $departmentsID->id
 
 		];
 		
 		JobVacancies::create([
             'name' => $job['name'],
-            'departments_id' => 1,
+            'departments_id' => $departmentsID->id,
+            'departments' => $departmentsID->name,
             'status' => 'Enviado'
 
         ]);

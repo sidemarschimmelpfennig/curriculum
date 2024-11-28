@@ -6,5 +6,4 @@ interface CurriculumInterface extends BaseInterface
 {
 	public function validateCurriculum();
 
-
 }

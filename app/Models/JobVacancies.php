@@ -11,6 +11,7 @@ class JobVacancies extends Model
 	protected $fillable = [
 		'name',
 		'departments_id',
+		'departments',
 		'status'
 		
 	];
