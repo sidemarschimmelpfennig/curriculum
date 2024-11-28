@@ -14,70 +14,30 @@ class JobVacanciesSeed extends Seeder
     public function run(): void
     {
 		$department_categories = [
-			[
 				'name' => 'Backend'
-
-			],
-			[
-				'name' => 'Frontend' 
-
-			],
-			[
-				'name' => 'Desktop' 
-
-			]
-
 		];
-
-		foreach ($department_categories as $catergorie) {
-			DepartmentCategory::create($catergorie);
-		}
+        $department_categoriesID = DepartmentCategory::create($department_categories);
 
 		$departments = [
-			[
-				'name' => 'Desenvolvimento'
+			'name' => 'Desenvolvimento',
+            'department_categories_id' => $department_categoriesID->id
 
-			],
-			[
-				'name' => 'Comercial' 
+        ];	
+        
+        $departmentsID = Departments::create($departments);
+        
 
-			],
-			[
-				'name' => 'Suporte' 
-
-			]
+	    $job = [
+			'name' => 'Desenvolvedor Backend',
+			'department' => $departmentsID->id
 
 		];
-
-		foreach($departments as $department){
-			Departments::create([
-				'name' => $department['name'],
-				'department_categories_id' => 1
-			]);
-			
-		}
 		
-		$jobs = [
-			[
-				'name' => 'Desenvolvedor Backend',
-				'department' => 'development',
+		JobVacancies::create([
+            'name' => $job['name'],
+            'departments_id' => 1,
+            'status' => 'Enviado'
 
-			],
-			
-			[
-				'name' => 'Desenvolvedor Frontend',
-				'department' => 'development',
-				
-			]
-		];
-		
-		foreach($jobs as $job){
-			JobVacancies::create([
-				'name' => $job['name'],
-				'departments_id' => 1,
-				'status' => 'Enviado'
-
-			]);
-		}
+        ]);
     }
 }
