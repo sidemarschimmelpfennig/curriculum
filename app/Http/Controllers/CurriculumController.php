@@ -3,60 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Repository\Eloquent\CurriculumRepository;
 
-use App\Repostitoy\CurriculumRepostitoy;
+use Illuminate\Http\Request;
 
 class CurriculumController extends Controller
 {
-
-    public function __construct(protected CurriculumRepostitoy $repostity) 
-    {
-         
-    }
-
+	public function __construct(
+		private CurriculumRepository $curriculum
+		
+	){}
+	
     public function testAPI(){
-        $test = $this->repostity->testAPI();
-        return response()->json([
-            'message' => $test
-
-        ]);
+		return $this->curriculum->testAPI();
+		
     }
 
-    public function index()
+    public function all()
     {
-        $this->repostity->getAll();
+		return response()->json($this->curriculum->all());
+        
+    }
+	
+	public function findByID(int $id)
+    {
+        return response()->json($this->curriculum->findByID($id));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(CurriculumCotroller $curriculumCotroller)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, CurriculumCotroller $curriculumCotroller)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(CurriculumCotroller $curriculumCotroller)
-    {
-        //
-    }
 }
