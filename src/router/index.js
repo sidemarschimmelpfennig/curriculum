@@ -1,6 +1,7 @@
 import HomeView from '@/views/HomeView.vue';
 import JobListingView from '@/views/JobListingView/JobListingView.vue';
 import JobPositionView from '@/views/JobPositionView/JobPositionView.vue';
+import LoginView from '@/views/Login/LoginView.vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 const routes = [
@@ -19,6 +20,12 @@ const routes = [
     name: 'jobposition',
     component: JobPositionView,
   },
+  {
+    path: '/login',
+    name: 'login',
+    component: LoginView,
+    meta: { requiresNavbar: false, requiresFooter: false }
+  }
 ];
 
 const router = createRouter({
