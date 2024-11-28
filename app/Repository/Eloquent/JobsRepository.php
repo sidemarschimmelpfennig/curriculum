@@ -24,7 +24,11 @@ class JobsRepository extends BaseRepository implements BaseInterface
     public function findByID(int $id)
     {
         return $this->model->find($id);
-        
+
+    }
+
+    public function findByDepartmente(string $department){
+        return $this->model->where('departments', $department)->get();
     }
 
 }
