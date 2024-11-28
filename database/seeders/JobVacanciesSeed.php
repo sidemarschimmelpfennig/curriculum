@@ -28,11 +28,13 @@ class JobVacanciesSeed extends Seeder
 			]
 
 		];
-
+		$departmentID = null;
 		foreach($departments as $department){
+			$departmentID = $department['id'];
 			Departments::create($department);
 			
 		}
+		
 
 		$department_categories = [
 			[
@@ -59,7 +61,6 @@ class JobVacanciesSeed extends Seeder
 				'name' => 'Desenvolvedor Backend',
 				'department' => 'development',
 
-				
 			],
 			
 			[
@@ -70,7 +71,12 @@ class JobVacanciesSeed extends Seeder
 		];
 		
 		foreach($jobs as $job){
-			JobVacancies::create($job);
+			JobVacancies::create([
+				'name' => $job['name'],
+				'departments_id' => $departmentID['id'],
+				'status' => 'Enviado'
+
+			]);
 		}
     }
 }
