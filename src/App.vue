@@ -1,14 +1,15 @@
 <template>
   <div id="app">
-    <NavBar/>
+    <NavBar v-if="$route.meta.requiresNavbar !== false"/>
     <router-view/>
-    <FooterComponent/>
+    <FooterComponent v-if="$route.meta.requiresFooter !== false"/>
   </div>
 
 </template>
 <script>
 import NavBar from './components/NavBar.vue';
 import FooterComponent from './components/FooterComponent.vue';
+import { onMounted } from 'vue';
 
 export default {
   components: {
@@ -16,6 +17,9 @@ export default {
     FooterComponent,
   },
   data(){
+  },
+  mounted(){
+    document.title = "Curriculo"
   }
 };
 </script>
