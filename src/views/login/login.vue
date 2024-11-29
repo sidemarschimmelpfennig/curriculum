@@ -10,14 +10,10 @@
       }
     }
   };
-  </script>
+  
   
 
-
-
-\\envio de dados axios
-
-methods: {
+  methods: {
     sendDataToAPI() {
       axios.post('https://api.exemplo.com/dados', {
         name: 'Vue.js',
@@ -32,6 +28,7 @@ methods: {
     }
   }
   
+
   \\requisicao de dados axios
   import axios from 'axios';
 
@@ -56,3 +53,5 @@ export default {
     }
   }
 };
+
+</script>

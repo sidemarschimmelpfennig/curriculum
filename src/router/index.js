@@ -3,7 +3,7 @@ import JobListingView from '@/views/JobListingView/JobListingView.vue';
 import JobPositionView from '@/views/JobPositionView/JobPositionView.vue';
 
 import LoginView from '@/views/Login/LoginView.vue';
-=======
+
 //import login from '@/views/LoginAcess/login.vue'
 
 import { createRouter, createWebHistory } from 'vue-router';
