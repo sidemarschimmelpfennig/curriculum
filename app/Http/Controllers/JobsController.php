@@ -37,7 +37,11 @@ class JobsController extends Controller
     {
         $data = $request->all();
         $result = $this->repository->createJobVacancies($data);
-        return response()->json($result);
+        return response()->json([
+            'data' => $data,
+            'result' => $result
+        
+        ]);
         
     }
 }

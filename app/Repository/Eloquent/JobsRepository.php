@@ -41,6 +41,12 @@ class JobsRepository implements JobsInterface
 
     public function createJobVacancies(array $data)
     {   
+
+        return [ 
+            'data aqui',
+            $data 
+        
+        ];
         $validator = Validator::make($data, [
             'name' => 'required|string',
             'department' => 'required|string',
