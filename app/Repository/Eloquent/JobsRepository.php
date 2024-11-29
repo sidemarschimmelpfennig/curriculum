@@ -42,11 +42,6 @@ class JobsRepository implements JobsInterface
     public function createJobVacancies(array $data)
     {   
 
-        return [ 
-            'data aqui',
-            $data 
-        
-        ];
         $validator = Validator::make($data, [
             'name' => 'required|string',
             'department' => 'required|string',
@@ -65,7 +60,13 @@ class JobsRepository implements JobsInterface
         }
 
         try {
-            $vacancy = $this->model->create($data);
+            $vacancy = $this->model->create([
+                'name' => $data['name'],
+                'department' => $data['department'],
+                'department_categories' => $data['department_categories'],
+                'status' => $data['name'],
+
+            ]);
             return [
                 'success' => true,
                 'message' => 'Vaga criada com sucesso!',
