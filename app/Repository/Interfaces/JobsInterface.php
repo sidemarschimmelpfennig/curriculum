@@ -4,12 +4,12 @@ namespace App\Repository\Interfaces;
 
 use stdClass;
 
-interface JobsInterface 
+interface JobsInterface extends BaseInterface
 {	
-	public function allJobs();
+	public function all();
 	public function findByDepartment(string $department): stdClass|null;
 	public function findByDepartmentCategories(string $category): stdClass|null;
 
 	// For admins
-	public function createJobVacancies(array $validate);
+	public function createJobVacancies(array $data);
 }

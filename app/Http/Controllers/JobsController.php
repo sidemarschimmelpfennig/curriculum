@@ -18,7 +18,7 @@ class JobsController extends Controller
 
     public function all()
     {
-        return response()->json($this->repository->allJobs());
+        return response()->json($this->repository->all());
         
     }
 
@@ -35,8 +35,9 @@ class JobsController extends Controller
 
     public function createJobVacancies(Request $request)
     {
-        $validate = $request->all();
-        return response()->json($this->repository->createJobVacancies($validate));
+        $data = $request->all();
+        $result = $this->repository->createJobVacancies($data);
+        return response()->json($result);
         
     }
 }

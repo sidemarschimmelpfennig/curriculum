@@ -18,7 +18,7 @@ class JobsRepository implements JobsInterface
 
     }
 
-    public function allJobs(){
+    public function all(){
         return $this->model->all();
 
     }
@@ -39,9 +39,9 @@ class JobsRepository implements JobsInterface
 		
     }
 
-    public function createJobVacancies(array $validate)
+    public function createJobVacancies(array $data)
     {   
-        $validator = Validator::make($validate, [
+        $validator = Validator::make($data, [
             'name' => 'required|string',
             'department' => 'required|string',
             'department_categories' => 'required|string',
@@ -50,16 +50,16 @@ class JobsRepository implements JobsInterface
         ]);
 
         if($validator->fails()){
-            return response()->json([
+            return [
                 'message' => 'Error ao criar a vaga de trabalho',
                 'erro' => $validator->errors()->all(),
                 'validator' => $validator,
 
-            ]);
+            ];
         }
 
         try {
-            $vacancy = $this->model->create($validate);
+            $vacancy = $this->model->create($data);
             return [
                 'success' => true,
                 'message' => 'Vaga criada com sucesso!',
@@ -73,9 +73,5 @@ class JobsRepository implements JobsInterface
                 'th' => $th->getMessage(),
             ];
         }
-        
-        
-        
-
     }
 }
