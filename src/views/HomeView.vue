@@ -14,11 +14,6 @@ export default {
   components: {
 
   },
-  data() {
-    return {
-
-    };
-  },
   methods: {
     getJobs() {
       return this.$router.push('/joblisting');

@@ -1,6 +1,9 @@
 <template>
   <div class="nav">
-    <router-link to="/" > <img src="../assets/image/logo-sgbr.png" alt=""> </router-link>
+    <div class="logo">
+      <router-link to="/" > <img src="../assets/image/logo-sgbr.png" alt=""> </router-link>
+      <p class="farsan-regular">Deus seja louvado!</p>
+    </div>
     <ul>
       <router-link class="nav-link" to="/" >Inicio</router-link>
       <router-link class="nav-link" to="/joblisting">Vagas disponiveis</router-link>

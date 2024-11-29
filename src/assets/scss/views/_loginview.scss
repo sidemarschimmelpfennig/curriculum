@@ -1,0 +1,49 @@
+@import '@/assets/scss/main';
+.login{
+    height: 100vh;
+    img{
+      width: 50%;
+      height: 50%;
+    }
+    background-color: $tertiary-color;
+  }
+
+  @media screen{
+    .login{
+      height: 100vh;
+      justify-items: center;
+      align-content: center;
+      align-items: center;
+      img{
+        width: 40%;
+        height: 40%;
+      }
+      input{
+        height: 40%;
+      }
+    }
+  }
+
+  
+  @media (max-width : 500px){
+    .login{
+      height: 100vh;
+      justify-items: center;
+      align-content: center;
+      align-items: center;
+      img{
+        width: 40%;
+        height: 40%;
+      }
+      input{
+        height: 2rem;
+      }
+    }
+  }
+
+  .signin{
+    background-color: $tertiary-color;
+  }
+  .signin:hover{
+    background-color: rgba($tertiary-color, $alpha: 0.9);
+  }
