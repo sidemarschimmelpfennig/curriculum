@@ -1,12 +1,52 @@
 @import '@/assets/scss/main';
 .login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Centraliza o conteúdo */
+    background-image: url('@/assets/image/wallpaper_login.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
     height: 100vh;
-    img{
-      width: 50%;
-      height: 50%;
+    position: relative;
+    section{
+      img{
+        width: 50%;
+        height: 50%;
+      }
     }
-    background-color: $tertiary-color;
+    .section{
+      width: 600px;
+      z-index: 1;
+
+      @media (max-width: 700px) {
+        width: 400px;
+      }
+
+      @media (max-width:450px) {
+        width: 350px;
+      }
+    }
   }
+
+
+
+
+  .login::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba( $tertiary-color , 0.5); /* Cor com opacidade para sobrepor a imagem */
+    z-index: 1;
+    @media (max-width: 500px) {
+      height: 100%;
+    };
+  } 
 
   @media screen{
     .login{

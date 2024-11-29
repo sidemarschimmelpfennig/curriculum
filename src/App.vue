@@ -9,14 +9,11 @@
 <script>
 import NavBar from './components/NavBar.vue';
 import FooterComponent from './components/FooterComponent.vue';
-import { onMounted } from 'vue';
 
 export default {
   components: {
     NavBar,
     FooterComponent,
-  },
-  data(){
   },
   mounted(){
     document.title = "Curriculo"

@@ -11,12 +11,11 @@
       </form>
       <input id="input1" class="w-96 border pl-4 py-2 rounded focus:border-blue-500 focus:shadow-outline outline-none" type="text" placeholder="Vaga desejada" />
     </div>
-
-    <hr class="mb-4">
-    <h1 class="mb-2 font-bold text-3xl mb-3">Oportunidades Disponíveis</h1>
-
-    <div>
-      <JobListingComponent :joblisting="arrayFromJobs"/>
+    <div class="bg-blue-400">
+      <h1 class="font-bold text-3xl mb-3 pt-4 text-white">Oportunidades Disponíveis</h1>
+      <div>
+        <JobListingComponent :joblisting="arrayFromJobs"/>
+      </div>
     </div>
   </div>
 </template>
@@ -57,27 +56,8 @@ export default {
 };
 </script>
 
-<style scoped>
-/* Add your custom styles here */
-.teste{
-  margin: 50px 0;
-  display: flex;
-  justify-content: center;
-  margin-right: 0;
-}
+<style lang="scss" scoped>
 
-.joblist{
-  height: 100%;
-}
+@import '@/assets/scss/views/joblistingview';
 
-.readmore{
-  color: rgba(0,0,255, 0.5);
-  font-weight: 900;
-}
-.readmore:hover{
-  background-color: rgba(0,0,255, 0.5) ;
-  color: white;
-  border-radius: 0.4rem;
-  padding: 10px;
-}
 </style>

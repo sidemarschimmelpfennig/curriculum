@@ -1,0 +1,11 @@
+@import '@/assets/scss/main';
+
+.readmore{
+    background-color: $secondary-color;
+    border-radius: 0.4rem;
+    padding: 10px;
+  };
+  .readmore:hover{
+    background-color: rgba($tertiary-color, 0.9) ;
+    color: $white-color;
+  }

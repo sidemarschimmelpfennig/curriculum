@@ -42,7 +42,7 @@
         }
         .nav-link:hover{
             border-radius: 16px;
-            background-color: rgba($background-color , $alpha: 0.3);
+            background-color: rgba($tertiary-color, 0.6);
             color: #ccc;
         }
         @media (max-width: 500px) {
