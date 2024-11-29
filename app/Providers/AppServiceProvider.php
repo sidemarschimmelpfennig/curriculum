@@ -4,14 +4,15 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+use App\Repository\Eloquent\JobsRepository;
+use App\Repository\Interfaces\JobsInterface;
+
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
     public function register(): void
     {
-        
+        $this->app->bind(JobsInterface::class, JobsRepository::class);
+
     }
 
     /**

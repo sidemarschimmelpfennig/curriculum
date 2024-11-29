@@ -25,9 +25,11 @@ class CurriculumController extends Controller
         
     }
 	
-	public function findByID(int $id)
+	  public function findByID(int $id)
     {
         return response()->json($this->curriculum->findByID($id));
+
     }
+
 
 }

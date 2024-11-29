@@ -18,4 +18,7 @@ Route::get('/all/users', [UserController::class, 'index']);
 Route::get('/all/users-admins', [UserController::class, 'findAdmin']);
 
 Route::get('/all/job-vacancies', [JobsController::class, 'all']);
+Route::get('/all/job-vacancies/{department}', [JobsController::class, 'findByDepartment']);
+Route::get('/all/job-vacancies-by-category/{category}', [JobsController::class, 'findByDepartmentCategories']);
 
+Route::post('/add-job', [JobsController::class, 'createJobVacancies']);
