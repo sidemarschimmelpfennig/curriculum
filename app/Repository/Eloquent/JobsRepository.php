@@ -5,6 +5,7 @@ namespace App\Repository\Eloquent;
 use App\Models\JobVacancies;
 use App\Repository\Interfaces\JobsInterface;
 
+
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\Eloquent\Model;
 

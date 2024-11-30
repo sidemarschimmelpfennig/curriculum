@@ -9,7 +9,7 @@ class Curriculum extends Model
     protected $table = 'curriculum';
 	
 	protected $fillable = [
-		'title',
+		'file',
 		
 	];
 }

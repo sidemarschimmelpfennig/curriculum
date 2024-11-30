@@ -4,6 +4,8 @@ namespace App\Repository\Eloquent;
 
 use App\Models\Curriculum;
 use App\Repository\Interfaces\CurriculumInterface;
+
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\Eloquent\Model;
 
 class CurriculumRepository extends BaseRepository implements CurriculumInterface
@@ -12,14 +14,6 @@ class CurriculumRepository extends BaseRepository implements CurriculumInterface
 	
 	public function __construct(){
 		$this->model = new Curriculum;
-	}
-	
-	public function testAPI(){
-		return response()->json([
-			'message' => 'API bonbando'
-			
-		], 200);
-		
 	}
 	
 	public function all(){
@@ -32,8 +26,38 @@ class CurriculumRepository extends BaseRepository implements CurriculumInterface
 		
 	}
 	
-	public function validateCurriculum(){
-		
+	public function validateCurriculum(array $data){
+		$validator = Validator::make($data, [
+			'file' => 'required|file'
+		]);
+
+		if($validator->fails()){
+			return [
+				'message' => 'Um erro ocorreu ao enviar o arquivo',
+				'erro' => $validator->errors()->all()
+				
+			];
+		}
+
+		try {
+			$curriculum = $this->model->create([
+				'file' => $data['file']
+			]);
+
+			return [
+				'success' => true,
+				'message' => 'Curriculo enviado',
+				'curriculum' => $curriculum
+
+			];
+
+		} catch (\Throwable $th) {
+			return [
+                'success' => false,
+                'message' => 'Problemas para enviar os dados!',
+                'th' => $th->getMessage(),
+            ];
+		}
 	}
 	
 }

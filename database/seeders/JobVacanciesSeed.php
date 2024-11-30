@@ -13,34 +13,35 @@ class JobVacanciesSeed extends Seeder
 {
     public function run(): void
     {
-        $front = [
-            'name' => 'Desenvolvimento Web',
-            'department' => 'Frontend',
-            'department_categories' => 'Desenvolvimento',
-            'status' => 'Aberto',
+        $jobs = [
+            [
+                'name' => 'Desenvolvimento Web',
+                'department' => 'Frontend',
+                'department_categories' => 'Desenvolvimento',
+                'status' => 'Aberto',
+            ],
+            
+            [
+                'name' => 'Desenvolvimento Backend',
+                'department' => 'Banckend',
+                'department_categories' => 'Desenvolvimento',
+                'status' => 'Encerrada',
+
+            ],
+
+            [
+                'name' => 'Auxiliar adminstrativo',
+                'department' => 'Financeiro',
+                'department_categories' => 'Financeiro',
+                'status' => 'Aberta',
+
+            ]
         ];
-		
-		$back = [
-            'name' => 'Desenvolvimento Backend',
-            'department' => 'Banckend',
-            'department_categories' => 'Desenvolvimento',
-            'status' => 'Encerrada',
-
-        ];
-
-        $comercial = [
-            'name' => 'Auxiliar adminstrativo',
-            'department' => 'Financeiro',
-            'department_categories' => 'Financeiro',
-            'status' => 'Aberta',
-
-        ];
-
-        $this->createTest($comercial);
-    }
-
-    public function createTest($jobs) {
-        return JobVacancies::create($jobs);
-
+            
+        foreach ($jobs as $job) {
+            //echo '<pre>'; print_r($job); echo '</pre>';
+            JobVacancies::create($job);
+        }
+        
     }
 }

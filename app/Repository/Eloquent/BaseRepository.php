@@ -7,6 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 abstract class BaseRepository
 {
 	protected Model $model;
+
+	public function testAPI(){
+		return response()->json([
+			'message' => 'API bonbando'
+			
+		], 200);
+		
+	}
 	
 	public function all(){
 		return $this->model->all();
