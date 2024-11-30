@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+        "octref.vetur",
+        "editorconfig.editorconfig",
+        "bradlc.vscode-tailwindcss",
+        "hollowtree.vue-snippets"
+    ]
+}
