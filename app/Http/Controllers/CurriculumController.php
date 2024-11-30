@@ -15,23 +15,23 @@ class CurriculumController extends Controller
 	){}
 	
     public function testAPI(){
-		  return $this->curriculum->testAPI();
+		  return $this->repository->testAPI();
 		
     }
 
     public function all()
     {
-		  return response()->json($this->curriculum->all());
+		  return response()->json($this->repository->all());
         
     }
 	
 	  public function findByID(int $id)
     {
-      return response()->json($this->curriculum->findByID($id));
+      return response()->json($this->repository->findByID($id));
 
     }
 
-    public function validateCurriculum(Request $request) 
+    public function validaterepository(Request $request) 
     {
       $data = $request->all();
       $result = $this->repository->validateCurriculum($data);

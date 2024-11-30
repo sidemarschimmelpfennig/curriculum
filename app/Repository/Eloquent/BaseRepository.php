@@ -21,7 +21,7 @@ abstract class BaseRepository
 		
 	}
 
-	public function findAdmin(int $id){
+	public function findAdmin(){
 		return $this->model->where('is_admin', 1)->get();
 	}
 	
