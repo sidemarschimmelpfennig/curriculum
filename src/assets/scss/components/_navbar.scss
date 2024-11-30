@@ -12,6 +12,8 @@
     font-size: 1rem;
     font-weight: 700;
     color: white;
+
+
     .logo{
         align-items: center;
         padding: 10px;
@@ -39,6 +41,9 @@
             padding: 0.3rem  1rem ;
             flex-direction: row;
             transition: 0.5;
+            @media (max-width: 500px) {
+                padding-right: 0.1rem;;
+              };
         }
         .nav-link:hover{
             border-radius: 16px;

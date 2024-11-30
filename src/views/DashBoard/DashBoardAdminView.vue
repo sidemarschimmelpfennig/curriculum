@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="admin">
   </div>
 </template>
 
@@ -9,3 +9,5 @@ export default {
   name: 'DashBoardAdminView',
 };
 </script>
+
+

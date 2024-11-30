@@ -113,6 +113,60 @@
             "department": "Desenvolvimento",
             "start_date": "25/10/2024",
             "departmentCategory": "Desktop"
+        },
+        {
+            "id": 7,
+            "jobname": "Analista de Suporte Técnico",
+            "description": "Responsável por fornecer suporte técnico aos usuários, resolvendo problemas relacionados a hardware, software e redes.",
+            "status": "Em Seleção",
+            "department": "Suporte",
+            "start_date": "10/12/2024",
+            "departmentCategory": "Suporte"
+        },
+        {
+            "id": 8,
+            "jobname": "Técnico de Suporte de TI",
+            "description": "Prestação de suporte técnico a sistemas e infraestrutura de TI, incluindo manutenção preventiva e corretiva.",
+            "status": "Entrevista",
+            "department": "Suporte",
+            "start_date": "15/12/2024",
+            "departmentCategory": "Suporte"
+        },
+        {
+            "id": 9,
+            "jobname": "Assistente Administrativo",
+            "description": "Responsável por realizar atividades administrativas diárias, como controle de documentos, agendamento de reuniões e apoio a equipes internas.",
+            "status": "Pausado",
+            "department": "Administrativo",
+            "start_date": "05/12/2024",
+            "departmentCategory": "Administrativo"
+        },
+        {
+            "id": 10,
+            "jobname": "Coordenador Administrativo",
+            "description": "Gestão de processos administrativos da empresa, organização de equipes e apoio nas decisões estratégicas e operacionais.",
+            "status": "Finalizado",
+            "department": "Administrativo",
+            "start_date": "20/11/2024",
+            "departmentCategory": "Administrativo"
+        },
+        {
+            "id": 11,
+            "jobname": "Auxiliar de Departamento Pessoal",
+            "description": "Auxílio no controle de ponto, processamento de folha de pagamento e apoio na gestão de benefícios e contratos dos colaboradores.",
+            "status": "Em Seleção",
+            "department": "Administrativo",
+            "start_date": "10/12/2024",
+            "departmentCategory": "Administrativo"
+        },
+        {
+            "id": 12,
+            "jobname": "Assistente de Suporte ao Cliente",
+            "description": "Atendimento a clientes internos e externos, resolução de problemas e dúvidas relacionadas aos produtos e serviços oferecidos pela empresa.",
+            "status": "Entrevista",
+            "department": "Suporte",
+            "start_date": "15/12/2024",
+            "departmentCategory": "Suporte"
         }
     ],
     "modalities":[
