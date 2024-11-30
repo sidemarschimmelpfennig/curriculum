@@ -1,38 +1,17 @@
 <template>
     <button @click="sendDataToParent">Enviar Dados</button>
-  </template>
+</template>
 
-  <script>
-  export default {
-    methods: {
+
+//  export default {
+  //  methods: {
     //  sendDataToParent() {
       //  this.$emit('dataSent', { name: 'Vue.js' });
      // }
-    }
-  };
-  </script>
-
-
-
-
-\\envio de dados axios
-
-methods: {
-    sendDataToAPI() {
-      axios.post('https://api.exemplo.com/dados', {
-        name: 'Vue.js',
-        description: 'Framework JavaScript'
-      })
-      .then(response => {
-        console.log('Dados enviados com sucesso:', response.data);
-      })
-      .catch(error => {
-        console.error('Erro ao enviar dados:', error);
-      });
-    }
-  }
-
-  \\requisicao de dados axios
+    //}
+  //};
+<script>
+  //requisicao de dados axios
   import axios from 'axios';
 
 export default {
@@ -56,3 +35,5 @@ export default {
     }
   }
 };
+
+</script>
