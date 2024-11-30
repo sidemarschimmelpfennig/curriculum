@@ -28,8 +28,6 @@ const routes = [
     component: LoginView,
     meta: { requiresNavbar: false, requiresFooter: false }
   },
-   // component: login,
-  //},
   {
     path:'/register',
     name: 'register',
