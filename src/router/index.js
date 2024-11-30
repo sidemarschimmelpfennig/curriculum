@@ -1,11 +1,8 @@
 import HomeView from '@/views/HomeView.vue';
 import JobListingView from '@/views/JobListingView/JobListingView.vue';
 import JobPositionView from '@/views/JobPositionView/JobPositionView.vue';
-import CreateAccountView from '@/views/Login/CreateAccountView.vue';
-
+import CreateAccountView from '@/views/LoginView/CreateAccountView.vue';
 import LoginView from '@/views/LoginView/LoginView.vue';
-
-//import login from '@/views/LoginAcess/login.vue'
 
 import { createRouter, createWebHistory } from 'vue-router';
 
@@ -31,8 +28,6 @@ const routes = [
     component: LoginView,
     meta: { requiresNavbar: false, requiresFooter: false }
   },
-   // component: login,
-  //},
   {
     path:'/register',
     name: 'register',
