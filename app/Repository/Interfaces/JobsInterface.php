@@ -11,5 +11,5 @@ interface JobsInterface extends BaseInterface
 	public function findByDepartmentCategories(string $category): stdClass|null;
 
 	// For admins
-	public function createJobVacancies(array $data);
+	public function createJobVacancies(array $validator);
 }

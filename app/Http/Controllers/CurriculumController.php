@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Repository\Eloquent\CurriculumRepository;
 
-use Illuminate\Http\Request;
-
 class CurriculumController extends Controller
 {
 	public function __construct(
@@ -31,15 +29,8 @@ class CurriculumController extends Controller
 
     }
 
-    public function validaterepository(Request $request) 
+    public function validateCurriculum(array $data)
     {
-      $data = $request->all();
-      $result = $this->repository->validateCurriculum($data);
-      return response()->json([
-        'data' => $data,
-        'result' => $result
-        
-      ]);
       
     }
 }

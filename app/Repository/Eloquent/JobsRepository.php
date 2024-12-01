@@ -40,32 +40,14 @@ class JobsRepository implements JobsInterface
 		
     }
 
-    public function createJobVacancies(array $data)
+    public function createJobVacancies(array $validator)
     {   
-
-        $validator = Validator::make($data, [
-            'name' => 'required|string',
-            'department' => 'required|string',
-            'department_categories' => 'required|string',
-            'status' => 'required|string',
-
-        ]);
-
-        if($validator->fails()){
-            return [
-                'message' => 'Error ao criar a vaga de trabalho',
-                'erro' => $validator->errors()->all(),
-                'validator' => $validator,
-
-            ];
-        }
-
         try {
             $vacancy = $this->model->create([
-                'name' => $data['name'],
-                'department' => $data['department'],
-                'department_categories' => $data['department_categories'],
-                'status' => $data['name'],
+                'name' => $validator['name'],
+                'department' => $validator['department'],
+                'department_categories' => $validator['department_categories'],
+                'status' => $validator['status'],
 
             ]);
             return [
@@ -75,10 +57,12 @@ class JobsRepository implements JobsInterface
             ];
 
         } catch (\Throwable $th) {
+            //\Log::error('Erro ao criar a vaga: ' . $th->getMessage());
+
             return [
                 'success' => false,
                 'message' => 'Problemas para criar a vaga!',
-                'th' => $th->getMessage(),
+                'th' => $th->getMessage()
             ];
         }
     }

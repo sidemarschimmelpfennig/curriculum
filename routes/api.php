@@ -25,4 +25,5 @@ Route::get('/all/job-vacancies-by-category/{category}', [JobsController::class, 
 
 // Create
 Route::post('/add-job', [JobsController::class, 'createJobVacancies']);
+Route::get('/add-jobTeste', [JobsController::class, 'createJobVacancies']);
 Route::post('/send', [CurriculumController::class, 'validateCurriculum']);

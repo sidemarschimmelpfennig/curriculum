@@ -7,6 +7,7 @@ use App\Repository\Interfaces\CurriculumInterface;
 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
 
 class CurriculumRepository extends BaseRepository implements CurriculumInterface
 {
@@ -26,38 +27,7 @@ class CurriculumRepository extends BaseRepository implements CurriculumInterface
 		
 	}
 	
-	public function validateCurriculum(array $data){
-		$validator = Validator::make($data, [
-			'file' => 'required|file'
-		]);
+	public function validateCurriculum(array $request){
 
-		if($validator->fails()){
-			return [
-				'message' => 'Um erro ocorreu ao enviar o arquivo',
-				'erro' => $validator->errors()->all()
-				
-			];
-		}
-
-		try {
-			$curriculum = $this->model->create([
-				'file' => $data['file']
-			]);
-
-			return [
-				'success' => true,
-				'message' => 'Curriculo enviado',
-				'curriculum' => $curriculum
-
-			];
-
-		} catch (\Throwable $th) {
-			return [
-                'success' => false,
-                'message' => 'Problemas para enviar os dados!',
-                'th' => $th->getMessage(),
-            ];
-		}
 	}
-	
 }

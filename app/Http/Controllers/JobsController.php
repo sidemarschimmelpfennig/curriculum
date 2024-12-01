@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-//use App\Repository\Eloquent\JobsRepository;
-use App\Repository\Interfaces\JobsInterface;
+use App\Repository\Eloquent\JobsRepository;
+//use App\Repository\Interfaces\JobsInterface;
 
 use Illuminate\Http\Request;
 
 class JobsController extends Controller
 {
-    protected JobsInterface $repository;
-    public function __construct(JobsInterface $repository)
+    protected JobsRepository $repository;
+    public function __construct(JobsRepository $repository)
     {
         $this->repository = $repository;
     }
@@ -34,14 +34,18 @@ class JobsController extends Controller
     }
 
     public function createJobVacancies(Request $request)
-    {
-        $data = $request->all();
-        $result = $this->repository->createJobVacancies($data);
-        return response()->json([
-            'data' => $data,
-            'result' => $result
-        
+    {   
+        $validator = $request->validate([
+            'name' => 'required|string',
+            'department' => 'required|string',
+            'department_categories' => 'required|string',
+            'status' => 'required|string',
+
         ]);
+
+        $result = $this->repository->createJobVacancies($validator);
+
+        return response()->json($result);
         
     }
 }
