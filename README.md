@@ -9,6 +9,10 @@ npm install
 ```
 npm run serve
 ```
+### Compiles Backend Json for development 
+```
+npm run backend
+```
 
 ### Compiles and minifies for production
 ```
@@ -19,6 +23,8 @@ npm run build
 ```
 npm run lint
 ```
+
+
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).

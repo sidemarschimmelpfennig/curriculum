@@ -1,3 +1,4 @@
+import DashBoardUserView from '@/views/DashBoard/DashBoardUserView.vue';
 import HomeView from '@/views/HomeView.vue';
 import JobListingView from '@/views/JobListingView/JobListingView.vue';
 import JobPositionView from '@/views/JobPositionView/JobPositionView.vue';
@@ -33,6 +34,11 @@ const routes = [
     name: 'register',
     component: CreateAccountView,
     meta: { requiresNavbar: false, requiresFooter: false }
+  },
+  {
+    path:'/teste',
+    name:'teste',
+    component: DashBoardUserView
   }
 ];
 

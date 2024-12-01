@@ -1,5 +1,5 @@
 @import '@/assets/scss/main';
-.home {
+.create-account {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -16,7 +16,7 @@
   };
 }
 
-.home::before {
+.create-account::before {
   content: '';
   position: absolute;
   top: 0;
@@ -29,33 +29,3 @@
     height: 100%;
   };
 } 
-
-  
-  .title, .subtitle {
-    z-index: 2; /* Garante que os textos fiquem acima do overlay */
-    color: white; /* Define a cor do texto para garantir contraste */
-    text-align: center;
-    padding: 10px;
-  }
-  
-  .title {
-    font-size: 3rem; /* Ajuste do tamanho da fonte do título */
-    font-weight: bold;
-  }
-  
-  .subtitle {
-    font-size: 1.5rem;
-  }
-  .btn{
-    z-index: 2;
-    opacity: 1;
-    height: 3.5rem;
-    padding:  0 1.5rem;
-    border-radius: 3rem;
-    background-color: rgba($tertiary-color , $alpha: 0.7);
-  }
-  .btn:hover{
-    cursor: pointer;
-    background-color: rgba($tertiary-color, 1); ;
-  }
-  
