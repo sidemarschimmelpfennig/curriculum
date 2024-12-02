@@ -3,14 +3,14 @@
 </template>
 
 
-//  export default {
-  //  methods: {
-    //  sendDataToParent() {
-      //  this.$emit('dataSent', { name: 'Vue.js' });
-     // }
-    //}
-  //};
+  
 <script>
+    export default {
+    methods: {
+      sendDataToParent() {
+        this.$emit('dataSent', { name: 'Vue.js' });
+      }
+  };
   //requisicao de dados axios
   import axios from 'axios';
 
