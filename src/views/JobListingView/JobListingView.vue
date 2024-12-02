@@ -55,7 +55,7 @@ export default {
   methods: {
     async getJobsListing() {
       try {
-        let response = await axios.get(`${process.env.VUE_APP_API_URL}joblisting`);
+        let response = await axios.get(`http://localhost:3000/joblisting`);
         this.arrayFromJobs = response.data;
       } catch (error) {
         console.log(error);
