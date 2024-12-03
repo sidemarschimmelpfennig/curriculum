@@ -14,27 +14,32 @@ class JobService
 
     }
 
-    public function getAll() {
+    public function getAll() 
+    {
         return $this->repository->getAll();
 
     }
 
-    public function findByDepartment(string $param){
+    public function findByDepartment(string $param)
+    {
         return $this->repository->findByDepartment($param);
 
     }
 
-    public function findByCategories(string $param){
+    public function findByCategories(string $param)
+    {
         return $this->repository->findByCategories($param);
 
     } 
 
-    public function findByStatus(string $param){
+    public function findByStatus(string $param)
+    {
         return $this->repository->findByStatus($param);
         
     }
 
-    public function create(array $validateData) {
+    public function create(array $validateData) 
+    {
         return $this->repository->create($validateData);   
         
     }

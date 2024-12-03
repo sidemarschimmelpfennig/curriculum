@@ -30,6 +30,7 @@ class JobController extends Controller
 
     public function findByStatus(string $param){
         return response()->json($this->jobService->findByStatus($param));
+        
     }
 
    public function create(Request $request) {
