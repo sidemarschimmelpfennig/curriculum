@@ -4,28 +4,25 @@ namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
-
 use Tests\TestCase;
 
 class JobTest extends TestCase
 {
-    public function testRoutes(): void
+    /**
+     * A basic feature test example.
+     */
+    public function test_example(): void
     {
-        $responseGET = $this->get('/api/all/job-vacancies');
-
         $bodyJSON = [
-            "name" => "Desenvolvimento Web 2",
-            "department" => "Frontend",
-            "department_categories" => "Desenvolvimento",
-            "status" => "Aberto",
-
+            "name" => "Desenvolvedor C++",
+            "department" => "Desenvolvimento Desktop",
+            "department_categories" => "backend",
+            "status" => "Aberta"
         ];
 
-        $responsePOST = $this->post('/api/add-job', $bodyJSON);
-        $responsePOST->assertStatus(200);
-        $responseGET->assertStatus(200);
+        $response= $this->post('/api/v1/add-job', $bodyJSON);
 
+        $response->assertStatus(200);
 
-        
     }
 }

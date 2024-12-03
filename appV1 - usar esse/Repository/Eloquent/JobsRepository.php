@@ -5,13 +5,12 @@ namespace App\Repository\Eloquent;
 use App\Models\JobVacancies;
 use App\Repository\Interfaces\JobsInterface;
 
-
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\Eloquent\Model;
 
 use stdClass;
 
-class JobsRepository implements JobsInterface
+class JobsRepository extends BaseRepository implements JobsInterface
 {
     protected Model $model;
     public function __construct(){
@@ -26,18 +25,22 @@ class JobsRepository implements JobsInterface
 
     public function findByID(int $id)
     {
-        return $this->model->find($id);
+        return $this->model->findOrFail($id);
 
     }
 	
-    public function findByDepartment(string $department) : stdClass|null {
+    public function findByDepartment(string $department){
         return $this->model->where('department', $department)->get();
-		
+        
     } 
 
-    public function findByDepartmentCategories(string $category) : stdClass|null {
+    public function findByDepartmentCategories(string $category){
         return $this->model->where('department_categories', $category)->get();
 		
+    }
+
+    public function findByStatus(string $status){
+        return $this->model->where('status', $status)->get();
     }
 
     public function createJobVacancies(array $validator)

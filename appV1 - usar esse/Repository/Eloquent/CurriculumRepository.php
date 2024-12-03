@@ -7,7 +7,6 @@ use App\Repository\Interfaces\CurriculumInterface;
 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Arr;
 
 class CurriculumRepository extends BaseRepository implements CurriculumInterface
 {

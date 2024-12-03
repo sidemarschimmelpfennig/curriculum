@@ -22,6 +22,10 @@ class JobsController extends Controller
         
     }
 
+    public function findByID(int $id){
+        return response()->json($this->repository->findByID($id));
+    }
+
     // Teste - adicionar no interface
     public function findByDepartment(string $department)
     {
@@ -29,8 +33,12 @@ class JobsController extends Controller
     }
 
     public function findByDepartmentCategories(string $category){
-        return response()->json($this->repository->findByDepartmentCategories($category));
-		
+        return response()->json($this->repository->findByDepartmentCategories($category));	
+    }
+
+    public function findByStatus(string $status){
+        return response()->json($this->repository->findByStatus($status));	
+
     }
 
     public function createJobVacancies(Request $request)
