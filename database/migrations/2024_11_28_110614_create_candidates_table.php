@@ -16,12 +16,14 @@ return new class extends Migration
 			$table->string('full_name');
 			$table->string('contactphone');
 			$table->string('contactphonetwo')->nullable();
-			$table->string('email')->unique();
 			$table->string('city');
 			$table->string('address');
 			$table->text('observation');
 			$table->string('additional')->nullable();
 			$table->string('socialmedia')->nullable();
+            
+            $table->string('email')->unique();
+            $table->string('password');
             $table->timestamps();
         });
     }

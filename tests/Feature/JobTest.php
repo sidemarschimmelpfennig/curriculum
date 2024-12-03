@@ -14,15 +14,41 @@ class JobTest extends TestCase
     public function test_example(): void
     {
         $bodyJSON = [
-            "name" => "Desenvolvedor C++",
-            "department" => "Desenvolvimento Desktop",
-            "department_categories" => "backend",
-            "status" => "Aberta"
+            [
+                "name" => "Desenvolvedor C++",
+                "department" => "Desenvolvimento Desktop",
+                "department_categories" => "backend",
+                "status" => "Aberta"
+
+            ],
+
+            [
+                "name" => "Desenvolvedor PHP Laravel",
+                "department" => "Desenvolvimento Web",
+                "department_categories" => "backend",
+                "status" => "Aberta"
+                
+            ],
+            [
+                "name" => "Desenvolvedor C#",
+                "department" => "Desenvolvimento Desktop",
+                "department_categories" => "backend",
+                "status" => "Fechada"
+            ],
+            [
+                "name" => "Suporte técnico",
+                "department" => "Suporte",
+                "department_categories" => "Suporte",
+                "status" => "Aberta"
+                
+            ]
         ];
 
-        $response= $this->post('/api/v1/add-job', $bodyJSON);
+        foreach ($bodyJSON as $job) {
+            $response= $this->post('/api/v1/add-job', $job);
 
-        $response->assertStatus(200);
+            $response->assertStatus(200);
+        }
 
     }
 }

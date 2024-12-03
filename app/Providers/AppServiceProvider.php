@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 
 use App\Repositories\{
     Interface\JobRepositoryInterface,
-    Interface\UserInterface,
+    Interface\UserRepositoryInterface,
 
     Eloquent\JobRepository,
     Eloquent\UserRepository
@@ -18,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(JobRepositoryInterface::class, JobRepository::class);
-        $this->app->bind(UserInterface::class, UserRepository::class);
+        $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
     }
 
     /**

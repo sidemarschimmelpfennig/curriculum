@@ -18,6 +18,7 @@ class UserController extends Controller
     public function getAll()
     {
         return response()->json($this->userService->getAll());
+
     }
 
     public function findByID(int $id)
@@ -26,10 +27,13 @@ class UserController extends Controller
         if (!empty($user)) {
             return response()->json($user);
             
-        }
-        return response()->json('nada aqui');
+        } else {
+            return response()->json('Nada aqui');
 
+        }
     }
+
+
 
     public function create(Request $request)
     {
@@ -43,8 +47,5 @@ class UserController extends Controller
         $user = $this->userService->create($validateData);
         return response()->json($user);
         
-        
-        
-
     }
 }

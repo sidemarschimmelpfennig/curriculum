@@ -3,6 +3,7 @@
 namespace App\Repositories\Eloquent;
 
 use App\Repositories\Interface\JobRepositoryInterface;
+
 use App\Models\JobVacancies;
 
 class JobRepository implements JobRepositoryInterface
@@ -12,8 +13,8 @@ class JobRepository implements JobRepositoryInterface
         return JobVacancies::all();
     }
 
-    public function findByID(int $id
-    ){
+    public function findByID(int $id)
+    {
         return JobVacancies::find($id);
 
     }
