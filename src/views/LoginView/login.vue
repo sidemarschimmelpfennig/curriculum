@@ -1,19 +1,6 @@
 <template>
-    <button @click="sendDataToParent">Enviar Dados</button>
+  <button @click="sendDataToParent">Enviar Dados</button>
 </template>
-
-
-  
-<script>
-    export default {
-    methods: {
-      sendDataToParent() {
-        this.$emit('dataSent', { name: 'Vue.js' });
-      }
-  };
-  //requisicao de dados axios
-  import axios from 'axios';
-
 export default {
   data() {
     return {
@@ -25,15 +12,15 @@ export default {
   },
   methods: {
     fetchUserData() {
-      axios.get('https://api.exemplo.com/usuario')
-        .then(response => {
+      axios
+        .get("https://api.exemplo.com/usuario")
+        .then((response) => {
           this.userData = response.data;
         })
-        .catch(error => {
-          console.error('Erro ao requisitar dados:', error);
+        .catch((error) => {
+          console.error("Erro ao requisitar dados:", error);
         });
-    }
-  }
+    },
+  },
 };
-
 </script>

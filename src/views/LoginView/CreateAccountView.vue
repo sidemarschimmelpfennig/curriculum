@@ -1,13 +1,9 @@
 <template>
-  <div class="create-account">
-
-  </div>
+  <div class="create-account"></div>
 </template>
 <script>
-export default {
-
-}
+export default {};
 </script>
 <style lang="scss">
-  @import '@/assets/scss/views/createaccountview';
+@import "@/assets/scss/views/createaccountview";
 </style>
