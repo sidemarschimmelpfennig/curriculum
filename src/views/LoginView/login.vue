@@ -1,13 +1,6 @@
 <template>
   <button @click="sendDataToParent">Enviar Dados</button>
 </template>
-
-// export default { // methods: { // sendDataToParent() { //
-this.$emit('dataSent', { name: 'Vue.js' }); // } //} //};
-<script>
-//requisicao de dados axios
-import axios from "axios";
-
 export default {
   data() {
     return {
