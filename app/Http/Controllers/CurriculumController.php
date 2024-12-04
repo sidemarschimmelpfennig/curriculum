@@ -16,9 +16,6 @@ class CurriculumController extends Controller
     
     public function send(Request $request)
     {
-        /*$filePath = $request->file('file')->store('uploads', 'public');
-
-        return response()->json(['message' => 'File uploaded successfully', 'path' => $filePath]);*/
         $filePath = $request->file('file')->move(public_path('uploads'), $request->file('file')->getClientOriginalName());
 
         return response()->json(['message' => 'Arquivo enviado com sucesso', 'path' => $filePath]);

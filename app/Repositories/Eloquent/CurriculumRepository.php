@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repositories\Eloquent\;
+namespace App\Repositories\Eloquent;
 
-class CurriculumRepository implements 
+class CurriculumRepository
 {
     public function send($fileData)
     {
