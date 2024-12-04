@@ -1,4 +1,5 @@
-import DashBoardUserView from "@/views/DashBoard/DashBoardUserView.vue";
+import DashBoardAdminView from "@/views/DashBoardAdmin/DashBoardAdminView.vue";
+import DashBoardCandidateView from "@/views/DashBoardCandidate/DashBoardCandidateView.vue";
 import HomeView from "@/views/HomeView.vue";
 import JobListingView from "@/views/JobListingView/JobListingView.vue";
 import JobPositionView from "@/views/JobPositionView/JobPositionView.vue";
@@ -36,9 +37,14 @@ const routes = [
     meta: { requiresNavbar: false, requiresFooter: false },
   },
   {
-    path: "/teste",
-    name: "teste",
-    component: DashBoardUserView,
+    path: "/candidate",
+    name: "candidate",
+    component: DashBoardCandidateView,
+  },
+  {
+    path: "/admin",
+    name: "admin",
+    component: DashBoardAdminView,
   },
 ];
 
