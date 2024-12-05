@@ -2,7 +2,7 @@ import DashBoardUserView from "@/views/DashBoard/DashBoardUserView.vue";
 import HomeView from "@/views/HomeView.vue";
 import JobListingView from "@/views/JobListingView/JobListingView.vue";
 import JobPositionView from "@/views/JobPositionView/JobPositionView.vue";
-import CreateAccountView from "@/views/LoginView/CreateAccountView.vue";
+import UserRegister from "@/views/LoginView/UserRegister.vue";
 import LoginView from "@/views/LoginView/LoginView.vue";
 
 import { createRouter, createWebHistory } from "vue-router";
@@ -32,7 +32,7 @@ const routes = [
   {
     path: "/register",
     name: "register",
-    component: CreateAccountView,
+    component: UserRegister,
     meta: { requiresNavbar: false, requiresFooter: false },
   },
   {
