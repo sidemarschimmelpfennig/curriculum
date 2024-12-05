@@ -48,9 +48,12 @@ class JobRepository implements JobRepositoryInterface
         
         if ($job){
             if ($newStatus == 1) {
-                return $job->update(['status' => 'Em analize']);
+                return $job->update(['status' => 'Em analise']);
 
             } else if ($newStatus == 2) {
+                return $job->update(['status' => 'Andamento']);
+
+            } else if ($newStatus == 3) {
                 return $job->update(['status' => 'Encerrada']);
             
             }
