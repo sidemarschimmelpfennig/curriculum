@@ -44,14 +44,21 @@ class JobRepository implements JobRepositoryInterface
     }
 
     public function update(int $id, int $newStatus){
-    
-        if ($newStatus == 1) {
-            return JobVacancies::where('id', $id)
-                           ->update(['status' => 'Em analize']);
-        } else if ($newStatus == 1) {
-            return JobVacancies::where('id', $id)
-                           ->update(['status' => 'Encerrada']);
+        $job = JobVacancies::where('id', $id)->first();
+        
+        if ($job){
+            if ($newStatus == 1) {
+                return $job->update(['status' => 'Em analize']);
 
+            } else if ($newStatus == 2) {
+                return $job->update(['status' => 'Encerrada']);
+            
+            }
+
+        } else {
+            return [
+                'Não foi encontrado nem uma vaga de trabalho'
+            ];
         }
     
     }
