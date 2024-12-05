@@ -20,6 +20,7 @@ Route::prefix('v1')->group(function (){
     Route::post('/add-user', [UserController::class, 'create']);
 
     Route::post('/send-curriculum', [CurriculumController::class, 'send']);
+    Route::post('/update-status/{id}', [JobController::class, 'update']);
 
     Route::get('/helloWorld', function () {
         return view('helloWorld');

@@ -43,4 +43,9 @@ class JobService
         return $this->repository->create($validateData);   
         
     }
+
+    public function update(int $id, int $newStatus){
+        return $this->repository->update($id, $newStatus);
+
+    }
 }

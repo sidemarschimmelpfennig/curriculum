@@ -33,7 +33,7 @@ class JobController extends Controller
         
     }
 
-   public function create(Request $request) {
+    public function create(Request $request) {
         $validateData = $request->validate([
             'name' => 'required|string|max:120',
             'department' => 'required|string|max:110',
@@ -44,6 +44,12 @@ class JobController extends Controller
         $job = $this->jobService->create($validateData);
 
         return response()->json($job);
-   }
+    }
  
+   public function update(int $id, Request $request) {
+        //$result = $this->jobService->update($id, $request->input('value'));
+        $result = $this->jobService->update($id, $request['value']);
+        return response()->json($result);
+    
+   }
 }

@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('curricum_creates', function (Blueprint $table) {
+        Schema::create('curriclum', function (Blueprint $table) {
 
             // Dados Pessoais
-            //$table->string('Full_Name');
             $table->string('full_Name', 200);
             $table->string('CPF', 10)->unique();
             $table->string('email', 100)->unique();
@@ -28,10 +27,12 @@ return new class extends Migration
             $table->string('gender', 1);
             $table->string('nationality', 100)->nullable();
             $table->string('linkedin_url', 255)->nullable();
-            $table->string('photo')->nullable();
             $table->string('Target_Sectors', 100);
             $table->string('Target_Position', 100);
             $table->string('Target_outher', 100)->nullable();
+
+            $table->string('photo')->nullable(); // Arquivo
+            $table->string('curriculum'); // Arquivo
 
             // Formação Acadêmica
             $table->string('course', 100)->nullable();
@@ -42,9 +43,9 @@ return new class extends Migration
             $table->string('company', 100)->nullable();
 
             // Experiência Profissional
-            $table->text('job_description', 200)->nullable();
-            $table->text('Enterprise', 200)->nullable();
-            $table->text('Position', 200)->nullable();
+            $table->text('job_description', 100)->nullable();
+            $table->text('Enterprise', 100)->nullable();
+            $table->text('Position', 100)->nullable();
             $table->date('experience_start_date', 8)->nullable();
             $table->date('experience_end_date', 8)->nullable();
             $table->text('additional_info', 200)->nullable();
@@ -62,6 +63,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('curricum_creates');
+        Schema::dropIfExists('curriclum');
     }
 };

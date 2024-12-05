@@ -50,5 +50,11 @@ class JobTest extends TestCase
             $response->assertStatus(200);
         }
 
+        $newValue = [1];
+        $id = 1;
+        $response2 = $this->post('/api/v1/update-status/' . $id, $newValue);
+        $response2->assertStatus(200);
+        
+
     }
 }

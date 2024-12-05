@@ -19,6 +19,7 @@ class CurriculumController extends Controller
     public function send(Request $request)
     {
         $result = $this->curriculumService->send($request->file('file'), $request->all());
+        
         return response()->json([
             'result' => $result 
 

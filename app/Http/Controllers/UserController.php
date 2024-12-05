@@ -33,8 +33,6 @@ class UserController extends Controller
         }
     }
 
-
-
     public function create(Request $request)
     {
         $validateData = $request->validate([

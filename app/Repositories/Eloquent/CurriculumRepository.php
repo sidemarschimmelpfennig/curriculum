@@ -2,10 +2,14 @@
 
 namespace App\Repositories\Eloquent;
 
-class CurriculumRepository
+use App\Repositories\Interface\CurriculumRepositoryInterface;
+
+use App\Models\Curriculum;
+
+class CurriculumRepository implements CurriculumRepositoryInterface
 {
-    public function send($fileData)
-    {
+    public function create(array $data){
+        return Curriculum::create($data);
         
     }
 
