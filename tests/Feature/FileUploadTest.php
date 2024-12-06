@@ -11,7 +11,7 @@ class FileUploadTest extends TestCase
 {
     use RefreshDatabase; // Para resetar o banco a cada teste, se necessário
 
-    /** @test */
+    /** @test */ // Tem que ficar aqui
     public function it_can_upload_a_file()
     {
         Storage::fake('public'); 
@@ -20,7 +20,7 @@ class FileUploadTest extends TestCase
 
         $response = $this->post('/api/v1/send-curriculum', [
             'file' => $file
-        
+            
         ]); 
 
         $response->assertStatus(200);    

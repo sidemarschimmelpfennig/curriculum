@@ -9,37 +9,35 @@ use App\Repositories\Eloquent\CurriculumRepository;
 
 class CurriculumService
 {
-
     protected $repository;
 
     public function __construct(CurriculumRepository $repository){
         $this->repository = $repository;
     }
 
-    public function send(object $file, array $request) {
-        if (!$file->isValid()) {
-            return [
-                'error' => 'O arquivo não foi enviado corretamente.'
+    //public function send(object $file, array $request) {
+    public function send(object $file) {
+        /*$path = $file->move(public_path('uploads'), $file->getClientOriginalName());
 
-            ];
+        return $path;*/
 
-        }
-
-        // Valida se está de acordo com o esperado
-        $validator = Validator::make($request, [
-            'file' => 'required|file|mimes:pdf,txt,doc|max:2048',
-
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'errosValidate' => $validator->errors()
-            ], 422);
+        $directory = public_path('uploads');
+        $name = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+        $extension = $file->getClientOriginalExtension();
+        if(!is_dir($directory)){
+            mkdir($directory, 0755, true);
 
         }
-                        //Vai mover para o path public/uploads // Pega o nome do arquivo
-        return $file->move(public_path('uploads'), $file->getClientOriginalName());
-        
+
+        $counter = 1;
+        $newName = $name;
+        while (file_exists("$directory/$newName.$extension")) {
+            $newName = $name . '_' . $counter;
+            $counter++;
+
+        }
+        $path = $file->move($directory, "$newName.$extension");
+        return $path->getPathname();
     }
 
     public function create(array $data) {

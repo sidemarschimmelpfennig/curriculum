@@ -20,10 +20,16 @@ Route::prefix('v1')->group(function (){
     Route::post('/add-user', [UserController::class, 'create']);
 
     Route::post('/send-curriculum', [CurriculumController::class, 'send']);
+    // Teste     ->middleware('check.login'); // Apply the middleware here
+
     Route::post('/update-status/{id}', [JobController::class, 'update']);
 
     Route::get('/helloWorld', function () {
         return view('helloWorld');
     });
+
+    Route::get('/a', function () {
+        return view('file');
+    });
+   
 });
-    

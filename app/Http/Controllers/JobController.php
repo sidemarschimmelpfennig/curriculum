@@ -48,11 +48,20 @@ class JobController extends Controller
  
    public function update(int $id, Request $request) {
         //$result = $this->jobService->update($id, $request->input('value'));
-        $result = $this->jobService->update($id, $request['value']);
-        return response()->json([
-            'resultado' => $result,
-            
-        ]);
+        try {
+            $result = $this->jobService->update($id, $request['value']);
+            return response()->json([
+                'resultado' => $result,
+                
+            ]);
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'th' => $th,
+                
+            ]);
+        }
+        
     
    }
 }
