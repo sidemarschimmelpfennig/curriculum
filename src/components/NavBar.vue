@@ -11,7 +11,7 @@
       <router-link class="nav-link" to="/joblisting"
         >Vagas disponiveis</router-link
       >
-      <router-link class="nav-link" to="/register"
+      <router-link class="nav-link" to="/curriculum"
         >Cadastre seu curriculo</router-link
       >
       <router-link class="nav-link" to="/login">Faça seu Login</router-link>

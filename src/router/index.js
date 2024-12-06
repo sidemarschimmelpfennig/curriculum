@@ -2,7 +2,8 @@ import DashBoardUserView from "@/views/DashBoard/DashBoardUserView.vue";
 import HomeView from "@/views/HomeView.vue";
 import JobListingView from "@/views/JobListingView/JobListingView.vue";
 import JobPositionView from "@/views/JobPositionView/JobPositionView.vue";
-import UserRegister from "@/views/LoginView/UserRegister.vue";
+import CurriculumRegister from "@/views/LoginView/CurriculumRegister.vue";
+//import UserRegister from "@/views/LoginView/UserRegister.vue";
 import LoginView from "@/views/LoginView/LoginView.vue";
 
 import { createRouter, createWebHistory } from "vue-router";
@@ -30,9 +31,9 @@ const routes = [
     meta: { requiresNavbar: false, requiresFooter: false },
   },
   {
-    path: "/register",
-    name: "register",
-    component: UserRegister,
+    path: "/Curriculum",
+    name: "curriculum",
+    component: CurriculumRegister,
     meta: { requiresNavbar: false, requiresFooter: false },
   },
   {
