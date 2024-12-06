@@ -16,38 +16,61 @@ class JobController extends Controller
     }
 
     public function getAll(){
-        return response()->json($this->jobService->getAll());
+        try {
+            return response()->json($this->jobService->getAll());
+        } catch (\Throwable $th) {
+            return response()->json(['message' => 'Erro ao carregar as vagas', 'th' => $th->getMessage()]);
+        }
     }
 
     public function findByDepartment(string $param){
-        return response()->json($this->jobService->findByDepartment($param));
-
+        try {
+            return response()->json($this->jobService->findByDepartment($param));
+        } catch (\Throwable $th) {
+            return response()->json(['message' => 'Erro ao carregar as vagas', 'th' => $th->getMessage()]);
+        }
     }
 
     public function findByCategories(string $param){
-        return response()->json($this->jobService->findByDepartment($param));
+        try {
+            return response()->json($this->jobService->findByDepartment($param));
+        } catch (\Throwable $th) {
+            return response()->json(['message' => 'Erro ao carregar as vagas', 'th' => $th->getMessage()]);
+        }
     }
 
     public function findByStatus(string $param){
-        return response()->json($this->jobService->findByStatus($param));
-        
+        try {
+            return response()->json($this->jobService->findByStatus($param));
+        } catch (\Throwable $th) {
+            return response()->json(['message' => 'Erro ao carregar as vagas', 'th' => $th->getMessage()]);
+        }
     }
 
     public function create(Request $request) {
-        $validateData = $request->validate([
-            'name' => 'required|string|max:120',
-            'department' => 'required|string|max:110',
-            'department_categories' => 'required|string|max:100',
-            'status' => 'required|string|max:20',
+        try {
+            $validateData = $request->validate([
+                'name' => 'required|string|max:120',
+                'department' => 'required|string|max:110',
+                'department_categories' => 'required|string|max:100',
+                'status' => 'required|string|max:20',
+    
+            ]);
+    
+            $job = $this->jobService->create($validateData);
+    
+            return response()->json($job);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'Não foi possível criar a vaga',
+                'th' => $th->getMessage()
 
-        ]);
-        $job = $this->jobService->create($validateData);
-
-        return response()->json($job);
+            ]);
+        }
+        
     }
  
    public function update(int $id, Request $request) {
-        //$result = $this->jobService->update($id, $request->input('value'));
         try {
             $result = $this->jobService->update($id, $request['value']);
             return response()->json([
