@@ -32,7 +32,12 @@ class UserService
 
     public function create(array $data)
     {  
-        return $this->repository->create($data);
+        return $this->repository->create([
+            'email' => $data['email'],
+            'password' => $data['password'],
+            'is_admin' => 1
+        
+        ]);
         
     }
 }
