@@ -38,14 +38,12 @@ class UserController extends Controller
         $validateData = $request->validate([
             'email' => 'required|string|email|unique:users,email',
             'password' => 'required|string|min:6',
+            'is_admin' => 'required|boolean'
 
         ]);
 
         $user = $this->userService->create($validateData);
-        return response()->json([
-            'validateData' => $validateData,
-            'user' => $user
-        ]);
+        return response()->json($user);
         
     }
 }
