@@ -8,10 +8,7 @@ use Tests\TestCase;
 
 class JobTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     */
-    public function test_example(): void
+    public function test_createJob(): void
     {
         $bodyJSON = [
             [
@@ -49,6 +46,15 @@ class JobTest extends TestCase
 
             $response->assertStatus(200);
         }
+
+        $newValue = [
+            "value" => 2
+        
+        ];
+
+        $response2 = $this->post('/api/v1/update-status/4', $newValue);
+        $response2->assertStatus(200);
+        
 
     }
 }

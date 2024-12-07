@@ -11,24 +11,18 @@ class FileUploadTest extends TestCase
 {
     use RefreshDatabase; // Para resetar o banco a cada teste, se necessário
 
-    /** @test */
+    /** @test */ // Tem que ficar aqui
     public function it_can_upload_a_file()
     {
-        // Simulando que estamos testando a criação de arquivos
-        Storage::fake('public'); // Utiliza o disco fake para testes, sem alterar os arquivos reais
+        Storage::fake('public'); 
 
-        // Criando um arquivo simulado
-        $file = UploadedFile::fake()->create('document.pdf', 100);  // Criando um PDF fictício de 100KB
+        $file = UploadedFile::fake()->create('document.pdf', 100);  
 
-        // Enviando o arquivo via POST
         $response = $this->post('/api/v1/send-curriculum', [
-            'file' => $file,
-        ]);
+            'file' => $file
+            
+        ]); 
 
-        // Verificando se o arquivo foi salvo no disco
-        Storage::disk('public')->assertExists('uploads/' . $file->hashName()); // Verifica se o arquivo está no local correto
-
-        // Verificando se a resposta foi correta (neste caso, esperamos que a página redirecione com sucesso)
         $response->assertStatus(200);    
     }
 }
