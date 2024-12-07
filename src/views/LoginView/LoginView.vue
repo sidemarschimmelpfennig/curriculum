@@ -98,39 +98,32 @@
 </template>
 
 <script>
-//import axios from 'axios';
+import axios from "axios";
 
 export default {
   data() {
     return {
       userData: null,
+      api: process.env.VUE_APP_API_URL,
     };
   },
-  mounted() {
-    // this.fetchUserData();
-  },
+  mounted() {},
   methods: {
-    /* fetchUserData() {
-      axios.get('https://api.exemplo.com/usuario')
-        .then(response => {
-          this.userData = response.data;
+    getToAccount() {
+      data: {
+      }
+      axios
+        .post(`${this.api}adduser`, {
+          name: "Vue.js",
+          description: "Framework JavaScript",
         })
-        .catch(error => {
-          console.error('Erro ao requisitar dados:', error);
+        .then((response) => {
+          console.log("Dados enviados com sucesso:", response.data);
+        })
+        .catch((error) => {
+          console.error("Erro ao enviar dados:", error);
         });
     },
-    sendDataToAPI() {
-      axios.post('https://api.exemplo.com/dados', {
-        name: 'Vue.js',
-        description: 'Framework JavaScript'
-      })
-      .then(response => {
-        console.log('Dados enviados com sucesso:', response.data);
-      })
-      .catch(error => {
-        console.error('Erro ao enviar dados:', error);
-      });
-    }*/
   },
 };
 </script>
