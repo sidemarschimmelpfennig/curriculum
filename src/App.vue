@@ -8,11 +8,13 @@
 <script>
 import NavBar from "@/components/NavBar.vue";
 import FooterComponent from "@/components/FooterComponent.vue";
+import SidebarAdmin from "./components/SidebarAdmin.vue";
 
 export default {
   components: {
     NavBar,
     FooterComponent,
+    SidebarAdmin,
   },
   mounted() {
     document.title = "Curriculo";

@@ -1,4 +1,9 @@
 import DashBoardAdminView from "@/views/DashBoardAdmin/DashBoardAdminView.vue";
+import ConfigurationPage from "@/views/DashBoardAdmin/pages/ConfigurationPage.vue";
+import NewJobForm from "@/views/DashBoardAdmin/pages/Forms/NewJobForm.vue";
+import HomePageAdmin from "@/views/DashBoardAdmin/pages/HomePageAdmin.vue";
+import JobListingPage from "@/views/DashBoardAdmin/pages/JobListingPage.vue";
+import UsersPage from "@/views/DashBoardAdmin/pages/UsersPage.vue";
 import DashBoardCandidateView from "@/views/DashBoardCandidate/DashBoardCandidateView.vue";
 import HomeView from "@/views/HomeView.vue";
 import JobListingView from "@/views/JobListingView/JobListingView.vue";
@@ -41,12 +46,44 @@ const routes = [
     path: "/candidate",
     name: "candidate",
     component: DashBoardCandidateView,
+    meta: { requiresNavbar: false, requiresFooter: false },
   },
   {
     path: "/admin",
     name: "admin",
     component: DashBoardAdminView,
+    meta: { requiresNavbar: false, requiresFooter: false},
+    children:[
+      {
+        path:"",
+        name:"default",
+        component:HomePageAdmin,
+      },
+      {
+        path:"joblistpage",
+        name:'job-listpage',
+        component:JobListingPage,
+        children:[
+          {
+            path:"create",
+            name:"create",
+            component: NewJobForm
+          },
+        ]
+      },{
+        path:"userpage",
+        name: "userpage",
+        component: UsersPage,
+      },
+      {
+        path:"configuration",
+        name: "configuration",
+        component: ConfigurationPage,
+      }
+    ]
   },
+
+  
 ];
 
 const router = createRouter({
