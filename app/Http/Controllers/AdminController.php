@@ -3,16 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Services\UserService;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+use App\Services\{
+    UserService,
+    JobService
+
+};
+
+class AdminController extends Controller
 {
     protected $userService;
+    protected $jobService;
 
-    public function __construct(UserService $userService)
+    public function __construct(UserService $userService, JobService $jobService)
     {
         $this->userService = $userService;
+        $this->jobService = $jobService;
 
     }
     public function getAll()
@@ -31,6 +38,17 @@ class UserController extends Controller
             return response()->json('Nada aqui');
 
         }
+    }
+
+    public function view() {
+        $departaments = $this->jobService->getAllgetAllDepartament();
+        $departament_categories = $this->jobService->getAllDepartament_Categories();
+        $statuss = $this->jobService->getAllgetAllStatus();
+        return view('newJobVacany', [
+            'departament_categories' => $departament_categories,
+            'departaments' => $departaments,
+            'statuss' => $statuss
+        ]);
     }
 
     public function create(Request $request)

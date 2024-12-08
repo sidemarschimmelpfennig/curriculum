@@ -14,10 +14,9 @@ class UserService
 
     }
 
-    public function getAll() 
+    public function getAll()
     {
         return $this->repository->getAll();
-
     }
 
     public function findByID(int $id)

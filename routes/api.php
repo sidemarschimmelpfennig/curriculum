@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     CurriculumController,
     JobController,
-    LoginController
+    LoginController,
+    AdminController
 
 };
 Route::prefix('register')->group(function () {
@@ -15,16 +16,13 @@ Route::prefix('register')->group(function () {
 
     });
 
-
     Route::get('/login', [LoginController::class, 'login']);
 
 });
 
 // Rotas candidatos
 Route::prefix('v1')->middleware('check.user')->group(function (){
-
     Route::get('/all/job-vacancies', [JobController::class, 'getAll']);
-    Route::get('/all/job-vacancies-by-id/{id}', [JobController::class, 'findByID']);
     Route::get('/all/job-vacancies-by-department/{department}', [JobController::class, 'findByDepartment']);
     Route::get('/all/job-vacancies-by-category/{category}', [JobController::class, 'findByDepartmentCategories']);
     Route::get('/all/job-vacancies-by-status/{status}', [JobController::class, 'findByStatus']);
@@ -35,12 +33,15 @@ Route::prefix('v1')->middleware('check.user')->group(function (){
 });
 
 // Rotas Administrativas
-Route::prefix('v1/admin')->middleware('check.user')->group(function (){    
+//->middleware('check.user')
+Route::prefix('v1/admin')->group(function (){    
+    // By Kochem
     Route::get('/all/job-vacancies', [JobController::class, 'getAll']);
-    Route::post('/add-job', [JobController::class, 'create']);
-    
-    Route::get('/send-file', function () {return view('file');});
+    Route::post('/add-job', [JobController::class, 'createJob']); // Funcionando
+
     // Admin view
-    Route::get('/newJobVacancy', function () {return view('newJobVacany');});
+    Route::get('/newJobVacancy', [AdminController::class, 'view']);
+
+    Route::get('/send-file', function () {return view('file');});
 
 });

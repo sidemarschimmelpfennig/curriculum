@@ -47,23 +47,25 @@ class JobController extends Controller
         }
     }
 
-    public function create(Request $request) {
+    public function createJob(Request $request) {
         try {
             $validateData = $request->validate([
                 'name' => 'required|string|max:120',
-                'department' => 'required|string|max:110',
-                'department_categories' => 'required|string|max:100',
-                'status' => 'required|string|max:20',
+                'department_id' => 'required|max:2',
+                'department_categories_id' => 'required|max:2',
+                'status_id' => 'required|max:2'
     
             ]);
     
-            $job = $this->jobService->create($validateData);
+            $job = $this->jobService->createJob($validateData);
     
             return response()->json($job);
         } catch (\Throwable $th) {
             return response()->json([
                 'message' => 'Não foi possível criar a vaga',
-                'th' => $th->getMessage()
+                'th' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getFile(),
 
             ]);
         }

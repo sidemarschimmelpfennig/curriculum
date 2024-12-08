@@ -37,10 +37,33 @@ class JobService
         return $this->repository->findByStatus($param);
         
     }
+ 
+    public function getAllgetAllDepartament() { return $this->repository->getAllDepartament(); }
+    public function getAllDepartament_Categories() { return $this->repository->getAllDepartament_Categories(); }
+    public function getAllgetAllStatus() { return $this->repository->getAllStatus(); }
 
-    public function create(array $validateData) 
+    public function createJob(array $validateData) 
     {
-        return $this->repository->create($validateData);   
+        $department = $this->repository->findDepartament($validateData['department_id']);
+        $department_categories = $this->repository->findDepartament_Categories($validateData['department_categories_id']);
+        $status = $this->repository->findStatus($validateData['status_id']);
+
+        if(!$department)
+        {
+            throw new \Exception('Departamento não encontrado.');
+        }
+        return $this->repository->create([
+            'name' => $validateData['name'],
+            'department_id' => $validateData['department_id'],
+            'department' => $department->departament,
+
+            'department_categories_id' => $validateData['department_categories_id'],
+            'department_categories' => $department_categories->departament_categorie,
+
+            'status_id' => $validateData['status_id'],
+            'status' => $status->status
+
+        ]);  
         
     }
 
