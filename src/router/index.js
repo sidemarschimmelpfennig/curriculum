@@ -1,5 +1,6 @@
 import DashBoardAdminView from "@/views/DashBoardAdmin/DashBoardAdminView.vue";
 import ConfigurationPage from "@/views/DashBoardAdmin/pages/ConfigurationPage.vue";
+import HomeListPage from "@/views/DashBoardAdmin/pages/Forms/HomeListPage.vue";
 import NewJobForm from "@/views/DashBoardAdmin/pages/Forms/NewJobForm.vue";
 import HomePageAdmin from "@/views/DashBoardAdmin/pages/HomePageAdmin.vue";
 import JobListingPage from "@/views/DashBoardAdmin/pages/JobListingPage.vue";
@@ -64,9 +65,14 @@ const routes = [
         component:JobListingPage,
         children:[
           {
+            path:"",
+            name:"homelist",
+            component:HomeListPage
+          },
+          {
             path:"create",
             name:"create",
-            component: NewJobForm
+            component: NewJobForm,
           },
         ]
       },{

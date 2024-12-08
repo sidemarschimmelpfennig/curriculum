@@ -59,7 +59,7 @@
     {
       "id": 1,
       "jobname": "Desenvolvimento Backend em Java",
-      "description": "Desenvolvimento de sistemas backend robustos utilizando Java e Spring Boot.",
+      "description": "Desenvolvimento de sistemas backend robustos utilizando Java e Spring Boot. Requisitos de conhecimento: Java, Spring Boot, Banco de Dados SQL, Git, APIs RESTful.",
       "status": "Em Seleção",
       "department": "Desenvolvimento",
       "start_date": "10/12/2024",
@@ -68,7 +68,7 @@
     {
       "id": 2,
       "jobname": "Desenvolvimento Frontend em React",
-      "description": "Desenvolvimento de interfaces interativas e responsivas utilizando React e tecnologias modernas de frontend.",
+      "description": "Desenvolvimento de interfaces interativas e responsivas utilizando React e tecnologias modernas de frontend. Requisitos de conhecimento: React, JavaScript, HTML, CSS, Redux, APIs RESTful.",
       "status": "Entrevista",
       "department": "Desenvolvimento",
       "start_date": "15/12/2024",
@@ -77,7 +77,7 @@
     {
       "id": 3,
       "jobname": "Desenvolvimento Desktop em C#",
-      "description": "Desenvolvimento de aplicações desktop para Windows utilizando C# e WPF.",
+      "description": "Desenvolvimento de aplicações desktop para Windows utilizando C# e WPF. Requisitos de conhecimento: C#, WPF, .NET Framework, Design Patterns, Banco de Dados SQL.",
       "status": "Finalizado",
       "department": "Desenvolvimento",
       "start_date": "01/11/2024",
@@ -86,7 +86,7 @@
     {
       "id": 4,
       "jobname": "Desenvolvimento Backend em Node.js",
-      "description": "Desenvolvimento de soluções em Node.js para aplicações de alta performance e escalabilidade.",
+      "description": "Desenvolvimento de soluções em Node.js para aplicações de alta performance e escalabilidade. Requisitos de conhecimento: Node.js, JavaScript, Express.js, Banco de Dados NoSQL, APIs RESTful.",
       "status": "Pausado",
       "department": "Desenvolvimento",
       "start_date": "20/11/2024",
@@ -95,7 +95,7 @@
     {
       "id": 5,
       "jobname": "Desenvolvimento Frontend em Vue.js",
-      "description": "Desenvolvimento de aplicativos frontend utilizando Vue.js e integração com APIs RESTful.",
+      "description": "Desenvolvimento de aplicativos frontend utilizando Vue.js e integração com APIs RESTful. Requisitos de conhecimento: Vue.js, JavaScript, HTML, CSS, Tailwind CSS, APIs RESTful.",
       "status": "Em Seleção",
       "department": "Desenvolvimento",
       "start_date": "05/12/2024",
@@ -104,7 +104,7 @@
     {
       "id": 6,
       "jobname": "Desenvolvimento Desktop em Electron",
-      "description": "Criação de aplicações desktop multiplataforma utilizando Electron e JavaScript.",
+      "description": "Criação de aplicações desktop multiplataforma utilizando Electron e JavaScript. Requisitos de conhecimento: Electron, JavaScript, Node.js, HTML, CSS.",
       "status": "Finalizado",
       "department": "Desenvolvimento",
       "start_date": "25/10/2024",
@@ -113,7 +113,7 @@
     {
       "id": 7,
       "jobname": "Analista de Suporte Técnico",
-      "description": "Responsável por fornecer suporte técnico aos usuários, resolvendo problemas relacionados a hardware, software e redes.",
+      "description": "Responsável por fornecer suporte técnico aos usuários, resolvendo problemas relacionados a hardware, software e redes. Requisitos de conhecimento: Redes de Computadores, Sistemas Operacionais, Diagnóstico de Hardware e Software, Ferramentas de Help Desk.",
       "status": "Em Seleção",
       "department": "Suporte",
       "start_date": "10/12/2024",
@@ -122,7 +122,7 @@
     {
       "id": 8,
       "jobname": "Técnico de Suporte de TI",
-      "description": "Prestação de suporte técnico a sistemas e infraestrutura de TI, incluindo manutenção preventiva e corretiva.",
+      "description": "Prestação de suporte técnico a sistemas e infraestrutura de TI, incluindo manutenção preventiva e corretiva. Requisitos de conhecimento: Infraestrutura de TI, Manutenção de Hardware, Redes de Computadores, Segurança da Informação.",
       "status": "Entrevista",
       "department": "Suporte",
       "start_date": "15/12/2024",
@@ -131,7 +131,7 @@
     {
       "id": 9,
       "jobname": "Assistente Administrativo",
-      "description": "Responsável por realizar atividades administrativas diárias, como controle de documentos, agendamento de reuniões e apoio a equipes internas.",
+      "description": "Responsável por realizar atividades administrativas diárias, como controle de documentos, agendamento de reuniões e apoio a equipes internas. Requisitos de conhecimento: Pacote Office, Gestão de Documentos, Comunicação Escrita, Organização e Planejamento.",
       "status": "Pausado",
       "department": "Administrativo",
       "start_date": "05/12/2024",
@@ -177,6 +177,13 @@
     {
       "id": 3,
       "name": "hibrido"
+    }
+  ],
+  "job_candidate":[
+    {
+      "id":1,
+      "id_candidate":1,
+      "id_job_vancy":1
     }
   ],
   "candidates": [
