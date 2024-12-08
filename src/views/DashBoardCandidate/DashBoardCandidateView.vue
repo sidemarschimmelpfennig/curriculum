@@ -69,7 +69,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 /* Estilos gerais para a caixa de vaga */
 .job-box {
   font-family: Arial, sans-serif;

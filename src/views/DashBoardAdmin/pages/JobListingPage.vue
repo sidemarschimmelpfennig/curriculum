@@ -6,7 +6,7 @@
 <script>
 export default {};
 </script>
-<style>
+<style lang="scss" scoped>
 .c {
   height: 100vh;
   width: 100%;
