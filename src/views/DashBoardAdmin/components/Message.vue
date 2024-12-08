@@ -14,7 +14,7 @@ export default {
   methods: {},
 };
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .message-container {
   color: #004085;
   background-color: #cce5ff;
