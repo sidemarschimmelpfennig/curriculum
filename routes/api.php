@@ -2,10 +2,23 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\CurriculumController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\JobController;
-use App\Http\Controllers\ViewController;
+use App\Http\Controllers\{
+    CurriculumController,
+    JobController,
+    LoginController
+
+};
+Route::prefix('register')->group(function () {
+    // Apenas a view
+    Route::get('/login-Page', function (){
+        return view('login');
+
+    });
+
+
+    Route::get('/login', [LoginController::class, 'login']);
+
+});
 
 // Rotas candidatos
 Route::prefix('v1')->middleware('check.user')->group(function (){
@@ -15,17 +28,19 @@ Route::prefix('v1')->middleware('check.user')->group(function (){
     Route::get('/all/job-vacancies-by-department/{department}', [JobController::class, 'findByDepartment']);
     Route::get('/all/job-vacancies-by-category/{category}', [JobController::class, 'findByDepartmentCategories']);
     Route::get('/all/job-vacancies-by-status/{status}', [JobController::class, 'findByStatus']);
-    Route::post('/add-job', [JobController::class, 'create']);
-
     // Enviar currículo
     Route::post('/send-curriculum', [CurriculumController::class, 'send']);
+    Route::post('/create', [CurriculumController::class, 'create']);
 
 });
 
 // Rotas Administrativas
-Route::prefix('v1/admin')->middleware('check.user')->group(function (){
+Route::prefix('v1/admin')->middleware('check.user')->group(function (){    
+    Route::get('/all/job-vacancies', [JobController::class, 'getAll']);
+    Route::post('/add-job', [JobController::class, 'create']);
     
-    Route::get('/newJobVacancy', function () {return view('newJobVacany');});
     Route::get('/send-file', function () {return view('file');});
+    // Admin view
+    Route::get('/newJobVacancy', function () {return view('newJobVacany');});
 
 });

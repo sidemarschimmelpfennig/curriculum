@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Repositories\Eloquent\UserRepository;
+use Illuminate\Support\Facades\Hash;
 
 class UserService
 {
@@ -33,8 +34,8 @@ class UserService
     public function create(array $data)
     {  
         return $this->repository->create([
-            'email' => $data['email'],
-            'password' => $data['password'],
+            'email' => $data['email' ],
+            'password' => Hash::make($data['password']),
             'is_admin' => 1
         
         ]);

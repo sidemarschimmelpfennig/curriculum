@@ -19,13 +19,6 @@ class CheckUser
     public function handle(Request $request, Closure $next): Response
     {
         // Verifica se o usuário está autenticado
-        if (!Auth::check()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Realize o login para prosseguir!',
-            ], 401);
-        }
-
         $user = Auth::user();
 
         // Se for diferente de admin vai bloquear e ponto kk
@@ -34,6 +27,13 @@ class CheckUser
                 'success' => false,
                 'message' => 'Acesso não autorizado!',
             ], 403);
+        }
+
+        if (!Auth::check()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Realize o login para prosseguir!',
+            ], 401);
         }
 
         // Se for diferente de candidato vai bloquear e mt triste
