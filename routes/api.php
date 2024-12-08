@@ -11,7 +11,7 @@ use App\Http\Controllers\{
 };
 Route::prefix('register')->group(function () {
     // Apenas a view
-    Route::get('/login-Page', function (){
+    Route::get('/login-page', function (){
         return view('login');
 
     });
