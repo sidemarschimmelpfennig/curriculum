@@ -67,7 +67,24 @@ class JobService
         
     }
 
-    public function update(int $id, int $newStatus){
+    public function createDepartament(array $data)
+    {
+        return $this->repository->createDepartament($data);
+
+    }
+    public function createDepartamentCategory(array $data)
+    {
+        return $this->repository->createDepartamentCategory($data);
+
+    }
+    public function createStatus(array $data)
+    {
+        return $this->repository->createStatus($data);
+
+    }
+
+    public function update(int $id, int $newStatus)
+    {
         return $this->repository->update($id, $newStatus);
 
     }

@@ -37,7 +37,11 @@ Route::prefix('v1')->middleware('check.user')->group(function (){
 Route::prefix('v1/admin')->group(function (){    
     // By Kochem
     Route::get('/all/job-vacancies', [JobController::class, 'getAll']);
+
     Route::post('/add-job', [JobController::class, 'createJob']); // Funcionando
+    Route::post('/add-departament', [JobController::class, 'createDepartament']); // Funcionando
+    Route::post('/add-departament_category', [JobController::class, 'createDepartamentCategory']); // Funcionando
+    Route::post('/add-status', [JobController::class, 'createStatus']); // Funcionando
 
     // Admin view
     Route::get('/newJobVacancy', [AdminController::class, 'view']);

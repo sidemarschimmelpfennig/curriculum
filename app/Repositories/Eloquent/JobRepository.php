@@ -52,6 +52,23 @@ class JobRepository implements JobRepositoryInterface
         
     }
 
+    public function createDepartament(array $validateData)
+    {
+        return Departament::create($validateData);
+        
+    }
+
+    public function createDepartamentCategory(array $validateData)
+    {
+        return Departament_Categories::create($validateData);
+        
+    }
+    public function createStatus(array $validateData)
+    {
+        return Status::create($validateData);
+        
+    }
+
     public function update(int $id, int $newStatus){
         $job = JobVacancies::where('id', $id)->first();        
         if ($job){
