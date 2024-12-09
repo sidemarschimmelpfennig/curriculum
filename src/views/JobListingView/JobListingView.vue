@@ -56,12 +56,13 @@ export default {
       selectedCategory: "Todas",
       searchText: "", // Para armazenar o texto da pesquisa
       arrayFromJobs: [],
+      api: process.env.VUE_APP_API_URL,
     };
   },
   methods: {
     async getJobsListing() {
       try {
-        let response = await axios.get(`http://localhost:3000/joblisting`);
+        let response = await axios.get(`${this.api}jobvacancies`);
         this.arrayFromJobs = response.data;
       } catch (error) {
         console.log(error);
@@ -71,7 +72,7 @@ export default {
   computed: {
     filteredJobs() {
       return this.arrayFromJobs.filter((job) => {
-        const matchesSearchText = job.jobname
+        const matchesSearchText = job.name
           .toLowerCase()
           .includes(this.searchText.toLowerCase());
         const matchesCategory =

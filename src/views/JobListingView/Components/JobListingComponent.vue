@@ -6,26 +6,28 @@
       :key="id"
     >
       <div class="flex justify-between items-center job-header">
-        <span class="font-light text-gray-600">{{ jobs.start_date }}</span>
+        <span class="bg-blue-700 text-white font-bold rounded px-2 py-1">{{
+          jobs.department
+        }}</span>
         <label
           class="px-2 py-1 bg-gray-600 text-gray-100 font-bold rounded"
           href="#"
           for=""
-          >{{ jobs.department }}</label
+          >{{ jobs.department_categories }}</label
         >
       </div>
       <div class="mt-2 job-content">
         <a
           class="text-2xl text-gray-700 font-bold hover:text-gray-600"
           href="#"
-          >{{ jobs.jobname }}</a
+          >{{ jobs.name }}</a
         >
         <p class="mt-2 text-gray-600">{{ jobs.description }}</p>
       </div>
       <div class="flex justify-between items-center mt-4">
-        <a class="readmore" href="#">Saiba mais</a>
+        <a class="readmore" href="#">Candidatar</a>
         <div>
-          <h1 class="text-gray-700 font-bold">Remoto</h1>
+          <h1 class="text-gray-700 font-bold">{{ jobs.modalities }}</h1>
         </div>
       </div>
     </div>

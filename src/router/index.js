@@ -5,6 +5,7 @@ import NewJobForm from "@/views/DashBoardAdmin/pages/Forms/NewJobForm.vue";
 import HomePageAdmin from "@/views/DashBoardAdmin/pages/HomePageAdmin.vue";
 import JobListingPage from "@/views/DashBoardAdmin/pages/JobListingPage.vue";
 import UsersPage from "@/views/DashBoardAdmin/pages/UsersPage.vue";
+import ApplyForaJobView from "@/views/DashBoardCandidate/ApplyForaJobView.vue";
 import DashBoardCandidateView from "@/views/DashBoardCandidate/DashBoardCandidateView.vue";
 import HomeView from "@/views/HomeView.vue";
 import JobListingView from "@/views/JobListingView/JobListingView.vue";
@@ -37,8 +38,8 @@ const routes = [
     meta: { requiresNavbar: false, requiresFooter: false },
   },
   {
-    path: "/register",
-    name: "register",
+    path: "/createacccount",
+    name: "createacccount",
     component: CreateAccountView,
     meta: { requiresNavbar: false, requiresFooter: false },
   },
@@ -87,7 +88,12 @@ const routes = [
       }
     ]
   },
-
+  {
+    path: "/applyforajob",
+    name: "applyforajob",
+    component: ApplyForaJobView,
+    meta: { requiresNavbar: false, requiresFooter: false },
+  }
   
 ];
 
