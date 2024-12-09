@@ -10,9 +10,21 @@ class JobVacancies extends Model
 	
 	protected $fillable = [
 		'name',
+		'department_id',
 		'department',
+
+		'department_categories_id',
 		'department_categories',
-		'status'
+
+		'status_id',
+		'status',
 		
+	];
+	protected $hidden = [
+		'department_id',
+		'department_categories_id',
+		'status_id',
+		'updated_at',
+		'created_at'
 	];
 }

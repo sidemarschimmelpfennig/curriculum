@@ -6,11 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>dash board admin</h1>
-    @foreach($jobs as $job)
-        <p>- {{ $job->name }}</p>
-        
-    @endforeach
-    <button><a href="/api/newJobVacany">Nova Vaga de Trabalho</a></button>
+    <h1>Admin Page</h1>
+
 </body>
 </html>

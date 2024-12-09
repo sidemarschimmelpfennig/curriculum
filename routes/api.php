@@ -2,44 +2,53 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\CurriculumController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\JobController;
-use App\Http\Controllers\ViewController;
+use App\Http\Controllers\{
+    CurriculumController,
+    JobController,
+    LoginController,
+    AdminController
 
-Route::prefix('v1')->group(function (){
-    // Jobs
-    Route::get('/all/job-vacancies', [JobController::class, 'getAll']);
-    Route::get('/all/job-vacancies-by-id/{id}', [JobController::class, 'findByID']);
-    Route::get('/all/job-vacancies-by-department/{department}', [JobController::class, 'findByDepartment']);
-    Route::get('/all/job-vacancies-by-category/{category}', [JobController::class, 'findByDepartmentCategories']);
-    Route::get('/all/job-vacancies-by-status/{status}', [JobController::class, 'findByStatus']);
-    Route::post('/add-job', [JobController::class, 'create']);
-    
-    // Users
-    Route::get('/all/users', [UserController::class, 'getAll']);
-    Route::post('/add-user', [UserController::class, 'create']);
+};
 
-    Route::post('/send-curriculum', [CurriculumController::class, 'send']);
-    // Teste     ->middleware('check.login'); // Apply the middleware here
+Route::prefix('register')->group(function () {
+    // Apenas a view
+    Route::get('/login', function (){
+        return view('login');
 
-    Route::post('/update-status/{id}', [JobController::class, 'update']);
-
-    Route::get('/helloWorld', function () {
-        return view('helloWorld');
     });
 
-});
-
-Route::get('/admin', [ViewController::class, 'admin']);
-
-Route::get('/newJobVacany', function () {
-    return view('newJobVacany');
+    Route::get('/login_method', [LoginController::class, 'login']);
 
 });
 
+// Rotas candidatos
+Route::prefix('v1/candidates')->group(function (){
+    Route::get('/all/jobs', [JobController::class, 'getAll']);
+    Route::get('/all/job/department/{department}', [JobController::class, 'findByDepartment']);
+    Route::get('/all/job/category/{category}', [JobController::class, 'findByDepartmentCategories']);
+    Route::get('/all/job/status/{status}', [JobController::class, 'findByStatus']);
 
-Route::get('/send-file', function () {
-    return view('file');
+    // Enviar currículo
+    Route::post('/send-curriculum', [CurriculumController::class, 'send']);
+    Route::post('/create', [CurriculumController::class, 'create']);
+
+});
+    
+
+// Rotas Administrativas
+
+Route::prefix('v1/admin')->group(function (){    
+    // By Kochem
+    Route::get('/all/job-vacancies', [JobController::class, 'getAll']);
+
+    Route::post('/add-job', [JobController::class, 'createJob']); // Funcionando
+    Route::post('/add-departament', [JobController::class, 'createDepartament']); // Funcionando
+    Route::post('/add-departament_category', [JobController::class, 'createDepartamentCategory']); // Funcionando
+    Route::post('/add-status', [JobController::class, 'createStatus']); // Funcionando
+
+    // Admin view
+    Route::get('/newJobVacancy', [AdminController::class, 'view']);
+
+    Route::get('/send-file', function () {return view('file');});
 
 });
