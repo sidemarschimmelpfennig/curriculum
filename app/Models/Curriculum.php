@@ -26,7 +26,7 @@ class Curriculum extends Model
         'Target_Position',
         'Target_outher',
         'photo',
-        'curriculum'; // Arquivo
+        'curriculum', // Arquivo
 
         // Formação Acadêmica
         'course',
