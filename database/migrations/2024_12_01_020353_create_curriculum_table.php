@@ -57,9 +57,12 @@ return new class extends Migration
             $table->string('skills', 100)->nullable();
             $table->string('languages', 100)->nullable();
             $table->decimal('salary_expectation', 10, 2)->nullable();
+            $table->string('status');
             
             $table->boolean('is_admin')->default(0);
             $table->timestamps();
+
+
             
         });
     }

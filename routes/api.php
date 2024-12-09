@@ -11,7 +11,7 @@ use App\Http\Controllers\{
 };
 Route::prefix('register')->group(function () {
     // Apenas a view
-    Route::get('/login-page', function (){
+    Route::get('/login-Page', function (){
         return view('login');
 
     });
@@ -19,7 +19,6 @@ Route::prefix('register')->group(function () {
     Route::get('/login', [LoginController::class, 'login']);
 
 });
-
 // Rotas candidatos
 Route::prefix('v1')->middleware('check.user')->group(function (){
     Route::get('/all/job-vacancies', [JobController::class, 'getAll']);
