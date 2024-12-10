@@ -41,6 +41,10 @@ return [
             'provider' => 'users',
         ],
 
+        'api' => [
+            'driver' => 'passport', // Ou 'jwt' se você estiver usando JWT
+            'provider' => 'users',
+        ]
     ],
 
     /*

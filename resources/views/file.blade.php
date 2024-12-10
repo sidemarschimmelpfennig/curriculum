@@ -6,13 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="http://127.0.0.1:8000/api/v1/admin/send-curriculum" method="post" enctype="multipart/form-data">
+    <form action="http://127.0.0.1:8000/api/v1/send" method="post" enctype="multipart/form-data">
         
         <label for="curriculum">Arquivo</label>
         <input type="file" name="file" id="file">
-
-        <label for="curriculum">Texto</label>
-        <input type="text" name="test">
         <button type="submit">Enviar</button>
 
     </form>

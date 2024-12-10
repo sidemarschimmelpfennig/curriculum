@@ -13,6 +13,7 @@ class CurriculumService
     }
 
     public function send(object $file) {
+   
         $directory = public_path('uploads'); // Vai pegar o diretório
         $name = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME); //Pega apenas o nomne do arquivo <- PATHINFO_FILENAME Entrda: teste.pdf | saida = teste
         $extension = $file->getClientOriginalExtension(); // Mesmo de acima, porém para a extensão
