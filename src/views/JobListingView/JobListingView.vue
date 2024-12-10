@@ -1,5 +1,5 @@
 <template>
-  <div class="joblist">
+  <div class="joblist" :class="{ 'active-form': showModal }">
     <div class="p-5 w-full readme flex justify-center">
       <input
         id="input1"
