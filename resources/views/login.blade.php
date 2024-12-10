@@ -9,7 +9,7 @@
 <body>
     <h1>Login</h1>
 
-    <form action="http://127.0.0.1:8000/api/auth/login" method="post">
+    <form action="http://127.0.0.1:8000/api/register/login_method" method="post">
         <input type="text" name="email" placeholder="Login">
 
         <input type="text" name="password" placeholder="Password">

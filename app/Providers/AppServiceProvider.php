@@ -21,8 +21,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(AdminRepositoryInterface::class, AdminRepository::class);
     }
 
-
-    
     public function boot(): void
     {
         //

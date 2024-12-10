@@ -79,6 +79,7 @@ class CurriculumController extends Controller
 
     public function send(Request $request)
     {
+        
         try {
             $file = $request->validate([
                 'file' => 'required|file|mimes:pdf|max:2048'
@@ -88,8 +89,7 @@ class CurriculumController extends Controller
 
             $result = $this->curriculumService->send($file);
             return response()->json([
-                'type' => gettype($file),
-                'result' => $result
+                'path' => $result
             
             ]);
 

@@ -12,8 +12,10 @@ class JobVacancies extends Model
 		'name',
 		'department_id',
 		'department',
+
 		'department_categories_id',
 		'department_categories',
+
 		'status_id',
 		'status',
 		
