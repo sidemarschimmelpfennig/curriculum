@@ -5,12 +5,9 @@ import NewJobForm from "@/views/DashBoardAdmin/pages/Forms/NewJobForm.vue";
 import HomePageAdmin from "@/views/DashBoardAdmin/pages/HomePageAdmin.vue";
 import JobListingPage from "@/views/DashBoardAdmin/pages/JobListingPage.vue";
 import UsersPage from "@/views/DashBoardAdmin/pages/UsersPage.vue";
-import DashBoardCandidateView from "@/views/DashBoardCandidate/DashBoardCandidateView.vue";
 import HomeView from "@/views/HomeView.vue";
 import JobListingView from "@/views/JobListingView/JobListingView.vue";
-import JobPositionView from "@/views/JobPositionView/JobPositionView.vue";
-import CurriculumRegister from "@/views/LoginView/CurriculumRegister.vue";
-//import UserRegister from "@/views/LoginView/UserRegister.vue";
+import CreateAccountView from "@/views/LoginView/CreateAccountView.vue";
 import LoginView from "@/views/LoginView/LoginView.vue";
 
 import { createRouter, createWebHistory } from "vue-router";
@@ -27,26 +24,21 @@ const routes = [
     component: JobListingView,
   },
   {
-    path: "/jobposition",
-    name: "jobposition",
-    component: JobPositionView,
-  },
-  {
     path: "/login",
     name: "login",
     component: LoginView,
     meta: { requiresNavbar: false, requiresFooter: false },
   },
   {
+
+    path: "/createacccount",
+    name: "createacccount",
+    component: CreateAccountView,
+  }, 
+  {
     path: "/Curriculum",
     name: "curriculum",
     component: CurriculumRegister,
-    meta: { requiresNavbar: false, requiresFooter: false },
-  },
-  {
-    path: "/candidate",
-    name: "candidate",
-    component: DashBoardCandidateView,
     meta: { requiresNavbar: false, requiresFooter: false },
   },
   {
@@ -88,8 +80,6 @@ const routes = [
       }
     ]
   },
-
-  
 ];
 
 const router = createRouter({

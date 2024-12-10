@@ -1,5 +1,4 @@
 <template>
-/* eslint-disable */
   <section class="dark:bg-gray-900 login">
     <div
       class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 section"
@@ -78,6 +77,7 @@
               >
             </div>
             <button
+              @click="$router.push('/admin')"
               type="submit"
               class="w-full text-white signin hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
             >
