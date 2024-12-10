@@ -4,7 +4,13 @@ namespace App\Repositories\Eloquent;
 
 use App\Repositories\Interface\JobRepositoryInterface;
 
-use App\Models\JobVacancies;
+use App\Models\{
+    JobVacancies,
+    Departament,
+    Departament_Categories,
+    Status
+    
+};
 
 class JobRepository implements JobRepositoryInterface
 {
@@ -13,11 +19,14 @@ class JobRepository implements JobRepositoryInterface
         return JobVacancies::all();
     }
 
-    public function findByID(int $id)
-    {
-        return JobVacancies::find($id);
+    public function getAllDepartament(){ return Departament::all(); }
+    public function findDepartament(string $id){ return Departament::find($id); }
 
-    }
+    public function getAllDepartament_Categories() { return Departament_Categories::all(); }
+    public function findDepartament_Categories(string $id) { return Departament_Categories::find($id); }
+
+    public function getAllStatus(){ return Status::all(); }
+    public function findStatus(string $id){ return Status::find($id); }
 
     public function findByDepartment(string $param)
     {
@@ -40,6 +49,23 @@ class JobRepository implements JobRepositoryInterface
     public function create(array $validateData)
     {
         return JobVacancies::create($validateData);
+        
+    }
+
+    public function createDepartament(array $validateData)
+    {
+        return Departament::create($validateData);
+        
+    }
+
+    public function createDepartamentCategory(array $validateData)
+    {
+        return Departament_Categories::create($validateData);
+        
+    }
+    public function createStatus(array $validateData)
+    {
+        return Status::create($validateData);
         
     }
 

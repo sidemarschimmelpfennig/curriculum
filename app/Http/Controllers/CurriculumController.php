@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Services\CurriculumService;
-use App\Http\Middleware\LoginMiddleware;
-
+use Illuminate\Support\Facades\Hash;
 
 class CurriculumController extends Controller
 {
@@ -19,44 +18,63 @@ class CurriculumController extends Controller
 
     public function create(Request $request)
     {
-        $validatedData = $request->validate([
-            'full_Name' => 'required|string|max:200',
-            'CPF' => 'required|string|size:10|unique:curricum_creates,CPF',
-            'email' => 'required|email|unique:curricum_creates,email|max:100',
-            'address' => 'required|string|max:100',
-            'district' => 'required|string|max:100',
-            'UF' => 'required|string|size:2',
-            'City' => 'required|string|max:100',
-            'CEP' => 'required|string|size:8',
-            'phone' => 'required|string|max:100',
-            'date_of_birth' => 'required|date',
-            'gender' => 'required|string|size:1',
-            'nationality' => 'nullable|string|max:100',
-            'linkedin_url' => 'nullable|url|max:255',
-            'Target_Sectors' => 'required|string|max:100',
-            'Target_Position' => 'required|string|max:100',
-            'Target_outher' => 'nullable|string|max:100',
-            'course' => 'nullable|string|max:100',
-            'Institution' => 'nullable|string|max:100',
-            'education_start_date' => 'nullable|date',
-            'education_end_date' => 'nullable|date',
-            'education_level' => 'nullable|string|max:100',
-            'company' => 'nullable|string|max:100',
-            'job_description' => 'nullable|string|max:200',
-            'Enterprise' => 'nullable|string|max:200',
-            'Position' => 'nullable|string|max:200',
-            'experience_start_date' => 'nullable|date',
-            'experience_end_date' => 'nullable|date',
-            'additional_info' => 'nullable|string|max:200',
-            'skills' => 'nullable|string|max:100',
-            'languages' => 'nullable|string|max:100',
-            'salary_expectation' => 'nullable|numeric',
-
-            'photo' => 'nullable|file|mimes:png|max:2048',
-            'curriculum' => 'nullable|file|mimes:png|max:2048',
+        try {
+            $data = $request->validate([
+                'full_name' => 'required|string|max:200',
+                'cpf' => 'required|string',
+                'address' => 'required|string|max:100',
+                'district' => 'required|string|max:100',
+                'uf' => 'required|string|size:2',
+                'city' => 'required|string|max:100',
+                'cep' => 'required|string',
+                'phone' => 'required|string|max:100',
+                'date_of_birth' => 'required|date',
+                'gender' => 'required|string|size:1',
+                'nationality' => 'nullable|string|max:100',
+                'linkedin_url' => 'nullable|url|max:255',
+                'target_sectors' => 'required|string|max:100',
+                'target_position' => 'required|string|max:100',
+                'target_outher' => 'nullable|string|max:100',
+                'course' => 'nullable|string|max:100',
+                'institution' => 'nullable|string|max:100',
+                'education_start_date' => 'nullable|date|before_or_equal:education_end_date',
+                'education_end_date' => 'nullable|date|after_or_equal:education_start_date',
+                'education_level' => 'nullable|string|max:100',
+                'company' => 'nullable|string|max:100',
+                'job_description' => 'nullable|string|max:200',
+                'enterprise' => 'nullable|string|max:200',
+                'position' => 'nullable|string|max:200',
+                'experience_start_date' => 'nullable|date|before_or_equal:experience_end_date',
+                'experience_end_date' => 'nullable|date|after_or_equal:experience_start_date',
+                'additional_info' => 'nullable|string|max:200',
+                'skills' => 'nullable|string|max:100',
+                'languages' => 'nullable|string|max:100',
+                'salary_expectation' => 'nullable|numeric',
             
-        ]);
+                // Arquivos (opcionais)
+                //'photo' => 'file|mimes:png,jpeg|max:2048',
+                //'curriculum' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
+                'email' => 'required|email|max:100',
+                'password' => 'required|string|min:8|max:100'
+            ]);
+            
+            $candidate = $this->curriculumService->create($data);
 
+            return response()->json([
+                'dados_request' => $request->all(),
+                'candidate' => $candidate
+                
+            ]);    
+    
+        } catch (\Throwable $th) {
+            return response()->json([
+                'th' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getfile()
+                
+            ]);
+        }
+        
     }
 
     public function send(Request $request)
