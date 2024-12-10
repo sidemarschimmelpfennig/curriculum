@@ -89,8 +89,7 @@ class CurriculumController extends Controller
 
             $result = $this->curriculumService->send($file);
             return response()->json([
-                'type' => gettype($file),
-                'result' => $result
+                'path' => $result
             
             ]);
 

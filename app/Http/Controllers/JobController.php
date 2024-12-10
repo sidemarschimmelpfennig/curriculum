@@ -19,7 +19,10 @@ class JobController extends Controller
     {
         
         try {
+            $jobs = $this->jobService->getAll();
+
             return response()->json($this->jobService->getAll());
+
         } catch (\Throwable $th) {
             return response()->json(['message' => 'Erro ao carregar as vagas', 'th' => $th->getMessage()]);
         }

@@ -1,5 +1,5 @@
 <?php
-/*namespace App\Http\Middleware;
+namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\{
@@ -24,7 +24,7 @@ class CheckUser
         }
 
                 
-        if ($request->is('v1/admin/*') && $user->is_admin != 1) {
+        if ($request->is('v1/*') && $user->is_admin != 1) {
             dump('linha 24 CheckUser');
             return response()->json([
                 'success' => false,
@@ -92,4 +92,3 @@ class CheckUser
     }
     
 }
-*/

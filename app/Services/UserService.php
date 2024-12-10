@@ -33,6 +33,7 @@ class UserService
     public function create(array $data)
     {  
         return $this->repository->create([
+            'name' => $data['name' ],
             'email' => $data['email' ],
             'password' => Hash::make($data['password']),
             'is_admin' => 1
