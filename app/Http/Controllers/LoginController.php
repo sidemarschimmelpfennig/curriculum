@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Controller; 
 use Illuminate\Http\Request;
 
 use App\Models\Curriculum;
@@ -18,24 +18,30 @@ class LoginController extends Controller
         ]);
 
         try {
-            $email = $request['email']; 
-            $password = $request['password']; 
+            $request->validate([
+                'email' => 'required|email',
+                'password' => 'required'
+            ]);
 
-            $user = User::where('email', $email)->first();
+            $credentials = $request->only('email', 'password');
+
+            $user = User::where('email', $credentials['email'])->first();
 
             if(!$user)
             {
-                return response()->json('Usuário não encontrado');
+                return response()->json('User não encontrado');
             }
 
             if($user && Hash::check($password, $user->password))
             {
-                return redirect('/api/v1/all/job-vacancies');
-            } else {
-                return response()->json([
-                    'message' => 'Senha incorreta!'
-                ], 401);
+                return response()->json('logado');
             }
+
+            return response()->json([
+                'sucess' => false,
+                'message' => 'Senha incorreta'
+
+            ]);
 
         } catch (\Throwable $th) {
             return response()->json([
@@ -45,5 +51,13 @@ class LoginController extends Controller
                 'request' => $request->all()
             ]);
         }
+
+        /*public function logout(Request $request){
+            $request->user()->tokens()->delete();
+
+            return response()->json([
+                'message' => 'Logout realizdo com sucesso!'
+            ], 200);
+        }*/
     }
 }

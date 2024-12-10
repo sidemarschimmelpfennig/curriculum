@@ -1,10 +1,14 @@
 <?php
-
+// By Kochem
 namespace Database\Seeders;
 
-use App\Models\JobVacancies;
-use App\Models\DepartmentCategory;
-use App\Models\Departments;
+use App\Models\{
+    Departament,
+    Departament_Categories,
+    Status,
+    JobVacancies
+
+};
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -13,35 +17,50 @@ class JobVacanciesSeed extends Seeder
 {
     public function run(): void
     {
-        $jobs = [
+        $departaments = [
             [
-                'name' => 'Desenvolvimento Web',
-                'department' => 'Frontend',
-                'department_categories' => 'Desenvolvimento',
-                'status' => 'Aberto',
+                'departament' => 'Web'
             ],
+            [
+                'departament' => 'Desktop'
+            ],
+            [
+                'departament' => 'Financeiro'
+            ]
             
-            [
-                'name' => 'Desenvolvimento Backend',
-                'department' => 'Banckend',
-                'department_categories' => 'Desenvolvimento',
-                'status' => 'Encerrada',
+        ];
+        foreach ($departaments as $departament) {
+            Departament::create($departament);
+        }
 
+        $departament_categories = [
+            [
+                'departament_categorie' => 'Front End'
+            ],  
+            [
+                'departament_categorie' => 'Back End'
             ],
-
             [
-                'name' => 'Auxiliar adminstrativo',
-                'department' => 'Financeiro',
-                'department_categories' => 'Financeiro',
-                'status' => 'Aberta',
-
+                'departament_categorie' => 'Auxiliar'
             ]
         ];
-            
-        foreach ($jobs as $job) {
-            //echo '<pre>'; print_r($job); echo '</pre>';
-            JobVacancies::create($job);
+        foreach ($departament_categories as $departament_categorie) {
+            Departament_Categories::create($departament_categorie);
         }
-        
+        $statuss = [
+            [
+                'status' => 'Aberta'
+            ],
+            [
+                'status' => 'Analise'
+            ],
+            [
+                'status' => 'Finalizado'
+            ],
+        ];
+
+        foreach ($statuss as $status) {
+            Status::create($status);
+        }       
     }
 }

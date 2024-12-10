@@ -1,5 +1,5 @@
 <?php
-
+// By Kochem
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('departments', function (Blueprint $table) {
+        Schema::create('departaments', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->foreign('department_categories_id')->references('id')->on('department_categories');
-            $table->unsignedBigInteger('department_categories_id');
+            $table->string('departament', 25)->unique();
             $table->timestamps();
         });
     }
@@ -25,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('departments');
+        Schema::dropIfExists('departaments');
     }
 };

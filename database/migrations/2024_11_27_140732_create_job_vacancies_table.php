@@ -1,4 +1,5 @@
 <?php
+// By Kochem
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -13,10 +14,20 @@ return new class extends Migration
     {
         Schema::create('job_vacancies', function (Blueprint $table) {
             $table->id();
-			$table->string('name');
-            $table->string('department');
-            $table->string('department_categories');
-            $table->string('status');
+			$table->string('name', 100);
+
+            $table->unsignedBigInteger('department_id');
+            $table->foreign('department_id')->references('id')->on('departaments')->onDelete('cascade');
+            $table->string('department', 25);
+
+            $table->unsignedBigInteger('department_categories_id');
+            $table->foreign('department_categories_id')->references('id')->on('departament_categories')->onDelete('cascade');
+            $table->string('department_categories', 25);
+
+            $table->unsignedBigInteger('status_id');
+            $table->foreign('status_id')->references('id')->on('status')->onDelete('cascade');
+            $table->string('status', 10);
+
             $table->timestamps();
 			
         });
