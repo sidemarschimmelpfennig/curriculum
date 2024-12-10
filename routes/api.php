@@ -11,13 +11,12 @@ use App\Http\Controllers\{
 };
 
 Route::prefix('register')->group(function () {
-    // Apenas a view
     Route::get('/login', function (){
         return view('login');
 
     });
 
-    Route::get('/login_method', [LoginController::class, 'login']);
+    Route::post('/login_method', [LoginController::class, 'login']);
 
 });
 
@@ -50,5 +49,6 @@ Route::prefix('v1/admin')->group(function (){
     Route::get('/newJobVacancy', [AdminController::class, 'view']);
 
     Route::get('/send-file', function () {return view('file');});
+    Route::post('/send-curriculum', [CurriculumController::class, 'send']);
 
 });

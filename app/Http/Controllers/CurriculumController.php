@@ -79,17 +79,19 @@ class CurriculumController extends Controller
 
     public function send(Request $request)
     {
+        dd('linha 82');
+        
         try {
-            $file = $request->validate([
+            $file1 = $request->validate([
                 'file' => 'required|file|mimes:pdf|max:2048'
             ]);
 
             $file = $request->file('file');
 
-            $result = $this->curriculumService->send($file);
+            //$result = $this->curriculumService->send($file);
             return response()->json([
                 'type' => gettype($file),
-                'result' => $result
+                'result' => $file
             
             ]);
 

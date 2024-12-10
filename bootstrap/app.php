@@ -6,8 +6,6 @@ use Illuminate\Foundation\Configuration\{
     Exceptions
 };
 
-use App\Http\Middleware\CheckUser;
-
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
         api: __DIR__.'/../routes/api.php',
@@ -15,8 +13,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) { 
-        $middleware->append([CheckUser::class]);
-        
+       
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
