@@ -28,11 +28,13 @@
         <a
           class="text-2xl text-gray-700 font-bold hover:text-gray-600"
           href="#"
+
           >{{ jobs.name }}</a
         >
         <p class="mt-2 text-gray-600">{{ jobs.description }}</p>
       </div>
       <div class="flex justify-between items-center mt-4">
+
         <a class="readmore hover:cursor-pointer" @click="openModal(jobs.id)"
           >Candidatar</a
         >
@@ -47,7 +49,6 @@
 
 <script>
 import ApplyForaJobForm from "./ApplyForaJobForm.vue";
-
 export default {
   data() {
     return {
@@ -71,12 +72,12 @@ export default {
       this.showModal = true;
     },
   },
+
   mounted() {
     this.joblist = this.joblisting;
   },
 };
 </script>
-
 <style lang="scss" scoped>
 @import "@/assets/scss/components/joblistingcomponent";
 

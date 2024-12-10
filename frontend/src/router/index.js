@@ -30,9 +30,15 @@ const routes = [
     meta: { requiresNavbar: false, requiresFooter: false },
   },
   {
+
     path: "/createacccount",
     name: "createacccount",
     component: CreateAccountView,
+  }, 
+  {
+    path: "/Curriculum",
+    name: "curriculum",
+    component: CurriculumRegister,
     meta: { requiresNavbar: false, requiresFooter: false },
   },
   {
@@ -74,7 +80,6 @@ const routes = [
       }
     ]
   },
-  
 ];
 
 const router = createRouter({

@@ -75,9 +75,11 @@ export default {
           password: "1123",
           is_admin: "0", // Defau
         },
+
       ],
       showModal: false,
       api: process.env.VUE_APP_API_URL,
+
     };
   },
   methods: {
@@ -92,7 +94,25 @@ export default {
         alert(error.message);
       }
     },
-
+    async submitForm() {
+      try {
+        const response = await fetch("http://localhost:8000/api/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(this.form),
+        });
+        if (!response.ok) {
+          throw new Error("Erro ao salvar os dados.");
+        }
+        alert("Usuário cadastrado com sucesso!");
+        this.fetchUsers(); // Atualiza a lista de usuários
+        this.resetForm();
+      } catch (error) {
+        alert(error.message);
+      }
+    },
     resetForm() {
       this.form = {
         email: "",
@@ -102,6 +122,7 @@ export default {
     },
   },
   mounted() {
+
     // this.fetchUsers();
   },
   components: {

@@ -56,6 +56,7 @@ export default {
       selectedCategory: "Todas",
       searchText: "", // Para armazenar o texto da pesquisa
       arrayFromJobs: [],
+
       api: process.env.VUE_APP_API_URL,
     };
   },
