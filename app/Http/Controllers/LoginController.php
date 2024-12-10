@@ -2,46 +2,42 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller; 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-use App\Models\Curriculum;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\{
+    Support\Facades\Hash,
+    Http\Request
+    
+};
+
+use App\Models\User;
+use Illuminate\Container\Attributes\Auth;
 
 class LoginController extends Controller
 {
     public function login(Request $request)
     {
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-
         try {
-            $request->validate([
+            $credentials = $request->validate([
                 'email' => 'required|email',
                 'password' => 'required'
             ]);
-
-            $credentials = $request->only('email', 'password');
 
             $user = User::where('email', $credentials['email'])->first();
 
             if(!$user)
             {
-                return response()->json('User não encontrado');
+                return response()->json([
+                    'message' => 'User não encontrado',
+                    'user' => $user
+                ]);
             }
 
-            if($user && Hash::check($password, $user->password))
+            if($user && Hash::check($credentials['password'], $user->password))
             {
                 return response()->json('logado');
+
             }
-
-            return response()->json([
-                'sucess' => false,
-                'message' => 'Senha incorreta'
-
-            ]);
 
         } catch (\Throwable $th) {
             return response()->json([
@@ -51,13 +47,5 @@ class LoginController extends Controller
                 'request' => $request->all()
             ]);
         }
-
-        /*public function logout(Request $request){
-            $request->user()->tokens()->delete();
-
-            return response()->json([
-                'message' => 'Logout realizdo com sucesso!'
-            ], 200);
-        }*/
     }
 }

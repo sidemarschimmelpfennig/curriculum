@@ -7,34 +7,42 @@ use App\Http\Controllers\{
     JobController,
     LoginController,
     AdminController
+
 };
 
-Route::prefix('auth')->group(function () {
+use App\Http\Middleware\CheckUser;
 
-    Route::get('/login-page', function (){ return view('login'); });
-    Route::post('/login', [LoginController::class, 'login']);
-        Route::post('/logout', [LoginController::class, 'logout']);
+Route::prefix('register')->group(function () {
+
+    Route::get('/login', function (){ return view('login'); });
+    Route::post('/login_method', [LoginController::class, 'login']);
+
 });
 
-Route::middleware(['CheckUser'])->group(function () {
-    // Rotas candidatos
-    Route::prefix('v1')->group(function () {
-        Route::get('/all/job-vacancies', [JobController::class, 'getAll']);
-        Route::get('/all/job-vacancies-by-department/{department}', [JobController::class, 'findByDepartment']);
-        Route::get('/all/job-vacancies-by-category/{category}', [JobController::class, 'findByDepartmentCategories']);
-        Route::get('/all/job-vacancies-by-status/{status}', [JobController::class, 'findByStatus']);
-        Route::post('/send-curriculum', [CurriculumController::class, 'send']);
+// Rotas candidatos
+Route::middleware([CheckUser::class])->group(function (){
+
+    Route::prefix('v1/candidates')->group(function (){
+        Route::get('/jobs', [JobController::class, 'getAll']);
+        Route::get('/all/job/department/{department}', [JobController::class, 'findByDepartment']);
+        Route::get('/all/job/category/{category}', [JobController::class, 'findByDepartmentCategories']);
+        Route::get('/all/job/status/{status}', [JobController::class, 'findByStatus']);
+        Route::post('/send', [CurriculumController::class, 'send']);
         Route::post('/create', [CurriculumController::class, 'create']);
-    });
 
+    });
+    
     // Rotas Administrativas
-    Route::prefix('v1/admin')->group(function () {
-        Route::get('/all/job-vacancies', [JobController::class, 'getAll']);
-        Route::post('/add-job', [JobController::class, 'createJob']);
-        Route::post('/add-departament', [JobController::class, 'createDepartament']);
-        Route::post('/add-departament_category', [JobController::class, 'createDepartamentCategory']);
-        Route::post('/add-status', [JobController::class, 'createStatus']);
+    Route::prefix('v1')->group(function (){    
+        Route::get('/jobs', [JobController::class, 'getAll']);
+        Route::post('/add-job', [JobController::class, 'createJob']); // Funcionando
+        Route::post('/add-departament', [JobController::class, 'createDepartament']); // Funcionando
+        Route::post('/add-departament_category', [JobController::class, 'createDepartamentCategory']); // Funcionando
+        Route::post('/add-status', [JobController::class, 'createStatus']); // Funcionando
         Route::get('/newJobVacancy', [AdminController::class, 'view']);
-        //Route::get('/send-file', fn () => view('file'));
+        Route::get('/send-file', function () {return view('file');});
+        Route::post('/send', [CurriculumController::class, 'send']);
+
     });
 });
+    

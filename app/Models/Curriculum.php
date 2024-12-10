@@ -46,11 +46,14 @@ class Curriculum extends Model
         'skills',
         'languages',
         'salary_expectation',
+        'status_id',
+        'status',
         'is_admin',
     ];
 
     protected $hidden = [
-        'password'
+        'password',
+        'create',
     ];
 
 }
