@@ -36,12 +36,6 @@ const routes = [
     component: CreateAccountView,
   }, 
   {
-    path: "/Curriculum",
-    name: "curriculum",
-    component: CurriculumRegister,
-    meta: { requiresNavbar: false, requiresFooter: false },
-  },
-  {
     path: "/admin",
     name: "admin",
     component: DashBoardAdminView,
