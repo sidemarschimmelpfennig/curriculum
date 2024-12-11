@@ -20,7 +20,7 @@ Route::prefix('register')->group(function () {
 });
 
 // Rotas candidatos
-Route::middleware([CheckUser::class])->group(function (){
+Route::middleware('auth:sacntum')->group(function (){
 
     Route::prefix('v1/candidates')->group(function (){
         Route::get('/jobs', [JobController::class, 'getAll']);
@@ -33,7 +33,7 @@ Route::middleware([CheckUser::class])->group(function (){
     });
     
     // Rotas Administrativas
-    Route::prefix('v1')->group(function (){    
+    Route::prefix('v1/admin')->group(function (){    
         Route::get('/jobs', [JobController::class, 'getAll']);
         Route::post('/add-job', [JobController::class, 'createJob']); // Funcionando
         Route::post('/add-departament', [JobController::class, 'createDepartament']); // Funcionando
