@@ -24,7 +24,6 @@ class AdminController extends Controller
     }
     public function getAll()
     {
-        $user = Auth::user();
         return response()->json($this->userService->getAll());
 
     }
@@ -36,8 +35,10 @@ class AdminController extends Controller
             return response()->json($user);
             
         } else {
-            return response()->json('Nada aqui');
+            return response()->json([
+                'message' => 'Usuario não encontrado!'
 
+            ], 404);
         }
     }
 
@@ -61,7 +62,10 @@ class AdminController extends Controller
         ]);
 
         $user = $this->userService->create($validateData);
-        return response()->json($user);
+        return response()->json([
+            'message' => 'Usuário inserido!',
+            'user' => $user,
+        ], 201);
         
     }
 }

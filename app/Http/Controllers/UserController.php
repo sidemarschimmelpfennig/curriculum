@@ -43,7 +43,10 @@ class UserController extends Controller
         ]);
 
         $user = $this->userService->create($validateData);
-        return response()->json($user);
+        return response()->json([
+            'message' => 'Erro ao criar usuário!',
+            'user' => $user,
+        ], 400);
         
     }
 }
