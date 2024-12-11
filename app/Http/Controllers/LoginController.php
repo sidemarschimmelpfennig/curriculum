@@ -6,11 +6,12 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\{
     Support\Facades\Hash,
+    Support\Facades\Auth,
     Http\Request
     
 };
 
-use App\Models\Curriculum;
+use App\Models\User;
 
 
 class LoginController extends Controller
@@ -18,30 +19,28 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         try {
-            $email = $request['email']; 
-            $password = $request['password']; 
-
-            $user = Curriculum::where('email', $email)->first();
+            
+            $user = User::where('email', $request['email'])->first();
 
             if(!$user)
             {
-                return response()->json('User não encontrado');
+                
+                return response()->json([
+                    'message' => 'User não encontrado',
+                    'user' => $user,
+                    'request' => $request->all()
+
+                ]);
             }
 
-            if($user && Hash::check($password, $user->password))
+            if($user && Hash::check($request->password, $user->password))
             {
-                $user = Auth::login($user);
+                return response()->json([
+                    'message' => 'Login bem-sucedido',
+                    'user' => $user,
 
-                if(Auth::check())
-                {   
-                    //return redirect('/api/v1/all/job-vacancies');
-
-                    return response()->json([
-                        'login' => 'Logado'
-                    ]);
-                }
-                
-
+                ]);
+            
             }
 
         } catch (\Throwable $th) {

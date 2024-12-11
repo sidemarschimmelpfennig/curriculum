@@ -16,7 +16,7 @@ Route::prefix('register')->group(function () {
     // Apenas a view
     Route::get('/login', function (){ return view('login'); });
 
-    Route::get('/login_method', [LoginController::class, 'login']);
+    Route::post('/login_method', [LoginController::class, 'login']);
 
 });
 

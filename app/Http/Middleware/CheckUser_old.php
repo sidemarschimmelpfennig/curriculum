@@ -14,10 +14,7 @@ class CheckUser
 {
     public function handle(Request $request, Closure $next): Response
     {        
-        if(Auth::check() && !$request->is('api/register/login')) {
-            return redirect('api/register/login');
-
-        }
+        dd('A');
 
         return $next($request);
     }
