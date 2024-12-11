@@ -22,9 +22,9 @@ class CurriculumTest extends TestCase
 
         ];
 
-        $response= $this->post('http://127.0.0.1:8000/api/create', $bodyJSON);
+        $response= $this->post('/api/create', $bodyJSON);
 
-        $response->assertStatus(201);
+        $response->assertStatus(200);
 
     }
 

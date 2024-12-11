@@ -21,50 +21,21 @@ class CurriculumController extends Controller
         try {
             $data = $request->validate([
                 'full_name' => 'required|string|max:200',
-                'cpf' => 'required|string',
-                'address' => 'required|string|max:100',
-                'district' => 'required|string|max:100',
-                'uf' => 'required|string|size:2',
-                'city' => 'required|string|max:100',
-                'cep' => 'required|string',
-                'phone' => 'required|string|max:100',
-                'date_of_birth' => 'required|date',
-                'gender' => 'required|string|size:1',
-                'nationality' => 'nullable|string|max:100',
-                'linkedin_url' => 'nullable|url|max:255',
-                'target_sectors' => 'required|string|max:100',
-                'target_position' => 'required|string|max:100',
-                'target_outher' => 'nullable|string|max:100',
-                'course' => 'nullable|string|max:100',
-                'institution' => 'nullable|string|max:100',
-                'education_start_date' => 'nullable|date|before_or_equal:education_end_date',
-                'education_end_date' => 'nullable|date|after_or_equal:education_start_date',
-                'education_level' => 'nullable|string|max:100',
-                'company' => 'nullable|string|max:100',
-                'job_description' => 'nullable|string|max:200',
-                'enterprise' => 'nullable|string|max:200',
-                'position' => 'nullable|string|max:200',
-                'experience_start_date' => 'nullable|date|before_or_equal:experience_end_date',
-                'experience_end_date' => 'nullable|date|after_or_equal:experience_start_date',
-                'additional_info' => 'nullable|string|max:200',
-                'skills' => 'nullable|string|max:100',
-                'languages' => 'nullable|string|max:100',
-                'salary_expectation' => 'nullable|numeric',
-            
-                // Arquivos (opcionais)
-                //'photo' => 'file|mimes:png,jpeg|max:2048',
-                //'curriculum' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
                 'email' => 'required|email|max:100',
-                'password' => 'required|string|min:8|max:100'
+                'contactphone' => 'required|string|max:100',
+                'additional_info' => 'required|string|max:200',
+                'ability' => 'nullable|string|max:100'
+                
             ]);
             
             $candidate = $this->curriculumService->create($data);
 
             return response()->json([
+                'message' => 'Curriculo foi cadastrado com sucesso!',
                 'dados_request' => $request->all(),
                 'candidate' => $candidate
                 
-            ]);    
+            ], 201);    
     
         } catch (\Throwable $th) {
             return response()->json([
@@ -77,21 +48,22 @@ class CurriculumController extends Controller
         
     }
 
-    public function send(Request $request)
-    {
-        
+    public function send(Request $request) // Envio de arquivo
+    {   
         try {
             $file = $request->validate([
-                'file' => 'required|file|mimes:pdf|max:2048'
+                'file' => 'required|file|mimes:pdf,doc,docx|max:2048'
             ]);
 
             $file = $request->file('file');
 
             $result = $this->curriculumService->send($file);
             return response()->json([
+                'success' => true,
+                'message' => 'Arquivo enviado com sucesso!',
                 'path' => $result
             
-            ]);
+            ], 200);
 
         } catch (\Throwable $th) {
             return response()->json([
@@ -99,6 +71,13 @@ class CurriculumController extends Controller
                 'th' => $th->getMessage()
             ]);
         }
+    }
+
+    public function downloadFile()
+    {
+        $directory = public_path('uploads/*.pdf');
+
+        return response()->download($directory);
 
     }
 }

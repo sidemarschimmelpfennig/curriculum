@@ -3,23 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Services\UserService;
 use Illuminate\Http\Request;
-
-use App\Services\{
-    UserService,
-    JobService
-
-};
 
 class AdminController extends Controller
 {
     protected $userService;
-    protected $jobService;
 
-    public function __construct(UserService $userService, JobService $jobService)
+    public function __construct(UserService $userService)
     {
         $this->userService = $userService;
-        $this->jobService = $jobService;
 
     }
     public function getAll()
@@ -35,20 +28,9 @@ class AdminController extends Controller
             return response()->json($user);
             
         } else {
-            return response()->json('Nada aqui');
+            return response()->json('Usuário não encontrado!');
 
         }
-    }
-
-    public function view() {
-        $departaments = $this->jobService->getAllgetAllDepartament();
-        $departament_categories = $this->jobService->getAllDepartament_Categories();
-        $statuss = $this->jobService->getAllgetAllStatus();
-        return view('newJobVacany', [
-            'departament_categories' => $departament_categories,
-            'departaments' => $departaments,
-            'statuss' => $statuss
-        ]);
     }
 
     public function create(Request $request)
@@ -56,11 +38,15 @@ class AdminController extends Controller
         $validateData = $request->validate([
             'email' => 'required|string|email|unique:users,email',
             'password' => 'required|string|min:6',
+            'is_admin' => 'required|boolean'
 
         ]);
 
         $user = $this->userService->create($validateData);
-        return response()->json($user);
+        return response()->json([
+            'message' => 'Erro ao criar usuário!',
+            'user' => $user,
+        ], 400);
         
     }
 }

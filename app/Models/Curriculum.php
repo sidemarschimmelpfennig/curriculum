@@ -9,9 +9,9 @@ class Curriculum extends Model
 {
     use HasFactory;
 
-    protected $table = 'curriculum'; // Nome da tabela no banco de dados
+    protected $table = 'candidates'; // Nome da tabela no banco de dados
 
-    protected $fillable = [
+    /*protected $fillable = [
         'full_name',
         'cpf',
         'address',
@@ -49,11 +49,21 @@ class Curriculum extends Model
         'status_id',
         'status',
         'is_admin',
+    ]; OLD */
+    protected $fillable = [
+        'full_name',
+        'email',
+        'contactphone',
+        'additional_info',
+        'ability',
+        'file'
+
     ];
 
     protected $hidden = [
-        'password',
-        'create',
+        'updated_at',
+		'created_at'
+        
     ];
 
 }
