@@ -24,6 +24,7 @@ class AdminController extends Controller
     }
     public function getAll()
     {
+        $user = Auth::user();
         return response()->json($this->userService->getAll());
 
     }

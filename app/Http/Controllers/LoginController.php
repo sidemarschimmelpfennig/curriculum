@@ -3,40 +3,39 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-
-use Illuminate\{
-    Support\Facades\Hash,
-    Http\Request
-    
-};
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Container\Attributes\Auth;
 
 class LoginController extends Controller
 {
     public function login(Request $request)
     {
         try {
+            // Validação das credenciais de login
             $credentials = $request->validate([
                 'email' => 'required|email',
                 'password' => 'required'
             ]);
 
-            $user = User::where('email', $credentials['email'])->first();
+            // Verifica se o usuário existe e a senha está correta
+            $user = User::where('email', $request->email)->first();
 
-            if(!$user)
-            {
+            if ($user && Hash::check($request->password, $user->password)) {
+                // Se as credenciais forem válidas, gerar o token
+                $token = $user->createToken('AccessToken')->plainTextToken;
+    
                 return response()->json([
-                    'message' => 'User não encontrado',
-                    'user' => $user
+                    'success' => true,
+                    'message' => 'Usuário logado com sucesso!',
+                    'access_token' => $token, // Retorna o token para o frontend
                 ]);
-            }
-
-            if($user && Hash::check($credentials['password'], $user->password))
-            {
-                return response()->json('logado');
-
+            } else {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Credenciais inválidas!',
+                ], 401);
             }
 
         } catch (\Throwable $th) {

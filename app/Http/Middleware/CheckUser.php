@@ -14,17 +14,18 @@ class CheckUser
 {
     public function handle(Request $request, Closure $next): Response
     {        
-        if(!Auth::check()) {
+        if(!Auth::guard('sanctum')->check()) {
             dump('Realize login!');
             return response()->json([
                 'success' => false,
-                'message' => 'Realize login!',
+                'message' => 'Realize o login para prosseguir!',
                 
             ], 401);
         }
 
+        $user = Auth::guard('sanctum')->user();
                 
-        if ($request->is('v1/*') && $user->is_admin != 1) {
+        if ($request->is('v1/admin*') && $user->is_admin != 1) {
             dump('linha 24 CheckUser');
             return response()->json([
                 'success' => false,
@@ -34,7 +35,7 @@ class CheckUser
 
         }
 
-        if ($request->is('v1/*') && $user->is_admin != 0) {
+        if ($request->is('v1/candidates*') && $user->is_admin != 0) {
             return response()->json([
                 'success' => false,
                 'message' => 'Acesso não autorizado!',
