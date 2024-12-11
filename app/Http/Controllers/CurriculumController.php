@@ -61,10 +61,11 @@ class CurriculumController extends Controller
             $candidate = $this->curriculumService->create($data);
 
             return response()->json([
+                'message' => 'Curriculo foi cadastrado com sucesso!',
                 'dados_request' => $request->all(),
                 'candidate' => $candidate
                 
-            ]);    
+            ], 201);    
     
         } catch (\Throwable $th) {
             return response()->json([
@@ -89,9 +90,11 @@ class CurriculumController extends Controller
 
             $result = $this->curriculumService->send($file);
             return response()->json([
+                'success' => true,
+                'message' => 'Arquivo enviado com sucesso!',
                 'path' => $result
             
-            ]);
+            ], 200);
 
         } catch (\Throwable $th) {
             return response()->json([

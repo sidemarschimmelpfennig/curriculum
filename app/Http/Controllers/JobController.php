@@ -24,7 +24,10 @@ class JobController extends Controller
             return response()->json($this->jobService->getAll());
 
         } catch (\Throwable $th) {
-            return response()->json(['message' => 'Erro ao carregar as vagas', 'th' => $th->getMessage()]);
+            return response()->json([
+                'message' => 'Erro ao carregar as vagas', 
+                'th' => $th->getMessage()
+            ], 400);
         }
     }
 
@@ -33,7 +36,10 @@ class JobController extends Controller
         try {
             return response()->json($this->jobService->findByDepartment($param));
         } catch (\Throwable $th) {
-            return response()->json(['message' => 'Erro ao carregar as vagas', 'th' => $th->getMessage()]);
+            return response()->json([
+                'message' => 'Erro ao carregar as vagas', 
+                'th' => $th->getMessage()
+            ], 400);
         }
     }
 
@@ -42,7 +48,10 @@ class JobController extends Controller
         try {
             return response()->json($this->jobService->findByDepartment($param));
         } catch (\Throwable $th) {
-            return response()->json(['message' => 'Erro ao carregar as vagas', 'th' => $th->getMessage()]);
+            return response()->json([
+                'message' => 'Erro ao carregar as vagas', 
+                'th' => $th->getMessage()
+            ], 400);
         }
     }
 
@@ -51,7 +60,10 @@ class JobController extends Controller
         try {
             return response()->json($this->jobService->findByStatus($param));
         } catch (\Throwable $th) {
-            return response()->json(['message' => 'Erro ao carregar as vagas', 'th' => $th->getMessage()]);
+            return response()->json([
+                'message' => 'Erro ao carregar as vagas', 
+                'th' => $th->getMessage()
+            ], 400);
         }
     }
 
@@ -68,7 +80,12 @@ class JobController extends Controller
     
             $job = $this->jobService->createJob($validateData);
     
-            return response()->json($job);
+            return response()->json([
+                'success' => true,
+                'message' => 'Vaga criada com sucesso!',
+                'vagas' => $job,
+            ], 201);
+
         } catch (\Throwable $th) {
             return response()->json([
                 'message' => 'Não foi possível criar a vaga',
@@ -76,7 +93,7 @@ class JobController extends Controller
                 'line' => $th->getLine(),
                 'file' => $th->getFile(),
 
-            ]);
+            ], 400);
         }
         
     }
@@ -90,9 +107,11 @@ class JobController extends Controller
             $departament = $this->jobService->createDepartament($validateData);
 
             return response()->json([
+                'success' => true,
+                'message' => 'Departamento criado com sucesso!',
                 'departament' => $departament
 
-            ]);
+            ], 201);
             
         } catch (\Throwable $th) {
             return response()->json([
@@ -101,7 +120,7 @@ class JobController extends Controller
                 'line' => $th->getLine(),
                 'file' => $th->getFile(),
 
-            ]);
+            ], 400);
         }    
     }
     public function createDepartamentCategory(Request $request)
@@ -113,9 +132,11 @@ class JobController extends Controller
             $departament_categorie = $this->jobService->createDepartamentCategory($validateData);
 
             return response()->json([
+                'success' => true,
+                'message' => 'Categoria criada com sucesso!',
                 'departament_categorie' => $departament_categorie
                 
-            ]);
+            ], 201);
             
         } catch (\Throwable $th) {
             return response()->json([
@@ -124,7 +145,7 @@ class JobController extends Controller
                 'line' => $th->getLine(),
                 'file' => $th->getFile(),
 
-            ]);
+            ], 400);
         }    
     }
     public function createStatus(Request $request)
@@ -136,9 +157,10 @@ class JobController extends Controller
             $status = $this->jobService->createStatus($validateData);
 
             return response()->json([
+                'message' => 'Status criado com sucesso!',
                 'status' => $status
                 
-            ]);
+            ], 201);
             
         } catch (\Throwable $th) {
             return response()->json([
@@ -147,7 +169,7 @@ class JobController extends Controller
                 'line' => $th->getLine(),
                 'file' => $th->getFile(),
 
-            ]);
+            ], 400);
         }    
     }
  
@@ -156,17 +178,17 @@ class JobController extends Controller
         try {
             $result = $this->jobService->update($id, $request['value']);
             return response()->json([
+                'message' => 'Alteração realizada com sucesso!',
                 'resultado' => $result,
                 
-            ]);
+            ], 201);
 
         } catch (\Throwable $th) {
             return response()->json([
+                'message' => 'Alteração negada!',
                 'th' => $th,
                 
-            ]);
+            ], 400);
         }
-        
-    
-   }
+    }
 }

@@ -20,7 +20,7 @@ Route::prefix('register')->group(function () {
 });
 
 // Rotas candidatos
-Route::middleware('auth:sacntum')->group(function (){
+Route::middleware('auth:sanctum')->group(function (){
 
     Route::prefix('v1/candidates')->group(function (){
         Route::get('/jobs', [JobController::class, 'getAll']);
@@ -35,10 +35,10 @@ Route::middleware('auth:sacntum')->group(function (){
     // Rotas Administrativas
     Route::prefix('v1/admin')->group(function (){    
         Route::get('/jobs', [JobController::class, 'getAll']);
-        Route::post('/add-job', [JobController::class, 'createJob']); // Funcionando
-        Route::post('/add-departament', [JobController::class, 'createDepartament']); // Funcionando
-        Route::post('/add-departament_category', [JobController::class, 'createDepartamentCategory']); // Funcionando
-        Route::post('/add-status', [JobController::class, 'createStatus']); // Funcionando
+        Route::post('/add-job', [JobController::class, 'createJob']);
+        Route::post('/add-departament', [JobController::class, 'createDepartament']);
+        Route::post('/add-departament_category', [JobController::class, 'createDepartamentCategory']);
+        Route::post('/add-status', [JobController::class, 'createStatus']);
         Route::get('/newJobVacancy', [AdminController::class, 'view']);
         Route::get('/send-file', function () {return view('file');});
         Route::post('/send', [CurriculumController::class, 'send']);
