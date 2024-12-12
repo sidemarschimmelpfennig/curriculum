@@ -18,14 +18,10 @@ class LoginController extends Controller
             'password' => 'required'
         ]);
 
-        // Verifica se o usuário existe e a senha está correta
-        if ($user = User::where('email', $request->email)->first()){
-            return response()->json([
-                'message' => 'Usuario encontrado!',   
-                'user' => $user,                 
-            ], 200);
+        // Verifica se o usuário existe pelo e-mail
+        $user = User::where('email', $request->email)->first();
 
-        } else {
+        if (!$user){
             return response()->json([
                 'message' => 'Usuario não encontrado!',
             ], 404);

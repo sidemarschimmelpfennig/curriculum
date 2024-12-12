@@ -29,7 +29,6 @@ return new class extends Migration
             $table->string('target_sectors', 100);
             $table->string('target_position', 100);
             $table->string('target_outher', 100)->nullable();
-            
             $table->string('photo')->nullable(); // Arquivo
             $table->string('curriculum')->nullable(); // Arquivo
             
@@ -58,7 +57,6 @@ return new class extends Migration
             $table->string('languages', 100)->nullable();
             $table->decimal('salary_expectation', 10, 2)->nullable();
             $table->string('status');
-            
             $table->boolean('is_admin')->default(0);
             $table->timestamps();
 
