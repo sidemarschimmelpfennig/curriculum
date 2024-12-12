@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('candidates_vagas', function (Blueprint $table) {
             $table->id();
+            $table->string('full_name', 200);
+            $table->unsignedBigInteger('job_id')->nullable();
             $table->foreign('job_id')->references('id')->on('job_vacancies')->onDelete('cascade');
-            $table->string('job', 25);
-			$table->string('full_name');
+            $table->string('job', 25)->nullable();
             $table->string('file')->nullable();
             $table->timestamps();
         });
