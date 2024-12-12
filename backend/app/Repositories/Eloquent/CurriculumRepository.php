@@ -10,7 +10,5 @@ class CurriculumRepository implements CurriculumRepositoryInterface
 {
     public function create(array $data){
         return Curriculum::create($data);
-        
     }
-
 }

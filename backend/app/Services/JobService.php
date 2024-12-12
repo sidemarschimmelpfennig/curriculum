@@ -56,10 +56,8 @@ class JobService
             'name' => $validateData['name'],
             'department_id' => $validateData['department_id'],
             'department' => $department->departament,
-
             'department_categories_id' => $validateData['department_categories_id'],
             'department_categories' => $department_categories->departament_categorie,
-
             'status_id' => $validateData['status_id'],
             'status' => $status->status
 
