@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('candidates', function (Blueprint $table) {
@@ -19,10 +16,6 @@ return new class extends Migration
             $table->text('ability', 200);
 
             $table->string('full_name', 200);
-            $table->unsignedBigInteger('job_id')->nullable();
-            $table->foreign('job_id')->references('id')->on('job_vacancies')->onDelete('cascade');
-            $table->string('job', 25)->nullable();
-
             $table->string('file')->nullable();
             
             //$table->string('password');

@@ -88,4 +88,10 @@ class JobService
         return $this->repository->update($id, $newStatus);
 
     }
+
+    public function apply(int $user, int $job_id)
+    {
+        return $this->repository->apply($user, $job_id);
+
+    }
 }

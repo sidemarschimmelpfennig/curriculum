@@ -5,10 +5,12 @@ namespace App\Repositories\Eloquent;
 use App\Repositories\Interface\JobRepositoryInterface;
 
 use App\Models\{
-    JobVacancies,
-    Departament,
-    Departament_Categories,
-    Status
+    JobVacancies, // o que importa
+    Departament, // ignorar
+    Departament_Categories, // ignorar 
+    Status, // ignorar
+    CandidatesVagas, // o que importa
+    Candidates, // o que importa
     
 };
 
@@ -69,7 +71,8 @@ class JobRepository implements JobRepositoryInterface
         
     }
 
-    public function update(int $id, int $newStatus){
+    public function update(int $id, int $newStatus)
+    {
         $job = JobVacancies::where('id', $id)->first();        
         if ($job){
             if ($newStatus == 1) {
@@ -89,5 +92,19 @@ class JobRepository implements JobRepositoryInterface
             ];
         }
     
+    }
+
+    public function apply(int $userID, int $job_id)
+    {
+        $job = JobVacancies::where('id', $job_id);
+        $user = Candidates::where('id', $userID);
+        return CandidatesVagas::create([
+            'job_id' => $job_id,
+            'job' => $job->name,
+            'candidate_id' => $userID,
+            'full_name' => $user->full_name
+            
+        ]);
+
     }
 }

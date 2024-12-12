@@ -17,4 +17,6 @@ interface JobRepositoryInterface extends BaseInterface
     public function getAllStatus();
     public function findStatus(string $id);
 
+    public function apply(int $user, int $job_id);
+
 }

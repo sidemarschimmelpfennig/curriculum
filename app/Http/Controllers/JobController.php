@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\JobService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class JobController extends Controller
 {
@@ -24,6 +25,7 @@ class JobController extends Controller
             return response()->json([
                 'message' => 'Erro ao carregar as vagas', 
                 'th' => $th->getMessage()
+
             ], 400);
         }
     }
@@ -119,7 +121,8 @@ class JobController extends Controller
 
             ], 400);
         }    
-    }
+    } // Criar novos departamnos se necessário
+
     public function createDepartamentCategory(Request $request)
     { 
         try {
@@ -144,7 +147,8 @@ class JobController extends Controller
 
             ], 400);
         }    
-    }
+    } // Criar novas categoria de departamentos se necessário
+
     public function createStatus(Request $request)
     { 
         try {
@@ -168,10 +172,10 @@ class JobController extends Controller
 
             ], 400);
         }    
-    }
+    } // Criar novos status se necessário
  
-   public function update(int $id, Request $request)
-   {
+    public function update(int $id, Request $request)
+    {
         try {
             $result = $this->jobService->update($id, $request['value']);
             return response()->json([
@@ -187,5 +191,38 @@ class JobController extends Controller
                 
             ], 400);
         }
+    } // <- Aleteração de status ou demais campos da vaga criada
+
+    public function apply(Request $request)
+    {
+        try {
+            $user = Auth::name();
+            $job_id = $request->input('job_id');
+
+            $job_x_candidate = $this->jobService->apply($user, $job_id);
+
+            if(!$job_x_candidate)
+            {  
+                return response()->json([
+                    'não encontrado'
+                ]);
+    
+            }
+
+            return response()->json([
+                'message' => $job_x_candidate
+
+            ]);
+    
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'Não foi possível se candidatar a vaga',
+                'th' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getFile(),
+
+            ], 400);
+        }
+
     }
 }

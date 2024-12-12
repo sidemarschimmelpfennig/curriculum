@@ -4,12 +4,12 @@ namespace App\Repositories\Eloquent;
 
 use App\Repositories\Interface\CandidateRepositoryInterface;
 
-use App\Models\Curriculum;
+use App\Models\Candidates;
 
 class CandidateRepository implements CandidateRepositoryInterface
 {
     public function create(array $data){
-        return Curriculum::create($data);
+        return Candidates::create($data);
         
     }
 

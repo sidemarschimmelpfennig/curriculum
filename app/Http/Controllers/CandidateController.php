@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 
 use App\Services\CandidateService;
 
-
 class CandidateController extends Controller
 {
     private $candidateService;
@@ -52,7 +51,7 @@ class CandidateController extends Controller
     public function send(Request $request) // Envio de arquivo
     {   
         try {
-            $file = $request->validate([
+            $request->validate([
                 'file' => 'required|file|mimes:pdf,doc,docx|max:2048'
             ]);
 

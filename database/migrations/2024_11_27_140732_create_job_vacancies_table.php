@@ -28,6 +28,8 @@ return new class extends Migration
             $table->foreign('status_id')->references('id')->on('status')->onDelete('cascade');
             $table->string('status', 10);
 
+            //$table->string('apply_candidates');
+
             $table->timestamps();
 			
         });

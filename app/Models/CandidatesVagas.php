@@ -9,28 +9,27 @@ use Illuminate\Database\{
 
 };
 
-class Candidates extends Model
+class CandidatesVagas extends Model
 {
     use HasFactory;
 
-    protected $table = 'candidates'; // Nome da tabela no banco de dados
+    protected $table = 'candidates_vagas'; // Nome da tabela no banco de dados
 
     protected $fillable = [
-        'full_name',
-        'email',
-        'contactphone',
-        'additional_info',
-        'ability',
-        'file',
         'job_id',
-        'job'
+        'job',
+        'candidate_id',
+        'full_name',
+        'file',
 
     ];
 
     protected $hidden = [
         'updated_at',
 		'created_at',
+
         'job_id',
+        'candidate_id'
         
     ];
 
