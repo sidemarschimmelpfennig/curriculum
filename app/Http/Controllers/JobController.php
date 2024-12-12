@@ -17,7 +17,6 @@ class JobController extends Controller
 
     public function getAll()
     {
-        dump('getAll');
         try {
             return response()->json($this->jobService->getAll());
 

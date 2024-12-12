@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Interface;
 
-interface CurriculumRepositoryInterface 
+interface CandidateRepositoryInterface 
 {
     //public function send(object $file, array $request); 
 

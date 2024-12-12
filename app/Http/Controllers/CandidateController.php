@@ -4,15 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Services\CurriculumService;
-use Illuminate\Support\Facades\Hash;
+use App\Services\CandidateService;
 
-class CurriculumController extends Controller
+
+class CandidateController extends Controller
 {
-    private $curriculumService;
-    public function __construct(CurriculumService $curriculumService)
+    private $candidateService;
+    public function __construct(CandidateService $candidateService)
     {
-        $this->curriculumService = $curriculumService;
+        $this->candidateService = $candidateService;
 
     }
 
@@ -24,11 +24,12 @@ class CurriculumController extends Controller
                 'email' => 'required|email|max:100',
                 'contactphone' => 'required|string|max:100',
                 'additional_info' => 'required|string|max:200',
-                'ability' => 'nullable|string|max:100'
+                'ability' => 'required|string|max:100',
+                'file' => 'required|file|mimes:pdf'
                 
             ]);
             
-            $candidate = $this->curriculumService->create($data);
+            $candidate = $this->candidateService->create($data);
 
             return response()->json([
                 'message' => 'Curriculo foi cadastrado com sucesso!',
@@ -57,7 +58,7 @@ class CurriculumController extends Controller
 
             $file = $request->file('file');
 
-            $result = $this->curriculumService->send($file);
+            $result = $this->candidateService->send($file);
             return response()->json([
                 'success' => true,
                 'message' => 'Arquivo enviado com sucesso!',

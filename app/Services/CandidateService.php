@@ -1,15 +1,13 @@
 <?php
 
 namespace App\Services;
-use App\Repositories\Eloquent\CurriculumRepository;
-use Illuminate\Support\Facades\Auth; // Certifique-se de que essa linha está presente
-use Illuminate\Support\Facades\Hash;
-
-class CurriculumService
+use App\Repositories\Eloquent\CandidateRepository;
+use Illuminate\Support\Facades\Auth;
+class CandidateService
 {
     protected $repository;
 
-    public function __construct(CurriculumRepository $repository){
+    public function __construct(CandidateRepository $repository){
         $this->repository = $repository;
     }
 
@@ -26,7 +24,7 @@ class CurriculumService
         } // Se não haver esse diretório vai criar com permissões e tudo mais
 
         $counter = 1;
-        //$newName = $name; Old name
+        //$newName = $name; 
         $newName = $user->name;
         while (file_exists("$directory/$newName.$extension")) {
             $newName = $name . '_' . $counter;
@@ -38,13 +36,16 @@ class CurriculumService
         return $path->getPathname();
     }
 
-    public function create(array $data) {
+    public function create(array $data) 
+    {
+        $filePath = $this->send($data['file']);
         return $this->repository->create([
             'full_name' => $data['full_name'],
             'email' => $data['email'],
             'contactphone' => $data['contactphone'],
             'additional_info' => $data['additional_info'],
             'ability' => $data['ability'],
+            'file' => $filePath,
 
         ]);
         

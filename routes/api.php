@@ -3,16 +3,16 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\{
-    CurriculumController,
+    CandidateController,
     JobController,
     LoginController,
     AdminController
 
 };
 
-Route::get('/download', [CurriculumController::class, 'downloadFile']); // download
+Route::get('/download', [CandidateController::class, 'downloadFile']); // download
 
-Route::post('/create', [CurriculumController::class, 'create']); // criar ""perfil""
+Route::post('/create', [CandidateController::class, 'create']); // criar ""perfil""
 
 Route::prefix('register')->group(function () {
     Route::get('/login', function (){ return view('login'); });
@@ -28,8 +28,9 @@ Route::middleware('auth:sanctum')->group(function (){
         Route::get('/all/job/department/{department}', [JobController::class, 'findByDepartment']);
         Route::get('/all/job/category/{category}', [JobController::class, 'findByDepartmentCategories']);
         Route::get('/all/job/status/{status}', [JobController::class, 'findByStatus']);
-        Route::post('/send', [CurriculumController::class, 'send']);
-        Route::post('/create', [CurriculumController::class, 'create']);
+        
+        Route::post('/send', [CandidateController::class, 'send']);
+        Route::post('/create', [CandidateController::class, 'create']);
 
     });
     
@@ -42,7 +43,7 @@ Route::middleware('auth:sanctum')->group(function (){
         Route::post('/add-status', [JobController::class, 'createStatus']);
         Route::get('/newJobVacancy', [AdminController::class, 'view']);
         Route::get('/send-file', function () {return view('file');});
-        Route::post('/send', [CurriculumController::class, 'send']);
+        Route::post('/send', [CandidateController::class, 'send']);
 
     });
 });
