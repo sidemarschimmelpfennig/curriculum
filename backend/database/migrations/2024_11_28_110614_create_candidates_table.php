@@ -21,7 +21,6 @@ return new class extends Migration
 			$table->text('observation');
 			$table->string('additional')->nullable();
 			$table->string('socialmedia')->nullable();
-            
             $table->string('email')->unique();
             $table->string('password');
             $table->timestamps();

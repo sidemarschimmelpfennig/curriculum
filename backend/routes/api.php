@@ -24,6 +24,7 @@ Route::middleware('auth:sanctum')->group(function (){
 
     Route::prefix('v1/candidates')->group(function (){
         Route::get('/jobs', [JobController::class, 'getAll']);
+        Route::get('/candidatesVagas', [Candidates_vagas::class, 'getAll']);
         Route::get('/all/job/department/{department}', [JobController::class, 'findByDepartment']);
         Route::get('/all/job/category/{category}', [JobController::class, 'findByDepartmentCategories']);
         Route::get('/all/job/status/{status}', [JobController::class, 'findByStatus']);
