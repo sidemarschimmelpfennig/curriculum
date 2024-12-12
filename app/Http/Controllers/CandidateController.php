@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Services\CandidateService;
+use Illuminate\Support\Facades\Auth;
 
 class CandidateController extends Controller
 {
@@ -73,9 +74,11 @@ class CandidateController extends Controller
         }
     }
 
-    public function downloadFile()
+    public function downloadFile(Request $request)
     {
-        $directory = public_path('uploads/*.pdf');
+        $user = Auth::id();
+        //$path = $request->
+        $directory = public_path('uploads/' . $path . '.pdf');
 
         return response()->download($directory);
 
