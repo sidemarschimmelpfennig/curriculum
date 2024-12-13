@@ -11,8 +11,10 @@ use App\Models\{
     Status, // ignorar
     CandidatesVagas, // o que importa
     Candidates, // o que importa
+    User
     
 };
+use Illuminate\Support\Facades\Auth;
 
 class JobRepository implements JobRepositoryInterface
 {
@@ -96,13 +98,14 @@ class JobRepository implements JobRepositoryInterface
 
     public function apply(int $userID, int $job_id)
     {
-        $job = JobVacancies::where('id', $job_id);
-        $user = Candidates::where('id', $userID);
+        $job = JobVacancies::where('id', $job_id)->get();
+        $user = Candidates::where('id', $userID)->get();
+        
         return CandidatesVagas::create([
             'job_id' => $job_id,
-            'job' => $job->name,
+            'job' => $job[0]->name,
             'candidate_id' => $userID,
-            'full_name' => $user->full_name
+            'full_name' => $user[0]->full_name
             
         ]);
 

@@ -27,8 +27,8 @@ class CandidateService
         //$newName = $name; 
         $newName = $user->name;
         while (file_exists("$directory/$newName.$extension")) {
-            $newName = $name . '_' . $counter;
-                       // Nome _ 1 2 3 ...........
+            $newName = $name . '_' . $counter;// Nome _ 1 2 3 ...........
+                       
             $counter++;
 
         } // Enquanto o arquivo exister, no diretorio tal, vai colocar o nome como "nome"_+1 +2...

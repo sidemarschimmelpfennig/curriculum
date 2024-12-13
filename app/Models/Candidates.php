@@ -22,15 +22,12 @@ class Candidates extends Model
         'additional_info',
         'ability',
         'file',
-        'job_id',
-        'job'
 
     ];
 
     protected $hidden = [
         'updated_at',
 		'created_at',
-        'job_id',
         
     ];
 

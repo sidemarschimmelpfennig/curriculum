@@ -196,10 +196,10 @@ class JobController extends Controller
     public function apply(Request $request)
     {
         try {
-            $user = Auth::name();
+            $userID = Auth::user()->id;
             $job_id = $request->input('job_id');
 
-            $job_x_candidate = $this->jobService->apply($user, $job_id);
+            $job_x_candidate = $this->jobService->apply($userID, $job_id);
 
             if(!$job_x_candidate)
             {  
@@ -210,9 +210,10 @@ class JobController extends Controller
             }
 
             return response()->json([
-                'message' => $job_x_candidate
+                'message' => 'Aplicação criada com sucesso',
+                'jobCandidate' => $job_x_candidate
 
-            ]);
+            ], 200);
     
         } catch (\Throwable $th) {
             return response()->json([

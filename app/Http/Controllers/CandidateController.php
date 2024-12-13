@@ -78,9 +78,9 @@ class CandidateController extends Controller
     {
         $user = Auth::id();
         //$path = $request->
-        $directory = public_path('uploads/' . $path . '.pdf');
+        //$directory = public_path('uploads/' . $path . '.pdf');
 
-        return response()->download($directory);
+        //return response()->download($directory);
 
     }
 }
