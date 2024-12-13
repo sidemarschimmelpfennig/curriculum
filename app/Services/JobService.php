@@ -62,7 +62,7 @@ class JobService
 
         return $this->repository->create([
             'name' => $validateData['name'],
-            'description' => $validateData['description'],
+            'description        ' => $validateData['description'],
 
             'department_id' => $validateData['department_id'],
             'department' => $department->departament,
