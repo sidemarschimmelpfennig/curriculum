@@ -198,17 +198,13 @@ class JobController extends Controller
         try {
             $userID = Auth::user()->id;
             $job_id = $request->input('job_id');
-
-            $job_x_candidate = $this->jobService->apply($userID, $job_id);
-
-            if(!$job_x_candidate)
-            {  
-                return response()->json([
-                    'não encontrado'
-                ]);
-    
-            }
-
+            $request->validate([
+                'file' => 'required|file|mimes:pdf'
+                
+            ]);
+            $file = $request->file('file');
+            $job_x_candidate = $this->jobService->apply($userID, $job_id, $file);
+        
             return response()->json([
                 'message' => 'Aplicação criada com sucesso',
                 'jobCandidate' => $job_x_candidate

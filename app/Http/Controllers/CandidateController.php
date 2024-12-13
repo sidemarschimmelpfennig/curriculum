@@ -78,7 +78,7 @@ class CandidateController extends Controller
 
     public function downloadFile(Request $request)
     {
-        $user = Auth::id();
+        $user = Auth::user();
         //$path = $request->
         //$directory = public_path('uploads/' . $path . '.pdf');
 

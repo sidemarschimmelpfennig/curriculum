@@ -11,13 +11,19 @@ use App\Models\{
     Status, // ignorar
     CandidatesVagas, // o que importa
     Candidates, // o que importa
-    User
-    
+
 };
-use Illuminate\Support\Facades\Auth;
+use App\Services\CandidateService;
 
 class JobRepository implements JobRepositoryInterface
 {
+    protected $candidateSendService;
+
+    public function __construct(CandidateService $candidateSendService)
+    {
+        $this->candidateSendService = $candidateSendService;
+    }
+
     public function getAll() 
     {
         return JobVacancies::all();
@@ -96,16 +102,18 @@ class JobRepository implements JobRepositoryInterface
     
     }
 
-    public function apply(int $userID, int $job_id)
+    public function apply(int $userID, int $job_id, object $file)
     {
         $job = JobVacancies::where('id', $job_id)->get();
         $user = Candidates::where('id', $userID)->get();
-        
+        $file = $this->candidateSendService->send($file);
+
         return CandidatesVagas::create([
             'job_id' => $job_id,
             'job' => $job[0]->name,
             'candidate_id' => $userID,
-            'full_name' => $user[0]->full_name
+            'full_name' => $user[0]->full_name,
+            'file' => $file
             
         ]);
 

@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('candidates', function (Blueprint $table) {
             $table->id();
             $table->string('email')->unique();
-			$table->string('1|ImFkZoqRf2Bl6VVHLBHufFffyaRRWCZnhGIT7uJz267e35b8phone');
+			$table->string('phone');
             $table->text('additional_info', 200)->nullable();
             $table->text('skills', 200);
 

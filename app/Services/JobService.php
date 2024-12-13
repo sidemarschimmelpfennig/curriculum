@@ -89,9 +89,9 @@ class JobService
 
     }
 
-    public function apply(int $userID, int $job_id)
+    public function apply(int $userID, int $job_id, object $file)
     {
-        return $this->repository->apply($userID, $job_id);
+        return $this->repository->apply($userID, $job_id, $file);
 
     }
 }
