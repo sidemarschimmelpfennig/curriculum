@@ -13,9 +13,9 @@ class CandidateSeeder extends Seeder
         $candidate = [
             'full_name' => 'Gabriel Kochem',
             'email' => 'gabikochem55@gmail.com',
-            'contactphone' => '+55 49 999482859',
+            'phone' => '+55 49 999482859',
             'additional_info' => 'Dev PHP',
-            'ability' => 'Proativo'
+            'skills' => 'Proativo'
         ];
         
         Candidates::create($candidate);

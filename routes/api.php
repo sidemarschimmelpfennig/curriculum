@@ -10,6 +10,8 @@ use App\Http\Controllers\{
 
 };
 
+Route::get('/jobs', [JobController::class, 'getAll']);
+
 Route::get('/download', [CandidateController::class, 'downloadFile']); // download
 
 Route::post('/create', [CandidateController::class, 'create']); // criar ""perfil""

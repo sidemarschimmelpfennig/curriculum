@@ -24,8 +24,8 @@ class CandidateService
         } // Se não haver esse diretório vai criar com permissões e tudo mais
 
         $counter = 1;
-        //$newName = $name; 
-        $newName = $user->name;
+        $newName = $name; 
+        //$newName = $user->name;
         while (file_exists("$directory/$newName.$extension")) {
             $newName = $name . '_' . $counter;// Nome _ 1 2 3 ...........
                        
@@ -42,9 +42,9 @@ class CandidateService
         return $this->repository->create([
             'full_name' => $data['full_name'],
             'email' => $data['email'],
-            'contactphone' => $data['contactphone'],
+            'phone' => $data['phone'],
             'additional_info' => $data['additional_info'],
-            'ability' => $data['ability'],
+            'skills' => $data['skills'],
             'file' => $filePath,
 
         ]);

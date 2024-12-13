@@ -22,9 +22,9 @@ class CandidateController extends Controller
             $data = $request->validate([
                 'full_name' => 'required|string|max:200',
                 'email' => 'required|email|max:100',
-                'contactphone' => 'required|string|max:100',
+                'phone' => 'required|string|max:100',
                 'additional_info' => 'required|string|max:200',
-                'ability' => 'required|string|max:100',
+                'skills' => 'required|string|max:100',
                 'file' => 'required|file|mimes:pdf'
                 
             ]);
@@ -69,7 +69,9 @@ class CandidateController extends Controller
         } catch (\Throwable $th) {
             return response()->json([
                 'erro' => 'Erro no envio',
-                'th' => $th->getMessage()
+                'th' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getfile(),
             ]);
         }
     }
