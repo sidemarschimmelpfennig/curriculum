@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Departament_Categories extends Model
+class Skills extends Model
 {
-    protected $table = 'departament_categories';
+    protected $table = 'skills';
+    
     protected $fillable = [
-        'departament_categorie'
+        'skills'
+          
     ];
 
     protected $hidden = [
