@@ -18,19 +18,16 @@ class Candidates extends Model
     protected $fillable = [
         'full_name',
         'email',
-        'contactphone',
+        'phone',
         'additional_info',
-        'ability',
+        'skills',
         'file',
-        'job_id',
-        'job'
 
     ];
 
     protected $hidden = [
         'updated_at',
 		'created_at',
-        'job_id',
         
     ];
 

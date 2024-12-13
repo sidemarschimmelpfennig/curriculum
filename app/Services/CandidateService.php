@@ -24,11 +24,11 @@ class CandidateService
         } // Se não haver esse diretório vai criar com permissões e tudo mais
 
         $counter = 1;
-        //$newName = $name; 
-        $newName = $user->name;
+        $newName = $name; 
+        $newName = $user->id;
         while (file_exists("$directory/$newName.$extension")) {
-            $newName = $name . '_' . $counter;
-                       // Nome _ 1 2 3 ...........
+            $newName = $name . '_' . $counter;// Nome _ 1 2 3 ...........
+                       
             $counter++;
 
         } // Enquanto o arquivo exister, no diretorio tal, vai colocar o nome como "nome"_+1 +2...
@@ -39,12 +39,13 @@ class CandidateService
     public function create(array $data) 
     {
         $filePath = $this->send($data['file']);
+        // Não é necessário rota e nem chamar no controller, a chamada nessa linha faz com que o arquivo seja enviado
         return $this->repository->create([
             'full_name' => $data['full_name'],
             'email' => $data['email'],
-            'contactphone' => $data['contactphone'],
+            'phone' => $data['phone'],
             'additional_info' => $data['additional_info'],
-            'ability' => $data['ability'],
+            'skills' => $data['skills'],
             'file' => $filePath,
 
         ]);
