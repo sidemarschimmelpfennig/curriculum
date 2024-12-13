@@ -10,6 +10,8 @@ class JobVacancies extends Model
 	
 	protected $fillable = [
 		'name',
+		'description',
+		//fk
 		'department_id',
 		'department',
 
@@ -18,11 +20,19 @@ class JobVacancies extends Model
 
 		'status_id',
 		'status',
+
+		'skills_id',
+		'skills',
+
+		'mobilities_id',
+		'mobilities'
 		
 	];
 	protected $hidden = [
 		'department_id',
 		'department_categories_id',
+		'status_id',
+		'skills_id',
 		'status_id',
 		'updated_at',
 		'created_at'

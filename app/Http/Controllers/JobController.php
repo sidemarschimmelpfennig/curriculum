@@ -173,6 +173,56 @@ class JobController extends Controller
             ], 400);
         }    
     } // Criar novos status se necessário
+
+    public function createSkills(Request $request)
+    { 
+        try {
+            $validateData = $request->validate([
+                'skills' => 'required|string|max:25'
+            ]);
+            $skills = $this->jobService->createSkills($validateData);
+
+            return response()->json([
+                'message' => 'Status criado com sucesso!',
+                'skills' => $skills
+                
+            ], 201);
+            
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'Não foi possível criar a vaga',
+                'th' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getFile(),
+
+            ], 400);
+        }    
+    } // Criar novos status se necessário
+
+    public function createMobilities(Request $request)
+    { 
+        try {
+            $validateData = $request->validate([
+                'mobilities' => 'required|string|max:25'
+            ]);
+            $mobilities = $this->jobService->createMobilities($validateData);
+
+            return response()->json([
+                'message' => 'Status criado com sucesso!',
+                'mobilities' => $mobilities
+                
+            ], 201);
+            
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'Não foi possível criar a vaga',
+                'th' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getFile(),
+
+            ], 400);
+        }    
+    } // Criar novos status se necessário
  
     public function update(int $id, Request $request)
     {

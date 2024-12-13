@@ -11,7 +11,8 @@ use App\Models\{
     Status, // ignorar
     CandidatesVagas, // o que importa
     Candidates, // o que importa
-
+    Mobilities,
+    Skills,
 };
 use App\Services\CandidateService;
 
@@ -56,6 +57,17 @@ class JobRepository implements JobRepositoryInterface
 
     }
 
+    public function findBySkills(string $param) 
+    {
+        return Skills::where('status', $param)->get();
+
+    }
+
+    public function findByMobilities(string $param)
+    {
+        return Mobilities::where('status', $param)->get();
+    }
+
     public function create(array $validateData)
     {
         return JobVacancies::create($validateData);
@@ -77,6 +89,16 @@ class JobRepository implements JobRepositoryInterface
     {
         return Status::create($validateData);
         
+    }
+
+    public function createSkills(array $data)
+    {
+        return Skills::create($data);
+    } 
+    
+    public function createMobilities(array $data)
+    {
+        return Mobilities::create($data);
     }
 
     public function update(int $id, int $newStatus)

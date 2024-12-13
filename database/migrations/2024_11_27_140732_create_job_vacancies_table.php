@@ -15,6 +15,7 @@ return new class extends Migration
         Schema::create('job_vacancies', function (Blueprint $table) {
             $table->id();
 			$table->string('name', 100);
+			$table->text('description', 200);
 
             $table->unsignedBigInteger('department_id');
             $table->foreign('department_id')->references('id')->on('departaments')->onDelete('cascade');
@@ -27,6 +28,14 @@ return new class extends Migration
             $table->unsignedBigInteger('status_id');
             $table->foreign('status_id')->references('id')->on('status')->onDelete('cascade');
             $table->string('status', 10);
+
+            $table->unsignedBigInteger('skills_id');
+            $table->foreign('skills_id')->references('id')->on('skills')->onDelete('cascade');
+            $table->string('skills', 25);
+
+            $table->unsignedBigInteger('mobilities_id');
+            $table->foreign('mobilities_id')->references('id')->on('mobilities')->onDelete('cascade');
+            $table->string('mobilities', 25);
 
             //$table->string('apply_candidates');
 
