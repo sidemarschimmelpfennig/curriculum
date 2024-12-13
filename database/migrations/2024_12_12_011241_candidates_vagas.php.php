@@ -23,6 +23,8 @@ return new class extends Migration
             $table->foreign('candidate_id')->references('id')->on('candidates')->onDelete('cascade');
 			$table->string('full_name');
 
+            $table->string('file');
+
             $table->timestamps();
         });
     }

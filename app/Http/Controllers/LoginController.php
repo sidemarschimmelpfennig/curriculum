@@ -17,10 +17,10 @@ use App\Models\{
 
 class LoginController extends Controller
 {
-    public function login(Request $request)
+    /*public function login(Request $request)
     {
         // Validação das credenciais de login
-        /*$credentials =*/ $request->validate([
+        $request->validate([
             'email' => 'required|email',
             'password' => 'required'
             
@@ -30,21 +30,14 @@ class LoginController extends Controller
         $user = User::where('email', $request->email)->first();
         $candidate = Candidates::where('email', $request->email)->first();
 
-        if(!$user)
-        {
-            return response()->json([
-                'message' => 'Usuario não encontrado!',
-            ], 404);
-        }
-
-        if(!$candidate)
+        if(!$candidate || !$user)
         {
             return response()->json([
                 'message' => 'Candidato não encontrado!',
+                'request' => $candidate->email
             ], 404);
         }
-
-
+    
         // Se as credenciais forem válidas, gerar o token
         if ($user && Hash::check($request->password, $user->password) || $candidate && Hash::check($request->password, $candidate->password)) {
 
@@ -64,6 +57,21 @@ class LoginController extends Controller
 
             ], 401);
         }
+    }*/
+
+    public function login(Request $request)
+    {
+        // Validação das credenciais de login
+        /*$credentials =*/ $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+            
+        ]);
+
+        return response()->json([
+            'message' => 'Dados',
+            'request' => $request->all()
+        ]);
     }
 
     public function logout()

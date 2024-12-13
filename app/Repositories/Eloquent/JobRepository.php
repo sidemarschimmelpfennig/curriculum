@@ -126,8 +126,8 @@ class JobRepository implements JobRepositoryInterface
 
     public function apply(int $userID, int $job_id, object $file)
     {
-        $job = JobVacancies::where('id', $job_id)->get();
-        $user = Candidates::where('id', $userID)->get();
+        $job = JobVacancies::where('id', $job_id)->first();
+        $user = Candidates::where('id', $userID)->first();
         $file = $this->candidateSendService->send($file);
 
         return CandidatesVagas::create([
@@ -135,7 +135,7 @@ class JobRepository implements JobRepositoryInterface
             'job' => $job[0]->name,
             'candidate_id' => $userID,
             'full_name' => $user[0]->full_name,
-            'file' => $file || null
+            'file' => $file 
             
         ]);
 

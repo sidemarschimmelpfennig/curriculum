@@ -16,7 +16,7 @@ class CandidateRepository implements CandidateRepositoryInterface
             'password' => Hash::make($data['password']),
             'phone' => $data['phone'],
             'additional_info' => $data['additional_info'],
-            'skills' => $data['skills']
+            'skills' => $data['skills'],
 
         ]);
     }
