@@ -20,7 +20,6 @@ class CandidatesVagas extends Model
         'job',
         'candidate_id',
         'full_name',
-        'file',
 
     ];
 

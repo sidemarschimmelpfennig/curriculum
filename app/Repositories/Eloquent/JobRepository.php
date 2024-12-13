@@ -135,7 +135,7 @@ class JobRepository implements JobRepositoryInterface
             'job' => $job[0]->name,
             'candidate_id' => $userID,
             'full_name' => $user[0]->full_name,
-            'file' => $file
+            'file' => $file || null
             
         ]);
 

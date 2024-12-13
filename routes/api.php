@@ -32,10 +32,9 @@ Route::middleware('auth:sanctum')->group(function (){
         Route::get('/job/department/{department}', [JobController::class, 'findByDepartment']);
         Route::get('/job/category/{category}', [JobController::class, 'findByDepartmentCategories']);
         Route::get('/job/status/{status}', [JobController::class, 'findByStatus']);
-        
+
         Route::post('/send', [CandidateController::class, 'send']);
         Route::post('/create', [CandidateController::class, 'create']);
-
         Route::post('/apply', [JobController::class, 'apply']);
 
     });
@@ -43,13 +42,18 @@ Route::middleware('auth:sanctum')->group(function (){
     // Rotas Administrativas
     Route::prefix('v1/admin')->group(function (){    
         Route::get('/jobs', [JobController::class, 'getAll']);
-        Route::post('/add-job', [JobController::class, 'createJob']);
-        Route::post('/add-departament', [JobController::class, 'createDepartament']);
-        Route::post('/add-departament_category', [JobController::class, 'createDepartamentCategory']);
-        Route::post('/add-status', [JobController::class, 'createStatus']);
+
+        Route::post('/crate-job', [JobController::class, 'createJob']);
+        Route::post('/crate-departament', [JobController::class, 'createDepartament']);
+        Route::post('/crate-departament_category', [JobController::class, 'createDepartamentCategory']);
+        Route::post('/crate-status', [JobController::class, 'createStatus']);
+        Route::post('/crate-skills', [JobController::class, 'createSkills']);
+        Route::post('/crate-mobilities', [JobController::class, 'createMobilities']);
+        Route::put('/update', [JobController::class, 'update']);
+
+        Route::post('/send', [CandidateController::class, 'send']);
         Route::get('/newJobVacancy', [AdminController::class, 'view']); // view
         Route::get('/send-file', function () {return view('file');});// view
-        Route::post('/send', [CandidateController::class, 'send']);
 
     });
 });

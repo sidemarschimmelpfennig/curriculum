@@ -3,10 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\Request;
-use App\Models\User;
+use Illuminate\{
+    Support\Facades\Auth,
+    Support\Facades\Hash,
+    Http\Request
+    
+};
+
+use App\Models\{
+    User,
+    Candidates,
+};
 
 class LoginController extends Controller
 {
@@ -21,6 +28,7 @@ class LoginController extends Controller
 
         // Verifica se o usuário existe e a senha está correta
         $user = User::where('email', $request->email)->first();
+        $candidate = Candidates::where('email', $request->email)->first();
 
         if(!$user)
         {
@@ -29,10 +37,19 @@ class LoginController extends Controller
             ], 404);
         }
 
+        if(!$candidate)
+        {
+            return response()->json([
+                'message' => 'Candidato não encontrado!',
+            ], 404);
+        }
+
+
         // Se as credenciais forem válidas, gerar o token
-        if ($user && Hash::check($request->password, $user->password)) {
+        if ($user && Hash::check($request->password, $user->password) || $candidate && Hash::check($request->password, $candidate->password)) {
 
             $token = $user->createToken('AccessToken')->plainTextToken;
+            $token = $candidate->createToken('AccessToken')->plainTextToken;
             return response()->json([
                 'success' => true,
                 'message' => 'Login realizado com sucesso!',

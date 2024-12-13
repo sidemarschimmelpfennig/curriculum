@@ -10,15 +10,13 @@ return new class extends Migration
     {
         Schema::create('candidates', function (Blueprint $table) {
             $table->id();
+            $table->string('full_name', 200);
             $table->string('email')->unique();
+            $table->string('password');
 			$table->string('phone');
             $table->text('additional_info', 200)->nullable();
             $table->text('skills', 200);
-
-            $table->string('full_name', 200);
-            $table->string('file')->nullable();
             
-            //$table->string('password');
             $table->timestamps();
         });
     }
