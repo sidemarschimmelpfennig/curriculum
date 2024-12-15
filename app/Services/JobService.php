@@ -20,9 +20,9 @@ class JobService
 
     }
 
-    public function findByDepartment(string $param)
+    public function findByDepartament(string $param)
     {
-        return $this->repository->findByDepartment($param);
+        return $this->repository->findByDepartament($param);
 
     }
 
@@ -54,21 +54,21 @@ class JobService
 
     public function createJob(array $validateData) 
     {
-        $department = $this->repository->findDepartament($validateData['department_id']);
-        $department_categories = $this->repository->findDepartament_Categories($validateData['department_categories_id']);
+        $departament = $this->repository->findDepartament($validateData['departament_id']);
+        $departament_categories = $this->repository->findDepartament_Categories($validateData['departament_categories_id']);
         $status = $this->repository->findStatus($validateData['status_id']);
-        $skills = $this->repository->findBySkills($validateData['skills_id']);
-        $mobilities = $this->repository->findByMobilities($validateData['mobilities_id']);
+        $skills = $this->repository->findSkills($validateData['skills_id']);
+        $mobilities = $this->repository->findMobilities($validateData['mobilities_id']);   
 
         return $this->repository->create([
             'name' => $validateData['name'],
-            'description        ' => $validateData['description'],
+            'description' => $validateData['description'],
 
-            'department_id' => $validateData['department_id'],
-            'department' => $department->departament,
+            'departament_id' => $validateData['departament_id'],
+            'departament' => $departament->departament,
 
-            'department_categories_id' => $validateData['department_categories_id'],
-            'department_categories' => $department_categories->departament_categorie,
+            'departament_categories_id' => $validateData['departament_categories_id'],
+            'departament_categories' => $departament_categories->departament_categorie,
 
             'skills_id' => $validateData['skills_id'],
             'skills' => $skills->skills,
@@ -79,7 +79,15 @@ class JobService
             'status_id' => $validateData['status_id'],
             'status' => $status->status
 
-        ]);  
+        ]);
+        /*return [
+            $departament,
+            $departament_categories,
+            $status,
+            $skills,
+            $mobilities
+            
+        ];*/
         
     }
 

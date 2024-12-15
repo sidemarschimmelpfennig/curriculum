@@ -15,7 +15,6 @@ class Curriculums extends Model
     ];
 
     protected $hidden = [
-        'candidate_id',
 		'updated_at',
 		'created_at'
 	];

@@ -8,10 +8,12 @@ use Illuminate\Database\{
     Eloquent\Model
 
 };
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 class Candidates extends Model
 {
-    use HasFactory;
+    use HasFactory, Notifiable, HasApiTokens;
 
     protected $table = 'candidates'; // Nome da tabela no banco de dados
 

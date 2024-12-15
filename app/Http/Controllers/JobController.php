@@ -2,13 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\{
+    Http\Request,
+    Support\Facades\Auth
+    
+};
+
 use App\Services\JobService;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+
+use App\Http\{
+    Controllers\Controller,
+    Requests\JobRequest,
+    Requests\SendRequest
+};
 
 class JobController extends Controller
 {
-
     private $jobService;
 
     public function __construct(JobService $jobService)
@@ -30,10 +39,10 @@ class JobController extends Controller
         }
     }
 
-    public function findByDepartment(string $param)
+    public function findByDepartament(string $param)
     {
         try {
-            return response()->json($this->jobService->findByDepartment($param));
+            return response()->json($this->jobService->findByDepartament($param));
         } catch (\Throwable $th) {
             return response()->json([
                 'message' => 'Erro ao carregar as vagas', 
@@ -45,11 +54,14 @@ class JobController extends Controller
     public function findByCategories(string $param)
     {
         try {
-            return response()->json($this->jobService->findByDepartment($param));
+            return response()->json($this->jobService->findByDepartament($param));
         } catch (\Throwable $th) {
             return response()->json([
                 'message' => 'Erro ao carregar as vagas', 
-                'th' => $th->getMessage()
+                'th' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getFile(),
+
             ], 400);
         }
     }
@@ -61,27 +73,26 @@ class JobController extends Controller
         } catch (\Throwable $th) {
             return response()->json([
                 'message' => 'Erro ao carregar as vagas', 
-                'th' => $th->getMessage()
+                'th' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getFile(),
+
             ], 400);
         }
     }
 
-    public function createJob(Request $request)
+    public function create(JobRequest $request)
     {
         try {
-            $validateData = $request->validate([
-                'name' => 'required|string|max:120',
-                'department_id' => 'required|max:2',
-                'department_categories_id' => 'required|max:2',
-                'status_id' => 'required|max:2'
-    
-            ]);
-    
-            $job = $this->jobService->createJob($validateData);
-    
+            $validatedData = $request->validated();
+        
+            //$job = $this->jobService->createJob($request->all());
+            $job = $this->jobService->createJob($validatedData);
+
             return response()->json([
                 'success' => true,
                 'message' => 'Vaga criada com sucesso!',
+                'request' => $request->all(),
                 'vagas' => $job,
             ], 201);
 
@@ -91,19 +102,19 @@ class JobController extends Controller
                 'th' => $th->getMessage(),
                 'line' => $th->getLine(),
                 'file' => $th->getFile(),
+                
 
             ], 400);
         }
         
     }
 
-    public function createDepartament(Request $request)
+    public function createDepartament(JobRequest  $request)
     { 
         try {
-            $validateData = $request->validate([
-                'departament' => 'required|string|max:25'
-            ]);
-            $departament = $this->jobService->createDepartament($validateData);
+            $validatedData = $request->validated();
+
+            $departament = $this->jobService->createDepartament($validatedData);
 
             return response()->json([
                 'success' => true,
@@ -123,13 +134,12 @@ class JobController extends Controller
         }    
     } // Criar novos departamnos se necessário
 
-    public function createDepartamentCategory(Request $request)
+    public function createDepartamentCategory(JobRequest $request)
     { 
         try {
-            $validateData = $request->validate([
-                'departament_categorie' => 'required|string|max:25'
-            ]);
-            $departament_categorie = $this->jobService->createDepartamentCategory($validateData);
+            $validatedData = $request->validated();
+
+            $departament_categorie = $this->jobService->createDepartamentCategory($validatedData);
 
             return response()->json([
                 'success' => true,
@@ -149,13 +159,12 @@ class JobController extends Controller
         }    
     } // Criar novas categoria de departamentos se necessário
 
-    public function createStatus(Request $request)
+    public function createStatus(JobRequest $request)
     { 
         try {
-            $validateData = $request->validate([
-                'status' => 'required|string|max:25'
-            ]);
-            $status = $this->jobService->createStatus($validateData);
+            $validatedData = $request->validated();
+
+            $status = $this->jobService->createStatus($validatedData);
 
             return response()->json([
                 'message' => 'Status criado com sucesso!',
@@ -174,13 +183,12 @@ class JobController extends Controller
         }    
     } // Criar novos status se necessário
 
-    public function createSkills(Request $request)
+    public function createSkills(JobRequest  $request)
     { 
         try {
-            $validateData = $request->validate([
-                'skills' => 'required|string|max:25'
-            ]);
-            $skills = $this->jobService->createSkills($validateData);
+            $validatedData = $request->validated();
+
+            $skills = $this->jobService->createSkills($validatedData);
 
             return response()->json([
                 'message' => 'Status criado com sucesso!',
@@ -199,13 +207,12 @@ class JobController extends Controller
         }    
     } // Criar novos status se necessário
 
-    public function createMobilities(Request $request)
+    public function createMobilities(JobRequest  $request)
     { 
         try {
-            $validateData = $request->validate([
-                'mobilities' => 'required|string|max:25'
-            ]);
-            $mobilities = $this->jobService->createMobilities($validateData);
+            $validatedData = $request->validated();
+            
+            $mobilities = $this->jobService->createMobilities($validatedData);
 
             return response()->json([
                 'message' => 'Status criado com sucesso!',
@@ -243,15 +250,12 @@ class JobController extends Controller
         }
     } // <- Aleteração de status ou demais campos da vaga criada
 
-    public function apply(Request $request)
+    public function apply(SendRequest $request)
     {
         try {
+            $request->validated();
             $userID = Auth::user()->id;
             $job_id = $request->input('job_id');
-            $request->validate([
-                'file' => 'required|file|mimes:pdf'
-                
-            ]);
             $file = $request->file('file');
             $job_x_candidate = $this->jobService->apply($userID, $job_id, $file);
         

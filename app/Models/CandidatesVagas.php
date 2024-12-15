@@ -25,11 +25,7 @@ class CandidatesVagas extends Model
 
     protected $hidden = [
         'updated_at',
-		'created_at',
-
-        'job_id',
-        'candidate_id'
-        
+		'created_at',        
     ];
 
 }

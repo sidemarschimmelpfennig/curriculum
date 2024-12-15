@@ -17,13 +17,13 @@ return new class extends Migration
 			$table->string('name', 100);
 			$table->text('description', 200);
 
-            $table->unsignedBigInteger('department_id');
-            $table->foreign('department_id')->references('id')->on('departaments')->onDelete('cascade');
-            $table->string('department', 25);
+            $table->unsignedBigInteger('departament_id');
+            $table->foreign('departament_id')->references('id')->on('departaments')->onDelete('cascade');
+            $table->string('departament', 25);
 
-            $table->unsignedBigInteger('department_categories_id');
-            $table->foreign('department_categories_id')->references('id')->on('departament_categories')->onDelete('cascade');
-            $table->string('department_categories', 25);
+            $table->unsignedBigInteger('departament_categories_id');
+            $table->foreign('departament_categories_id')->references('id')->on('departament_categories')->onDelete('cascade');
+            $table->string('departament_categories', 25);
 
             $table->unsignedBigInteger('status_id');
             $table->foreign('status_id')->references('id')->on('status')->onDelete('cascade');

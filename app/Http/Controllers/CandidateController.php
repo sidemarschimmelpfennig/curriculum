@@ -3,9 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use App\Services\CandidateService;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\{
+    CandidateRequest,
+    SendRequest
+    
+};
+
 
 class CandidateController extends Controller
 {
@@ -16,20 +22,12 @@ class CandidateController extends Controller
 
     }
 
-    public function create(Request $request)
+    public function create(CandidateRequest $request)
     {
         try {
-            $data = $request->validate([
-                'full_name' => 'required|string|max:200',
-                'email' => 'required|email|max:100',
-                'phone' => 'required|string|max:100',
-                'additional_info' => 'required|string|max:200',
-                'skills' => 'required|string|max:100',
-                'file' => 'required|file|mimes:pdf'
-                
-            ]);
+            $validated = $request->validated();
             
-            $candidate = $this->candidateService->create($data);
+            $candidate = $this->candidateService->create($validated);
 
             return response()->json([
                 'message' => 'Curriculo foi cadastrado com sucesso!',
@@ -40,21 +38,18 @@ class CandidateController extends Controller
     
         } catch (\Throwable $th) {
             return response()->json([
-                'th' => $th->getMessage(),
+                'error' => 'Erro ao cadastrar currículo.',
+                'message' => $th->getMessage(),
                 'line' => $th->getLine(),
-                'file' => $th->getfile()
-                
-            ]);
+                'file' => $th->getFile()
+            ], 500);
         }
-        
     }
 
-    public function send(Request $request) // Envio de arquivo
+    public function send(SendRequest  $request) // Envio de arquivo
     {   
         try {
-            $request->validate([
-                'file' => 'required|file|mimes:pdf,doc,docx|max:2048'
-            ]);
+            $request->validated();
 
             $file = $request->file('file');
 
@@ -72,11 +67,11 @@ class CandidateController extends Controller
                 'th' => $th->getMessage(),
                 'line' => $th->getLine(),
                 'file' => $th->getfile(),
-            ]);
+            ], 500);
         }
     }
 
-    public function downloadFile(Request $request)
+    public function downloadFile(CandidateRequest $request)
     {
         $user = Auth::user();
         //$path = $request->

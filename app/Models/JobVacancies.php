@@ -12,11 +12,11 @@ class JobVacancies extends Model
 		'name',
 		'description',
 		//fk
-		'department_id',
-		'department',
+		'departament_id',
+		'departament',
 
-		'department_categories_id',
-		'department_categories',
+		'departament_categories_id',
+		'departament_categories',
 
 		'status_id',
 		'status',
@@ -29,11 +29,6 @@ class JobVacancies extends Model
 		
 	];
 	protected $hidden = [
-		'department_id',
-		'department_categories_id',
-		'status_id',
-		'skills_id',
-		'status_id',
 		'updated_at',
 		'created_at'
 	];

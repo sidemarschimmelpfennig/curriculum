@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Services\UserService;
-use Illuminate\Http\Request;
+
+use App\Http\Requests\AdminRequest;
 
 class AdminController extends Controller
 {
@@ -33,16 +34,11 @@ class AdminController extends Controller
         }
     }
 
-    public function create(Request $request)
+    public function create(AdminRequest $request)
     {
-        $validateData = $request->validate([
-            'email' => 'required|string|email|unique:users,email',
-            'password' => 'required|string|min:6',
-            'is_admin' => 'required|boolean'
+        $validated = $request->validated();
 
-        ]);
-
-        $user = $this->userService->create($validateData);
+        $user = $this->userService->create($validated);
         return response()->json([
             'message' => 'Erro ao criar usuário!',
             'user' => $user,

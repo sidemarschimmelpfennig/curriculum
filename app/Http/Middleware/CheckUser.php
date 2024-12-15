@@ -14,6 +14,8 @@ class CheckUser
 {
     public function handle(Request $request, Closure $next): Response
     {        
+        $user = Auth::guard('sanctum')->user();
+        
         if(!Auth::guard('sanctum')->check()) {
             return response()->json([
                 'success' => false,
@@ -21,11 +23,8 @@ class CheckUser
                 
             ], 401);
         }
-
-        $user = Auth::guard('sanctum')->user();
-                
+        
         if ($request->is('v1/admin/*') && $user->is_admin != 1) {
-            dump('linha 24 CheckUser');
             return response()->json([
                 'success' => false,
                 'message' => 'Acesso não autorizado!',

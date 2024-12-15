@@ -11,8 +11,8 @@ use App\Models\{
     Status, // ignorar
     CandidatesVagas, // o que importa
     Candidates, // o que importa
-    Mobilities,
-    Skills,
+    Mobilities, // ignorar
+    Skills, // ignorar
 };
 use App\Services\CandidateService;
 
@@ -39,33 +39,36 @@ class JobRepository implements JobRepositoryInterface
     public function getAllStatus(){ return Status::all(); }
     public function findStatus(string $id){ return Status::find($id); }
 
-    public function findByDepartment(string $param)
+    public function findSkills(int $id) { return Skills::find($id); }
+    public function findMobilities (int $id) { return Mobilities::find($id); }
+
+    public function findByDepartament(string $param)
     {
-        return JobVacancies::where('departament', $param)->get();
+        return JobVacancies::where('departament', $param)->first();
         
     }
 
     public function findByCategories(string $param) 
     {
-        return JobVacancies::where('department_categories', $param)->get();
+        return JobVacancies::where('department_categories', $param)->first();
 
     }
 
     public function findByStatus(string $param) 
     {
-        return JobVacancies::where('status', $param)->get();
+        return JobVacancies::where('status', $param)->first();
 
     }
 
     public function findBySkills(string $param) 
     {
-        return Skills::where('status', $param)->get();
+        return Skills::where('skills', $param)->first();
 
     }
 
     public function findByMobilities(string $param)
     {
-        return Mobilities::where('status', $param)->get();
+        return Mobilities::where('mobilities', $param)->first();
     }
 
     public function create(array $validateData)
@@ -132,9 +135,9 @@ class JobRepository implements JobRepositoryInterface
 
         return CandidatesVagas::create([
             'job_id' => $job_id,
-            'job' => $job[0]->name,
+            'job' => $job->name,
             'candidate_id' => $userID,
-            'full_name' => $user[0]->full_name,
+            'full_name' => $user->full_name,
             'file' => $file 
             
         ]);
