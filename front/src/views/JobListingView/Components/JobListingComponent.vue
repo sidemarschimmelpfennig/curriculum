@@ -8,7 +8,7 @@
         :show="showModal"
         @close="showModal = false"
         class="applyanewjob"
-        :job-ID="jobID"
+        :idForJob="selectedJobId"
       />
     </div>
     <div
@@ -17,30 +17,40 @@
       :key="id"
     >
       <div class="flex justify-between items-center job-header">
-        <span class="bg-blue-700 text-white font-bold rounded px-2 py-1">
-          {{ jobs.departament }}
+        <span class="bg-blue-600 text-white font-bold rounded px-2 py-1">
+          {{ jobs.department }}
         </span>
-        <label class="px-2 py-1 bg-gray-600 text-gray-100 font-bold rounded">
-          {{ jobs.departament_categories }}
+        <label class="px-2 py-1 bg-blue-200 text-blue-800 font-bold rounded">
+          {{ jobs.department_categories }}
         </label>
       </div>
       <div class="mt-2 job-content">
         <a
-          class="text-2xl text-gray-700 font-bold hover:text-gray-600"
+          class="text-2xl text-blue-800 font-bold hover:text-blue-600"
           href="#"
-
           >{{ jobs.name }}</a
         >
         <p class="mt-2 text-gray-600">{{ jobs.description }}</p>
       </div>
+      <div class="mt-2 job-content">
+        <h3 class="text-blue-700 mb-4 font-bold">Requisitos:</h3>
+        <span
+          class="bg-blue-500 text-white font-bold rounded px-4 py-1 mx-4"
+          v-for="skill in jobs.skills"
+          :key="skill"
+        >
+          {{ skill }}
+        </span>
+      </div>
       <div class="flex justify-between items-center mt-4">
-
-        <a class="readmore hover:cursor-pointer" @click="openModal(jobs.id)"
+        <a
+          class="readmore text-white hover:cursor-pointer"
+          @click="openModal(jobs.id)"
           >Candidatar</a
         >
 
         <div>
-          <h1 class="text-gray-700 font-bold">{{ jobs.modalities }}</h1>
+          <h1 class="text-blue-700 font-bold">{{ jobs.mobilities }}</h1>
         </div>
       </div>
     </div>
@@ -54,7 +64,7 @@ export default {
     return {
       joblist: [],
       showModal: false,
-      jobID: null,
+      selectedJobId: 1,
     };
   },
   props: {
@@ -68,8 +78,7 @@ export default {
   },
   methods: {
     openModal(jobid) {
-      console.log('Job ID linha 71 JobListing:', jobid)
-      this.jobID = jobid;
+      this.selectedJobId = jobid;
       this.showModal = true;
     },
   },
@@ -79,16 +88,7 @@ export default {
   },
 };
 </script>
+
 <style lang="scss" scoped>
 @import "@/assets/scss/components/joblistingcomponent";
-
-.applyanewjob {
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  padding: 2rem;
-  width: 100%;
-  max-width: 600px;
-  z-index: 50;
-}
 </style>

@@ -2,13 +2,13 @@
 
 namespace App\Services;
 
-use App\Repositories\Eloquent\UserRepository;
+use App\Repositories\Eloquent\AdminRepository;
 use Illuminate\Support\Facades\Hash;
 
-class UserService
+class AdminService
 {
     protected $repository;
-    public function __construct(UserRepository $repository)
+    public function __construct(AdminRepository $repository)
     {
         $this->repository = $repository;
 
@@ -34,6 +34,12 @@ class UserService
             'is_admin' => 1
         
         ]);
+        
+    }
+
+    public function delete(int $id)
+    {
+        return $this->repository->delete($id);
         
     }
 }

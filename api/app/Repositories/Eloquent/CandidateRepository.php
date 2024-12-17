@@ -20,5 +20,17 @@ class CandidateRepository implements CandidateRepositoryInterface
 
         ]);
     }
+
+    public function findByID(int $id)
+    {
+        return Candidates::find($id);
+        
+    }
+
+    public function delete(int $id) {
+        return Candidates::where('id', $id)->update([
+            'active' => false
+        ]);
+    }
 }
 

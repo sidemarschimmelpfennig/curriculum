@@ -69,7 +69,7 @@ class CandidateController extends Controller
                 'th' => $th->getMessage(),
                 'line' => $th->getLine(),
                 'file' => $th->getfile(),
-            ], 500);
+            ], 400);
         }
     }
 
@@ -81,5 +81,28 @@ class CandidateController extends Controller
 
         //return response()->download($directory);
 
+    }
+
+    public function delete(int $id)
+    {
+        try {
+            $this->candidateService->delete($id);
+            $candidate = $this->candidateService->findByID($id);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Candidato desativado!',
+                'candidate' => $candidate
+                
+            ]);
+                
+        } catch (\Throwable $th) {
+            return response()->json([
+                'erro' => 'Erro ao desativar candidato',
+                'th' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getfile(),
+            ], 400);
+        }
     }
 }

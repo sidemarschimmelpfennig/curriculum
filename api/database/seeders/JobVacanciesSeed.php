@@ -35,10 +35,10 @@ class JobVacanciesSeed extends Seeder
 
         $departament_categories = [
             [
-                'departament_categorie' => 'Front End'
+                'departament_categorie' => 'FrontEnd'
             ],  
             [
-                'departament_categorie' => 'Back End'
+                'departament_categorie' => 'BackEnd'
             ],
             [
                 'departament_categorie' => 'Auxiliar'

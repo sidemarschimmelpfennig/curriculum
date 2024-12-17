@@ -2,11 +2,11 @@
 
 namespace App\Repositories\Eloquent;
 
-use App\Repositories\Interface\UserRepositoryInterface;
+use App\Repositories\Interface\AdminRepositoryInterface;
 
 use App\Models\User;
 
-class UserRepository implements UserRepositoryInterface
+class AdminRepository implements AdminRepositoryInterface
 {
     public function getAll(){
         return User::all();       
@@ -15,11 +15,22 @@ class UserRepository implements UserRepositoryInterface
     public function findByID(int $id)
     {
         return User::find($id);
+        
     }
     
     public function create(array $data)
     {
         return User::create($data);
     }
+
+    public function delete(int $id)
+    {
+        return User::where('id', $id)->update([
+            'active' => false
+
+        ]);
+    }
+
+    
 
 }

@@ -116,7 +116,7 @@ export default {
   methods: {
     async handleSubmit() {
       try {
-        const response = await fetch("http://localhost:8/api/jobs", {
+        const response = await fetch("http://localhost:8000/api/jobs", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

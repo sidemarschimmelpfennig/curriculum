@@ -10,7 +10,7 @@
         >close</span
       >
     </div>
-    <form @submit.prevent="submitForm" enctype="multipart/form-data">
+    <form @submit.prevent="submitForm">
       <div class="flex flex-col space-y-2">
         <label
           for="full_Name"
@@ -20,7 +20,7 @@
         <input
           type="text"
           id="full_Name"
-          v-model="formData.full_Name"
+          v-model="form.full_name"
           required
           class="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
@@ -33,7 +33,7 @@
         <input
           type="email"
           id="email"
-          v-model="formData.email"
+          v-model="form.email"
           required
           class="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
@@ -45,20 +45,8 @@
         <input
           type="tel"
           id="phone"
-          v-model="formData.phone"
+          v-model="form.phone"
           required
-          class="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-        />
-      </div>
-
-      <div class="flex flex-col space-y-2">
-        <label for="skills" class="text-sm font-medium text-gray-700 text-start"
-          >Habilidades</label
-        >
-        <input
-          type="text"
-          id="skills"
-          v-model="formData.skills"
           class="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
       </div>
@@ -70,12 +58,11 @@
         >
         <textarea
           id="additional_info"
-          v-model="formData.additional_info"
+          v-model="form.additional_info"
           class="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
           placeholder="Digite informações adicionais aqui..."
         ></textarea>
       </div>
-
       <div class="flex flex-col space-y-2">
         <label
           for="curriculum"
@@ -84,8 +71,10 @@
         >
         <input
           type="file"
-          id="curriculum"
-          @change="handleFileChange($event, 'curriculum')"
+          id="file"
+          @change="handleFileUpload($event)"
+          accept=".pdf"
+          required
           class="flex-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 py-2 px-3 text-sm"
           placeholder="Escolha um arquivo"
         />
@@ -94,9 +83,8 @@
       <button
         type="submit"
         class="py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition mt-4"
-        @click="submitForm"
       >
-        Enviar
+        Candidatar-se
       </button>
     </form>
   </div>
@@ -108,55 +96,54 @@ import axios from "axios";
 export default {
   data() {
     return {
-      formData: {
-        full_Name: "",
+      form: {
+        full_name: "",
         email: "",
-        phone: "",
+        contactphone: "",
         additional_info: "",
-        skills: "",
-        curriculum: null,
-        jobID: null
+        status: "Cadastrado",
+        id_for_job: this.idForJob,
+        file: null,
       },
       api: process.env.VUE_APP_API_URL,
     };
   },
   methods: {
-    handleFileChange(event, fieldName) {
-      const file = event.target.files[0];
-      if (file) {
-        this.formData[fieldName] = file;
+    handleFileUpload(event) {
+      const file = event.target.files[0]; // Obtém o arquivo selecionado
+      if (file && file.type === "application/pdf") {
+        this.form.file = file;
       } else {
-        this.formData[fieldName] = null;
+        alert("Por favor, envie um arquivo PDF.");
       }
     },
     async submitForm() {
       try {
-        // Criando uma instância de FormData
         const form = new FormData();
-        
-        // Adicionando os campos do formulário
-        form.append("full_Name", this.formData.full_Name);
-        form.append("email", this.formData.email);
-        form.append("phone", this.formData.phone);
-        form.append("additional_info", this.formData.additional_info);
-        form.append("skills", this.formData.skills);
-        form.append("jobID", this.formData.jobID);
 
-        // Adicionando o arquivo
-        if (this.formData.curriculum) {
-          form.append("curriculum", this.formData.curriculum);
-        }
+        form.append("full_name", this.form.full_name);
+        form.append("email", this.form.email);
+        form.append("contactphone", this.form.contactphone);
+        form.append("additional_info", this.form.additional_info);
+        form.append("status", this.form.status);
+        form.append("id_for_job", this.form.id_for_job);
 
-        // Enviando a solicitação POST com FormData
-        const response = await axios.post(`${this.api}candidates/apply`, form, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
+        form.append("file", this.form.file);
 
-        console.log('Dados da API:', response.data);
+        const response = await axios.post(
+          `http://localhost:5000/api/candidates`,
+          form,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+
+        console.log(response.data);
+
         console.log("curriculo cadastrado com sucesso");
-        //this.closeModal(); 
+        this.closeModal();
       } catch (error) {
         console.error("Erro ao enviar o formulário:", error);
         alert("Erro ao enviar o formulário. Por favor, tente novamente.");
@@ -176,13 +163,12 @@ export default {
       type: Boolean,
       required: true,
     },
-    jobID: {
-      type: Number,
+    idForJob: {
+      type: String,
       required: true,
     },
   },
   mounted() {
-    this.formData.jobID = this.jobID;
     window.addEventListener("keydown", this.handleKeydown);
   },
   beforeUnmount() {

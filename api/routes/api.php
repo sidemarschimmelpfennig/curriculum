@@ -45,6 +45,8 @@ Route::prefix('v1')->group( function () {
             Route::get('/jobs', [JobController::class, 'getAll']);
             Route::post('/create-job', [JobController::class, 'create']);
             Route::put('/deleteDepartament/{id}', [JobController::class, 'deleteDepartament']);
+            Route::put('/deleteUser/{id}', [AdminController::class, 'delete']);
+            Route::put('/deleteCandidate/{id}', [CandidateController::class, 'delete']);
                 
             // +- importante
             Route::post('/create-departament', [JobController::class, 'createDepartament']);
