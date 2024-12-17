@@ -209,4 +209,9 @@ class JobRepository implements JobRepositoryInterface
         ]);
         
     }
+
+    public function delete(int $id)
+    {
+        
+    }
 }

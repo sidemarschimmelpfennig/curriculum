@@ -29,7 +29,6 @@ Route::prefix('v1')->group( function () {
         Route::post('/send', [CandidateController::class, 'send']);
         Route::post('/create', [CandidateController::class, 'create']);
         
-            
         Route::get('/job/department/{department}', [JobController::class, 'findByDepartment']);
         Route::get('/job/category/{category}', [JobController::class, 'findByDepartmentCategories']);
         Route::get('/job/status/{status}', [JobController::class, 'findByStatus']);

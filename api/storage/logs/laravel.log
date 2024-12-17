@@ -1499,3 +1499,7 @@ Did you mean one of these?
 #36 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(23): require_once('...')
 #37 {main}
 "} 
+[2024-12-17 21:30:18] local.ERROR: Class App\Repositories\Eloquent\JobRepository contains 1 abstract method and must therefore be declared abstract or implement the remaining methods (App\Repositories\Interface\BaseInterface::delete) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Class App\\Repositories\\Eloquent\\JobRepository contains 1 abstract method and must therefore be declared abstract or implement the remaining methods (App\\Repositories\\Interface\\BaseInterface::delete) at D:\\SGBR\\Projeto\\api\\app\\Repositories\\Eloquent\\JobRepository.php:19)
+[stacktrace]
+#0 {main}
+"} 

@@ -27,7 +27,7 @@ class CandidateService
 
         $counter = 1;
         $newName = $name; 
-        //$newName = $user->id;
+        //$newName = $user->id; // Descomentar para uso de renomear o arquivo com o ID do usuário
         while (file_exists("$directory/$newName.$extension")) {
             $newName = $name . '_' . $counter;// Nome _ 1 2 3 ...........
                        
@@ -57,7 +57,7 @@ class CandidateService
     public function findByID(int $id)
     {
         return $this->repository->findByID($id);
-        
+
     }
 
     public function delete(int $id)

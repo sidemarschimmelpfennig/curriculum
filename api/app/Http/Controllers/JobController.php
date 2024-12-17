@@ -29,7 +29,19 @@ class JobController extends Controller
     public function getAll()
     {
         try {
-            return response()->json($this->jobService->getAll());
+            $jobs = $this->jobService->getAll();
+            if(count($jobs) <= 0 )
+            {
+                return response()->json([
+                    'message' => 'Sem vagas abertas'
+                ]);    
+
+            } 
+            
+            return response()->json([
+                'message' => 'Todas as vagas',
+                'jobs' => $jobs
+            ]);
 
         } catch (\Throwable $th) {
             return response()->json([
@@ -325,5 +337,5 @@ class JobController extends Controller
 
             ], 400);
         }    
-    } // Criar novos status se necessário
+    } // Criar novos status se necessários
 }
