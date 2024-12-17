@@ -27,7 +27,7 @@ class CandidateService
 
         $counter = 1;
         $newName = $name; 
-        $newName = $user->id;
+        //$newName = $user->id;
         while (file_exists("$directory/$newName.$extension")) {
             $newName = $name . '_' . $counter;// Nome _ 1 2 3 ...........
                        
@@ -40,7 +40,7 @@ class CandidateService
 
     public function create(array $data) 
     {
-        //$filePath = $this->send($data['file']); // descomentar
+        $filePath = $this->send($data['file']); // descomentar
         // Não é necessário rota e nem chamar no controller, a chamada nessa linha faz com que o arquivo seja enviado
         return $this->repository->create([
             'full_name' => $data['full_name'],
@@ -48,7 +48,7 @@ class CandidateService
             'password' => Hash::make($data['password']),
             'phone' => $data['phone'],
             'additional_info' => $data['additional_info'],
-            'file' => null,
+            'file' => $filePath,
 
         ]);
         

@@ -100,7 +100,7 @@ class JobController extends Controller
                 'mobilities_id' => 'integer',
             ]);
            
-            $validatedData = $request->validated();
+            //$validatedData = $request->validated();
 
             //$job = $this->jobService->createJob($request->all());
             $job = $this->jobService->createJob($validatedData);
@@ -167,13 +167,25 @@ class JobController extends Controller
         }
     } // <- Aleteração de status ou demais campos da vaga criada
 
-    public function apply(SendRequest $request)
+    public function apply(Request $request)
+    //public function apply(SendRequest $request)
     {
+        // return response()->json([
+        //     'dados' => $request->all(),
+        //     'file' =>$request->file('curriculum')->getClientOriginalName()
+        
+        // ]);
         try {
-            $request->validated();
-            $userID = Auth::user()->id;
-            $job_id = $request->input('job_id');
-            $file = $request->file('file');
+            $request->validate([
+                'jobID' => 'required',
+                //'candidate_id' => 'required|integer',
+                'curriculum' => 'required|file|mimes:pdf,doc,docx'
+
+            ]);
+            //$userID = Auth::user()->id;
+            $userID = 1;
+            $job_id = $request->input('jobID');
+            $file = $request->file('curriculum');
             $job_x_candidate = $this->jobService->apply($userID, $job_id, $file);
         
             return response()->json([
