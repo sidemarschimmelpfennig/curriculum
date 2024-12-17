@@ -8,6 +8,7 @@ class Departament extends Model
 {
     protected $table = 'departaments';
     protected $fillable = [
-        'departament'
+        'departament',
+        'active'
     ];
 }

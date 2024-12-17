@@ -39,6 +39,8 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::prefix('v1/admin')->group(function (){    
         // + importante
         Route::get('/jobs', [JobController::class, 'getAll']);
+        Route::post('/create-job', [JobController::class, 'create']);
+        Route::put('/deleteDepartament/{id}', [JobController::class, 'deleteDepartament']);
         
         // +- importante
         Route::post('/create-departament', [JobController::class, 'createDepartament']);
@@ -49,7 +51,8 @@ Route::middleware('auth:sanctum')->group(function (){
         Route::post('/create-skills', [JobController::class, 'createSkills']);
         Route::post('/create-mobilities', [JobController::class, 'createMobilities']);
         
-        Route::put('/update', [JobController::class, 'update']);
+        Route::put('/update-status', [JobController::class, 'updateStatus']);
+
         Route::post('/send', [CandidateController::class, 'send']);
         Route::get('/newJobVacancy', [AdminController::class, 'view']); // view
         Route::get('/send-file', function () {return view('file');});// view

@@ -23,7 +23,7 @@ class Candidates extends Model
         'password',
         'phone',
         'additional_info',
-        'skills',
+        'active',
         
     ];
 

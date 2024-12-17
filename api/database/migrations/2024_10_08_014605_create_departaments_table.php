@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('departaments', function (Blueprint $table) {
             $table->id();
             $table->string('departament', 25)->unique();
+            $table->boolean('active')->default(1);
             $table->timestamps();
         });
     }

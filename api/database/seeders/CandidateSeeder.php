@@ -16,8 +16,7 @@ class CandidateSeeder extends Seeder
             'email' => 'gabikochem55@gmail.com',
             'password' => Hash::make('g'),
             'phone' => '+55 49 999482859',
-            'additional_info' => 'Dev PHP',
-            'skills' => 'Proativo'
+            'additional_info' => 'Dev PHP'
         ];
         
         Candidates::create($candidate);

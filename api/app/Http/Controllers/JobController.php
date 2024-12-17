@@ -8,12 +8,13 @@ use Illuminate\{
     
 };
 
-use App\Services\JobService;
+use App\{
+    Http\Controllers\Controller,
+    Http\Requests\JobRequest,
+    Http\Requests\SendRequest,
 
-use App\Http\{
-    Controllers\Controller,
-    Requests\JobRequest,
-    Requests\SendRequest
+    Services\JobService
+
 };
 
 class JobController extends Controller
@@ -33,8 +34,9 @@ class JobController extends Controller
         } catch (\Throwable $th) {
             return response()->json([
                 'message' => 'Erro ao carregar as vagas', 
-                'th' => $th->getMessage()
-
+                'th' => $th->getMessage(),
+                'th' => $th->getMessage(),
+                'file' => $th->getFile(),
             ], 400);
         }
     }
@@ -46,7 +48,10 @@ class JobController extends Controller
         } catch (\Throwable $th) {
             return response()->json([
                 'message' => 'Erro ao carregar as vagas', 
-                'th' => $th->getMessage()
+                'th' => $th->getMessage(),
+                'file' => $th->getFile(),
+                'line' => $th->getLine()
+                
             ], 400);
         }
     }
@@ -81,11 +86,22 @@ class JobController extends Controller
         }
     }
 
-    public function create(JobRequest $request)
-    {
+    public function create(Request $request)
+    //public function create(JobRequest $request) // <- Se não houver um campo necessário, vai retornar 404
+    { 
         try {
+            $validatedData = $request->validate([
+                'name' => 'string',
+                'description' => 'string',
+                'departament_id' => 'integer',
+                'departament_categories_id' => 'integer',
+                'status_id' => 'integer',
+                'skills_id' => 'integer',
+                'mobilities_id' => 'integer',
+            ]);
+           
             $validatedData = $request->validated();
-        
+
             //$job = $this->jobService->createJob($request->all());
             $job = $this->jobService->createJob($validatedData);
 
@@ -103,10 +119,78 @@ class JobController extends Controller
                 'line' => $th->getLine(),
                 'file' => $th->getFile(),
                 
-
             ], 400);
         }
         
+    }
+    
+    public function deleteDepartament(int $id)
+    {
+        try {
+            $this->jobService->deleteDepartament($id);
+
+            $departament = $this->jobService->findDepartament($id);
+
+            return response()->json([
+                'message' => 'Departamento alterado',
+                'departament' => $departament,
+                'id' => $id
+            
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'Erro ao carregar as vagas', 
+                'th' => $th->getMessage(),
+                'file' => $th->getFile(),
+                'line' => $th->getLine()
+                
+            ], 400);
+        }
+    }
+ 
+    public function updateStatus(int $id, Request $request)
+    {
+        try {
+            $result = $this->jobService->updateStatus($id, $request['value']);
+            return response()->json([
+                'message' => 'Alteração realizada com sucesso!',
+                'resultado' => $result,
+                
+            ], 201);
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'Alteração negada!',
+                'th' => $th,
+                
+            ], 400);
+        }
+    } // <- Aleteração de status ou demais campos da vaga criada
+
+    public function apply(SendRequest $request)
+    {
+        try {
+            $request->validated();
+            $userID = Auth::user()->id;
+            $job_id = $request->input('job_id');
+            $file = $request->file('file');
+            $job_x_candidate = $this->jobService->apply($userID, $job_id, $file);
+        
+            return response()->json([
+                'message' => 'Aplicação criada com sucesso',
+                'jobCandidate' => $job_x_candidate
+
+            ], 200);
+    
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'Não foi possível se candidatar a vaga',
+                'th' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getFile(),
+
+            ], 400);
+        }
     }
 
     public function createDepartament(JobRequest  $request)
@@ -230,50 +314,4 @@ class JobController extends Controller
             ], 400);
         }    
     } // Criar novos status se necessário
- 
-    public function update(int $id, Request $request)
-    {
-        try {
-            $result = $this->jobService->update($id, $request['value']);
-            return response()->json([
-                'message' => 'Alteração realizada com sucesso!',
-                'resultado' => $result,
-                
-            ], 201);
-
-        } catch (\Throwable $th) {
-            return response()->json([
-                'message' => 'Alteração negada!',
-                'th' => $th,
-                
-            ], 400);
-        }
-    } // <- Aleteração de status ou demais campos da vaga criada
-
-    public function apply(SendRequest $request)
-    {
-        try {
-            $request->validated();
-            $userID = Auth::user()->id;
-            $job_id = $request->input('job_id');
-            $file = $request->file('file');
-            $job_x_candidate = $this->jobService->apply($userID, $job_id, $file);
-        
-            return response()->json([
-                'message' => 'Aplicação criada com sucesso',
-                'jobCandidate' => $job_x_candidate
-
-            ], 200);
-    
-        } catch (\Throwable $th) {
-            return response()->json([
-                'message' => 'Não foi possível se candidatar a vaga',
-                'th' => $th->getMessage(),
-                'line' => $th->getLine(),
-                'file' => $th->getFile(),
-
-            ], 400);
-        }
-
-    }
 }

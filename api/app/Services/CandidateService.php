@@ -40,7 +40,7 @@ class CandidateService
 
     public function create(array $data) 
     {
-        //$filePath = $this->send($data['file']);
+        //$filePath = $this->send($data['file']); // descomentar
         // Não é necessário rota e nem chamar no controller, a chamada nessa linha faz com que o arquivo seja enviado
         return $this->repository->create([
             'full_name' => $data['full_name'],
@@ -48,7 +48,6 @@ class CandidateService
             'password' => Hash::make($data['password']),
             'phone' => $data['phone'],
             'additional_info' => $data['additional_info'],
-            'skills' => $data['skills'],
             'file' => null,
 
         ]);

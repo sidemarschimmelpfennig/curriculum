@@ -16,13 +16,7 @@ class UserRepository implements UserRepositoryInterface
     {
         return User::find($id);
     }
-
-    public function findAdmin(int $param)
-    {
-        return User::where('is_admin', $param);
-
-    }
-
+    
     public function create(array $data)
     {
         return User::create($data);

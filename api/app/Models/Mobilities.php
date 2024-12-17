@@ -9,6 +9,7 @@ class Mobilities extends Model
     protected $table = 'mobilities';
 
     protected $fillable = [
-        'mobilities'
+        'mobilities',
+        'active'
     ];
 }

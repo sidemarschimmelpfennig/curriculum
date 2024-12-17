@@ -37,7 +37,7 @@ return new class extends Migration
             $table->foreign('mobilities_id')->references('id')->on('mobilities')->onDelete('cascade');
             $table->string('mobilities', 25);
 
-            //$table->string('apply_candidates');
+            $table->boolean('active')->default(1);
 
             $table->timestamps();
 			

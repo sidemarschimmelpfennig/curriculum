@@ -15,9 +15,10 @@ return new class extends Migration
             $table->string('password');
 			$table->string('phone');
             $table->text('additional_info', 200)->nullable();
-            $table->text('skills', 200);
-            
+            $table->string('file')->nullable();
+            $table->boolean('active')->default(1);
             $table->timestamps();
+            
         });
     }
 

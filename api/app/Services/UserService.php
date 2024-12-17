@@ -25,11 +25,6 @@ class UserService
 
     }
 
-    public function findAdmin(int $param)
-    {
-        return $this->repository->findAdmin($param);
-    }
-
     public function create(array $data)
     {  
         return $this->repository->create([

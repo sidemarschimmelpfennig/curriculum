@@ -6,11 +6,11 @@ use App\Repositories\Interface\JobRepositoryInterface;
 
 use App\Models\{
     JobVacancies, // o que importa
+    Candidates, // o que importa
+    CandidatesVagas, // o que importa
     Departament, // ignorar
     Departament_Categories, // ignorar 
     Status, // ignorar
-    CandidatesVagas, // o que importa
-    Candidates, // o que importa
     Mobilities, // ignorar
     Skills, // ignorar
 };
@@ -30,17 +30,47 @@ class JobRepository implements JobRepositoryInterface
         return JobVacancies::all();
     }
 
-    public function getAllDepartament(){ return Departament::all(); }
-    public function findDepartament(string $id){ return Departament::find($id); }
+    public function getAllDepartament()
+    { 
+        return Departament::all(); 
+    }
+    public function findDepartament(string $id)
+    {
+        return Departament::find($id); 
+    }
 
-    public function getAllDepartament_Categories() { return Departament_Categories::all(); }
-    public function findDepartament_Categories(string $id) { return Departament_Categories::find($id); }
+    public function getAllDepartament_Categories()
+    { 
+        return Departament_Categories::all(); 
 
-    public function getAllStatus(){ return Status::all(); }
-    public function findStatus(string $id){ return Status::find($id); }
+    }
+    public function findDepartament_Categories(string $id)
+    { 
+        return Departament_Categories::find($id); 
 
-    public function findSkills(int $id) { return Skills::find($id); }
-    public function findMobilities (int $id) { return Mobilities::find($id); }
+    }
+
+    public function getAllStatus()
+    { 
+        return Status::all(); 
+    }
+
+    public function findStatus(string $id)
+    {
+        return Status::find($id); 
+    }
+
+    public function findSkills(int $id)
+    { 
+        return Skills::find($id); 
+
+    }
+
+    public function findMobilities (int $id)
+    { 
+        return Mobilities::find($id); 
+
+    }
 
     public function findByDepartament(string $param)
     {
@@ -73,7 +103,33 @@ class JobRepository implements JobRepositoryInterface
 
     public function create(array $validateData)
     {
-        return JobVacancies::create($validateData);
+        //return JobVacancies::create($validateData);
+        $departament = $this->findDepartament($validateData['departament_id']);
+        $departament_categories = $this->findDepartament_Categories($validateData['departament_categories_id']);
+        $status = $this->findStatus($validateData['status_id']);
+        $skills = $this->findSkills($validateData['skills_id']);
+        $mobilities = $this->findMobilities($validateData['mobilities_id']);   
+
+        return JobVacancies::create([
+            'name' => $validateData['name'],
+            'description' => $validateData['description'],
+
+            'departament_id' => $validateData['departament_id'],
+            'departament' => $departament->departament,
+
+            'departament_categories_id' => $validateData['departament_categories_id'],
+            'departament_categories' => $departament_categories->departament_categorie,
+
+            'skills_id' => $validateData['skills_id'],
+            'skills' => $skills->skills,
+
+            'mobilities_id' => $validateData['mobilities_id'],
+            'mobilities' => $mobilities->mobilities,
+
+            'status_id' => $validateData['status_id'],
+            'status' => $status->status
+
+        ]);
         
     }
 
@@ -102,9 +158,10 @@ class JobRepository implements JobRepositoryInterface
     public function createMobilities(array $data)
     {
         return Mobilities::create($data);
+        
     }
 
-    public function update(int $id, int $newStatus)
+    public function updateStatus(int $id, int $newStatus)
     {
         $job = JobVacancies::where('id', $id)->first();        
         if ($job){
@@ -142,5 +199,14 @@ class JobRepository implements JobRepositoryInterface
             
         ]);
 
+    }
+
+    public function deleteDepartament(int $id)
+    {
+        return Departament::where('id', $id)->update([
+            'active' => false
+
+        ]);
+        
     }
 }

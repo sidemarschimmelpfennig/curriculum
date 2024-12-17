@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('status', function (Blueprint $table) {
             $table->id();
             $table->string('status', 20)->unique();
+            $table->boolean('active')->default(1);
             $table->timestamps();
         });
     }

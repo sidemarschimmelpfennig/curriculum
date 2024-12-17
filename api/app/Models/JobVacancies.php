@@ -25,7 +25,8 @@ class JobVacancies extends Model
 		'skills',
 
 		'mobilities_id',
-		'mobilities'
+		'mobilities',
+        'active'
 		
 	];
 	protected $hidden = [
