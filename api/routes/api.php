@@ -14,6 +14,9 @@ use App\Http\Controllers\{
 
 Route::get('/test-email', function () {
 
+    Route::get('/email', [EmailController::class, 'edit']);
+    Route::post('/email', [EmailController::class, 'update']);
+
     Mail::raw('Este é um e-mail de teste.', function ($message) {
         $message->to('roxosgbr@gmail.com')
                 ->subject('Assunto do e-mail');
