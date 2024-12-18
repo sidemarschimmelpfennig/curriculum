@@ -11,13 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('settings', function (Blueprint $table){
+        Schema::create('settings', function (Blueprint $table) {
+            $table->id();
             $table->string('smtp_host')->nullable();
             $table->string('smtp_port')->nullable();
             $table->string('email')->nullable();
             $table->string('password')->nullable();
             $table->string('email')->nullable();
             $table->string('smtp_encryption')->default('null');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('settings');
     }
 };

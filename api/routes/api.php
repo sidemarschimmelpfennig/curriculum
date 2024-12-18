@@ -8,7 +8,7 @@ use App\Http\Controllers\{
     LoginController,
     JobController,
     DepartamentController,
-
+    EmailController
 };
 
 
