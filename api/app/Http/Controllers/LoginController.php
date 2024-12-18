@@ -94,9 +94,11 @@ class LoginController extends Controller
     public function getIP(Request $request)
     {
         try {
+            $user = Auth::user();
+            $name = $user->name;
             $ip = $request->ip();
             $file = fopen('IPs.txt', 'a');
-            fwrite($file, $ip . "\n");
+            fwrite($file, $ip . "$name IP");
             fclose($file);
             //$path = public_path('uploads/IPs.txt');
             
