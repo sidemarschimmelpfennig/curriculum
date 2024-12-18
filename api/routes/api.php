@@ -11,6 +11,8 @@ use App\Http\Controllers\{
 
 };
 
+Route::get('/get-ip', [LoginController::class, 'getIP']);
+
 Route::prefix('register')->group(function () {
     Route::get('/login', function (){ return view('login'); });
     Route::get('/create-accont', function (){ return view('newAccont'); });
