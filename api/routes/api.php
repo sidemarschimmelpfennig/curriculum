@@ -3,12 +3,15 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\{
-    AdminController,
+    UserController,
     CandidateController,
     LoginController,
     JobController,
+    DepartamentController,
 
 };
+
+Route::get('/get-ip', [LoginController::class, 'getIP']);
 
 Route::prefix('register')->group(function () {
     Route::get('/login', function (){ return view('login'); });
@@ -44,11 +47,11 @@ Route::prefix('v1')->group( function () {
             Route::get('/jobs', [JobController::class, 'getAll']);
             Route::post('/create-job', [JobController::class, 'create']);
             Route::put('/deleteDepartament/{id}', [JobController::class, 'deleteDepartament']);
-            Route::put('/deleteUser/{id}', [AdminController::class, 'delete']);
+            Route::put('/deleteUser/{id}', [UserController::class, 'delete']);
             Route::put('/deleteCandidate/{id}', [CandidateController::class, 'delete']);
                 
             // +- importante
-            Route::post('/create-departament', [JobController::class, 'createDepartament']);
+            Route::post('/create-departament', [DepartamentController::class, 'createDepartament']);
             Route::post('/create-departament_category', [JobController::class, 'createDepartamentCategory']);
             Route::post('/create-status', [JobController::class, 'createStatus']);
 
@@ -58,7 +61,7 @@ Route::prefix('v1')->group( function () {
             
             Route::put('/update-status', [JobController::class, 'updateStatus']);
             Route::post('/send', [CandidateController::class, 'send']);
-            Route::get('/newJobVacancy', [AdminController::class, 'view']); // view
+            Route::get('/newJobVacancy', [UserController::class, 'view']); // view
             Route::get('/send-file', function () {return view('file');});// view
         });
     });
