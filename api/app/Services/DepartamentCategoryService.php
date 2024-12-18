@@ -2,13 +2,13 @@
 
 namespace App\Services;
 
-use App\Repositories\Eloquent\DepartamentRepository;
+use App\Repositories\Eloquent\DepartamentCategoryRepository;
 
-class DepartamentService
+class DepartamentCategoryService
 {
     protected $repository;
 
-    public function __construct(DepartamentRepository $repository)
+    public function __construct(DepartamentCategoryRepository $repository)
     {
         $this->repository = $repository;
 
@@ -20,9 +20,9 @@ class DepartamentService
 
     }
 
-    public function findByDepartament(string $param)
+    public function findByDepartamentCategory(string $param)
     {
-        return $this->repository->findByDepartament($param);
+        return $this->repository->findByDepartamentCategory($param);
         
     }
 

@@ -8,8 +8,7 @@ interface JobRepositoryInterface extends BaseInterface
     // Departament category
     public function getAllDepartament_Categories();
     public function findByCategories(string $param);    
-    public function findDepartament_Categories(string $id);
-
+    
     // Status
     public function getAllStatus();
     public function findByStatus(string $param);
