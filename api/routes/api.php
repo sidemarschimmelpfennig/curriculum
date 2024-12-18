@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\{
     UserController,
     CandidateController,
@@ -11,10 +11,19 @@ use App\Http\Controllers\{
 
 };
 
+
+Route::get('/test-email', function () {
+
+    Mail::raw('Este é um e-mail de teste.', function ($message) {
+        $message->to('roxosgbr@gmail.com')
+                ->subject('Assunto do e-mail');
+    });
+    return 'E-mail enviado com sucesso!';
+});
+
 Route::prefix('register')->group(function () {
     Route::get('/login', function (){ return view('login'); });
     Route::get('/create-accont', function (){ return view('newAccont'); });
-    
     Route::get('/login_method', [LoginController::class, 'getData']);
     Route::get('/logout_method', [LoginController::class, 'logout']);
     Route::post('/create', [CandidateController::class, 'create']);
@@ -29,7 +38,6 @@ Route::prefix('v1')->group( function () {
     Route::prefix('/candidates')->group(function (){
         Route::post('/send', [CandidateController::class, 'send']);
         Route::post('/create', [CandidateController::class, 'create']);
-        
         Route::get('/job/department/{department}', [JobController::class, 'findByDepartment']);
         Route::get('/job/category/{category}', [JobController::class, 'findByDepartmentCategories']);
         Route::get('/job/status/{status}', [JobController::class, 'findByStatus']);
@@ -56,7 +64,6 @@ Route::prefix('v1')->group( function () {
             // - importante
             Route::post('/create-skills', [JobController::class, 'createSkills']);
             Route::post('/create-mobilities', [JobController::class, 'createMobilities']);
-            
             Route::put('/update-status', [JobController::class, 'updateStatus']);
             Route::post('/send', [CandidateController::class, 'send']);
             Route::get('/newJobVacancy', [UserController::class, 'view']); // view
