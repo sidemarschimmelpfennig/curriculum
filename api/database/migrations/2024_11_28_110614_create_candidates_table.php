@@ -16,6 +16,7 @@ return new class extends Migration
 			$table->string('phone');
             $table->text('additional_info', 200)->nullable();
             $table->string('file')->nullable();
+            $table->boolean('active')->default(0);
             $table->boolean('active')->default(1);
             $table->timestamps();
             
