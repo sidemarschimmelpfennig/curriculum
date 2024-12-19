@@ -31,8 +31,8 @@ class StatusUpdatedListener
 
         $settings = Settings::first();
 
+        //$nameStatus = $status;//$this->jobService->findByStatus($status);
         $nameStatus = $this->jobService->findByStatus($status);
-
 
         Config::set('mail.mailers.smtp.host', $settings->smtp_host);
         Config::set('mail.mailers.smtp.port', $settings->smtp_port);
@@ -40,7 +40,7 @@ class StatusUpdatedListener
         Config::set('mail.mailers.smtp.password', $settings->password);
         Config::set('mail.mailers.smtp.encryption', $settings->smtp_encryption);
         Config::set('mail.from.address', $settings->email);
-        Config::set('mail.from.name', 'Nome do Remetente');
+        Config::set('mail.from.name', $settings->email);
 
         $subject = "Atualização do status do currículo.";
         $emailMessage = "Olá {$candidate->full_name}! Estamos entrando em contato através deste e-mail para informar o status do currículo enviado.";
@@ -50,7 +50,7 @@ class StatusUpdatedListener
                 'subject' => $subject,
                 'emailMessage' => $emailMessage,
                 'candidate' => $candidate,
-                'status' => $nameStatus,
+                'status' => $nameStatus->status,
             ], function ($message) use ($candidate, $subject) {
                 $message->to($candidate->email)
                         ->subject($subject);

@@ -26,9 +26,9 @@ class JobService
 
     } 
 
-    public function findByStatus(string $param)
+    public function findByStatus(int $id)
     {
-        return $this->repository->findByStatus($param);
+        return $this->repository->findByStatus($id);
         
     }
 
@@ -59,11 +59,6 @@ class JobService
        
     }
    
-    public function createDepartamentCategory(array $data)
-    {
-        return $this->repository->createDepartamentCategory($data);
-
-    }
     public function createStatus(array $data)
     {
         return $this->repository->createStatus($data);

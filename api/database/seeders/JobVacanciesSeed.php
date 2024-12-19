@@ -49,7 +49,7 @@ class JobVacanciesSeed extends Seeder
         }
         $statuss = [
             [
-                'status' => 'Aberta'
+                'status' => 'Pendente'
             ],
             [
                 'status' => 'Analise'

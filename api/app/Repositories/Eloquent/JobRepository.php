@@ -79,9 +79,9 @@ class JobRepository implements JobRepositoryInterface
 
     }
 
-    public function findByStatus(string $param) 
+    public function findByStatus(int $id) 
     {
-        return JobVacancies::where('status', $param)->first();
+        return Status::where('id', $id)->first();
 
     }
 

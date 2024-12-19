@@ -2,8 +2,9 @@
 
 namespace App\Repositories\Interface;
 
-interface DepartamentRepositoryInterface extends BaseInterface
+interface DepartamentCategoryRepositoryInterface extends BaseInterface
 {
+    
     
 
 }
