@@ -13,9 +13,9 @@ class DepartamentCategoryRepository implements DepartamentCategoryRepositoryInte
 
     }
 
-    public function findByDepartamentCategory(string $param)
+    public function findByDepartamentCategory(int $id)
     {
-        return Departament_Categories::where('departament_categorie', $param)->first();
+        return Departament_Categories::where('id', $id)->first();
     }
 
     public function create(array $data)

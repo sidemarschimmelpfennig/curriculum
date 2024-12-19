@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('smtp_port')->nullable();
             $table->string('email')->nullable();
             $table->string('password')->nullable();
-            $table->string('email')->nullable();
+    
             $table->string('smtp_encryption')->default('null');
             $table->timestamps();
         });

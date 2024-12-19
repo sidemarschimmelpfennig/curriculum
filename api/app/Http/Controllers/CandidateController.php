@@ -6,11 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Services\CandidateService;
-use App\Http\Requests\{
-    CandidateRequest,
-    SendRequest
-    
-};
 
 
 class CandidateController extends Controller
@@ -22,58 +17,42 @@ class CandidateController extends Controller
 
     }
 
-    //public function create(CandidateRequest $request)
-    public function create(Request $request)
+    public function curriculumApply(Request $request)
     {
+        dd('aaa');
+        /*return response()->json($request->all());
+        
         try {
-            //$validated = $request->validated();
-            
-            //$candidate = $this->candidateService->create($validated);
-            $candidate = $this->candidateService->create($request->all());
+            $request->validate([
+                'jobID' => 'required',
+                'candidateID' => 'required|integer',
+                'curriculum' => 'required|file|mimes:pdf,doc,docx'
 
+            ]);
+            
+            $candidateID = $request->input('candidateID');
+            $jobId = $request->input('jobID');
+            $file = $request->file('curriculum');
+           // $job_x_candidate = $this->candidateService->jobApply($candidateID, $jobId, $file);
+        
             return response()->json([
-                'message' => 'Curriculo foi cadastrado com sucesso!',
-                'dados_request' => $request->all(),
-                //'candidate' => $candidate
-                
-            ], 201);    
+                'message' => 'Aplicação criada com sucesso',
+                'jobCandidate' => $job_x_candidate
+
+            ], 200);
     
         } catch (\Throwable $th) {
             return response()->json([
-                'error' => 'Erro ao cadastrar currículo.',
-                'message' => $th->getMessage(),
-                'line' => $th->getLine(),
-                'file' => $th->getFile()
-            ], 500);
-        }
-    }
-
-    public function send(SendRequest  $request) // Envio de arquivo
-    {   
-        try {
-            $request->validated();
-
-            $file = $request->file('file');
-
-            $result = $this->candidateService->send($file);
-            return response()->json([
-                'success' => true,
-                'message' => 'Arquivo enviado com sucesso!',
-                'path' => $result
-            
-            ], 200);
-
-        } catch (\Throwable $th) {
-            return response()->json([
-                'erro' => 'Erro no envio',
+                'message' => 'Não foi possível se candidatar a vaga',
                 'th' => $th->getMessage(),
                 'line' => $th->getLine(),
-                'file' => $th->getfile(),
+                'file' => $th->getFile(),
+
             ], 400);
-        }
+        }*/
     }
 
-    public function downloadFile(CandidateRequest $request)
+    public function downloadFile(Request $request)
     {
         $user = Auth::user();
         //$path = $request->
@@ -104,5 +83,29 @@ class CandidateController extends Controller
                 'file' => $th->getfile(),
             ], 400);
         }
+    }
+
+    public function create(Request $request)
+    {
+        try {
+            $data = $request->validate([
+                'full_name' => 'required|string',
+                'email' => 'required|string',
+                'password' => 'required|string',
+                'phone' => 'required|string',
+                'additional_info' => 'required|string',
+            ]);
+            return $this->candidateService->create($data);
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'erro' => 'Erro ao desativar candidato',
+                'th' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getfile(),
+
+            ], 400);
+        }
+
     }
 }

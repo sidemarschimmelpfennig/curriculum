@@ -22,7 +22,4 @@ interface JobRepositoryInterface extends BaseInterface
     public function findByMobilities(string $param);
     public function findMobilities(int $id);
 
-
-    public function apply(int $userID, int $job_id, object $file);
-
 }

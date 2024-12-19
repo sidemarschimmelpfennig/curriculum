@@ -167,23 +167,7 @@ class JobRepository implements JobRepositoryInterface
         }
     
     }
-
-    public function apply(int $userID, int $job_id, object $file)
-    {
-        $job = JobVacancies::where('id', $job_id)->first();
-        $user = Candidates::where('id', $userID)->first();
-        $file = $this->candidateSendService->send($file);
-
-        return CandidatesVagas::create([
-            'job_id' => $job_id,
-            'job' => $job->name,
-            'candidate_id' => $userID,
-            'full_name' => $user->full_name,
-            'file' => $file 
-            
-        ]);
-
-    }
+    
 
     public function update(int $id, array $data)
     {

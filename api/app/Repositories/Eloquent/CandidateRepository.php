@@ -4,16 +4,45 @@ namespace App\Repositories\Eloquent;
 
 use App\Repositories\Interface\CandidateRepositoryInterface;
 
-use App\Models\Candidates;
+use App\Models\{
+    Candidates,
+    JobVacancies,
+    CandidatesVagas
+
+};
+use App\Services\CandidateService;
 use Illuminate\Support\Facades\Hash;
 
 class CandidateRepository implements CandidateRepositoryInterface
 {
+    protected $candidateSendService;
+
+    public function __construct(CandidateService $candidateSendService)
+    {
+        $this->candidateSendService = $candidateSendService;
+    }
+
     public function getAll()
     {
 
     }
-    
+
+    public function jobpApply(int $candidateID, int $jobId, object $pathfile)
+    {
+        $user = Candidates::where('id', $candidateID)->first();
+        $job = JobVacancies::where('id', $jobId)->first();
+        
+        return CandidatesVagas::create([
+            'job_id' => $jobId,
+            'job' => $job->name,
+            'candidate_id' => $candidateID,
+            'full_name' => $user->full_name,
+            'file' => $pathfile 
+            
+        ]);
+
+    }
+
     public function create(array $data){
         return Candidates::create([
             'full_name' => $data['full_name'],
@@ -32,7 +61,7 @@ class CandidateRepository implements CandidateRepositoryInterface
         
     }
 
-    public function update(int $id)
+    public function update(int $id, array $data)
     {
 
     }

@@ -2,7 +2,8 @@
 
 namespace App\Repositories\Interface;
 
-interface DepartamentCategoryRepositoryInterface extends BaseInterface
-{
-    public function findByDepartamentCategory(string $param);
+interface DepartamentRepositoryInterface extends BaseInterface
+{    
+    public function findByDepartament(int $id);
+
 }
