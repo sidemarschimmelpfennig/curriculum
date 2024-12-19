@@ -11,6 +11,8 @@ use App\Http\Controllers\{
     EmailController
 };
 
+Route::get('/settings', [EmailController::class, 'showForm'])->name('email.form');
+Route::put('/settings', [EmailController::class, 'update'])->name('email.update');
 
 Route::get('/test-email', function () {
 
