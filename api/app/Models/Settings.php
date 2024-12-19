@@ -16,4 +16,6 @@ class Settings extends Model
         'email',
         'smtp_encryption',
     ];
+
+    protected $hidden = ['password'];
 }
