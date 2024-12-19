@@ -15,6 +15,7 @@ use App\{
     Services\JobService
 
 };
+use Illuminate\Support\Facades\Log;
 
 class JobController extends Controller
 {
@@ -29,18 +30,13 @@ class JobController extends Controller
     {
         try {
             $jobs = $this->jobService->getAll();
-            if(count($jobs) <= 0 )
-            {
-                return response()->json([
-                    'message' => 'Sem vagas abertas'
-                ]);    
-
-            } 
             
             return response()->json([
                 'message' => 'Todas as vagas',
                 'jobs' => $jobs
             ]);
+
+            Log::info('Memória usada: '. memory_get_usage(true));
 
         } catch (\Throwable $th) {
             return response()->json([
@@ -126,7 +122,7 @@ class JobController extends Controller
 
     public function apply(Request $request)
     {
-        
+        dump('Linha 125');
     }
 
     public function createStatus(JobRequest $request)
@@ -198,6 +194,10 @@ class JobController extends Controller
                 'file' => $th->getFile(),
 
             ], 400);
+
+            //Log::info('Uso de memória');
         }    
     } // Criar novos status se necessários
+
+    
 }

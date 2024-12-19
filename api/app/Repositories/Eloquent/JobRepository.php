@@ -37,12 +37,12 @@ class JobRepository implements JobRepositoryInterface
 
     public function getAll() 
     {
-        return JobVacancies::all();
+        return JobVacancies::paginate(10);
     }
 
     public function getAllDepartament_Categories()
     { 
-        return Departament_Categories::all(); 
+        return Departament_Categories::paginate(10); 
 
     }
     public function findDepartament_Categories(string $id)
@@ -53,7 +53,7 @@ class JobRepository implements JobRepositoryInterface
 
     public function getAllStatus()
     { 
-        return Status::all(); 
+        return Status::paginate(10); 
     }
 
     public function findStatus(string $id)
@@ -150,7 +150,7 @@ class JobRepository implements JobRepositoryInterface
         $job = JobVacancies::where('id', $id)->first();        
         if ($job){
             if ($newStatus == 1) {
-                return $job->update(['status' => 'Em analise']);
+                return $job->update(['status' => 'Em análise']);
 
             } else if ($newStatus == 2) {
                 return $job->update(['status' => 'Andamento']);

@@ -1,0 +1,10 @@
+[2024-12-19 11:33:54] local.DEBUG: From: Laravel <hello@example.com>
+To: joaolodi01@gmail.com
+Subject: Assunto do e-mail
+MIME-Version: 1.0
+Date: Thu, 19 Dec 2024 11:33:54 +0000
+Message-ID: <15d4f924197152d233382ece1a5d0743@example.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Este é um e-mail de teste.  

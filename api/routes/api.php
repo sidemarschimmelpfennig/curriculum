@@ -10,7 +10,7 @@ use App\Http\Controllers\{
     DepartamentController,
     EmailController
 };
-
+use Illuminate\Support\Facades\Log;
 
 Route::get('/test-email', function () {
 
@@ -20,16 +20,21 @@ Route::get('/test-email', function () {
     Mail::raw('Este é um e-mail de teste.', function ($message) {
         $message->to('joaolodi01@gmail.com')
                 ->subject('Assunto do e-mail');
+            
 
+        
     });
 
     return 'E-mail enviado com sucesso!';
 });
 
+Route::get('/jobs', [JobController::class, 'getAll']);
+
 Route::prefix('v1')->group( function () {
     Route::get('/jobs', [JobController::class, 'getAll']);
     Route::post('/create', [CandidateController::class, 'create']);
     Route::post('/job-apply', [CandidateController::class, 'curriculumApply']);
+    Route::get('/apply', [JobController::class, 'apply']);
 
     Route::get('/login', [LoginController::class, 'getData']);
     Route::get('/logout', [LoginController::class, 'logout']);

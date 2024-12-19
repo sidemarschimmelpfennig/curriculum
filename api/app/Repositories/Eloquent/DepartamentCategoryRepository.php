@@ -9,7 +9,7 @@ class DepartamentCategoryRepository implements DepartamentCategoryRepositoryInte
 {
     public function getAll()
     {
-        return Departament_Categories::all();
+        return Departament_Categories::paginate(10);
 
     }
 
