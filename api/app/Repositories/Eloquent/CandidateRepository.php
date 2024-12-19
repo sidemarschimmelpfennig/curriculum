@@ -32,7 +32,7 @@ class CandidateRepository implements CandidateRepositoryInterface
         
     }
 
-    public function update(int $id)
+    public function update(int $id, array $data)
     {
 
     }

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Models\Settings;
+use App\Models\Candidates;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class EmailController extends Controller
 {

@@ -11,9 +11,10 @@ class CandidateSeeder extends Seeder
 {
     public function run(): void
     {
+        
         $candidate = [
-            'full_name' => 'Gabriel Kochem',
-            'email' => 'gabikochem55@gmail.com',
+            'full_name' => 'Lodi',
+            'email' => 'joaolodi01@gmail.com',
             'password' => Hash::make('g'),
             'phone' => '+55 49 999482859',
             'additional_info' => 'Dev PHP'
