@@ -13,7 +13,7 @@ class CandidatesVagas extends Model
 {
     use HasFactory;
 
-    protected $table = 'candidates_vagas'; // Nome da tabela no banco de dados
+    protected $table = 'candidates_vagas'; 
 
     protected $fillable = [
         'job_id',

@@ -19,6 +19,7 @@ use App\Models\{
     Candidates,
     
 };
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -88,5 +89,28 @@ class LoginController extends Controller
             'message' => 'Usuário deslogado com sucesso!',  
         ]);
        
+    }
+
+    public function getIP(Request $request)
+    {
+        try {
+            $user = Auth::user();
+            $name = $user->name;
+            $ip = $request->ip();
+            $file = fopen('IPs.txt', 'a');
+            fwrite($file, $ip . "$name IP");
+            fclose($file);
+            //$path = public_path('uploads/IPs.txt');
+            
+        } catch (\Throwable $th) {
+            return response()->json([
+                'erro' => 'Erro ao pegar o IP',
+                'th' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getfile(),
+            ], 400);
+        }
+        
+
     }
 }
