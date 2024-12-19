@@ -10,11 +10,11 @@ use App\Http\Controllers\{
     DepartamentController,
     EmailController
 };
+use App\Listeners\StatusUpdatedListener;
 
 // Rotas de E-mail
 Route::get('/settings', [EmailController::class, 'showForm'])->name('email.form');
 Route::put('/settings', [EmailController::class, 'update'])->name('email.update');
-Route::get('/send', [EmailController::class, 'SendEmail']);
 Route::put('/status/{candidateId}', [CandidateController::class, 'updateStatus']);
 
 // Rotas de Login

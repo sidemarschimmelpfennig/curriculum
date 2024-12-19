@@ -59,7 +59,7 @@ class CandidateController extends Controller
             ], 404);
         }
 
-        $newStatus = $request->input('status');
+        $newStatus = $request->input('status_id');
         $candidate->status = $newStatus;
         $candidate->save();
 
@@ -70,7 +70,7 @@ class CandidateController extends Controller
         ], 200);
     }
 
-    public function send(SendRequest  $request)
+    /*public function send(SendRequest  $request)
     {   
         try {
             $request->validated();
@@ -103,7 +103,7 @@ class CandidateController extends Controller
 
         //return response()->download($directory);
 
-    }
+    }*/
 
     public function delete(int $id)
     {
