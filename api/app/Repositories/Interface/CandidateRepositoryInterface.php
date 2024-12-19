@@ -6,6 +6,6 @@ interface CandidateRepositoryInterface extends BaseInterface
 {
     //public function send(object $file, array $request); 
 
-    public function create(array $data);
+    
 
 }

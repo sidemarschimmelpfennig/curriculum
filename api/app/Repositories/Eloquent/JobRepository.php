@@ -16,19 +16,23 @@ use App\Models\{
 };
 use App\Services\CandidateService;
 use App\Services\DepartamentService;
+use App\Services\DepartamentCategoryService;
 
 class JobRepository implements JobRepositoryInterface
 {
     protected $candidateSendService;
     protected $departamentService;
+    protected $departamentCategoryService;
 
     public function __construct(
         CandidateService $candidateSendService,
-        DepartamentService $departamentService
-
+        DepartamentService $departamentService,
+        DepartamentCategoryService $departamentCategoryService
+        
     ){
         $this->candidateSendService = $candidateSendService;
         $this->departamentService = $departamentService;
+        $this->departamentCategoryService = $departamentCategoryService;
     }
 
     public function getAll() 
@@ -94,9 +98,9 @@ class JobRepository implements JobRepositoryInterface
 
     public function create(array $validateData)
     {
-        //return JobVacancies::create($validateData);
         $departament = $this->departamentService->findByDepartament($validateData['departament_id']);
-        $departament_categories = $this->findDepartament_Categories($validateData['departament_categories_id']);
+        $departament_categories = $this->departamentCategoryService->findByDepartamentCategory($validateData['departament_categories_id']);
+
         $status = $this->findStatus($validateData['status_id']);
         $skills = $this->findSkills($validateData['skills_id']);
         $mobilities = $this->findMobilities($validateData['mobilities_id']);   
@@ -121,12 +125,6 @@ class JobRepository implements JobRepositoryInterface
             'status' => $status->status
 
         ]);
-        
-    }
-
-    public function createDepartamentCategory(array $validateData)
-    {
-        return Departament_Categories::create($validateData);
         
     }
 
@@ -169,23 +167,7 @@ class JobRepository implements JobRepositoryInterface
         }
     
     }
-
-    public function apply(int $userID, int $job_id, object $file)
-    {
-        $job = JobVacancies::where('id', $job_id)->first();
-        $user = Candidates::where('id', $userID)->first();
-        $file = $this->candidateSendService->send($file);
-
-        return CandidatesVagas::create([
-            'job_id' => $job_id,
-            'job' => $job->name,
-            'candidate_id' => $userID,
-            'full_name' => $user->full_name,
-            'file' => $file 
-            
-        ]);
-
-    }
+    
 
     public function update(int $id, array $data)
     {

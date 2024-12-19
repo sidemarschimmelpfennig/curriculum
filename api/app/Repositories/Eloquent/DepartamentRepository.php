@@ -19,9 +19,9 @@ class DepartamentRepository implements DepartamentRepositoryInterface
         
     }
 
-    public function findByDepartament(string $param)
+    public function findByDepartament(int $id)
     {
-        return Departament::where('departament', $param)->first();
+        return Departament::where('id', $id)->first();
         
     }
 
@@ -38,4 +38,5 @@ class DepartamentRepository implements DepartamentRepositoryInterface
         ]);
         
     }
+
 }

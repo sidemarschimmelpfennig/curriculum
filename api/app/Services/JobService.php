@@ -59,11 +59,7 @@ class JobService
        
     }
    
-    public function createDepartamentCategory(array $data)
-    {
-        return $this->repository->createDepartamentCategory($data);
-
-    }
+ 
     public function createStatus(array $data)
     {
         return $this->repository->createStatus($data);
@@ -85,11 +81,4 @@ class JobService
         return $this->repository->updateStatus($id, $newStatus);
 
     }
-
-    public function apply(int $userID, int $job_id, object $file)
-    {
-        return $this->repository->apply($userID, $job_id, $file);
-
-    }
-
 }

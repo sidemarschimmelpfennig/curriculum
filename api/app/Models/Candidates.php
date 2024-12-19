@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\StatusUpdatedEvent;
 use Illuminate\Database\{
     Eloquent\Factories\HasFactory,
     Eloquent\Model
@@ -24,7 +25,8 @@ class Candidates extends Model
         'phone',
         'additional_info',
         'file',
-        'active',
+        'status',
+        'active'
         
     ];
 
@@ -33,5 +35,15 @@ class Candidates extends Model
 		'created_at',
         
     ];
+
+    public static function boot()
+    {
+        parent::boot();
+        static::updated(function ($candidate) {
+            if ($candidate->status == 'Análise') {
+                event(new StatusUpdatedEvent($candidate));
+            }
+        });
+    }
 
 }
