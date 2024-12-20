@@ -19,66 +19,33 @@ class JobService
         return $this->repository->getAll();
 
     }
-    
-    public function findByCategories(string $param)
-    {
-        return $this->repository->findByCategories($param);
 
-    } 
-
-    public function findByStatus(string $param)
+    public function create(array $data)
     {
-        return $this->repository->findByStatus($param);
+        return $this->repository->create($data);
         
     }
 
-    public function findBySkills(string $param)
+    public function update(int $id, int $data)
     {
-        return $this->repository->findBySkills($param);
-    }    
-    
-    public function findByMobilities(string $param)
-    {
-        return $this->repository->findBySkills($param);
-    }
- 
-    public function getAllDepartament_Categories()
-    {
-        return $this->repository->getAllDepartament_Categories(); 
 
-    }
-    public function getAllgetAllStatus()
-    {
-        return $this->repository->getAllStatus(); 
-
-    }
-
-    public function createJob(array $validateData) 
-    {
-        return $this->repository->create($validateData);
-       
-    }
-   
- 
-    public function createStatus(array $data)
-    {
-        return $this->repository->createStatus($data);
-
-    }
-
-    public function createSkills(array $data)
-    {
-        return $this->repository->createSkills($data);
     }
     
-    public function createMobilities(array $data)
-    {
-        return $this->repository->createMobilities($data);
-    }
-
     public function updateStatus(int $id, int $newStatus)
     {
         return $this->repository->updateStatus($id, $newStatus);
 
     }
+
+    public function findID(int $id)
+    {
+        return $this->repository->findID($id);
+    }
+
+    public function delete(int $id)
+    {
+        return $this->repository->delete($id);
+
+    }
+    
 }

@@ -9,31 +9,27 @@ class DepartamentCategoryRepository implements DepartamentCategoryRepositoryInte
 {
     public function getAll()
     {
-        return Departament_Categories::paginate(10);
-
-    }
-
-    public function findByDepartamentCategory(int $id)
-    {
-        return Departament_Categories::where('id', $id)->first();
+        
     }
 
     public function create(array $data)
     {
-        return Departament_Categories::create($data);
+        
     }
 
-    public function delete(int $id)
+    public function findID(int $id)
     {
-        return Departament_Categories::where('id', $id)->update([
-            'active' => false
-
-        ]);
+        
     }
 
     public function update(int $id, array $data)
     {
-        return Departament_Categories::where('id', $id)->update($data);
+        
+    }
+
+    public function delete(int $id)
+    {
+        
     }
 
 }

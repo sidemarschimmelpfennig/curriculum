@@ -10,6 +10,8 @@ use Illuminate\{
 
 use App\{
     Http\Controllers\Controller,
+    Http\Requests\JobRequest,
+
     Services\JobService
 
 };
@@ -46,6 +48,21 @@ class JobController extends Controller
         }
     }
 
+    public function findByStatus(string $param)
+    {
+        try {
+            return response()->json($this->jobService->findByStatus($param));
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'Erro ao carregar as vagas', 
+                'th' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getFile(),
+
+            ], 400);
+        }
+    }
+
     public function create(Request $request)
     //public function create(JobRequest $request) // <- Se não houver um campo necessário, vai retornar 404
     { 
@@ -59,8 +76,11 @@ class JobController extends Controller
                 'skills_id' => 'integer',
                 'mobilities_id' => 'integer',
             ]);
+           
+            //$validatedData = $request->validated();
 
-            $job = $this->jobService->create($validatedData);
+            //$job = $this->jobService->createJob($request->all());
+            $job = $this->jobService->createJob($validatedData);
 
             return response()->json([
                 'success' => true,
@@ -94,33 +114,90 @@ class JobController extends Controller
         } catch (\Throwable $th) {
             return response()->json([
                 'message' => 'Alteração negada!',
-                'th' => $th->getMessage(),
-                'line' => $th->getLine(),
-                'file' => $th->getFile(),
+                'th' => $th,
                 
             ], 400);
         }
     } // <- Aleteração de status ou demais campos da vaga criada
 
-    public function delete(int $id)
+    public function apply(Request $request)
     {
-        try {
-            $this->jobService->delete($id);
-            $job = $this->jobService->findID($id);
-            return response()->json([
-                'message' => 'Vaga desativada com sucesso',
-                'job' => $job
+        dump('Linha 125');
+    }
 
-            ]);
+    public function createStatus(JobRequest $request)
+    { 
+        try {
+            $validatedData = $request->validated();
+
+            $status = $this->jobService->createStatus($validatedData);
+
+            return response()->json([
+                'message' => 'Status criado com sucesso!',
+                'status' => $status
+                
+            ], 201);
+            
         } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'Não foi possível desativar a vaga',
+                'message' => 'Não foi possível criar a vaga',
                 'th' => $th->getMessage(),
                 'line' => $th->getLine(),
                 'file' => $th->getFile(),
-            ]);
-        }
-    }
+
+            ], 400);
+        }    
+    } // Criar novos status se necessário
+
+    public function createSkills(JobRequest  $request)
+    { 
+        try {
+            $validatedData = $request->validated();
+
+            $skills = $this->jobService->createSkills($validatedData);
+
+            return response()->json([
+                'message' => 'Status criado com sucesso!',
+                'skills' => $skills
+                
+            ], 201);
+            
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'Não foi possível criar a vaga',
+                'th' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getFile(),
+
+            ], 400);
+        }    
+    } // Criar novos status se necessário
+
+    public function createMobilities(JobRequest  $request)
+    { 
+        try {
+            $validatedData = $request->validated();
+            
+            $mobilities = $this->jobService->createMobilities($validatedData);
+
+            return response()->json([
+                'message' => 'Status criado com sucesso!',
+                'mobilities' => $mobilities
+                
+            ], 201);
+            
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'Não foi possível criar a vaga',
+                'th' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getFile(),
+
+            ], 400);
+
+            //Log::info('Uso de memória');
+        }    
+    } // Criar novos status se necessários
 
     
 }
