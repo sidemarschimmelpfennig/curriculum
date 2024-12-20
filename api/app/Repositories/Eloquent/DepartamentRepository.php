@@ -3,9 +3,10 @@
 namespace App\Repositories\Eloquent;
 
 use App\Models\Departament;
-use App\Repositories\Interface\DepartamentRepositoryInterface;
+use App\Repositories\Interface\DepartamentInterface;
 
-class DepartamentRepository implements DepartamentRepositoryInterface
+class DepartamentRepository implements DepartamentInterface
+
 {
     public function getAll()
     {
@@ -13,15 +14,20 @@ class DepartamentRepository implements DepartamentRepositoryInterface
 
     }
 
-    public function create(array $data)
-    {
-        //return Departament::create($data);
-        
-    }
-
     public function findByDepartament(int $id)
     {
         return Departament::where('id', $id)->first();
+        
+    }
+
+    public function findID(int $id)
+    {
+        
+    }
+
+    public function create(array $data)
+    {
+        return Departament::create($data);
         
     }
 
@@ -38,5 +44,6 @@ class DepartamentRepository implements DepartamentRepositoryInterface
         ]);
         
     }
+
 
 }

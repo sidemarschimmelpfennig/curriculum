@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\StatusUpdatedEvent;
+use App\Models\Candidates;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
 use App\Services\CandidateService;
 
 
 class CandidateController extends Controller
 {
-    private $candidateService;
+    protected $candidateService;
     public function __construct(CandidateService $candidateService)
     {
         $this->candidateService = $candidateService;
@@ -107,5 +108,26 @@ class CandidateController extends Controller
             ], 400);
         }
 
+    }
+
+    public function updateStatus(Request $request, $candidateID)
+    {
+        $candidate = Candidates::find($candidateID);
+
+        if (!$candidate){
+            return response()->json([
+                'message' => 'Candidato não encontrado',
+            ], 404);
+        }
+
+        $newStatus = $request->input('status_id');
+        $candidate->status = $newStatus;
+        $candidate->save();
+
+        event(new StatusUpdatedEvent($candidate, $newStatus));
+
+        return response()->json([
+            'message' => 'Status atualizado com sucesso!',
+        ], 200);
     }
 }

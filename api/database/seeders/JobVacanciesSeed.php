@@ -35,13 +35,13 @@ class JobVacanciesSeed extends Seeder
 
         $departament_categories = [
             [
-                'departament_categorie' => 'FrontEnd'
+                'departament_category' => 'FrontEnd'
             ],  
             [
-                'departament_categorie' => 'BackEnd'
+                'departament_category' => 'BackEnd'
             ],
             [
-                'departament_categorie' => 'Auxiliar'
+                'departament_category' => 'Auxiliar'
             ]
         ];
         foreach ($departament_categories as $departament_categorie) {
@@ -49,7 +49,7 @@ class JobVacanciesSeed extends Seeder
         }
         $statuss = [
             [
-                'status' => 'Aberta'
+                'status' => 'Pendente'
             ],
             [
                 'status' => 'Analise'

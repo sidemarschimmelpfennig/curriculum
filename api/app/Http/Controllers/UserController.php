@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Services\UserService;
-
-use App\Http\Requests\UserRequest;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -34,11 +33,16 @@ class UserController extends Controller
         }
     }
 
-    public function create(UserRequest $request)
+    public function create(Request $request)
     {
-        $validated = $request->validated();
+        $data = $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|string',
+            'password' => 'required|string'
+            
+        ]);
 
-        $user = $this->userService->create($validated);
+        $user = $this->userService->create($data);
         return response()->json([
             'message' => 'Erro ao criar usuário!',
             'user' => $user,

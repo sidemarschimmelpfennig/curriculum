@@ -9,7 +9,7 @@ class JobService
     protected $repository;
 
     public function __construct(JobRepository $repository)
-    {
+{
         $this->repository = $repository;
 
     }
@@ -20,17 +20,12 @@ class JobService
 
     }
 
-    public function create(array $data)
+    public function create(array $validateData) 
     {
-        return $this->repository->create($data);
-        
+        return $this->repository->create($validateData);
+       
     }
-
-    public function update(int $id, int $data)
-    {
-
-    }
-    
+   
     public function updateStatus(int $id, int $newStatus)
     {
         return $this->repository->updateStatus($id, $newStatus);

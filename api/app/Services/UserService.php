@@ -2,13 +2,12 @@
 
 namespace App\Services;
 
-use App\Repositories\Eloquent\AdminRepository;
+use App\Repositories\Eloquent\UserRepository;
 use Illuminate\Support\Facades\Hash;
-
 class UserService
 {
     protected $repository;
-    public function __construct(AdminRepository $repository)
+    public function __construct(UserRepository $repository)
     {
         $this->repository = $repository;
 

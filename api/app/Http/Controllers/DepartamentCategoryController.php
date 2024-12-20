@@ -2,22 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\DepartamentService;
+use App\Services\DepartamentCategoryService;
 use Illuminate\Http\Request;
 
-class DepartamentController extends Controller
+class DepartamentCategoryController extends Controller
 {
-    protected $departamentService;
-    public function __construct(DepartamentService $departamentService)
+    protected $departamentCategoryService;
+    public function __construct(DepartamentCategoryService $departamentCategoryService)
     {
-        $this->departamentService = $departamentService;
+        $this->departamentCategoryService = $departamentCategoryService;
 
     }
 
     public function getAll()
     {
         try {
-            $departaments = $this->departamentService->getAll();
+            $departaments = $this->departamentCategoryService->getAll();
             if(count($departaments) <= 0)
             {   
                 return response()->json('Sem departamentos encontrados');
@@ -48,13 +48,13 @@ class DepartamentController extends Controller
     {
         try {
             $data = $request->validate([
-                'departament' => 'required|string'
+                'departament_category' => 'required|string'
                 
             ]);
     
             return response()->json([
                 'message' => 'Departamento criado com sucesso!',
-                'departament' => $this->departamentService->create($data)
+                'departament' => $this->departamentCategoryService->create($data)
             
             ]);
 
@@ -76,7 +76,7 @@ class DepartamentController extends Controller
                 'departament' => 'required|string'
             ]);
             
-            $departament = $this->departamentService->update($id, $data);
+            $departament = $this->departamentCategoryService->update($id, $data);
 
             return response()->json([
                 'message' => 'Departamento alterado com sucesso!',
@@ -92,9 +92,9 @@ class DepartamentController extends Controller
     public function delete(int $id)
     {
         try {
-            $this->departamentService->delete($id);
+            $this->departamentCategoryService->delete($id);
             
-            $departament = $this->departamentService->findByDepartament($id);
+            $departament = $this->departamentCategoryService->findByDepartamentCategory($id);
 
             return response()->json([
                 'message' => 'Departamento desativado com sucesso!',

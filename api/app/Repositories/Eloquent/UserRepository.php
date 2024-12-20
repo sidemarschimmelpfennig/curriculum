@@ -2,11 +2,11 @@
 
 namespace App\Repositories\Eloquent;
 
-use App\Repositories\Interface\UserRepositoryInterface;
+use App\Repositories\Interface\UserInterface;
 
 use App\Models\User;
 
-class UserRepository implements UserRepositoryInterface
+class UserRepository implements UserInterface
 {
     public function getAll(){
         return User::all();       

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\{
     Http\Request,
-    Support\Facades\Auth
     
 };
 
@@ -14,10 +13,11 @@ use App\{
 
 };
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class JobController extends Controller
 {
-    private $jobService;
+    protected $jobService;
 
     public function __construct(JobService $jobService)
     {
@@ -26,16 +26,9 @@ class JobController extends Controller
 
     public function getAll()
     {
-        try {
-            $jobs = $this->jobService->getAll();
-            
-            return response()->json([
-                'message' => 'Todas as vagas',
-                'jobs' => $jobs
-            ]);
-
-            Log::info('Memória usada: '. memory_get_usage(true));
-
+        try {    
+            return response()->json($this->jobService->getAll());
+        
         } catch (\Throwable $th) {
             return response()->json([
                 'message' => 'Erro ao carregar as vagas', 
@@ -47,10 +40,9 @@ class JobController extends Controller
     }
 
     public function create(Request $request)
-    //public function create(JobRequest $request) // <- Se não houver um campo necessário, vai retornar 404
     { 
         try {
-            $validatedData = $request->validate([
+            $data = $request->validate([
                 'name' => 'string',
                 'description' => 'string',
                 'departament_id' => 'integer',
@@ -59,8 +51,8 @@ class JobController extends Controller
                 'skills_id' => 'integer',
                 'mobilities_id' => 'integer',
             ]);
-
-            $job = $this->jobService->create($validatedData);
+        
+            $job = $this->jobService->create($data);
 
             return response()->json([
                 'success' => true,
@@ -100,6 +92,11 @@ class JobController extends Controller
                 
             ], 400);
         }
+
+        Mail::raw('Teste de envio direto do controller.', function ($message) use ($candidate) {
+            $message->to($candidate->email)
+                    ->subject('Teste de E-mail');
+        });
     } // <- Aleteração de status ou demais campos da vaga criada
 
     public function delete(int $id)
@@ -122,5 +119,4 @@ class JobController extends Controller
         }
     }
 
-    
 }

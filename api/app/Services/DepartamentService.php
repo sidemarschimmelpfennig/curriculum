@@ -2,9 +2,13 @@
 
 namespace App\Services;
 
-use App\Repositories\Eloquent\DepartamentRepository;
+use App\Repositories\{
+    Eloquent\DepartamentRepository,
 
-class DepartamentService
+    Interface\DepartamentInterface
+};
+
+class DepartamentService implements DepartamentInterface
 {
     protected $repository;
 
@@ -20,9 +24,14 @@ class DepartamentService
 
     }
 
-    public function findByDepartament(string $param)
+    public function findByDepartament(int $id)
     {
-        return $this->repository->findByDepartament($param);
+        return $this->repository->findByDepartament($id);
+        
+    }
+
+    public function findID(int $id)
+    {
         
     }
 

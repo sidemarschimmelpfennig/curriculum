@@ -36,14 +36,4 @@ class Candidates extends Model
         
     ];
 
-    public static function boot()
-    {
-        parent::boot();
-        static::updated(function ($candidate) {
-            if ($candidate->status == 'Análise') {
-                event(new StatusUpdatedEvent($candidate));
-            }
-        });
-    }
-
 }
