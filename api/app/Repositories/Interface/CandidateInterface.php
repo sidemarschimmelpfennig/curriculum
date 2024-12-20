@@ -2,10 +2,8 @@
 
 namespace App\Repositories\Interface;
 
-interface CandidateRepositoryInterface extends BaseInterface
+interface CandidateInterface extends BaseInterface
 {
     //public function send(object $file, array $request); 
-
-    public function create(array $data);
 
 }

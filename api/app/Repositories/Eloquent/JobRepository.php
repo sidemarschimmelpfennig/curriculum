@@ -2,44 +2,36 @@
 
 namespace App\Repositories\Eloquent;
 
-use App\Repositories\Interface\JobRepositoryInterface;
+use App\Repositories\Interface\JobInterface;
 
 use App\Models\{
-    JobVacancies, // o que importa
-    Candidates, // o que importa
-    CandidatesVagas, // o que importa
-    Departament_Categories, // ignorar 
-    Status, // ignorar
-    Mobilities, // ignorar
-    Skills, // ignorar
+    JobVacancies,
 
 };
-use App\Services\CandidateService;
-use App\Services\DepartamentService;
-use App\Services\DepartamentCategoryService;
 
-class JobRepository implements JobRepositoryInterface
+use App\Services\{
+    DepartamentService,
+    DepartamentCategoryService
+};
+class JobRepository implements JobInterface
 {
-    protected $candidateSendService;
-    protected $departamentService;
-    protected $departamentCategoryService;
+    private $departamentService;
+    private $departamentCategoriesService;
 
     public function __construct(
-        CandidateService $candidateSendService,
         DepartamentService $departamentService,
-        DepartamentCategoryService $departamentCategoryService
-        
+        DepartamentCategoryService $departamentCategoriesService
     ){
-        $this->candidateSendService = $candidateSendService;
         $this->departamentService = $departamentService;
-        $this->departamentCategoryService = $departamentCategoryService;
+        $this->departamentCategoriesService = $departamentCategoriesService;
     }
 
     public function getAll() 
     {
-        return JobVacancies::all();
+        return JobVacancies::all()/*->where('active', 1) */;
     }
 
+<<<<<<< HEAD
     public function getAllDepartament_Categories()
     { 
         return Departament_Categories::all(); 
@@ -97,6 +89,9 @@ class JobRepository implements JobRepositoryInterface
     }
 
     public function create(array $validateData)
+=======
+    /*public function create(array $validateData)
+>>>>>>> kochem
     {
         $departament = $this->departamentService->findByDepartament($validateData['departament_id']);
         $departament_categories = $this->departamentCategoryService->findByDepartamentCategory($validateData['departament_categories_id']);
@@ -126,23 +121,18 @@ class JobRepository implements JobRepositoryInterface
 
         ]);
         
-    }
+    }*/
 
-    public function createStatus(array $validateData)
+    public function create(array $data)
     {
-        return Status::create($validateData);
-        
-    }
+        $departament = $this->departamentService->findByDepartament($data['departament_id']);
+        $departament_categories = $this->departamentCategoriesService->findByDepartamentCategory($data['departament_categories_id']);
 
-    public function createSkills(array $data)
-    {
-        return Skills::create($data);
-    } 
-    
-    public function createMobilities(array $data)
-    {
-        return Mobilities::create($data);
-        
+        return [
+            $departament,
+            $departament_categories,
+
+        ];
     }
 
     public function updateStatus(int $id, int $newStatus)
@@ -150,7 +140,7 @@ class JobRepository implements JobRepositoryInterface
         $job = JobVacancies::where('id', $id)->first();        
         if ($job){
             if ($newStatus == 1) {
-                return $job->update(['status' => 'Em analise']);
+                return $job->update(['status' => 'Em análise']);
 
             } else if ($newStatus == 2) {
                 return $job->update(['status' => 'Andamento']);
@@ -167,23 +157,7 @@ class JobRepository implements JobRepositoryInterface
         }
     
     }
-
-    public function apply(int $userID, int $job_id, object $file)
-    {
-        $job = JobVacancies::where('id', $job_id)->first();
-        $user = Candidates::where('id', $userID)->first();
-        $file = $this->candidateSendService->send($file);
-
-        return CandidatesVagas::create([
-            'job_id' => $job_id,
-            'job' => $job->name,
-            'candidate_id' => $userID,
-            'full_name' => $user->full_name,
-            'file' => $file 
-            
-        ]);
-
-    }
+    
 
     public function update(int $id, array $data)
     {

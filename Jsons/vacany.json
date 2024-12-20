@@ -1,0 +1,20 @@
+{
+  "name": "Vaga de trabalho",
+  "description": "aaaaa",
+  "departament_id": 1,
+  "departament_categories_id": 1,
+  "status_id": 1,
+  "skills_id": 1,
+  "mobilities_id": 3
+  
+}
+
+validate:
+'name' => 'required|string',
+'descriptio'  => 'required|string',
+'departament_id' => 'required|integer',
+'departament_categories_id' => 'required|integer', 
+'status_id' => 'required|integer',
+'skills_id' => 'required|integer',
+'mobilities_id' => 'required|integer',
+                

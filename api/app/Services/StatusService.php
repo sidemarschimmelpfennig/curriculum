@@ -2,17 +2,14 @@
 
 namespace App\Services;
 
-use App\Repositories\{
-    Eloquent\DepartamentRepository,
+use App\Repositories\Eloquent\StatusRepository;
+use App\Repositories\Interface\StatusInterface;
 
-    Interface\DepartamentInterface
-};
-
-class DepartamentService implements DepartamentInterface
+class StatusService implements StatusInterface
 {
     protected $repository;
 
-    public function __construct(DepartamentRepository $repository)
+    public function __construct(StatusRepository $repository)
     {
         $this->repository = $repository;
 
@@ -24,9 +21,9 @@ class DepartamentService implements DepartamentInterface
 
     }
 
-    public function findByDepartament(int $id)
+    public function findByStatus(int $id)
     {
-        return $this->repository->findByDepartament($id);
+        return $this->repository->findByStatus($id);
         
     }
 
