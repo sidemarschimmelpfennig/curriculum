@@ -8,16 +8,19 @@ use App\Http\Controllers\{
     
     CandidateController,
     DepartamentCategoryController,
-    EmailController,
 
     JobController,
     DepartamentController,
     MobilitiesController,
+    SettingsController,
     SkillsController
 };
+use App\Listeners\StatusUpdatedListener;
 
-Route::get('/settings', [EmailController::class, 'showForm'])->name('email.form');
-Route::put('/settings', [EmailController::class, 'update'])->name('email.update');
+// Rotas de E-mail
+Route::get('/settings', [SettingsController::class, 'showForm'])->name('email.form');
+Route::put('/settings', [SettingsController::class, 'update'])->name('email.update');
+Route::put('/status/{candidateId}', [CandidateController::class, 'updateStatus']);
 
 Route::get('/jobs', [JobController::class, 'getAll']);
 
@@ -64,20 +67,4 @@ Route::prefix('v1')->group( function () {
         
         });
     //});
-});
-
-
-
-Route::get('/test-email', function () {
-
-    Route::get('/email', [EmailController::class, 'edit']);
-    Route::post('/email', [EmailController::class, 'update']);
-
-    Mail::raw('Este é um e-mail de teste.', function ($message) {
-        $message->to('joaolodi01@gmail.com')
-                ->subject('Assunto do e-mail');
-
-    });
-
-    return 'E-mail enviado com sucesso!';
 });

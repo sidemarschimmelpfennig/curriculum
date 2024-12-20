@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
+            $table->string('smtp_username')->nullable();
             $table->string('smtp_host')->nullable();
             $table->string('smtp_port')->nullable();
             $table->string('email')->nullable();

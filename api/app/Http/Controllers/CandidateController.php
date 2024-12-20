@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\StatusUpdatedEvent;
+use App\Models\Candidates;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
 use App\Services\CandidateService;
 
 

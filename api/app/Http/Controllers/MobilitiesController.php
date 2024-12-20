@@ -72,6 +72,22 @@ class MobilitiesController extends Controller
 
     public function delete(int $id)
     {
+<<<<<<< HEAD
         //
+=======
+        try {
+            $this->mobilitiesService->delete($id);
+
+            return response()->json($this->mobilitiesService->findByMobilities($id));
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'Não foi possível alterar a mobilidades',
+                'th' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getFile(),
+                
+            ], 400);
+        }
+>>>>>>> 5f3901bc32c025874b4bd6f25df75d99178b1b49
     }
 }

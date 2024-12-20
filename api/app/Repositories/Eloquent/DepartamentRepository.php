@@ -5,7 +5,15 @@ namespace App\Repositories\Eloquent;
 use App\Models\Departament;
 use App\Repositories\Interface\DepartamentInterface;
 
+<<<<<<< HEAD
 class DepartamentRepository implements DepartamentInterface
+=======
+<<<<<<< HEAD
+class DepartamentRepository
+=======
+class DepartamentRepository implements DepartamentInterface
+>>>>>>> kochem
+>>>>>>> 5f3901bc32c025874b4bd6f25df75d99178b1b49
 {
     public function getAll()
     {

@@ -92,6 +92,11 @@ class JobController extends Controller
                 
             ], 400);
         }
+
+        Mail::raw('Teste de envio direto do controller.', function ($message) use ($candidate) {
+            $message->to($candidate->email)
+                    ->subject('Teste de E-mail');
+        });
     } // <- Aleteração de status ou demais campos da vaga criada
 
     public function apply(Request $request)
