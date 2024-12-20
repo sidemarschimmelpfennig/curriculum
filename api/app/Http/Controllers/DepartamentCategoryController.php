@@ -48,7 +48,7 @@ class DepartamentCategoryController extends Controller
     {
         try {
             $data = $request->validate([
-                'departament' => 'required|string'
+                'departament_category' => 'required|string'
                 
             ]);
     

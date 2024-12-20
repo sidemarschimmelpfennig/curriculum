@@ -8,7 +8,7 @@ class Departament_Categories extends Model
 {
     protected $table = 'departament_categories';
     protected $fillable = [
-        'departament_categorie',
+        'departament_category',
         'active'
     ];
 

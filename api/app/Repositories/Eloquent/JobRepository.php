@@ -11,19 +11,31 @@ use App\Models\{
 
 use App\Services\{
     DepartamentService,
-    DepartamentCategoryService
+    DepartamentCategoryService,
+    StatusService,
+    SkillsService,
+    MobilitiesService
 };
 class JobRepository implements JobInterface
 {
     private $departamentService;
     private $departamentCategoriesService;
+    private $statusService;
+    private $skillsService;
+    private $mobilitiesService;
 
     public function __construct(
         DepartamentService $departamentService,
-        DepartamentCategoryService $departamentCategoriesService
+        DepartamentCategoryService $departamentCategoriesService,
+        StatusService $statusService,
+        SkillsService $skillsService,
+        MobilitiesService $mobilitiesService
     ){
         $this->departamentService = $departamentService;
         $this->departamentCategoriesService = $departamentCategoriesService;
+        $this->statusService = $statusService;
+        $this->skillsService = $skillsService;
+        $this->mobilitiesService = $mobilitiesService;
     }
 
     public function getAll() 
@@ -31,71 +43,8 @@ class JobRepository implements JobInterface
         return JobVacancies::all()/*->where('active', 1) */;
     }
 
-<<<<<<< HEAD
-    /*public function create(array $validateData)
-=======
-<<<<<<< HEAD
-    public function getAllDepartament_Categories()
-    { 
-        return Departament_Categories::all(); 
 
-    }
-    public function findDepartament_Categories(string $id)
-    { 
-        return Departament_Categories::find($id); 
-
-    }
-
-    public function getAllStatus()
-    { 
-        return Status::all(); 
-    }
-
-    public function findStatus(string $id)
-    {
-        return Status::find($id); 
-    }
-
-    public function findSkills(int $id)
-    { 
-        return Skills::find($id); 
-
-    }
-
-    public function findMobilities (int $id)
-    { 
-        return Mobilities::find($id); 
-
-    }
-
-    public function findByCategories(string $param) 
-    {
-        return JobVacancies::where('department_categories', $param)->first();
-
-    }
-
-    public function findByStatus(int $id) 
-    {
-        return Status::where('id', $id)->first();
-
-    }
-
-    public function findBySkills(string $param) 
-    {
-        return Skills::where('skills', $param)->first();
-
-    }
-
-    public function findByMobilities(string $param)
-    {
-        return Mobilities::where('mobilities', $param)->first();
-    }
-
-    public function create(array $validateData)
-=======
-    /*public function create(array $validateData)
->>>>>>> kochem
->>>>>>> 5f3901bc32c025874b4bd6f25df75d99178b1b49
+    /*public function create(array $data)
     {
         $departament = $this->departamentService->findByDepartament($validateData['departament_id']);
         $departament_categories = $this->departamentCategoryService->findByDepartamentCategory($validateData['departament_categories_id']);
@@ -131,12 +80,24 @@ class JobRepository implements JobInterface
     {
         $departament = $this->departamentService->findByDepartament($data['departament_id']);
         $departament_categories = $this->departamentCategoriesService->findByDepartamentCategory($data['departament_categories_id']);
+        $status = $this->statusService->findByStatus($data['status_id']);
+        $skills = $this->skillsService->findBySkill($data['skills_id']);
+        $mobilities = $this->mobilitiesService->findByMobilities($data['mobilities_id']);
 
-        return [
-            $departament,
-            $departament_categories,
-
-        ];
+        return JobVacancies::create([
+            'name' => $data['name'],
+            'description' => $data['description'],
+            'departament_id' => $departament->id,
+            'departament' => $departament->departament,
+            'departament_categories_id' => $departament_categories->id,
+            'departament_categories' => $departament_categories->departament_category,
+            'status_id' => $status->id,
+            'status' => $status->status,
+            'skills_id' => $skills->id,
+            'skills' => $skills->skills,
+            'mobilities_id' => $mobilities->id,
+            'mobilities' => $mobilities->mobilities
+        ]);
     }
 
     public function updateStatus(int $id, int $newStatus)

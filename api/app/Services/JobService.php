@@ -20,7 +20,7 @@ class JobService
 
     }
 
-    public function createJob(array $validateData) 
+    public function create(array $validateData) 
     {
         return $this->repository->create($validateData);
        

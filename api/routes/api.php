@@ -21,8 +21,6 @@ Route::get('/settings', [SettingsController::class, 'showForm'])->name('email.fo
 Route::put('/settings', [SettingsController::class, 'update'])->name('email.update');
 Route::put('/status/{candidateId}', [CandidateController::class, 'updateStatus']);
 
-Route::get('/jobs', [JobController::class, 'getAll']);
-
 Route::prefix('v1')->group( function () {
     dump('Memória em uso: ' . memory_get_usage(true));
     Route::get('/jobs', [JobController::class, 'getAll']);

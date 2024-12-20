@@ -42,7 +42,7 @@ class JobController extends Controller
     public function create(Request $request)
     { 
         try {
-            $validatedData = $request->validate([
+            $data = $request->validate([
                 'name' => 'string',
                 'description' => 'string',
                 'departament_id' => 'integer',
@@ -51,11 +51,8 @@ class JobController extends Controller
                 'skills_id' => 'integer',
                 'mobilities_id' => 'integer',
             ]);
-           
-            //$validatedData = $request->validated();
-
-            //$job = $this->jobService->createJob($request->all());
-            $job = $this->jobService->createJob($validatedData);
+        
+            $job = $this->jobService->create($data);
 
             return response()->json([
                 'success' => true,
