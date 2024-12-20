@@ -5,7 +5,7 @@ namespace App\Repositories\Eloquent;
 use App\Models\Departament_Categories;
 use App\Repositories\Interface\DepartamentCategoryRepositoryInterface;
 
-class DepartamentCategoryRepository implements DepartamentCategoryRepositoryInterface
+class DepartamentCategoryRepository
 {
     public function getAll()
     {

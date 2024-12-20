@@ -32,7 +32,7 @@ class CandidateRepository implements CandidateRepositoryInterface
         
     }
 
-    public function update(int $id)
+    public function update(int $id, array $data)
     {
 
     }
@@ -41,6 +41,12 @@ class CandidateRepository implements CandidateRepositoryInterface
         return Candidates::where('id', $id)->update([
             'active' => false
         ]);
+    }
+
+    public function findByStatus(string $param)
+    {
+        return Candidates::where('status', $param)->first();
+        
     }
 }
 

@@ -5,7 +5,7 @@ namespace App\Repositories\Eloquent;
 use App\Models\Departament;
 use App\Repositories\Interface\DepartamentRepositoryInterface;
 
-class DepartamentRepository implements DepartamentRepositoryInterface
+class DepartamentRepository
 {
     public function getAll()
     {
