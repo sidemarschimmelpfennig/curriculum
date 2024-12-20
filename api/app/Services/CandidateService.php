@@ -2,7 +2,7 @@
 
 namespace App\Services;
 use App\Repositories\Eloquent\CandidateRepository;
-use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Facades\Hash;
 
 class CandidateService

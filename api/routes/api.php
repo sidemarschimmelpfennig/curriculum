@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\{
+    ApplyController,
     UserController,
     LoginController,
     
@@ -27,9 +28,9 @@ Route::prefix('v1')->group( function () {
     Route::post('/create', [CandidateController::class, 'create']);
 
 
-    Route::post('/job-apply', [CandidateController::class, 'curriculumApply']);
+    Route::post('/apply', [ApplyController::class, 'apply']);
     
-    Route::get('/apply', [JobController::class, 'apply']);
+    //Route::get('/apply', [JobController::class, 'apply']);
 
     Route::get('/login', [LoginController::class, 'getData']);
     Route::get('/logout', [LoginController::class, 'logout']);

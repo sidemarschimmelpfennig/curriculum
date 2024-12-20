@@ -42,40 +42,7 @@ class JobRepository implements JobInterface
     {
         return JobVacancies::all()/*->where('active', 1) */;
     }
-
-
-    /*public function create(array $data)
-    {
-        $departament = $this->departamentService->findByDepartament($validateData['departament_id']);
-        $departament_categories = $this->departamentCategoryService->findByDepartamentCategory($validateData['departament_categories_id']);
-
-        $status = $this->findStatus($validateData['status_id']);
-        $skills = $this->findSkills($validateData['skills_id']);
-        $mobilities = $this->findMobilities($validateData['mobilities_id']);   
-
-        return JobVacancies::create([
-            'name' => $validateData['name'],
-            'description' => $validateData['description'],
-
-            'departament_id' => $validateData['departament_id'],
-            'departament' => $departament->departament,
-
-            'departament_categories_id' => $validateData['departament_categories_id'],
-            'departament_categories' => $departament_categories->departament_categorie,
-
-            'skills_id' => $validateData['skills_id'],
-            'skills' => $skills->skills,
-
-            'mobilities_id' => $validateData['mobilities_id'],
-            'mobilities' => $mobilities->mobilities,
-
-            'status_id' => $validateData['status_id'],
-            'status' => $status->status
-
-        ]);
-        
-    }*/
-
+    
     public function create(array $data)
     {
         $departament = $this->departamentService->findByDepartament($data['departament_id']);
@@ -136,6 +103,6 @@ class JobRepository implements JobInterface
 
     public function findID(int $id)
     {
-        
+        return JobVacancies::find($id);
     }
 }

@@ -21,7 +21,7 @@ class CandidateController extends Controller
     public function curriculumApply(Request $request)
     {
         dd('aaa');
-        /*return response()->json($request->all());
+        return response()->json($request->all());
         
         try {
             $request->validate([
@@ -50,7 +50,7 @@ class CandidateController extends Controller
                 'file' => $th->getFile(),
 
             ], 400);
-        }*/
+        }
     }
 
     public function downloadFile(Request $request)
