@@ -65,4 +65,10 @@ class CandidateService
         return $this->repository->delete($id);
         
     }
+
+    public function findByStatus(string $param)
+    {
+        return $this->repository->findByStatus($param);
+        
+    }
 }

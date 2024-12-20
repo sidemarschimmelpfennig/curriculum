@@ -42,5 +42,11 @@ class CandidateRepository implements CandidateRepositoryInterface
             'active' => false
         ]);
     }
+
+    public function findByStatus(string $param)
+    {
+        return Candidates::where('status', $param)->first();
+        
+    }
 }
 

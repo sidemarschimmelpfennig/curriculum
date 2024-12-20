@@ -17,27 +17,32 @@
             @method('PUT')
 
             <div class="form-group">
-                <label for="smtp_host">SMTP Host</label>
+                <label for="smtp_username">Username:</label>
+                <input type="text" class="form-control" id="smtp_username" name="smtp_username" value="{{ old('smtp_username', $settings->smtp_username ?? '') }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="smtp_host">SMTP Host:</label>
                 <input type="text" class="form-control" id="smtp_host" name="smtp_host" value="{{ old('smtp_host', $settings->smtp_host ?? '') }}" required>
             </div>
 
             <div class="form-group">
-                <label for="smtp_port">SMTP Port</label>
+                <label for="smtp_port">SMTP Port:</label>
                 <input type="text" class="form-control" id="smtp_port" name="smtp_port" value="{{ old('smtp_port', $settings->smtp_port ?? '') }}" required>
             </div>
 
             <div class="form-group">
-                <label for="email">Email</label>
+                <label for="email">Email:</label>
                 <input type="email" class="form-control" id="email" name="email" value="{{ old('email', $settings->email ?? '') }}" required>
             </div>
 
             <div class="form-group">
-                <label for="password">Password</label>
+                <label for="password">Password:</label>
                 <input type="password" class="form-control" id="password" name="password" value="{{ old('password', $settings->password ?? '') }}" required>
             </div>
 
             <div class="form-group">
-                <label for="smtp_encryption">SMTP Encryption</label>
+                <label for="smtp_encryption">SMTP Encryption:</label>
                 <input type="text" class="form-control" id="smtp_encryption" name="smtp_encryption" value="{{ old('smtp_encryption', $settings->smtp_encryption ?? '') }}">
             </div>
 

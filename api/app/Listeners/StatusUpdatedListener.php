@@ -5,7 +5,7 @@ namespace App\Listeners;
 
 use App\Models\Settings;
 use App\Events\StatusUpdatedEvent;
-use App\Services\JobService;
+use App\Services\CandidateService;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Queue\InteractsWithQueue;
@@ -14,11 +14,11 @@ use Illuminate\Support\Facades\Config;
 
 class StatusUpdatedListener
 {
-    protected $jobService;
+    protected $candidateService;
     
-    public function __construct(JobService $jobService)
+    public function __construct(CandidateService $candidateService)
     {
-        $this->jobService = $jobService;
+        $this->candidateService = $candidateService;
     }
 
     /**
@@ -32,7 +32,11 @@ class StatusUpdatedListener
         $settings = Settings::first();
 
         //$nameStatus = $status;//$this->jobService->findByStatus($status);
-        $nameStatus = $this->jobService->findByStatus($status);
+        $nameStatus = $this->candidateService->findByStatus($status);
+        if (!$nameStatus){
+            Log::error('Status não encontrado para continuar:' . $status);
+            return;
+        }
 
         Config::set('mail.mailers.smtp.host', $settings->smtp_host);
         Config::set('mail.mailers.smtp.port', $settings->smtp_port);
@@ -40,7 +44,7 @@ class StatusUpdatedListener
         Config::set('mail.mailers.smtp.password', $settings->password);
         Config::set('mail.mailers.smtp.encryption', $settings->smtp_encryption);
         Config::set('mail.from.address', $settings->email);
-        Config::set('mail.from.name', $settings->email);
+        Config::set('mail.from.name', $settings->smtp_username);
 
         $subject = "Atualização do status do currículo.";
         $emailMessage = "Olá {$candidate->full_name}! Estamos entrando em contato através deste e-mail para informar o status do currículo enviado.";
@@ -55,6 +59,8 @@ class StatusUpdatedListener
                 $message->to($candidate->email)
                         ->subject($subject);
             });
+
+            Log::info("E-mail enviado com sucesso para {$candidate->email}.");
         } catch (\Exception $e) {
             Log::error('Erro ao enviar o e-mail: ' . $e->getMessage());
         }

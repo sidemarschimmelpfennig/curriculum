@@ -7,7 +7,7 @@ use App\Models\Candidates;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
-class EmailController extends Controller
+class SettingsController extends Controller
 {
     public function showForm()
     {
@@ -18,6 +18,7 @@ class EmailController extends Controller
     public function update(Request $request)
     {
         $request->validate([
+            'smtp_username' => 'required|string',
             'smtp_host' => 'required|string',
             'smtp_port' => 'required|string',
             'email' => 'required|email',
@@ -27,6 +28,7 @@ class EmailController extends Controller
 
         $settings = Settings::first() ?: new Settings;
 
+        $settings->smtp_username = $request->smtp_username;
         $settings->smtp_host = $request->smtp_host;
         $settings->smtp_port = $request->smtp_port;
         $settings->email = $request->email;
