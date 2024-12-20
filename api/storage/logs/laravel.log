@@ -1,0 +1,1067 @@
+[2024-12-20 02:08:13] local.ERROR: Command "make:contoller" is not defined.
+
+Did you mean one of these?
+    make:cache-table
+    make:cast
+    make:channel
+    make:class
+    make:command
+    make:component
+    make:controller
+    make:enum
+    make:event
+    make:exception
+    make:factory
+    make:interface
+    make:job
+    make:job-middleware
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:notifications-table
+    make:observer
+    make:policy
+    make:provider
+    make:queue-batches-table
+    make:queue-failed-table
+    make:queue-table
+    make:request
+    make:resource
+    make:rule
+    make:scope
+    make:seeder
+    make:session-table
+    make:test
+    make:trait
+    make:view {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"make:contoller\" is not defined.
+
+Did you mean one of these?
+    make:cache-table
+    make:cast
+    make:channel
+    make:class
+    make:command
+    make:component
+    make:controller
+    make:enum
+    make:event
+    make:exception
+    make:factory
+    make:interface
+    make:job
+    make:job-middleware
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:notifications-table
+    make:observer
+    make:policy
+    make:provider
+    make:queue-batches-table
+    make:queue-failed-table
+    make:queue-table
+    make:request
+    make:resource
+    make:rule
+    make:scope
+    make:seeder
+    make:session-table
+    make:test
+    make:trait
+    make:view at D:\\SGBR\\Projeto\\api\\vendor\\symfony\\console\\Application.php:726)
+[stacktrace]
+#0 D:\\SGBR\\Projeto\\api\\vendor\\symfony\\console\\Application.php(284): Symfony\\Component\\Console\\Application->find()
+#1 D:\\SGBR\\Projeto\\api\\vendor\\symfony\\console\\Application.php(193): Symfony\\Component\\Console\\Application->doRun()
+#2 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(198): Symfony\\Component\\Console\\Application->run()
+#3 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1205): Illuminate\\Foundation\\Console\\Kernel->handle()
+#4 D:\\SGBR\\Projeto\\api\\artisan(13): Illuminate\\Foundation\\Application->handleCommand()
+#5 {main}
+"} 
+[2024-12-20 02:08:26] local.ERROR: Command "make:conrtoller" is not defined.
+
+Did you mean one of these?
+    make:cache-table
+    make:cast
+    make:channel
+    make:class
+    make:command
+    make:component
+    make:controller
+    make:enum
+    make:event
+    make:exception
+    make:factory
+    make:interface
+    make:job
+    make:job-middleware
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:notifications-table
+    make:observer
+    make:policy
+    make:provider
+    make:queue-batches-table
+    make:queue-failed-table
+    make:queue-table
+    make:request
+    make:resource
+    make:rule
+    make:scope
+    make:seeder
+    make:session-table
+    make:test
+    make:trait
+    make:view {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"make:conrtoller\" is not defined.
+
+Did you mean one of these?
+    make:cache-table
+    make:cast
+    make:channel
+    make:class
+    make:command
+    make:component
+    make:controller
+    make:enum
+    make:event
+    make:exception
+    make:factory
+    make:interface
+    make:job
+    make:job-middleware
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:notifications-table
+    make:observer
+    make:policy
+    make:provider
+    make:queue-batches-table
+    make:queue-failed-table
+    make:queue-table
+    make:request
+    make:resource
+    make:rule
+    make:scope
+    make:seeder
+    make:session-table
+    make:test
+    make:trait
+    make:view at D:\\SGBR\\Projeto\\api\\vendor\\symfony\\console\\Application.php:726)
+[stacktrace]
+#0 D:\\SGBR\\Projeto\\api\\vendor\\symfony\\console\\Application.php(284): Symfony\\Component\\Console\\Application->find()
+#1 D:\\SGBR\\Projeto\\api\\vendor\\symfony\\console\\Application.php(193): Symfony\\Component\\Console\\Application->doRun()
+#2 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(198): Symfony\\Component\\Console\\Application->run()
+#3 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1205): Illuminate\\Foundation\\Console\\Kernel->handle()
+#4 D:\\SGBR\\Projeto\\api\\artisan(13): Illuminate\\Foundation\\Application->handleCommand()
+#5 {main}
+"} 
+[2024-12-20 02:17:19] local.ERROR: Call to undefined method App\Http\Controllers\CandidateController::updateStatus() {"exception":"[object] (Error(code: 0): Call to undefined method App\\Http\\Controllers\\CandidateController::updateStatus() at D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php:47)
+[stacktrace]
+#0 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(266): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#1 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(212): Illuminate\\Routing\\Route->runController()
+#2 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(808): Illuminate\\Routing\\Route->run()
+#3 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#4 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(51): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#5 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#6 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#7 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(807): Illuminate\\Pipeline\\Pipeline->then()
+#8 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(786): Illuminate\\Routing\\Router->runRouteWithinStack()
+#9 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(750): Illuminate\\Routing\\Router->runRoute()
+#10 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(739): Illuminate\\Routing\\Router->dispatchToRoute()
+#11 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(201): Illuminate\\Routing\\Router->dispatch()
+#12 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#13 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#14 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#15 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#16 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#17 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php(51): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#18 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#19 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#20 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\ValidatePostSize->handle()
+#21 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php(110): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#22 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#23 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php(62): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#24 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#25 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(58): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#26 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#27 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks.php(22): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#28 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks->handle()
+#29 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#30 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(176): Illuminate\\Pipeline\\Pipeline->then()
+#31 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(145): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#32 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1190): Illuminate\\Foundation\\Http\\Kernel->handle()
+#33 D:\\SGBR\\Projeto\\api\\public\\index.php(17): Illuminate\\Foundation\\Application->handleRequest()
+#34 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(23): require_once('...')
+#35 {main}
+"} 
+[2024-12-20 02:20:32] local.ERROR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'smtp_username' in 'field list' (Connection: mariadb, SQL: insert into `settings` (`smtp_username`, `smtp_host`, `smtp_port`, `email`, `password`, `smtp_encryption`, `updated_at`, `created_at`) values (Kochem, smpt.gmail.com, 587, joaolodi01@gmail.com, teervrxwyllqoyyc, null, 2024-12-20 02:20:31, 2024-12-20 02:20:31)) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42S22): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'smtp_username' in 'field list' (Connection: mariadb, SQL: insert into `settings` (`smtp_username`, `smtp_host`, `smtp_port`, `email`, `password`, `smtp_encryption`, `updated_at`, `created_at`) values (Kochem, smpt.gmail.com, 587, joaolodi01@gmail.com, teervrxwyllqoyyc, null, 2024-12-20 02:20:31, 2024-12-20 02:20:31)) at D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:825)
+[stacktrace]
+#0 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(779): Illuminate\\Database\\Connection->runQueryCallback()
+#1 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php(42): Illuminate\\Database\\Connection->run()
+#2 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Processors\\MySqlProcessor.php(35): Illuminate\\Database\\MySqlConnection->insert()
+#3 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3799): Illuminate\\Database\\Query\\Processors\\MySqlProcessor->processInsertGetId()
+#4 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(2051): Illuminate\\Database\\Query\\Builder->insertGetId()
+#5 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1359): Illuminate\\Database\\Eloquent\\Builder->__call()
+#6 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1324): Illuminate\\Database\\Eloquent\\Model->insertAndSetId()
+#7 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1163): Illuminate\\Database\\Eloquent\\Model->performInsert()
+#8 D:\\SGBR\\Projeto\\api\\app\\Http\\Controllers\\SettingsController.php(38): Illuminate\\Database\\Eloquent\\Model->save()
+#9 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php(47): App\\Http\\Controllers\\SettingsController->update()
+#10 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(266): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#11 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(212): Illuminate\\Routing\\Route->runController()
+#12 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(808): Illuminate\\Routing\\Route->run()
+#13 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#14 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(51): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#15 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#16 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#17 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(807): Illuminate\\Pipeline\\Pipeline->then()
+#18 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(786): Illuminate\\Routing\\Router->runRouteWithinStack()
+#19 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(750): Illuminate\\Routing\\Router->runRoute()
+#20 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(739): Illuminate\\Routing\\Router->dispatchToRoute()
+#21 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(201): Illuminate\\Routing\\Router->dispatch()
+#22 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#23 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#24 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#25 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#26 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#27 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php(51): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#28 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#29 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#30 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\ValidatePostSize->handle()
+#31 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php(110): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#32 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#33 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php(62): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#34 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#35 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(58): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#36 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#37 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks.php(22): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#38 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks->handle()
+#39 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#40 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(176): Illuminate\\Pipeline\\Pipeline->then()
+#41 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(145): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#42 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1190): Illuminate\\Foundation\\Http\\Kernel->handle()
+#43 D:\\SGBR\\Projeto\\api\\public\\index.php(17): Illuminate\\Foundation\\Application->handleRequest()
+#44 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(23): require_once('...')
+#45 {main}
+
+[previous exception] [object] (PDOException(code: 42S22): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'smtp_username' in 'field list' at D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php:47)
+[stacktrace]
+#0 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php(47): PDO->prepare()
+#1 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(812): Illuminate\\Database\\MySqlConnection->Illuminate\\Database\\{closure}()
+#2 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(779): Illuminate\\Database\\Connection->runQueryCallback()
+#3 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php(42): Illuminate\\Database\\Connection->run()
+#4 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Processors\\MySqlProcessor.php(35): Illuminate\\Database\\MySqlConnection->insert()
+#5 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3799): Illuminate\\Database\\Query\\Processors\\MySqlProcessor->processInsertGetId()
+#6 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(2051): Illuminate\\Database\\Query\\Builder->insertGetId()
+#7 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1359): Illuminate\\Database\\Eloquent\\Builder->__call()
+#8 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1324): Illuminate\\Database\\Eloquent\\Model->insertAndSetId()
+#9 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1163): Illuminate\\Database\\Eloquent\\Model->performInsert()
+#10 D:\\SGBR\\Projeto\\api\\app\\Http\\Controllers\\SettingsController.php(38): Illuminate\\Database\\Eloquent\\Model->save()
+#11 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php(47): App\\Http\\Controllers\\SettingsController->update()
+#12 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(266): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#13 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(212): Illuminate\\Routing\\Route->runController()
+#14 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(808): Illuminate\\Routing\\Route->run()
+#15 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#16 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(51): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#17 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#18 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#19 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(807): Illuminate\\Pipeline\\Pipeline->then()
+#20 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(786): Illuminate\\Routing\\Router->runRouteWithinStack()
+#21 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(750): Illuminate\\Routing\\Router->runRoute()
+#22 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(739): Illuminate\\Routing\\Router->dispatchToRoute()
+#23 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(201): Illuminate\\Routing\\Router->dispatch()
+#24 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#25 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#26 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#27 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#28 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#29 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php(51): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#30 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#31 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#32 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\ValidatePostSize->handle()
+#33 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php(110): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#34 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#35 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php(62): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#36 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#37 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(58): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#38 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#39 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks.php(22): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#40 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks->handle()
+#41 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#42 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(176): Illuminate\\Pipeline\\Pipeline->then()
+#43 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(145): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#44 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1190): Illuminate\\Foundation\\Http\\Kernel->handle()
+#45 D:\\SGBR\\Projeto\\api\\public\\index.php(17): Illuminate\\Foundation\\Application->handleRequest()
+#46 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(23): require_once('...')
+#47 {main}
+"} 
+[2024-12-20 02:20:37] local.ERROR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'smtp_username' in 'field list' (Connection: mariadb, SQL: insert into `settings` (`smtp_username`, `smtp_host`, `smtp_port`, `email`, `password`, `smtp_encryption`, `updated_at`, `created_at`) values (Kochem, smpt.gmail.com, 587, joaolodi01@gmail.com, teervrxwyllqoyyc, null, 2024-12-20 02:20:37, 2024-12-20 02:20:37)) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42S22): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'smtp_username' in 'field list' (Connection: mariadb, SQL: insert into `settings` (`smtp_username`, `smtp_host`, `smtp_port`, `email`, `password`, `smtp_encryption`, `updated_at`, `created_at`) values (Kochem, smpt.gmail.com, 587, joaolodi01@gmail.com, teervrxwyllqoyyc, null, 2024-12-20 02:20:37, 2024-12-20 02:20:37)) at D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:825)
+[stacktrace]
+#0 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(779): Illuminate\\Database\\Connection->runQueryCallback()
+#1 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php(42): Illuminate\\Database\\Connection->run()
+#2 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Processors\\MySqlProcessor.php(35): Illuminate\\Database\\MySqlConnection->insert()
+#3 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3799): Illuminate\\Database\\Query\\Processors\\MySqlProcessor->processInsertGetId()
+#4 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(2051): Illuminate\\Database\\Query\\Builder->insertGetId()
+#5 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1359): Illuminate\\Database\\Eloquent\\Builder->__call()
+#6 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1324): Illuminate\\Database\\Eloquent\\Model->insertAndSetId()
+#7 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1163): Illuminate\\Database\\Eloquent\\Model->performInsert()
+#8 D:\\SGBR\\Projeto\\api\\app\\Http\\Controllers\\SettingsController.php(38): Illuminate\\Database\\Eloquent\\Model->save()
+#9 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php(47): App\\Http\\Controllers\\SettingsController->update()
+#10 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(266): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#11 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(212): Illuminate\\Routing\\Route->runController()
+#12 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(808): Illuminate\\Routing\\Route->run()
+#13 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#14 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(51): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#15 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#16 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#17 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(807): Illuminate\\Pipeline\\Pipeline->then()
+#18 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(786): Illuminate\\Routing\\Router->runRouteWithinStack()
+#19 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(750): Illuminate\\Routing\\Router->runRoute()
+#20 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(739): Illuminate\\Routing\\Router->dispatchToRoute()
+#21 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(201): Illuminate\\Routing\\Router->dispatch()
+#22 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#23 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#24 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#25 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#26 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#27 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php(51): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#28 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#29 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#30 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\ValidatePostSize->handle()
+#31 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php(110): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#32 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#33 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php(62): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#34 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#35 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(58): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#36 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#37 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks.php(22): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#38 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks->handle()
+#39 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#40 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(176): Illuminate\\Pipeline\\Pipeline->then()
+#41 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(145): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#42 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1190): Illuminate\\Foundation\\Http\\Kernel->handle()
+#43 D:\\SGBR\\Projeto\\api\\public\\index.php(17): Illuminate\\Foundation\\Application->handleRequest()
+#44 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(23): require_once('...')
+#45 {main}
+
+[previous exception] [object] (PDOException(code: 42S22): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'smtp_username' in 'field list' at D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php:47)
+[stacktrace]
+#0 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php(47): PDO->prepare()
+#1 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(812): Illuminate\\Database\\MySqlConnection->Illuminate\\Database\\{closure}()
+#2 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(779): Illuminate\\Database\\Connection->runQueryCallback()
+#3 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php(42): Illuminate\\Database\\Connection->run()
+#4 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Processors\\MySqlProcessor.php(35): Illuminate\\Database\\MySqlConnection->insert()
+#5 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3799): Illuminate\\Database\\Query\\Processors\\MySqlProcessor->processInsertGetId()
+#6 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(2051): Illuminate\\Database\\Query\\Builder->insertGetId()
+#7 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1359): Illuminate\\Database\\Eloquent\\Builder->__call()
+#8 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1324): Illuminate\\Database\\Eloquent\\Model->insertAndSetId()
+#9 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1163): Illuminate\\Database\\Eloquent\\Model->performInsert()
+#10 D:\\SGBR\\Projeto\\api\\app\\Http\\Controllers\\SettingsController.php(38): Illuminate\\Database\\Eloquent\\Model->save()
+#11 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php(47): App\\Http\\Controllers\\SettingsController->update()
+#12 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(266): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#13 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(212): Illuminate\\Routing\\Route->runController()
+#14 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(808): Illuminate\\Routing\\Route->run()
+#15 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#16 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(51): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#17 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#18 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#19 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(807): Illuminate\\Pipeline\\Pipeline->then()
+#20 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(786): Illuminate\\Routing\\Router->runRouteWithinStack()
+#21 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(750): Illuminate\\Routing\\Router->runRoute()
+#22 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(739): Illuminate\\Routing\\Router->dispatchToRoute()
+#23 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(201): Illuminate\\Routing\\Router->dispatch()
+#24 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#25 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#26 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#27 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#28 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#29 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php(51): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#30 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#31 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#32 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\ValidatePostSize->handle()
+#33 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php(110): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#34 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#35 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php(62): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#36 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#37 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(58): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#38 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#39 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks.php(22): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#40 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks->handle()
+#41 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#42 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(176): Illuminate\\Pipeline\\Pipeline->then()
+#43 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(145): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#44 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1190): Illuminate\\Foundation\\Http\\Kernel->handle()
+#45 D:\\SGBR\\Projeto\\api\\public\\index.php(17): Illuminate\\Foundation\\Application->handleRequest()
+#46 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(23): require_once('...')
+#47 {main}
+"} 
+[2024-12-20 02:20:42] local.ERROR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'smtp_username' in 'field list' (Connection: mariadb, SQL: insert into `settings` (`smtp_username`, `smtp_host`, `smtp_port`, `email`, `password`, `smtp_encryption`, `updated_at`, `created_at`) values (Kochem, smpt.gmail.com, 587, joaolodi01@gmail.com, teervrxwyllqoyyc, null, 2024-12-20 02:20:42, 2024-12-20 02:20:42)) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42S22): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'smtp_username' in 'field list' (Connection: mariadb, SQL: insert into `settings` (`smtp_username`, `smtp_host`, `smtp_port`, `email`, `password`, `smtp_encryption`, `updated_at`, `created_at`) values (Kochem, smpt.gmail.com, 587, joaolodi01@gmail.com, teervrxwyllqoyyc, null, 2024-12-20 02:20:42, 2024-12-20 02:20:42)) at D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:825)
+[stacktrace]
+#0 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(779): Illuminate\\Database\\Connection->runQueryCallback()
+#1 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php(42): Illuminate\\Database\\Connection->run()
+#2 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Processors\\MySqlProcessor.php(35): Illuminate\\Database\\MySqlConnection->insert()
+#3 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3799): Illuminate\\Database\\Query\\Processors\\MySqlProcessor->processInsertGetId()
+#4 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(2051): Illuminate\\Database\\Query\\Builder->insertGetId()
+#5 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1359): Illuminate\\Database\\Eloquent\\Builder->__call()
+#6 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1324): Illuminate\\Database\\Eloquent\\Model->insertAndSetId()
+#7 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1163): Illuminate\\Database\\Eloquent\\Model->performInsert()
+#8 D:\\SGBR\\Projeto\\api\\app\\Http\\Controllers\\SettingsController.php(38): Illuminate\\Database\\Eloquent\\Model->save()
+#9 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php(47): App\\Http\\Controllers\\SettingsController->update()
+#10 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(266): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#11 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(212): Illuminate\\Routing\\Route->runController()
+#12 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(808): Illuminate\\Routing\\Route->run()
+#13 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#14 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(51): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#15 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#16 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#17 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(807): Illuminate\\Pipeline\\Pipeline->then()
+#18 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(786): Illuminate\\Routing\\Router->runRouteWithinStack()
+#19 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(750): Illuminate\\Routing\\Router->runRoute()
+#20 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(739): Illuminate\\Routing\\Router->dispatchToRoute()
+#21 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(201): Illuminate\\Routing\\Router->dispatch()
+#22 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#23 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#24 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#25 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#26 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#27 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php(51): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#28 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#29 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#30 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\ValidatePostSize->handle()
+#31 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php(110): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#32 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#33 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php(62): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#34 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#35 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(58): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#36 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#37 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks.php(22): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#38 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks->handle()
+#39 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#40 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(176): Illuminate\\Pipeline\\Pipeline->then()
+#41 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(145): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#42 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1190): Illuminate\\Foundation\\Http\\Kernel->handle()
+#43 D:\\SGBR\\Projeto\\api\\public\\index.php(17): Illuminate\\Foundation\\Application->handleRequest()
+#44 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(23): require_once('...')
+#45 {main}
+
+[previous exception] [object] (PDOException(code: 42S22): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'smtp_username' in 'field list' at D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php:47)
+[stacktrace]
+#0 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php(47): PDO->prepare()
+#1 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(812): Illuminate\\Database\\MySqlConnection->Illuminate\\Database\\{closure}()
+#2 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(779): Illuminate\\Database\\Connection->runQueryCallback()
+#3 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php(42): Illuminate\\Database\\Connection->run()
+#4 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Processors\\MySqlProcessor.php(35): Illuminate\\Database\\MySqlConnection->insert()
+#5 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3799): Illuminate\\Database\\Query\\Processors\\MySqlProcessor->processInsertGetId()
+#6 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(2051): Illuminate\\Database\\Query\\Builder->insertGetId()
+#7 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1359): Illuminate\\Database\\Eloquent\\Builder->__call()
+#8 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1324): Illuminate\\Database\\Eloquent\\Model->insertAndSetId()
+#9 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1163): Illuminate\\Database\\Eloquent\\Model->performInsert()
+#10 D:\\SGBR\\Projeto\\api\\app\\Http\\Controllers\\SettingsController.php(38): Illuminate\\Database\\Eloquent\\Model->save()
+#11 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php(47): App\\Http\\Controllers\\SettingsController->update()
+#12 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(266): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#13 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(212): Illuminate\\Routing\\Route->runController()
+#14 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(808): Illuminate\\Routing\\Route->run()
+#15 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#16 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(51): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#17 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#18 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#19 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(807): Illuminate\\Pipeline\\Pipeline->then()
+#20 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(786): Illuminate\\Routing\\Router->runRouteWithinStack()
+#21 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(750): Illuminate\\Routing\\Router->runRoute()
+#22 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(739): Illuminate\\Routing\\Router->dispatchToRoute()
+#23 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(201): Illuminate\\Routing\\Router->dispatch()
+#24 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#25 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#26 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#27 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#28 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#29 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php(51): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#30 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#31 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#32 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\ValidatePostSize->handle()
+#33 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php(110): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#34 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#35 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php(62): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#36 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#37 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(58): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#38 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#39 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks.php(22): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#40 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks->handle()
+#41 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#42 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(176): Illuminate\\Pipeline\\Pipeline->then()
+#43 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(145): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#44 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1190): Illuminate\\Foundation\\Http\\Kernel->handle()
+#45 D:\\SGBR\\Projeto\\api\\public\\index.php(17): Illuminate\\Foundation\\Application->handleRequest()
+#46 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(23): require_once('...')
+#47 {main}
+"} 
+[2024-12-20 02:21:34] local.ERROR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'smtp_username' in 'field list' (Connection: mariadb, SQL: insert into `settings` (`smtp_username`, `smtp_host`, `smtp_port`, `email`, `password`, `smtp_encryption`, `updated_at`, `created_at`) values (gabikochem55@gmail.com, smpt.gmail.com, 587, joaolodi01@gmail.com, teervrxwyllqoyyc, null, 2024-12-20 02:21:34, 2024-12-20 02:21:34)) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42S22): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'smtp_username' in 'field list' (Connection: mariadb, SQL: insert into `settings` (`smtp_username`, `smtp_host`, `smtp_port`, `email`, `password`, `smtp_encryption`, `updated_at`, `created_at`) values (gabikochem55@gmail.com, smpt.gmail.com, 587, joaolodi01@gmail.com, teervrxwyllqoyyc, null, 2024-12-20 02:21:34, 2024-12-20 02:21:34)) at D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:825)
+[stacktrace]
+#0 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(779): Illuminate\\Database\\Connection->runQueryCallback()
+#1 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php(42): Illuminate\\Database\\Connection->run()
+#2 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Processors\\MySqlProcessor.php(35): Illuminate\\Database\\MySqlConnection->insert()
+#3 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3799): Illuminate\\Database\\Query\\Processors\\MySqlProcessor->processInsertGetId()
+#4 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(2051): Illuminate\\Database\\Query\\Builder->insertGetId()
+#5 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1359): Illuminate\\Database\\Eloquent\\Builder->__call()
+#6 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1324): Illuminate\\Database\\Eloquent\\Model->insertAndSetId()
+#7 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1163): Illuminate\\Database\\Eloquent\\Model->performInsert()
+#8 D:\\SGBR\\Projeto\\api\\app\\Http\\Controllers\\SettingsController.php(38): Illuminate\\Database\\Eloquent\\Model->save()
+#9 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php(47): App\\Http\\Controllers\\SettingsController->update()
+#10 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(266): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#11 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(212): Illuminate\\Routing\\Route->runController()
+#12 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(808): Illuminate\\Routing\\Route->run()
+#13 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#14 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(51): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#15 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#16 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#17 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(807): Illuminate\\Pipeline\\Pipeline->then()
+#18 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(786): Illuminate\\Routing\\Router->runRouteWithinStack()
+#19 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(750): Illuminate\\Routing\\Router->runRoute()
+#20 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(739): Illuminate\\Routing\\Router->dispatchToRoute()
+#21 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(201): Illuminate\\Routing\\Router->dispatch()
+#22 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#23 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#24 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#25 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#26 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#27 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php(51): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#28 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#29 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#30 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\ValidatePostSize->handle()
+#31 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php(110): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#32 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#33 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php(62): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#34 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#35 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(58): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#36 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#37 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks.php(22): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#38 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks->handle()
+#39 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#40 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(176): Illuminate\\Pipeline\\Pipeline->then()
+#41 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(145): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#42 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1190): Illuminate\\Foundation\\Http\\Kernel->handle()
+#43 D:\\SGBR\\Projeto\\api\\public\\index.php(17): Illuminate\\Foundation\\Application->handleRequest()
+#44 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(23): require_once('...')
+#45 {main}
+
+[previous exception] [object] (PDOException(code: 42S22): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'smtp_username' in 'field list' at D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php:47)
+[stacktrace]
+#0 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php(47): PDO->prepare()
+#1 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(812): Illuminate\\Database\\MySqlConnection->Illuminate\\Database\\{closure}()
+#2 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(779): Illuminate\\Database\\Connection->runQueryCallback()
+#3 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php(42): Illuminate\\Database\\Connection->run()
+#4 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Processors\\MySqlProcessor.php(35): Illuminate\\Database\\MySqlConnection->insert()
+#5 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3799): Illuminate\\Database\\Query\\Processors\\MySqlProcessor->processInsertGetId()
+#6 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(2051): Illuminate\\Database\\Query\\Builder->insertGetId()
+#7 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1359): Illuminate\\Database\\Eloquent\\Builder->__call()
+#8 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1324): Illuminate\\Database\\Eloquent\\Model->insertAndSetId()
+#9 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1163): Illuminate\\Database\\Eloquent\\Model->performInsert()
+#10 D:\\SGBR\\Projeto\\api\\app\\Http\\Controllers\\SettingsController.php(38): Illuminate\\Database\\Eloquent\\Model->save()
+#11 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php(47): App\\Http\\Controllers\\SettingsController->update()
+#12 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(266): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#13 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(212): Illuminate\\Routing\\Route->runController()
+#14 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(808): Illuminate\\Routing\\Route->run()
+#15 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#16 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(51): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#17 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#18 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#19 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(807): Illuminate\\Pipeline\\Pipeline->then()
+#20 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(786): Illuminate\\Routing\\Router->runRouteWithinStack()
+#21 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(750): Illuminate\\Routing\\Router->runRoute()
+#22 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(739): Illuminate\\Routing\\Router->dispatchToRoute()
+#23 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(201): Illuminate\\Routing\\Router->dispatch()
+#24 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#25 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#26 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#27 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#28 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#29 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php(51): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#30 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#31 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#32 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\ValidatePostSize->handle()
+#33 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php(110): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#34 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#35 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php(62): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#36 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#37 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(58): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#38 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#39 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks.php(22): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#40 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks->handle()
+#41 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#42 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(176): Illuminate\\Pipeline\\Pipeline->then()
+#43 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(145): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#44 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1190): Illuminate\\Foundation\\Http\\Kernel->handle()
+#45 D:\\SGBR\\Projeto\\api\\public\\index.php(17): Illuminate\\Foundation\\Application->handleRequest()
+#46 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(23): require_once('...')
+#47 {main}
+"} 
+[2024-12-20 02:26:10] local.ERROR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'smtp_username' in 'field list' (Connection: mariadb, SQL: insert into `settings` (`smtp_username`, `smtp_host`, `smtp_port`, `email`, `password`, `smtp_encryption`, `updated_at`, `created_at`) values (aaaaaaaaaaaa, smtp.gmail.com, 587, joaolodi01@gmail.com, teervrxwyllqoyyc, null, 2024-12-20 02:26:10, 2024-12-20 02:26:10)) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42S22): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'smtp_username' in 'field list' (Connection: mariadb, SQL: insert into `settings` (`smtp_username`, `smtp_host`, `smtp_port`, `email`, `password`, `smtp_encryption`, `updated_at`, `created_at`) values (aaaaaaaaaaaa, smtp.gmail.com, 587, joaolodi01@gmail.com, teervrxwyllqoyyc, null, 2024-12-20 02:26:10, 2024-12-20 02:26:10)) at D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:825)
+[stacktrace]
+#0 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(779): Illuminate\\Database\\Connection->runQueryCallback()
+#1 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php(42): Illuminate\\Database\\Connection->run()
+#2 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Processors\\MySqlProcessor.php(35): Illuminate\\Database\\MySqlConnection->insert()
+#3 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3799): Illuminate\\Database\\Query\\Processors\\MySqlProcessor->processInsertGetId()
+#4 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(2051): Illuminate\\Database\\Query\\Builder->insertGetId()
+#5 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1359): Illuminate\\Database\\Eloquent\\Builder->__call()
+#6 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1324): Illuminate\\Database\\Eloquent\\Model->insertAndSetId()
+#7 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1163): Illuminate\\Database\\Eloquent\\Model->performInsert()
+#8 D:\\SGBR\\Projeto\\api\\app\\Http\\Controllers\\SettingsController.php(38): Illuminate\\Database\\Eloquent\\Model->save()
+#9 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php(47): App\\Http\\Controllers\\SettingsController->update()
+#10 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(266): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#11 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(212): Illuminate\\Routing\\Route->runController()
+#12 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(808): Illuminate\\Routing\\Route->run()
+#13 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#14 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(51): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#15 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#16 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#17 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(807): Illuminate\\Pipeline\\Pipeline->then()
+#18 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(786): Illuminate\\Routing\\Router->runRouteWithinStack()
+#19 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(750): Illuminate\\Routing\\Router->runRoute()
+#20 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(739): Illuminate\\Routing\\Router->dispatchToRoute()
+#21 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(201): Illuminate\\Routing\\Router->dispatch()
+#22 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#23 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#24 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#25 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#26 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#27 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php(51): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#28 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#29 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#30 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\ValidatePostSize->handle()
+#31 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php(110): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#32 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#33 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php(62): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#34 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#35 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(58): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#36 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#37 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks.php(22): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#38 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks->handle()
+#39 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#40 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(176): Illuminate\\Pipeline\\Pipeline->then()
+#41 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(145): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#42 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1190): Illuminate\\Foundation\\Http\\Kernel->handle()
+#43 D:\\SGBR\\Projeto\\api\\public\\index.php(17): Illuminate\\Foundation\\Application->handleRequest()
+#44 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(23): require_once('...')
+#45 {main}
+
+[previous exception] [object] (PDOException(code: 42S22): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'smtp_username' in 'field list' at D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php:47)
+[stacktrace]
+#0 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php(47): PDO->prepare()
+#1 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(812): Illuminate\\Database\\MySqlConnection->Illuminate\\Database\\{closure}()
+#2 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(779): Illuminate\\Database\\Connection->runQueryCallback()
+#3 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php(42): Illuminate\\Database\\Connection->run()
+#4 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Processors\\MySqlProcessor.php(35): Illuminate\\Database\\MySqlConnection->insert()
+#5 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3799): Illuminate\\Database\\Query\\Processors\\MySqlProcessor->processInsertGetId()
+#6 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(2051): Illuminate\\Database\\Query\\Builder->insertGetId()
+#7 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1359): Illuminate\\Database\\Eloquent\\Builder->__call()
+#8 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1324): Illuminate\\Database\\Eloquent\\Model->insertAndSetId()
+#9 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1163): Illuminate\\Database\\Eloquent\\Model->performInsert()
+#10 D:\\SGBR\\Projeto\\api\\app\\Http\\Controllers\\SettingsController.php(38): Illuminate\\Database\\Eloquent\\Model->save()
+#11 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php(47): App\\Http\\Controllers\\SettingsController->update()
+#12 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(266): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#13 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(212): Illuminate\\Routing\\Route->runController()
+#14 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(808): Illuminate\\Routing\\Route->run()
+#15 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#16 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(51): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#17 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#18 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#19 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(807): Illuminate\\Pipeline\\Pipeline->then()
+#20 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(786): Illuminate\\Routing\\Router->runRouteWithinStack()
+#21 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(750): Illuminate\\Routing\\Router->runRoute()
+#22 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(739): Illuminate\\Routing\\Router->dispatchToRoute()
+#23 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(201): Illuminate\\Routing\\Router->dispatch()
+#24 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#25 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#26 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#27 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#28 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#29 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php(51): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#30 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#31 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#32 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\ValidatePostSize->handle()
+#33 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php(110): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#34 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#35 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php(62): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#36 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#37 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(58): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#38 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#39 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks.php(22): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#40 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks->handle()
+#41 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#42 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(176): Illuminate\\Pipeline\\Pipeline->then()
+#43 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(145): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#44 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1190): Illuminate\\Foundation\\Http\\Kernel->handle()
+#45 D:\\SGBR\\Projeto\\api\\public\\index.php(17): Illuminate\\Foundation\\Application->handleRequest()
+#46 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(23): require_once('...')
+#47 {main}
+"} 
+[2024-12-20 02:27:02] local.ERROR: Command "migratefre" is not defined.
+
+Did you mean one of these?
+    migrate
+    migrate:fresh
+    migrate:install
+    migrate:refresh
+    migrate:reset
+    migrate:rollback
+    migrate:status {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"migratefre\" is not defined.
+
+Did you mean one of these?
+    migrate
+    migrate:fresh
+    migrate:install
+    migrate:refresh
+    migrate:reset
+    migrate:rollback
+    migrate:status at D:\\SGBR\\Projeto\\api\\vendor\\symfony\\console\\Application.php:726)
+[stacktrace]
+#0 D:\\SGBR\\Projeto\\api\\vendor\\symfony\\console\\Application.php(284): Symfony\\Component\\Console\\Application->find()
+#1 D:\\SGBR\\Projeto\\api\\vendor\\symfony\\console\\Application.php(193): Symfony\\Component\\Console\\Application->doRun()
+#2 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(198): Symfony\\Component\\Console\\Application->run()
+#3 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1205): Illuminate\\Foundation\\Console\\Kernel->handle()
+#4 D:\\SGBR\\Projeto\\api\\artisan(13): Illuminate\\Foundation\\Application->handleCommand()
+#5 {main}
+"} 
+[2024-12-20 02:27:22] local.ERROR: There are no commands defined in the "migrae" namespace.
+
+Did you mean this?
+    migrate {"exception":"[object] (Symfony\\Component\\Console\\Exception\\NamespaceNotFoundException(code: 0): There are no commands defined in the \"migrae\" namespace.
+
+Did you mean this?
+    migrate at D:\\SGBR\\Projeto\\api\\vendor\\symfony\\console\\Application.php:660)
+[stacktrace]
+#0 D:\\SGBR\\Projeto\\api\\vendor\\symfony\\console\\Application.php(709): Symfony\\Component\\Console\\Application->findNamespace()
+#1 D:\\SGBR\\Projeto\\api\\vendor\\symfony\\console\\Application.php(284): Symfony\\Component\\Console\\Application->find()
+#2 D:\\SGBR\\Projeto\\api\\vendor\\symfony\\console\\Application.php(193): Symfony\\Component\\Console\\Application->doRun()
+#3 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(198): Symfony\\Component\\Console\\Application->run()
+#4 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1205): Illuminate\\Foundation\\Console\\Kernel->handle()
+#5 D:\\SGBR\\Projeto\\api\\artisan(13): Illuminate\\Foundation\\Application->handleCommand()
+#6 {main}
+"} 
+[2024-12-20 02:28:01] local.ERROR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'smtp_username' in 'field list' (Connection: mariadb, SQL: insert into `settings` (`smtp_username`, `smtp_host`, `smtp_port`, `email`, `password`, `smtp_encryption`, `updated_at`, `created_at`) values (aaaaaaaaaaaa, smtp.gmail.com, 587, joaolodi01@gmail.com, teervrxwyllqoyyc, null, 2024-12-20 02:28:01, 2024-12-20 02:28:01)) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42S22): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'smtp_username' in 'field list' (Connection: mariadb, SQL: insert into `settings` (`smtp_username`, `smtp_host`, `smtp_port`, `email`, `password`, `smtp_encryption`, `updated_at`, `created_at`) values (aaaaaaaaaaaa, smtp.gmail.com, 587, joaolodi01@gmail.com, teervrxwyllqoyyc, null, 2024-12-20 02:28:01, 2024-12-20 02:28:01)) at D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:825)
+[stacktrace]
+#0 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(779): Illuminate\\Database\\Connection->runQueryCallback()
+#1 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php(42): Illuminate\\Database\\Connection->run()
+#2 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Processors\\MySqlProcessor.php(35): Illuminate\\Database\\MySqlConnection->insert()
+#3 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3799): Illuminate\\Database\\Query\\Processors\\MySqlProcessor->processInsertGetId()
+#4 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(2051): Illuminate\\Database\\Query\\Builder->insertGetId()
+#5 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1359): Illuminate\\Database\\Eloquent\\Builder->__call()
+#6 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1324): Illuminate\\Database\\Eloquent\\Model->insertAndSetId()
+#7 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1163): Illuminate\\Database\\Eloquent\\Model->performInsert()
+#8 D:\\SGBR\\Projeto\\api\\app\\Http\\Controllers\\SettingsController.php(38): Illuminate\\Database\\Eloquent\\Model->save()
+#9 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php(47): App\\Http\\Controllers\\SettingsController->update()
+#10 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(266): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#11 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(212): Illuminate\\Routing\\Route->runController()
+#12 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(808): Illuminate\\Routing\\Route->run()
+#13 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#14 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(51): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#15 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#16 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#17 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(807): Illuminate\\Pipeline\\Pipeline->then()
+#18 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(786): Illuminate\\Routing\\Router->runRouteWithinStack()
+#19 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(750): Illuminate\\Routing\\Router->runRoute()
+#20 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(739): Illuminate\\Routing\\Router->dispatchToRoute()
+#21 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(201): Illuminate\\Routing\\Router->dispatch()
+#22 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#23 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#24 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#25 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#26 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#27 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php(51): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#28 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#29 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#30 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\ValidatePostSize->handle()
+#31 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php(110): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#32 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#33 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php(62): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#34 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#35 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(58): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#36 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#37 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks.php(22): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#38 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks->handle()
+#39 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#40 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(176): Illuminate\\Pipeline\\Pipeline->then()
+#41 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(145): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#42 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1190): Illuminate\\Foundation\\Http\\Kernel->handle()
+#43 D:\\SGBR\\Projeto\\api\\public\\index.php(17): Illuminate\\Foundation\\Application->handleRequest()
+#44 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(23): require_once('...')
+#45 {main}
+
+[previous exception] [object] (PDOException(code: 42S22): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'smtp_username' in 'field list' at D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php:47)
+[stacktrace]
+#0 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php(47): PDO->prepare()
+#1 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(812): Illuminate\\Database\\MySqlConnection->Illuminate\\Database\\{closure}()
+#2 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(779): Illuminate\\Database\\Connection->runQueryCallback()
+#3 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php(42): Illuminate\\Database\\Connection->run()
+#4 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Processors\\MySqlProcessor.php(35): Illuminate\\Database\\MySqlConnection->insert()
+#5 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3799): Illuminate\\Database\\Query\\Processors\\MySqlProcessor->processInsertGetId()
+#6 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(2051): Illuminate\\Database\\Query\\Builder->insertGetId()
+#7 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1359): Illuminate\\Database\\Eloquent\\Builder->__call()
+#8 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1324): Illuminate\\Database\\Eloquent\\Model->insertAndSetId()
+#9 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1163): Illuminate\\Database\\Eloquent\\Model->performInsert()
+#10 D:\\SGBR\\Projeto\\api\\app\\Http\\Controllers\\SettingsController.php(38): Illuminate\\Database\\Eloquent\\Model->save()
+#11 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php(47): App\\Http\\Controllers\\SettingsController->update()
+#12 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(266): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#13 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(212): Illuminate\\Routing\\Route->runController()
+#14 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(808): Illuminate\\Routing\\Route->run()
+#15 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#16 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(51): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#17 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#18 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#19 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(807): Illuminate\\Pipeline\\Pipeline->then()
+#20 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(786): Illuminate\\Routing\\Router->runRouteWithinStack()
+#21 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(750): Illuminate\\Routing\\Router->runRoute()
+#22 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(739): Illuminate\\Routing\\Router->dispatchToRoute()
+#23 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(201): Illuminate\\Routing\\Router->dispatch()
+#24 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#25 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#26 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#27 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#28 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#29 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php(51): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#30 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#31 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#32 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\ValidatePostSize->handle()
+#33 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php(110): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#34 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#35 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php(62): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#36 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#37 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(58): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#38 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#39 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks.php(22): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#40 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks->handle()
+#41 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#42 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(176): Illuminate\\Pipeline\\Pipeline->then()
+#43 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(145): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#44 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1190): Illuminate\\Foundation\\Http\\Kernel->handle()
+#45 D:\\SGBR\\Projeto\\api\\public\\index.php(17): Illuminate\\Foundation\\Application->handleRequest()
+#46 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(23): require_once('...')
+#47 {main}
+"} 
+[2024-12-20 02:28:10] local.ERROR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'smtp_username' in 'field list' (Connection: mariadb, SQL: insert into `settings` (`smtp_username`, `smtp_host`, `smtp_port`, `email`, `password`, `smtp_encryption`, `updated_at`, `created_at`) values (aaaaaaaaaaaa, smtp.gmail.com, 587, joaolodi01@gmail.com, teervrxwyllqoyyc, null, 2024-12-20 02:28:10, 2024-12-20 02:28:10)) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42S22): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'smtp_username' in 'field list' (Connection: mariadb, SQL: insert into `settings` (`smtp_username`, `smtp_host`, `smtp_port`, `email`, `password`, `smtp_encryption`, `updated_at`, `created_at`) values (aaaaaaaaaaaa, smtp.gmail.com, 587, joaolodi01@gmail.com, teervrxwyllqoyyc, null, 2024-12-20 02:28:10, 2024-12-20 02:28:10)) at D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:825)
+[stacktrace]
+#0 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(779): Illuminate\\Database\\Connection->runQueryCallback()
+#1 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php(42): Illuminate\\Database\\Connection->run()
+#2 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Processors\\MySqlProcessor.php(35): Illuminate\\Database\\MySqlConnection->insert()
+#3 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3799): Illuminate\\Database\\Query\\Processors\\MySqlProcessor->processInsertGetId()
+#4 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(2051): Illuminate\\Database\\Query\\Builder->insertGetId()
+#5 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1359): Illuminate\\Database\\Eloquent\\Builder->__call()
+#6 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1324): Illuminate\\Database\\Eloquent\\Model->insertAndSetId()
+#7 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1163): Illuminate\\Database\\Eloquent\\Model->performInsert()
+#8 D:\\SGBR\\Projeto\\api\\app\\Http\\Controllers\\SettingsController.php(38): Illuminate\\Database\\Eloquent\\Model->save()
+#9 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php(47): App\\Http\\Controllers\\SettingsController->update()
+#10 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(266): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#11 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(212): Illuminate\\Routing\\Route->runController()
+#12 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(808): Illuminate\\Routing\\Route->run()
+#13 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#14 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(51): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#15 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#16 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#17 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(807): Illuminate\\Pipeline\\Pipeline->then()
+#18 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(786): Illuminate\\Routing\\Router->runRouteWithinStack()
+#19 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(750): Illuminate\\Routing\\Router->runRoute()
+#20 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(739): Illuminate\\Routing\\Router->dispatchToRoute()
+#21 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(201): Illuminate\\Routing\\Router->dispatch()
+#22 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#23 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#24 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#25 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#26 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#27 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php(51): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#28 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#29 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#30 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\ValidatePostSize->handle()
+#31 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php(110): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#32 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#33 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php(62): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#34 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#35 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(58): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#36 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#37 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks.php(22): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#38 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks->handle()
+#39 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#40 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(176): Illuminate\\Pipeline\\Pipeline->then()
+#41 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(145): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#42 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1190): Illuminate\\Foundation\\Http\\Kernel->handle()
+#43 D:\\SGBR\\Projeto\\api\\public\\index.php(17): Illuminate\\Foundation\\Application->handleRequest()
+#44 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(23): require_once('...')
+#45 {main}
+
+[previous exception] [object] (PDOException(code: 42S22): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'smtp_username' in 'field list' at D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php:47)
+[stacktrace]
+#0 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php(47): PDO->prepare()
+#1 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(812): Illuminate\\Database\\MySqlConnection->Illuminate\\Database\\{closure}()
+#2 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(779): Illuminate\\Database\\Connection->runQueryCallback()
+#3 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php(42): Illuminate\\Database\\Connection->run()
+#4 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Processors\\MySqlProcessor.php(35): Illuminate\\Database\\MySqlConnection->insert()
+#5 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3799): Illuminate\\Database\\Query\\Processors\\MySqlProcessor->processInsertGetId()
+#6 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(2051): Illuminate\\Database\\Query\\Builder->insertGetId()
+#7 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1359): Illuminate\\Database\\Eloquent\\Builder->__call()
+#8 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1324): Illuminate\\Database\\Eloquent\\Model->insertAndSetId()
+#9 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1163): Illuminate\\Database\\Eloquent\\Model->performInsert()
+#10 D:\\SGBR\\Projeto\\api\\app\\Http\\Controllers\\SettingsController.php(38): Illuminate\\Database\\Eloquent\\Model->save()
+#11 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php(47): App\\Http\\Controllers\\SettingsController->update()
+#12 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(266): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#13 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(212): Illuminate\\Routing\\Route->runController()
+#14 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(808): Illuminate\\Routing\\Route->run()
+#15 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#16 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(51): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#17 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#18 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#19 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(807): Illuminate\\Pipeline\\Pipeline->then()
+#20 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(786): Illuminate\\Routing\\Router->runRouteWithinStack()
+#21 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(750): Illuminate\\Routing\\Router->runRoute()
+#22 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(739): Illuminate\\Routing\\Router->dispatchToRoute()
+#23 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(201): Illuminate\\Routing\\Router->dispatch()
+#24 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#25 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#26 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#27 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#28 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#29 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php(51): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#30 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#31 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#32 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\ValidatePostSize->handle()
+#33 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php(110): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#34 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#35 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php(62): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#36 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#37 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(58): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#38 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#39 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks.php(22): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#40 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks->handle()
+#41 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#42 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(176): Illuminate\\Pipeline\\Pipeline->then()
+#43 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(145): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#44 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1190): Illuminate\\Foundation\\Http\\Kernel->handle()
+#45 D:\\SGBR\\Projeto\\api\\public\\index.php(17): Illuminate\\Foundation\\Application->handleRequest()
+#46 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(23): require_once('...')
+#47 {main}
+"} 
+[2024-12-20 02:29:50] local.ERROR: SQLSTATE[HY000]: General error: 1364 Field 'status_id' doesn't have a default value (Connection: mariadb, SQL: insert into `candidates` (`full_name`, `email`, `password`, `phone`, `additional_info`, `updated_at`, `created_at`) values (Lodi, roxosgbr@gmail.com, $2y$12$C1yFXinOeElH8NcMwfMy9eASLKZ0.y7RrOcafEr7p2LG7xYIzixVm, +55 49 999482859, Dev PHP, 2024-12-20 02:29:49, 2024-12-20 02:29:49)) {"exception":"[object] (Illuminate\\Database\\QueryException(code: HY000): SQLSTATE[HY000]: General error: 1364 Field 'status_id' doesn't have a default value (Connection: mariadb, SQL: insert into `candidates` (`full_name`, `email`, `password`, `phone`, `additional_info`, `updated_at`, `created_at`) values (Lodi, roxosgbr@gmail.com, $2y$12$C1yFXinOeElH8NcMwfMy9eASLKZ0.y7RrOcafEr7p2LG7xYIzixVm, +55 49 999482859, Dev PHP, 2024-12-20 02:29:49, 2024-12-20 02:29:49)) at D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:825)
+[stacktrace]
+#0 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(779): Illuminate\\Database\\Connection->runQueryCallback()
+#1 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php(42): Illuminate\\Database\\Connection->run()
+#2 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Processors\\MySqlProcessor.php(35): Illuminate\\Database\\MySqlConnection->insert()
+#3 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3799): Illuminate\\Database\\Query\\Processors\\MySqlProcessor->processInsertGetId()
+#4 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(2051): Illuminate\\Database\\Query\\Builder->insertGetId()
+#5 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1359): Illuminate\\Database\\Eloquent\\Builder->__call()
+#6 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1324): Illuminate\\Database\\Eloquent\\Model->insertAndSetId()
+#7 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1163): Illuminate\\Database\\Eloquent\\Model->performInsert()
+#8 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(1081): Illuminate\\Database\\Eloquent\\Model->save()
+#9 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\helpers.php(399): Illuminate\\Database\\Eloquent\\Builder->Illuminate\\Database\\Eloquent\\{closure}()
+#10 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(1080): tap()
+#11 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Traits\\ForwardsCalls.php(23): Illuminate\\Database\\Eloquent\\Builder->create()
+#12 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(2368): Illuminate\\Database\\Eloquent\\Model->forwardCallTo()
+#13 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(2380): Illuminate\\Database\\Eloquent\\Model->__call()
+#14 D:\\SGBR\\Projeto\\api\\database\\seeders\\CandidateSeeder.php(23): Illuminate\\Database\\Eloquent\\Model::__callStatic()
+#15 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Database\\Seeders\\CandidateSeeder->run()
+#16 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#17 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure()
+#18 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod()
+#19 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(694): Illuminate\\Container\\BoundMethod::call()
+#20 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Seeder.php(184): Illuminate\\Container\\Container->call()
+#21 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Seeder.php(193): Illuminate\\Database\\Seeder->Illuminate\\Database\\{closure}()
+#22 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Seeder.php(61): Illuminate\\Database\\Seeder->__invoke()
+#23 D:\\SGBR\\Projeto\\api\\database\\seeders\\DatabaseSeeder.php(16): Illuminate\\Database\\Seeder->call()
+#24 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Database\\Seeders\\DatabaseSeeder->run()
+#25 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#26 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure()
+#27 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod()
+#28 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(694): Illuminate\\Container\\BoundMethod::call()
+#29 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Seeder.php(184): Illuminate\\Container\\Container->call()
+#30 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Seeder.php(193): Illuminate\\Database\\Seeder->Illuminate\\Database\\{closure}()
+#31 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Seeds\\SeedCommand.php(70): Illuminate\\Database\\Seeder->__invoke()
+#32 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Concerns\\GuardsAttributes.php(155): Illuminate\\Database\\Console\\Seeds\\SeedCommand->Illuminate\\Database\\Console\\Seeds\\{closure}()
+#33 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Seeds\\SeedCommand.php(69): Illuminate\\Database\\Eloquent\\Model::unguarded()
+#34 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Database\\Console\\Seeds\\SeedCommand->handle()
+#35 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#36 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure()
+#37 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod()
+#38 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(694): Illuminate\\Container\\BoundMethod::call()
+#39 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(213): Illuminate\\Container\\Container->call()
+#40 D:\\SGBR\\Projeto\\api\\vendor\\symfony\\console\\Command\\Command.php(279): Illuminate\\Console\\Command->execute()
+#41 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(182): Symfony\\Component\\Console\\Command\\Command->run()
+#42 D:\\SGBR\\Projeto\\api\\vendor\\symfony\\console\\Application.php(1094): Illuminate\\Console\\Command->run()
+#43 D:\\SGBR\\Projeto\\api\\vendor\\symfony\\console\\Application.php(342): Symfony\\Component\\Console\\Application->doRunCommand()
+#44 D:\\SGBR\\Projeto\\api\\vendor\\symfony\\console\\Application.php(193): Symfony\\Component\\Console\\Application->doRun()
+#45 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(198): Symfony\\Component\\Console\\Application->run()
+#46 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1205): Illuminate\\Foundation\\Console\\Kernel->handle()
+#47 D:\\SGBR\\Projeto\\api\\artisan(13): Illuminate\\Foundation\\Application->handleCommand()
+#48 {main}
+
+[previous exception] [object] (PDOException(code: HY000): SQLSTATE[HY000]: General error: 1364 Field 'status_id' doesn't have a default value at D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php:53)
+[stacktrace]
+#0 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php(53): PDOStatement->execute()
+#1 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(812): Illuminate\\Database\\MySqlConnection->Illuminate\\Database\\{closure}()
+#2 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(779): Illuminate\\Database\\Connection->runQueryCallback()
+#3 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php(42): Illuminate\\Database\\Connection->run()
+#4 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Processors\\MySqlProcessor.php(35): Illuminate\\Database\\MySqlConnection->insert()
+#5 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3799): Illuminate\\Database\\Query\\Processors\\MySqlProcessor->processInsertGetId()
+#6 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(2051): Illuminate\\Database\\Query\\Builder->insertGetId()
+#7 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1359): Illuminate\\Database\\Eloquent\\Builder->__call()
+#8 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1324): Illuminate\\Database\\Eloquent\\Model->insertAndSetId()
+#9 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(1163): Illuminate\\Database\\Eloquent\\Model->performInsert()
+#10 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(1081): Illuminate\\Database\\Eloquent\\Model->save()
+#11 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\helpers.php(399): Illuminate\\Database\\Eloquent\\Builder->Illuminate\\Database\\Eloquent\\{closure}()
+#12 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(1080): tap()
+#13 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Traits\\ForwardsCalls.php(23): Illuminate\\Database\\Eloquent\\Builder->create()
+#14 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(2368): Illuminate\\Database\\Eloquent\\Model->forwardCallTo()
+#15 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(2380): Illuminate\\Database\\Eloquent\\Model->__call()
+#16 D:\\SGBR\\Projeto\\api\\database\\seeders\\CandidateSeeder.php(23): Illuminate\\Database\\Eloquent\\Model::__callStatic()
+#17 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Database\\Seeders\\CandidateSeeder->run()
+#18 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#19 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure()
+#20 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod()
+#21 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(694): Illuminate\\Container\\BoundMethod::call()
+#22 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Seeder.php(184): Illuminate\\Container\\Container->call()
+#23 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Seeder.php(193): Illuminate\\Database\\Seeder->Illuminate\\Database\\{closure}()
+#24 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Seeder.php(61): Illuminate\\Database\\Seeder->__invoke()
+#25 D:\\SGBR\\Projeto\\api\\database\\seeders\\DatabaseSeeder.php(16): Illuminate\\Database\\Seeder->call()
+#26 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Database\\Seeders\\DatabaseSeeder->run()
+#27 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#28 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure()
+#29 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod()
+#30 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(694): Illuminate\\Container\\BoundMethod::call()
+#31 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Seeder.php(184): Illuminate\\Container\\Container->call()
+#32 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Seeder.php(193): Illuminate\\Database\\Seeder->Illuminate\\Database\\{closure}()
+#33 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Seeds\\SeedCommand.php(70): Illuminate\\Database\\Seeder->__invoke()
+#34 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Concerns\\GuardsAttributes.php(155): Illuminate\\Database\\Console\\Seeds\\SeedCommand->Illuminate\\Database\\Console\\Seeds\\{closure}()
+#35 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Seeds\\SeedCommand.php(69): Illuminate\\Database\\Eloquent\\Model::unguarded()
+#36 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Database\\Console\\Seeds\\SeedCommand->handle()
+#37 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#38 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure()
+#39 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod()
+#40 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(694): Illuminate\\Container\\BoundMethod::call()
+#41 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(213): Illuminate\\Container\\Container->call()
+#42 D:\\SGBR\\Projeto\\api\\vendor\\symfony\\console\\Command\\Command.php(279): Illuminate\\Console\\Command->execute()
+#43 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(182): Symfony\\Component\\Console\\Command\\Command->run()
+#44 D:\\SGBR\\Projeto\\api\\vendor\\symfony\\console\\Application.php(1094): Illuminate\\Console\\Command->run()
+#45 D:\\SGBR\\Projeto\\api\\vendor\\symfony\\console\\Application.php(342): Symfony\\Component\\Console\\Application->doRunCommand()
+#46 D:\\SGBR\\Projeto\\api\\vendor\\symfony\\console\\Application.php(193): Symfony\\Component\\Console\\Application->doRun()
+#47 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(198): Symfony\\Component\\Console\\Application->run()
+#48 D:\\SGBR\\Projeto\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1205): Illuminate\\Foundation\\Console\\Kernel->handle()
+#49 D:\\SGBR\\Projeto\\api\\artisan(13): Illuminate\\Foundation\\Application->handleCommand()
+#50 {main}
+"} 
+[2024-12-20 02:30:39] local.INFO: E-mail enviado com sucesso para roxosgbr@gmail.com.  
+[2024-12-20 02:31:41] local.INFO: E-mail enviado com sucesso para roxosgbr@gmail.com.  
+[2024-12-20 02:32:23] local.INFO: E-mail enviado com sucesso para roxosgbr@gmail.com.  
+[2024-12-20 02:32:56] local.INFO: E-mail enviado com sucesso para roxosgbr@gmail.com.  
+[2024-12-20 02:32:59] local.INFO: E-mail enviado com sucesso para roxosgbr@gmail.com.  
+[2024-12-20 02:33:50] local.INFO: E-mail enviado com sucesso para gabikochem55@gmail.com.  
+[2024-12-20 02:35:34] local.INFO: E-mail enviado com sucesso para gabikochem55@gmail.com.  
+[2024-12-20 02:37:20] local.INFO: E-mail enviado com sucesso para gabikochem55@gmail.com.  
+[2024-12-20 02:37:38] local.INFO: E-mail enviado com sucesso para gabikochem55@gmail.com.  

@@ -109,4 +109,25 @@ class CandidateController extends Controller
         }
 
     }
+
+    public function updateStatus(Request $request, $candidateID)
+    {
+        $candidate = Candidates::find($candidateID);
+
+        if (!$candidate){
+            return response()->json([
+                'message' => 'Candidato não encontrado',
+            ], 404);
+        }
+
+        $newStatus = $request->input('status_id');
+        $candidate->status = $newStatus;
+        $candidate->save();
+
+        event(new StatusUpdatedEvent($candidate, $newStatus));
+
+        return response()->json([
+            'message' => 'Status atualizado com sucesso!',
+        ], 200);
+    }
 }

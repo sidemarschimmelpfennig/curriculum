@@ -15,7 +15,6 @@ use App\Http\Controllers\{
     SettingsController,
     SkillsController
 };
-use App\Listeners\StatusUpdatedListener;
 
 // Rotas de E-mail
 Route::get('/settings', [SettingsController::class, 'showForm'])->name('email.form');

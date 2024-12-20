@@ -10,7 +10,7 @@ use App\Models\{
     CandidatesVagas
 
 };
-use App\Services\CandidateService;
+
 use Illuminate\Support\Facades\Hash;
 
 class CandidateRepository implements CandidateInterface

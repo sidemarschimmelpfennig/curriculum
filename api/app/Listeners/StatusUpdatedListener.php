@@ -5,7 +5,13 @@ namespace App\Listeners;
 
 use App\Models\Settings;
 use App\Events\StatusUpdatedEvent;
-use App\Services\CandidateService;
+
+
+use App\Services\{
+    CandidateService,
+    StatusService
+};
+
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Queue\InteractsWithQueue;
@@ -15,10 +21,16 @@ use Illuminate\Support\Facades\Config;
 class StatusUpdatedListener
 {
     protected $candidateService;
+    protected $statusService;
     
-    public function __construct(CandidateService $candidateService)
+    public function __construct(
+        CandidateService $candidateService,
+        StatusService $statusService
+        
+    )
     {
         $this->candidateService = $candidateService;
+        $this->statusService= $statusService;
     }
 
     /**
@@ -32,7 +44,8 @@ class StatusUpdatedListener
         $settings = Settings::first();
 
         //$nameStatus = $status;//$this->jobService->findByStatus($status);
-        $nameStatus = $this->candidateService->findByStatus($status);
+        $nameStatus = $this->statusService->findByStatus($status);
+
         if (!$nameStatus){
             Log::error('Status não encontrado para continuar:' . $status);
             return;

@@ -13,6 +13,7 @@ use App\{
 
 };
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class JobController extends Controller
 {

@@ -18,7 +18,7 @@
 
             <div class="form-group">
                 <label for="smtp_username">Username:</label>
-                <input type="text" class="form-control" id="smtp_username" name="smtp_username" value="{{ old('smtp_username', $settings->smtp_username ?? '') }}" required>
+                <input type="text" class="form-control" id="smtp_username" name="smtp_username" value="{{ old('smtp_username', $settings->smtp_username ?? '') }}" >
             </div>
 
             <div class="form-group">
