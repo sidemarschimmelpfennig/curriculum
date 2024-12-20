@@ -10,7 +10,7 @@ use App\Services\CandidateService;
 
 class CandidateController extends Controller
 {
-    private $candidateService;
+    protected $candidateService;
     public function __construct(CandidateService $candidateService)
     {
         $this->candidateService = $candidateService;

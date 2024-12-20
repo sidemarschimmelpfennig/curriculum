@@ -5,12 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\{
     Support\Facades\Auth,
     Support\Facades\Hash,
+    Http\Request,
     
 };
 
 use App\Http\{
     Controllers\Controller,
-    Requests\LoginRequest
     
 };
 
@@ -19,12 +19,11 @@ use App\Models\{
     Candidates,
     
 };
-use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
 
-    public function getData(LoginRequest $request)
+    public function getData(Request $request)
     {  
         try {
             $dataRequest = $request->validated();
@@ -94,7 +93,6 @@ class LoginController extends Controller
     public function getIP(Request $request)
     {
         try {
-            $name = $user->name;
             $ip = $request->ip();
             $file = fopen('IPs.txt', 'a');
             fwrite($file, $ip . " IP");

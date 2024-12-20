@@ -3,13 +3,13 @@
 namespace App\Repositories\Eloquent;
 
 use App\Models\Departament_Categories;
-use App\Repositories\Interface\DepartamentCategoryRepositoryInterface;
+use App\Repositories\Interface\DepartamentCategoryInterface;
 
-class DepartamentCategoryRepository implements DepartamentCategoryRepositoryInterface
+class DepartamentCategoryRepository implements DepartamentCategoryInterface
 {
     public function getAll()
     {
-        return Departament_Categories::paginate(10);
+        return Departament_Categories::all();
 
     }
 
@@ -23,17 +23,15 @@ class DepartamentCategoryRepository implements DepartamentCategoryRepositoryInte
         return Departament_Categories::create($data);
     }
 
-    public function delete(int $id)
-    {
-        return Departament_Categories::where('id', $id)->update([
-            'active' => false
-
-        ]);
-    }
-
     public function update(int $id, array $data)
     {
         return Departament_Categories::where('id', $id)->update($data);
     }
+
+    public function delete(int $id)
+    {
+        return Departament_Categories::where('id', $id)->update(['active' => false ]);
+    }
+
 
 }

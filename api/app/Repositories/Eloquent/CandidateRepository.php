@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Eloquent;
 
-use App\Repositories\Interface\CandidateRepositoryInterface;
+use App\Repositories\Interface\CandidateInterface;
 
 use App\Models\{
     Candidates,
@@ -13,21 +13,14 @@ use App\Models\{
 use App\Services\CandidateService;
 use Illuminate\Support\Facades\Hash;
 
-class CandidateRepository implements CandidateRepositoryInterface
+class CandidateRepository implements CandidateInterface
 {
-    protected $candidateSendService;
-
-    public function __construct(CandidateService $candidateSendService)
-    {
-        $this->candidateSendService = $candidateSendService;
-    }
-
     public function getAll()
     {
-
+        return Candidates::all();
     }
 
-    public function jobpApply(int $candidateID, int $jobId, object $pathfile)
+    public function jobApply(int $candidateID, int $jobId, object $pathfile)
     {
         $user = Candidates::where('id', $candidateID)->first();
         $job = JobVacancies::where('id', $jobId)->first();

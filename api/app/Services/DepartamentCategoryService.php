@@ -3,8 +3,9 @@
 namespace App\Services;
 
 use App\Repositories\Eloquent\DepartamentCategoryRepository;
+use App\Repositories\Interface\DepartamentCategoryInterface;
 
-class DepartamentCategoryService
+class DepartamentCategoryService implements DepartamentCategoryInterface
 {
     protected $repository;
 
@@ -20,9 +21,9 @@ class DepartamentCategoryService
 
     }
 
-    public function findByDepartamentCategory(string $param)
+    public function findByDepartamentCategory(int $id)
     {
-        return $this->repository->findByDepartamentCategory($param);
+        return $this->repository->findByDepartamentCategory($id);
         
     }
 

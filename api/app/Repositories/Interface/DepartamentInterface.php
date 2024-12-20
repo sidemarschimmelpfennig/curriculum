@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Interface;
 
-interface DepartamentRepositoryInterface extends BaseInterface
+interface DepartamentInterface extends BaseInterface
 {    
     public function findByDepartament(int $id);
 

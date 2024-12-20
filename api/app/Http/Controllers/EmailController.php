@@ -8,9 +8,6 @@ use Illuminate\Http\Request;
 
 class EmailController extends Controller
 {
-<<<<<<< HEAD
-    
-=======
     public function showForm()
     {
         $settings = Settings::first() ?: new Settings;
@@ -42,5 +39,4 @@ class EmailController extends Controller
             'settings' => $settings,
         ]);
     }
->>>>>>> 1b9cb1b52acbdfb518f491fd2aaa7612b3be903f
 }

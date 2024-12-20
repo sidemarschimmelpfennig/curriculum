@@ -2,101 +2,36 @@
 
 namespace App\Repositories\Eloquent;
 
-use App\Repositories\Interface\JobRepositoryInterface;
+use App\Repositories\Interface\JobInterface;
 
 use App\Models\{
-    JobVacancies, // o que importa
-    Candidates, // o que importa
-    CandidatesVagas, // o que importa
-    Departament_Categories, // ignorar 
-    Status, // ignorar
-    Mobilities, // ignorar
-    Skills, // ignorar
+    JobVacancies,
 
 };
-use App\Services\CandidateService;
-use App\Services\DepartamentService;
-use App\Services\DepartamentCategoryService;
 
-class JobRepository implements JobRepositoryInterface
+use App\Services\{
+    DepartamentService,
+    DepartamentCategoryService
+};
+class JobRepository implements JobInterface
 {
-    protected $candidateSendService;
-    protected $departamentService;
-    protected $departamentCategoryService;
+    private $departamentService;
+    private $departamentCategoriesService;
 
     public function __construct(
-        CandidateService $candidateSendService,
         DepartamentService $departamentService,
-        DepartamentCategoryService $departamentCategoryService
-        
+        DepartamentCategoryService $departamentCategoriesService
     ){
-        $this->candidateSendService = $candidateSendService;
         $this->departamentService = $departamentService;
-        $this->departamentCategoryService = $departamentCategoryService;
+        $this->departamentCategoriesService = $departamentCategoriesService;
     }
 
     public function getAll() 
     {
-        return JobVacancies::paginate(10);
+        return JobVacancies::all()/*->where('active', 1) */;
     }
 
-    public function getAllDepartament_Categories()
-    { 
-        return Departament_Categories::paginate(10); 
-
-    }
-    public function findDepartament_Categories(string $id)
-    { 
-        return Departament_Categories::find($id); 
-
-    }
-
-    public function getAllStatus()
-    { 
-        return Status::paginate(10); 
-    }
-
-    public function findStatus(string $id)
-    {
-        return Status::find($id); 
-    }
-
-    public function findSkills(int $id)
-    { 
-        return Skills::find($id); 
-
-    }
-
-    public function findMobilities (int $id)
-    { 
-        return Mobilities::find($id); 
-
-    }
-
-    public function findByCategories(string $param) 
-    {
-        return JobVacancies::where('department_categories', $param)->first();
-
-    }
-
-    public function findByStatus(string $param) 
-    {
-        return JobVacancies::where('status', $param)->first();
-
-    }
-
-    public function findBySkills(string $param) 
-    {
-        return Skills::where('skills', $param)->first();
-
-    }
-
-    public function findByMobilities(string $param)
-    {
-        return Mobilities::where('mobilities', $param)->first();
-    }
-
-    public function create(array $validateData)
+    /*public function create(array $validateData)
     {
         $departament = $this->departamentService->findByDepartament($validateData['departament_id']);
         $departament_categories = $this->departamentCategoryService->findByDepartamentCategory($validateData['departament_categories_id']);
@@ -126,23 +61,18 @@ class JobRepository implements JobRepositoryInterface
 
         ]);
         
-    }
+    }*/
 
-    public function createStatus(array $validateData)
+    public function create(array $data)
     {
-        return Status::create($validateData);
-        
-    }
+        $departament = $this->departamentService->findByDepartament($data['departament_id']);
+        $departament_categories = $this->departamentCategoriesService->findByDepartamentCategory($data['departament_categories_id']);
 
-    public function createSkills(array $data)
-    {
-        return Skills::create($data);
-    } 
-    
-    public function createMobilities(array $data)
-    {
-        return Mobilities::create($data);
-        
+        return [
+            $departament,
+            $departament_categories,
+
+        ];
     }
 
     public function updateStatus(int $id, int $newStatus)
