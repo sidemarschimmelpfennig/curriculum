@@ -1,4 +1,4 @@
-<template>
+ <template>
   <div
     class="joblist-table p-5"
     :class="{
@@ -181,14 +181,9 @@ export default {
     async getJobs() {
       try {
         const response = await axios.get(`${this.api}/jobs`);
-        console.log(response);
-        if (response.status == 200) {
-          if (response.data > 0) {
-            this.joblist = response.data;
-          } else {
-            this.joblist = [];
-          }
-        }
+        console.log('ADMIN VAGAS:', response);
+        this.joblist = response.data;
+
       } catch (error) {
         console.error("Erro ao buscar vagas:", error);
         this.joblist = [];
@@ -201,7 +196,9 @@ export default {
       try {
         this.showModalDelete = true;
         this.textDelete = `Deseja excluir a vaga de "${name}"?`;
-        this.textRouteDelete = `${this.api}joblisting/${id}`;
+        const response = axios.delete(`${this.api}/admin/job/${id}`);
+
+        console.log('VAGA DELETADA:', response)
       } catch (error) {
         console.error("Erro ao deletar vaga:", error);
       }

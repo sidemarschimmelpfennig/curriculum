@@ -49,11 +49,11 @@
           required
           class="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
-          <option value="Padrão" selected>Padrão</option>
+        <option option value="" disabled selected>Padrão</option>
           <option
             v-for="(department, id) in departments"
             :key="id"
-            :value="department.departament"
+            :value="department.id"
           >
             {{ department.departament }}
           </option>
@@ -62,7 +62,7 @@
 
       <div class="flex flex-col space-y-2">
         <label for="category" class="text-sm font-medium text-gray-700"
-          >Categorias :</label
+          >Categorias a:</label
         >
         <select
           id="category"
@@ -70,13 +70,13 @@
           required
           class="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
-          <option selected :value="form.departament_categories">Padrão</option>
+          <option option value="" disabled selected>Padrão</option>
           <option
-            v-for="departament in departments_categories"
-            :key="departament.id"
-            :value="departament.departament_categorie"
+            v-for="(category, id) in departments_categories"
+            :key="id"
+            :value="category.id"
           >
-            {{ departament.departament_categorie }}
+            {{ category.departament_category }}
           </option>
         </select>
       </div>
@@ -91,12 +91,13 @@
           required
           class="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
+        <option option value="" disabled selected>Padrão</option>
           <option
-            v-for="mobility in mobilities_array"
-            :value="mobility.mobilities"
-            :key="mobility.mobilities"
+            v-for="mobilities in mobilities_array"
+            :value="mobilities.id"
+            :key="mobilities.id"
           >
-            {{ mobility.mobilities }}
+            {{ mobilities.mobilities }}
           </option>
         </select>
       </div>
@@ -105,13 +106,42 @@
         <label for="skills" class="text-sm font-medium text-gray-700 text-start"
           >Requisitos :</label
         >
-        <input
-          type="text"
-          id="skills"
+        <select
+          id="mobilities"
           v-model="form.skills"
+          required
           class="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          placeholder="Digite as habilidades separadas por vírgula"
-        />
+        >
+        <option option value="" disabled selected>Padrão</option>
+          <option
+            v-for="(skills, id) in skills_array"
+            :value="skills.id"
+            :key="skills.id"
+          >
+            {{ skills.skills }}
+          </option>
+        </select>
+      </div>
+
+      <div class="flex flex-col space-y-2">
+        <label for="skills" class="text-sm font-medium text-gray-700 text-start"
+          >Status :</label
+        >
+        <select
+          id="mobilities"
+          v-model="form.status"
+          required
+          class="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        >
+        <option option value="" disabled selected>Padrão</option>
+          <option
+            v-for="(status, id) in status_array"
+            :value="status.id"
+            :key="status.id"
+          >
+            {{ status.status }}
+          </option>
+        </select>
       </div>
 
       <button
@@ -130,18 +160,20 @@ export default {
   data() {
     return {
       form: {
-        name: "",
-        description: "",
-        departament: "Padrão",
-        departament_categories: "Padrão",
-        status: "Aberta",
-        skills: "",
-        mobilities: "Presencial",
-        active: 1,
+        name: null,
+        description: null,
+        departament: null,
+        departament_categories: null,
+        status: null,
+        skills: null,
+        mobilities: null
+     
       },
       departments: [],
       departments_categories: [],
       mobilities_array: [],
+      skills_array: [],
+      status_array: [],
       api: process.env.VUE_APP_API_URL,
     };
   },
@@ -151,16 +183,17 @@ export default {
         const jobData = {
           name: this.form.name,
           description: this.form.description,
-          departament: this.form.departament,
-          departament_categories: this.form.departament_categories,
-          status: this.form.status,
-          skills: this.form.skills.split(",").map((skill) => skill.trim()),
-          mobilities: this.form.mobilities,
-          active: this.form.active,
+          departament_id: this.form.departament,
+          departament_categories_id: this.form.departament_categories,
+          status_id: this.form.status,
+          skills_id: this.form.skills,
+          mobilities_id: this.form.mobilities,
+        
         };
 
+        console.log('DADOS PARA ENVIO:"' , jobData)
         const response = await axios.post(`${this.api}/admin/job`, jobData);
-        console.log7(response);
+        
         console.log("Nova vaga cadastrada com sucesso!");
         this.closeModal();
       } catch (error) {
@@ -168,54 +201,56 @@ export default {
         alert("Erro ao enviar o formulário. Por favor, tente novamente.");
       }
     },
-    async getTypeStatus() {
+
+    async getData()
+    {
       try {
-        try {
-          let response = await axios.get(`${this.api}/admin/departament`);
-          if (response.status === 200) {
-            if (response.data && response.data.departaments.length > 0) {
-              this.departments = response.data.departaments;
-            } else {
-              this.departments = [];
-            }
-          }
-        } catch (error) {
-          console.error(error);
-          this.departments = [];
-        }
-        try {
-          let response = await axios.get(`${this.api}/admin/mobilites`);
-          console.log(response);
-          if (response.status === 200) {
-            if (response.data && response.data.length > 0) {
-              this.mobilities_array = response.data;
-              console.log(this.mobilities_array);
-            } else {
-              this.mobilities_array = [];
-            }
-          }
-        } catch (error) {
-          console.error(error);
-          this.mobilities_array = [];
-        }
-        try {
-          let response = await axios.get(`${this.api}/admin/categorys`);
-          if (response.status === 200) {
-            if (
-              response.data.departaments &&
-              response.data.departaments.length > 0
-            ) {
-              this.departments_categories = response.data.departaments;
-            } else {
-              this.departments_categories = [];
-            }
-          }
-        } catch (error) {
-          console.error(error);
-          this.departments_categories = [];
-        }
+        const response = await axios.get(`${this.api}/admin/departament`);
+        this.departments = response.data
+        console.log('Departamentos:', this.departments)
+
       } catch (error) {
-        console.error(error);
+        console.error("Erro ao enviar capturar os departamentos:", error);
+      }
+
+      try {
+        const response = await axios.get(`${this.api}/admin/categorys`);
+        this.departments_categories = response.data
+        console.log('Categorias:', this.departments_categories)
+
+      } catch (error) {
+        console.error("Erro ao enviar capturar as categorias:", error);
+
+      }
+
+      try {
+        const response = await axios.get(`${this.api}/admin/skills`);
+        this.skills_array = response.data
+        console.log('Habilidades:', this.skills_array)
+
+      } catch (error) {
+        console.error("Erro ao enviar capturar as habilidades:", error);
+
+      }
+
+      try {
+        const response = await axios.get(`${this.api}/admin/mobilites`);
+        this.mobilities_array = response.data
+        console.log('Mobilites:', this.mobilities_array)
+
+      } catch (error) {
+        console.error("Erro ao enviar capturar as mobiliaddes:", error);
+
+      }
+
+      try {
+        const response = await axios.get(`${this.api}/admin/status`);
+        this.status_array = response.data
+        console.log('status:', this.status_array)
+
+      } catch (error) {
+        console.error("Erro ao enviar capturar as status:", error);
+
       }
     },
 
@@ -241,7 +276,8 @@ export default {
   },
   mounted() {
     window.addEventListener("keydown", this.handleKeydown);
-    this.getTypeStatus();
+    this.getData();
+
   },
   beforeUnmount() {
     window.removeEventListener("keydown", this.handleKeydown);

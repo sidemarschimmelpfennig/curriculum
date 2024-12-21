@@ -93,7 +93,7 @@ class JobRepository implements JobInterface
 
     public function update(int $id, array $data)
     {
-
+        return JobVacancies::where('id', $id)->update($data);
     }
 
     public function delete(int $id)

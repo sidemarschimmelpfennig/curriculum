@@ -97,6 +97,39 @@ class JobController extends Controller
             $message->to($candidate->email)
                     ->subject('Teste de E-mail');
         });
+    } // <- Aleteração de status ou demais campos da vaga criada    
+    
+    public function update(int $id, Request $request)
+    {
+        try {
+            $data = $request->validate([
+                'name' => 'string',
+                'description' => 'string',
+                'departament_id' => 'integer',
+                'departament_categories_id' => 'integer',
+                'status_id' => 'integer',
+                'skills_id' => 'integer',
+                'mobilities_id' => 'integer',
+            ]);
+
+            $jobUpdate = $this->jobService->update($id, $data);
+
+            return response()->json($jobUpdate);
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'Alteração negada!',
+                'th' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getFile(),
+                
+            ], 400);
+        }
+
+        Mail::raw('Teste de envio direto do controller.', function ($message) use ($candidate) {
+            $message->to($candidate->email)
+                    ->subject('Teste de E-mail');
+        });
     } // <- Aleteração de status ou demais campos da vaga criada
 
     public function delete(int $id)
@@ -119,4 +152,19 @@ class JobController extends Controller
         }
     }
 
+    public function findID(int $id)
+    {
+        try {
+            $job = $this->jobService->findID($id);
+            return response()->json($job);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'Não foi localizar a vaga',
+                'th' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getFile(),
+            ]);
+        }
+        
+    }
 }

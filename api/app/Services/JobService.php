@@ -31,6 +31,12 @@ class JobService
         return $this->repository->updateStatus($id, $newStatus);
 
     }
+    
+    public function update(int $id, array $data)
+    {
+        return $this->repository->update($id, $data);
+
+    }
 
     public function findID(int $id)
     {

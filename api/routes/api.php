@@ -14,7 +14,8 @@ use App\Http\Controllers\{
     DepartamentController,
     MobilitiesController,
     SettingsController,
-    SkillsController
+    SkillsController,
+    StatusController
 };
 use Illuminate\Support\Facades\Log;
 
@@ -39,9 +40,9 @@ Route::prefix('v1')->group( function () {
         Route::prefix('/admin')->group(function (){    
             // + importante
             Route::get('/jobs', [JobController::class, 'getAll']);
+            Route::get('/jobBy/{id}', [JobController::class, 'findID']);
             Route::post('/job', [JobController::class, 'create']);
-            Route::put('/job/{id}', [JobController::class, 'update']);
-            
+            Route::put('/jobU/{id}', [JobController::class, 'update']);
 
             Route::delete('/departament/{id}', [DepartamentController::class, 'delete']);
             Route::delete('/user/{id}', [UserController::class, 'delete']);
@@ -56,13 +57,17 @@ Route::prefix('v1')->group( function () {
             Route::put('/category', [DepartamentCategoryController::class, 'update']);
             Route::post('/category', [DepartamentCategoryController::class, 'create']);
 
-            Route::get('/skills', [SkillsController::class, 'create']);
-            Route::put('/skills', [SkillsController::class, 'create']);
-            Route::post('/skills', [SkillsController::class, 'create']);
+            Route::get('/skills', [SkillsController::class, 'getAll']);
+            Route::put('/skills', [SkillsController::class, 'update']);
+            Route::post('/skill', [SkillsController::class, 'create']);
 
             Route::get('/mobilites', [MobilitiesController::class, 'getAll']);
             Route::put('/mobilites', [MobilitiesController::class, 'update']);
             Route::post('/mobilites', [MobilitiesController::class, 'create']);
+
+            Route::get('/status', [StatusController::class, 'getAll']);
+            Route::put('/status', [StatusController::class, 'update']);
+            Route::post('/statusC', [StatusController::class, 'create']);
 
             Route::put('/update-status', [JobController::class, 'updateStatus']);
         

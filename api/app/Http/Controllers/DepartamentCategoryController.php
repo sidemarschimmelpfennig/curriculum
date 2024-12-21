@@ -16,19 +16,8 @@ class DepartamentCategoryController extends Controller
 
     public function getAll()
     {
-        try {
-            $departaments = $this->departamentCategoryService->getAll();
-            if(count($departaments) <= 0)
-            {   
-                return response()->json('Sem departamentos encontrados');
-
-            }
-            
-            return response()->json([
-                'message' => 'Departamentos',
-                'departaments' => $departaments
-
-            ]);
+        try { 
+            return response()->json($this->departamentCategoryService->getAll());
 
         } catch (\Throwable $th) {
             return response()->json([
