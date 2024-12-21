@@ -23,7 +23,7 @@ return new class extends Migration
             $table->foreign('candidate_id')->references('id')->on('candidates')->onDelete('cascade');
 			$table->string('candidate_name');
 
-            $table->string('curriculum');
+            $table->string('curriculum')->nullable();
 
             $table->timestamps();
         });

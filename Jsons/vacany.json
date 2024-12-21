@@ -1,13 +1,33 @@
-{
-  "name": "Vaga de trabalho",
-  "description": "aaaaa",
-  "departament_id": 1,
-  "departament_categories_id": 1,
-  "status_id": 1,
-  "skills_id": 1,
-  "mobilities_id": 3
-  
-}
+[
+  {
+    "name": "Desenvolvedor Frontend React",
+    "description": "Desenvolvimento de interfaces modernas e responsivas.",
+    "departament_id": 1,
+    "departament_categories_id": 1,
+    "status_id": 1,
+    "skills_id": 1,
+    "mobilities_id": 1
+  },
+  {
+    "name": "Analista de Dados Python",
+    "description": "Análise de dados e criação de relatórios utilizando Python.",
+    "departament_id": 2,
+    "departament_categories_id": 2,
+    "status_id": 2,
+    "skills_id": 2,
+    "mobilities_id": 2
+  },
+  {
+    "name": "Gestor de Projetos Ágil",
+    "description": "Gestão de projetos utilizando metodologias ágeis.",
+    "departament_id": 3,
+    "departament_categories_id": 3,
+    "status_id": 3,
+    "skills_id": 3,
+    "mobilities_id": 3
+  }
+]
+
 
 validate:
 'name' => 'required|string',

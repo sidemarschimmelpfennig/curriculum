@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Mail;
+
 use App\Http\Controllers\{
     ApplyController,
     UserController,
@@ -16,6 +16,7 @@ use App\Http\Controllers\{
     SettingsController,
     SkillsController
 };
+use Illuminate\Support\Facades\Log;
 
 // Rotas de E-mail
 Route::get('/settings', [SettingsController::class, 'showForm'])->name('email.form');
@@ -23,19 +24,15 @@ Route::put('/settings', [SettingsController::class, 'update'])->name('email.upda
 Route::put('/status/{candidateId}', [CandidateController::class, 'updateStatus']);
 
 Route::prefix('v1')->group( function () {
-    dump('Memória em uso: ' . memory_get_usage(true));
     Route::get('/jobs', [JobController::class, 'getAll']);
-    Route::post('/create', [CandidateController::class, 'create']);
-
+    Route::post('/candidate', [CandidateController::class, 'create']);
 
     Route::post('/apply', [ApplyController::class, 'apply']);
-    
-    //Route::get('/apply', [JobController::class, 'apply']);
+    Log::info('Memória usada ' . memory_get_usage(true));
 
     Route::get('/login', [LoginController::class, 'getData']);
     Route::get('/logout', [LoginController::class, 'logout']);
     
-
     Route::put('/candidate/{id}', [CandidateController::class, 'delete']);
 
     //Route::middleware('auth:sanctum')->group(function (){ 
@@ -43,16 +40,19 @@ Route::prefix('v1')->group( function () {
             // + importante
             Route::get('/jobs', [JobController::class, 'getAll']);
             Route::post('/job', [JobController::class, 'create']);
+            Route::put('/job/{id}', [JobController::class, 'update']);
+            
 
             Route::delete('/departament/{id}', [DepartamentController::class, 'delete']);
             Route::delete('/user/{id}', [UserController::class, 'delete']);
             Route::delete('/candidate/{id}', [CandidateController::class, 'delete']);
+            Route::delete('/job/{id}', [JobController::class, 'delete']);
         
             Route::get('/departament', [DepartamentController::class, 'getAll']);
             Route::put('/departament', [DepartamentController::class, 'update']);
             Route::post('/departament', [DepartamentController::class, 'create']);
 
-            Route::get('/category', [DepartamentCategoryController::class, 'getAll']);
+            Route::get('/categorys', [DepartamentCategoryController::class, 'getAll']);
             Route::put('/category', [DepartamentCategoryController::class, 'update']);
             Route::post('/category', [DepartamentCategoryController::class, 'create']);
 

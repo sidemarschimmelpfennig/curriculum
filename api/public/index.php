@@ -2,9 +2,7 @@
 
 use Illuminate\Http\Request;
 
-// Aumentar o limite de memória antes de qualquer operação
-//
-ini_set('memory_limit', '512M');
+ini_set('memory_limit', '1024M');
 define('LARAVEL_START', microtime(true));
 
 // Verificar se a aplicação está em modo de manutenção...

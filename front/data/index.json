@@ -1,0 +1,221 @@
+{
+  "departments": [
+    {
+      "id": "1",
+      "name": "Desenvolvimento"
+    },
+    {
+      "id": "2",
+      "name": "Comercial"
+    },
+    {
+      "id": "3",
+      "name": "Suporte"
+    },
+    {
+      "id": "4",
+      "name": "Administrativo"
+    }
+  ],
+  "departmentCategory": [
+    {
+      "id": "1",
+      "name": "Backend"
+    },
+    {
+      "id": "2",
+      "name": "Frontend"
+    },
+    {
+      "id": "3",
+      "name": "Desktop"
+    }
+  ],
+  "status": [
+    {
+      "id": "2",
+      "name": "Pausado"
+    },
+    {
+      "id": "3",
+      "name": "Em Seleção"
+    },
+    {
+      "id": "4",
+      "name": "Entrevista"
+    },
+    {
+      "id": "5",
+      "name": "Finalizado"
+    }
+  ],
+  "joblisting": [
+    {
+      "id": "3f7b",
+      "name": "sdfsdf",
+      "description": "dsfsdf",
+      "department": "Comercial",
+      "department_categories": "Frontend",
+      "status": "Aberta",
+      "skills": [
+        "rrtssssss"
+      ],
+      "mobilities": "Presencial"
+    },
+    {
+      "id": "5b84",
+      "name": "sdfdf",
+      "description": "sdfdf",
+      "department": "Desenvolvimento",
+      "department_categories": "Backend",
+      "status": "Aberta",
+      "skills": [
+        "dsdsf"
+      ],
+      "mobilities": "Presencial"
+    },
+    {
+      "id": "a5d5",
+      "name": "sdfsdf",
+      "description": "dsfsdf",
+      "department": "Comercial",
+      "department_categories": "Backend",
+      "status": "Aberta",
+      "skills": [
+        "sdds"
+      ],
+      "mobilities": "Remoto"
+    },
+    {
+      "id": "c2a4",
+      "name": "Sidemar schimmelpfennig junior",
+      "description": "adda",
+      "department": "Comercial",
+      "department_categories": "Frontend",
+      "status": "Aberta",
+      "skills": [
+        "fdssfddfsdf"
+      ],
+      "mobilities": "Presencial"
+    },
+    {
+      "id": "5be4",
+      "name": "Sidemar schimmelpfennig junior",
+      "description": "gdghdgh",
+      "department": "Comercial",
+      "department_categories": "Frontend",
+      "status": "Aberta",
+      "skills": [
+        "rrtssssss"
+      ],
+      "mobilities": "Presencial"
+    },
+    {
+      "id": "4cdf",
+      "name": "Desenvolvimento web de sites em wordpress",
+      "description": "fgfdfs",
+      "department": "Comercial",
+      "department_categories": "Frontend",
+      "status": "Aberta",
+      "skills": [
+        "dfsgfd"
+      ],
+      "mobilities": "Presencial"
+    },
+    {
+      "id": "cae2",
+      "name": "Desenvolvimento web de sites em wordpress",
+      "description": "dsffsds",
+      "department": "Comercial",
+      "department_categories": "Frontend",
+      "status": "Aberta",
+      "skills": [
+        "dfsgfd"
+      ],
+      "mobilities": "Presencial"
+    }
+  ],
+  "modalities": [
+    {
+      "id": "1",
+      "name": "presencial"
+    },
+    {
+      "id": "2",
+      "name": "remoto"
+    },
+    {
+      "id": "3",
+      "name": "hibrido"
+    }
+  ],
+  "job_candidate": [
+    {
+      "job_id": 1,
+      "job": 1,
+      "full_name": "joao",
+      "file": 1,
+      "id": "3f36"
+    }
+  ],
+  "candidates": [
+  ],
+  "candidatestojob": [
+    {
+      "id_candidate": 1,
+      "id_job_vancy": 1,
+      "id": "b4ce"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "named": "Sidemar",
+      "email": "sidemarschi@gmail.com",
+      "password": "1123",
+      "is_admin": 0
+    },
+    {
+      "id": "4",
+      "named": "Julia",
+      "email": "julia.reis@example.com",
+      "password": "julia1234",
+      "is_admin": 0
+    },
+    {
+      "id": "5",
+      "named": "Fernando",
+      "email": "fernando.souza@example.com",
+      "password": "fer4567",
+      "is_admin": 1
+    },
+    {
+      "id": "6",
+      "named": "Isabela",
+      "email": "isabela.martins@example.com",
+      "password": "isabela890",
+      "is_admin": 0
+    },
+    {
+      "id": "8",
+      "named": "Patricia",
+      "email": "patricia.gomes@example.com",
+      "password": "patricia321",
+      "is_admin": 0
+    },
+    {
+      "id": "9",
+      "named": "Ricardo",
+      "email": "ricardo.pereira@example.com",
+      "password": "ricardo789",
+      "is_admin": 0
+    },
+    {
+      "id": "10",
+      "named": "Mariana",
+      "email": "mariana.lima@example.com",
+      "password": "mariana999",
+      "is_admin": 1
+    }
+  ]
+}

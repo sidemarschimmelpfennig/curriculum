@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Events\StatusUpdatedEvent;
 use Illuminate\Database\{
     Eloquent\Factories\HasFactory,
     Eloquent\Model
@@ -21,10 +20,10 @@ class Candidates extends Model
     protected $fillable = [
         'full_name',
         'email',
-        'password',
         'phone',
         'additional_info',
-        'file',
+        
+        'curriculum',
         'status',
         'active'
         

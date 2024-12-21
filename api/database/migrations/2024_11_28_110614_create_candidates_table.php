@@ -11,14 +11,14 @@ return new class extends Migration
         Schema::create('candidates', function (Blueprint $table) {
             $table->id();
             $table->string('full_name', 200);
-            $table->string('email')->unique();
-            $table->string('password');
+            $table->string('email')->unique(); 
 			$table->string('phone');
             $table->text('additional_info', 200)->nullable();
-            $table->string('file')->nullable();
             
+            $table->string('curriculum')->nullable(); // path
             $table->string('status')->default('Pendente');
             $table->boolean('active')->default(1);
+            
             $table->timestamps();
             
         });

@@ -19,7 +19,7 @@ class CandidatesVagas extends Model
         'job_id',
         'job',
         'candidate_id',
-        'full_name',
+        'candidate_name',
         'curriculum'
 
     ];

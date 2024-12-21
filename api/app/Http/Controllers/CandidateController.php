@@ -7,7 +7,7 @@ use App\Models\Candidates;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Services\CandidateService;
-
+use Illuminate\Support\Facades\Log;
 
 class CandidateController extends Controller
 {
@@ -18,63 +18,13 @@ class CandidateController extends Controller
 
     }
 
-    public function curriculumApply(Request $request)
-    {
-        dd('aaa');
-        return response()->json($request->all());
-        
-        try {
-            $request->validate([
-                'jobID' => 'required',
-                'candidateID' => 'required|integer',
-                'curriculum' => 'required|file|mimes:pdf,doc,docx'
-
-            ]);
-            
-            $candidateID = $request->input('candidateID');
-            $jobId = $request->input('jobID');
-            $file = $request->file('curriculum');
-           // $job_x_candidate = $this->candidateService->jobApply($candidateID, $jobId, $file);
-        
-            return response()->json([
-                'message' => 'Aplicação criada com sucesso',
-                'jobCandidate' => $job_x_candidate
-
-            ], 200);
-    
-        } catch (\Throwable $th) {
-            return response()->json([
-                'message' => 'Não foi possível se candidatar a vaga',
-                'th' => $th->getMessage(),
-                'line' => $th->getLine(),
-                'file' => $th->getFile(),
-
-            ], 400);
-        }
-    }
-
-    public function downloadFile(Request $request)
-    {
-        $user = Auth::user();
-        //$path = $request->
-        //$directory = public_path('uploads/' . $path . '.pdf');
-
-        //return response()->download($directory);
-
-    }
-
     public function delete(int $id)
     {
         try {
             $this->candidateService->delete($id);
             $candidate = $this->candidateService->findByID($id);
 
-            return response()->json([
-                'success' => true,
-                'message' => 'Candidato desativado!',
-                'candidate' => $candidate
-                
-            ]);
+            return response()->json($candidate);
                 
         } catch (\Throwable $th) {
             return response()->json([
@@ -92,15 +42,24 @@ class CandidateController extends Controller
             $data = $request->validate([
                 'full_name' => 'required|string',
                 'email' => 'required|string',
-                'password' => 'required|string',
                 'phone' => 'required|string',
                 'additional_info' => 'required|string',
+                'curriculum' => 'required|file',
+                'jobID' => 'required|integer'
+
             ]);
-            return $this->candidateService->create($data);
+            //return response()->json($request->all());
+            $file = $request->file('curriculum');
+            $candidate = $this->candidateService->create($data);
+            $apply = $this->candidateService->applyCreate($candidate->id, $file, $data['jobID']);
+
+            return response()->json($apply);
+            
+            //return response()->json();
 
         } catch (\Throwable $th) {
             return response()->json([
-                'erro' => 'Erro ao desativar candidato',
+                'erro' => 'Erro ao criar candidato',
                 'th' => $th->getMessage(),
                 'line' => $th->getLine(),
                 'file' => $th->getfile(),

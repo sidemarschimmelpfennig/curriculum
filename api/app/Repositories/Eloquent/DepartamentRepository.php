@@ -10,7 +10,7 @@ class DepartamentRepository implements DepartamentInterface
 {
     public function getAll()
     {
-        return Departament::paginate(10);
+        return Departament::all();
 
     }
 

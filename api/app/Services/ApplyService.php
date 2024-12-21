@@ -15,7 +15,12 @@ class ApplyService
 
     public function apply(array $data)
     {
-        return $this->repository->apply($data);
+        //return $this->repository->apply($data);
+    }
+
+    public function archiveFile(int $id, object $file) 
+    {
+        return $this->repository->archiveFile($id, $file);
     }
 
 }

@@ -1,38 +1,45 @@
 <?php
-
 namespace App\Repositories\Eloquent;
 
-use App\Models\CandidatesVagas;
-use App\Services\CandidateService;
-use App\Services\JobService;
+use App\Models\{
+    CandidatesVagas,
+    Candidates
+
+};
 
 class ApplyRepository
 {
-    protected $jobService;
-    protected $candidateService;
-    public function __construct(
-        JobService $jobService,
-        CandidateService $candidateService
-
-    )
+    public function findCandidate(int $id)
     {
-        $this->jobService = $jobService;
-        $this->candidateService = $candidateService;
+        return Candidates::find($id);
+
     }
 
-    public function apply(array $data)
+    public function archiveFile(int $id, object $file)
     {
-        $job = $this->jobService->findID($data['job_id']);
-        $candidate = $this->candidateService->findByID($data['candidate_id']);
-        //$file = $this->
+        dump(memory_get_usage(true));
 
-        return CandidatesVagas::create([
-            'job_id' => $job->id,
-            'job' => $job->name,
-            'candidate_id' => $candidate->id,
-            'full_name' => $candidate->full_name,
-            'file' => null
+        $directory = public_path('uploads'); // Vai pegar o diretório
+        $extension = $file->getClientOriginalExtension();
 
-        ]);
+        if(!is_dir($directory)){ 
+            mkdir($directory, 0755, true);
+
+        }
+
+        $candidate = $this->findCandidate($id);
+        $newName = "$candidate->id" . "_" . "$candidate->full_name" . ".$extension";
+
+        while (file_exists("$directory/$newName")) {
+            //.$newName
+            $newName = 'Candidato ' . $candidate->full_name . ', já cadastrado' . "." . $extension; // Adiciona o contador ao nome do arquivo
+
+        }
+    
+        // Move o arquivo para o diretório com o novo nome
+        //$path = $file->move($directory, $candidate->id . "_" . $candidate->full_name . "." . $extension); // Qualquer coisa só voltar para a lógica antiga
+        $path = $file->move($directory, $newName);
+    
+        return $path; // Retorna o caminho do arquivo
     }
 }

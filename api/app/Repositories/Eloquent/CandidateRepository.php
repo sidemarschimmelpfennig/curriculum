@@ -3,49 +3,53 @@
 namespace App\Repositories\Eloquent;
 
 use App\Repositories\Interface\CandidateInterface;
-
-use App\Models\{
-    Candidates,
-    JobVacancies,
-    CandidatesVagas
+use App\Services\{
+    ApplyService,
+    JobService
 
 };
 
-use Illuminate\Support\Facades\Hash;
+use App\Models\{
+    Candidates,
+    CandidatesVagas
 
+};
 class CandidateRepository implements CandidateInterface
 {
+    protected $applyService;
+    protected $jobService;
+
+    public function __construct(
+        ApplyService $applyService,
+        JobService $jobService    
+    )
+    {
+        $this->applyService = $applyService;
+        $this->jobService = $jobService;
+    }
     public function getAll()
     {
         return Candidates::all();
     }
 
-    public function jobApply(int $candidateID, int $jobId, object $pathfile)
-    {
-        $user = Candidates::where('id', $candidateID)->first();
-        $job = JobVacancies::where('id', $jobId)->first();
-        
+    public function applyCreate(int $id, object $file, int $jobID)
+    {    
+        $filePath = $this->applyService->archiveFile($id, $file);
+        $job = $this->jobService->findID($jobID);
+        $candidate = $this->findByID($id);
         return CandidatesVagas::create([
-            'job_id' => $jobId,
+            'job_id' => $jobID,
             'job' => $job->name,
-            'candidate_id' => $candidateID,
-            'full_name' => $user->full_name,
-            'file' => $pathfile 
-            
+            'candidate_id' => $id,
+            'candidate_name' =>  $candidate->full_name,
+            'curriculum' => $filePath
+             
         ]);
-
     }
 
-    public function create(array $data){
-        return Candidates::create([
-            'full_name' => $data['full_name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'phone' => $data['phone'],
-            'additional_info' => $data['additional_info'],
-            'file' => $data['file'],
-
-        ]);
+    public function create(array $data)
+    {
+        return Candidates::create($data);
     }
 
     public function findByID(int $id)
