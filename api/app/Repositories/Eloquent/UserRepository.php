@@ -23,7 +23,7 @@ class UserRepository implements UserInterface
         return User::create($data);
     }
 
-    public function update(int $id)
+    public function update(int $id, array $data)
     {
         
     }
