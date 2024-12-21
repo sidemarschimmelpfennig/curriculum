@@ -103,13 +103,13 @@ class JobController extends Controller
     {
         try {
             $data = $request->validate([
-                'name' => 'string',
-                'description' => 'string',
-                'departament_id' => 'integer',
-                'departament_categories_id' => 'integer',
-                'status_id' => 'integer',
-                'skills_id' => 'integer',
-                'mobilities_id' => 'integer',
+                'name' => 'required|string',
+                'description' => 'required|string',
+                'departament_id' => 'required|integer',
+                'departament_categories_id' => 'required|integer',
+                'status_id' => 'required|integer',
+                'skills_id' => 'required|integer',
+                'mobilities_id' => 'required|integer',
             ]);
 
             $jobUpdate = $this->jobService->update($id, $data);

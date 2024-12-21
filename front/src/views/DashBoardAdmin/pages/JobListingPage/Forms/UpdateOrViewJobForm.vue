@@ -327,13 +327,11 @@ export default {
         };
 
         console.log('VAGA SENDO ALTERADA:', this.idJobListing)
+        console.log('Dados da alteração:', jobData)
 
-        const response = await axios.put(
-          `${this.api}/admin/jobU/${this.idJobListing}`,
-          jobData
-        );
-        console.log("Vaga atualizada:", response);
-        this.closeModal();
+        //const response = await axios.put(`${this.api}/admin/jobU/${this.idJobListing}`, jobData );
+        //console.log("Vaga atualizada:", response);
+        //this.closeModal();
       } catch (error) {
         console.error("Erro ao atualizar vaga:", error);
       }
