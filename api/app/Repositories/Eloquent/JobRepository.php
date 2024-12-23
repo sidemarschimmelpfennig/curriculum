@@ -104,5 +104,6 @@ class JobRepository implements JobInterface
     public function findID(int $id)
     {
         return JobVacancies::find($id);
+        
     }
 }
