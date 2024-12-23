@@ -132,7 +132,8 @@
   <div class="mx-auto p-6 bg-white shadow-md rounded-lg showModalComponent">
     <div class="text-xl font-semibold text-center flex">
       <h2 class="text-2xl font-semibold mb-4 pr-48 pl-5">
-        Cadastre uma nova vaga
+        Alterar vaga
+        
       </h2>
       <span
         class="material-icons text-white bold pl-8 hover:text-red-600 hover:cursor-pointer"
@@ -278,12 +279,11 @@
         type="submit"
         class="py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition mt-4"
       >
-        Criar nova vaga
+        Alterar vaga
       </button>
     </form>
   </div>
 </template>
-
 
 <script>
 import axios from "axios";
@@ -296,7 +296,7 @@ export default {
         description: null,
         department: null,
         departament_category: null,
-        status: "Aberta",
+        status: null,
         skills: null,
         mobilities: null,
       },
@@ -307,7 +307,28 @@ export default {
       status_array: [],
       api: process.env.VUE_APP_API_URL,
     };
+
   },
+  watch: {
+    editJob: {
+      handler(newValue){
+        if(newValue)
+        {
+          this.name = newValue.name,
+          this.description = newValue.description,
+          this.department = newValue.department,
+          this.departament_category = newValue.departament_category,
+          this.status = newValue.status,
+          this.skills = newValue.skills,
+          this.mobilities = newValue.mobilities
+
+        }
+      },
+      immediate: true,
+      deep: true
+    }
+  }, 
+
   methods: {
     closeModal() {
       this.$emit("close");
@@ -315,23 +336,22 @@ export default {
     submitForm() {},
     async updateJob() {
       try {
-        const jobData = {
+        console.log('VAGA SENDO ALTERADA:', this.idJobListing)
+        const data = {
           name: this.form.name,
           description: this.form.description,
-          departament_id: this.form.departament,
-          departament_categories_id: this.form.departament_categories,
-          status_id: this.form.status,
-          skills_id: this.form.skills,
-          mobilities_id: this.form.mobilities,
-        
-        };
+          departament_id: this.form.departament, // ID do departamento
+          departament_categories_id: this.form.departament_category, // ID da categoria
+          status_id: this.form.status, // ID do status
+          skills_id: this.form.skills, // ID das habilidades
+          mobilities_id: this.form.mobilities, // ID da modalidade de trabalho
 
-        console.log('VAGA SENDO ALTERADA:', this.idJobListing)
-        console.log('Dados da alteração:', jobData)
+        }
 
-        //const response = await axios.put(`${this.api}/admin/jobU/${this.idJobListing}`, jobData );
-        //console.log("Vaga atualizada:", response);
-        //this.closeModal();
+        const response = await axios.put(`${this.api}/admin/job/${this.idJobListing}`, data);
+
+        console.log("Vaga atualizada:", response);
+        this.closeModal();
       } catch (error) {
         console.error("Erro ao atualizar vaga:", error);
       }

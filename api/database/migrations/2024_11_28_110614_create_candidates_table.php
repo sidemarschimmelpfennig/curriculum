@@ -15,7 +15,7 @@ return new class extends Migration
 			$table->string('phone');
             $table->text('additional_info', 200)->nullable();
             
-            $table->string('curriculum')->nullable(); // path
+            $table->string('curriculum')->nullable();
             $table->string('status')->default('Pendente');
             $table->boolean('active')->default(1);
             

@@ -75,15 +75,15 @@ export default {
   methods: {
     async getJobs() {
       try {
-        let id = this.$route.params.id;
-        let response = await axios.get(
-          `http://localhost:5000/api/candidates/job/${id}`
-        );
+        let id = this.params.id;
+        console.log('ID', this.id)
+        console.log('route', this.$route)
+        let response = await axios.get(`${this.api}/job/${id}`);
 
-        this.jobs = response.data.candidates;
+        //this.jobs = response.data.candidates;
         console.log(response);
       } catch (error) {
-        console.error(error);
+        console.error('Erro linja 85:', error);
       }
     },
     async download(id) {

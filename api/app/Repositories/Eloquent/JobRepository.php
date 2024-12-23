@@ -93,7 +93,26 @@ class JobRepository implements JobInterface
 
     public function update(int $id, array $data)
     {
-        return JobVacancies::where('id', $id)->update($data);
+        $departament = $this->departamentService->findByDepartament($data['departament_id']);
+        $departament_categories = $this->departamentCategoriesService->findByDepartamentCategory($data['departament_categories_id']);
+        $status = $this->statusService->findByStatus($data['status_id']);
+        $skills = $this->skillsService->findBySkill($data['skills_id']);
+        $mobilities = $this->mobilitiesService->findByMobilities($data['mobilities_id']);
+
+        return JobVacancies::where('id', $id)->update([
+            'name' => $data['name'],
+            'description' => $data['description'],
+            'departament_id' => $departament->id,
+            'departament' => $departament->departament,
+            'departament_categories_id' => $departament_categories->id,
+            'departament_categories' => $departament_categories->departament_category,
+            'status_id' => $status->id,
+            'status' => $status->status,
+            'skills_id' => $skills->id,
+            'skills' => $skills->skills,
+            'mobilities_id' => $mobilities->id,
+            'mobilities' => $mobilities->mobilities
+        ]);
     }
 
     public function delete(int $id)

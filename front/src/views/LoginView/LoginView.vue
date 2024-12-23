@@ -76,7 +76,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import axios from 'axios';
 
 export default {
   data() {
@@ -84,12 +84,31 @@ export default {
       email: "",
       password: "",
       error: null,
+      api: process.env.VUE_APP_API_URL
     };
   },
   methods: {
-    ...mapActions("auth", ["login"]),
     async handleLogin() {
-      this.$router.push("/admin")
+      
+      try {  
+        const response = await axios.post(`${this.api}/login`, {
+          email: this.email,
+          password: this.password
+          
+        });
+
+        if (response.data.success === true && response.data.token) {
+          localStorage.setItem('authToke', response.data.token)
+          this.$router.push("/admin")
+
+        } else {
+          this.error = 'Dados errados ou ausentes'
+
+        }
+      } catch (error) {
+        console.error('Erro', error)
+      }
+
     },
   },
 };

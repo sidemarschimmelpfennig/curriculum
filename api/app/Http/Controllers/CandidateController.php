@@ -89,4 +89,20 @@ class CandidateController extends Controller
             'message' => 'Status atualizado com sucesso!',
         ], 200);
     }
+
+    public function findByJob(int $id)
+    {
+        try {
+            $candidate = $this->candidateService->findByJob($id);
+            if($candidate)
+            {
+                return response()->json($candidate);
+
+            } else {
+                return response()->json('Não tem candidatos aplicados para essa vaga');
+            }
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+    }
 }
