@@ -5,15 +5,15 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 
 use App\Repositories\{
-    Interface\JobRepositoryInterface,
-    Interface\CandidateRepositoryInterface,
-    Interface\UserRepositoryInterface,
-    Interface\DepartamentRepositoryInterface,
+    Interface\JobInterface,
+    Interface\CandidateInterface,
+    Interface\UserInterface,
+    Interface\DepartamentInterface,
 
     Eloquent\JobRepository,
     Eloquent\CandidateRepository,
     Eloquent\UserRepository,
-    Eloquent\DepartamentRepository
+    Eloquent\DepartamentRepository,
 
 };
 
@@ -21,10 +21,10 @@ class AppServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->bind(JobRepositoryInterface::class, JobRepository::class);
-        $this->app->bind(CandidateRepositoryInterface::class, CandidateRepository::class);
-        $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
-        $this->app->bind(DepartamentRepositoryInterface::class, DepartamentRepository::class);
+        $this->app->bind(JobInterface::class, JobRepository::class);
+        $this->app->bind(CandidateInterface::class, CandidateRepository::class);
+        $this->app->bind(UserInterface::class, UserRepository::class);
+        $this->app->bind(DepartamentInterface::class, DepartamentRepository::class);
     }
 
     public function boot(): void

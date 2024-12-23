@@ -42,6 +42,8 @@ class CandidateRepository implements CandidateInterface
             'job' => $job->name,
             'candidate_id' => $id,
             'candidate_name' =>  $candidate->full_name,
+            'phone' => $candidate->phone,
+            'email' => $candidate->email,
             'curriculum' => $filePath
              
         ]);
@@ -60,7 +62,15 @@ class CandidateRepository implements CandidateInterface
 
     public function findByJob(int $id)
     {
-        return CandidatesVagas::where('job_id', $id);
+        return CandidatesVagas::where('job_id', $id)->get();
+        
+    }
+
+    public function downloadFile(int $id)
+    {
+        $candidateJob = CandidatesVagas::where('candidate_id', $id)->first();
+        return $candidateJob->curriculum;
+
     }
 
     public function update(int $id, array $data)
@@ -79,5 +89,7 @@ class CandidateRepository implements CandidateInterface
         return Candidates::where('status', $param)->first();
         
     }
+
+    
 }
 

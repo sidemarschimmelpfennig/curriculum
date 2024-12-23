@@ -96,9 +96,10 @@ export default {
           password: this.password
           
         });
+        console.log('Retorno do login', response)
 
         if (response.data.success === true && response.data.token) {
-          localStorage.setItem('authToke', response.data.token)
+          localStorage.setItem('authToken', response.data.token);
           this.$router.push("/admin")
 
         } else {

@@ -39,18 +39,8 @@ class ApplyController extends Controller
                 'line' => $th->getLine(),
                 'file' => $th->getFile(),
             ], 400);
+
         }
-
-    }
-
-        
-    public function downloadFile(Request $request)
-    {
-        //$path = $request->
-        //$directory = public_path('uploads/' . $path . '.pdf');
-
-        //return response()->download($directory);
-
     }
 
 }

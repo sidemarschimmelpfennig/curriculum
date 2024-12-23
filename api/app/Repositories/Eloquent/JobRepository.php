@@ -117,12 +117,15 @@ class JobRepository implements JobInterface
 
     public function delete(int $id)
     {
-        
+        return JobVacancies::where('id', $id)->update([
+            'active' => false 
+            
+        ]);
     }
 
     public function findID(int $id)
     {
         return JobVacancies::find($id);
-        
+
     }
 }

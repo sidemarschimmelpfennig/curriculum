@@ -102,7 +102,7 @@ export default {
         phone: "",
         additional_info: "",
         status: 1,
-        jobID: this.jobID, // Recebendo o jobID como propriedade
+        jobID: this.jobID, 
         file: null,
       },
       api: process.env.VUE_APP_API_URL,
@@ -110,7 +110,7 @@ export default {
   },
   methods: {
     handleFileUpload(event) {
-      const file = event.target.files[0]; // Obtém o arquivo selecionado
+      const file = event.target.files[0];
       if (file && file.type === "application/pdf") {
         this.form.file = file;
       } else {
@@ -126,19 +126,15 @@ export default {
         form.append("phone", this.form.phone);
         form.append("additional_info", this.form.additional_info);
         form.append("status", this.form.status);
-        form.append("jobID", this.form.jobID); // Enviando o jobID
+        form.append("jobID", this.form.jobID); 
 
         form.append("curriculum", this.form.file);
-
-        console.log('ID da vaga: ', this.jobID)
-
         const response = await axios.post(
           `${this.api}/candidate`,
           form,
           {
             headers: {
               "Content-Type": "multipart/form-data",
-              'Access-Control-Allow-Origin': 'http://localhost:8080'
             },
           }
         );

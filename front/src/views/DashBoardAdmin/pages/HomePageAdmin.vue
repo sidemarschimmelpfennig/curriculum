@@ -15,10 +15,10 @@ export default {
   data() {
     return {
       user: {
-        name: "Maycon",
-        email: "maycon@sgbr.com",
+          
       },
     };
+
   },
   mounted() {},
   methods: {},

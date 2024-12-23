@@ -58,13 +58,13 @@
               class="border-b text-start"
             >
               <UpdateUserForm
-                v-if="showModalUpdate"
+                v-if="showModalUpdate && idUser === user.id"
                 :show="showModalUpdate"
                 @close="closeModal()"
-                :idFromUser="idUser"
+                :idFromUser="user.id"
                 class="openModal"
               />
-              <td class="px-4 py-2 text-sm text-gray-700">{{ user.named }}</td>
+              <td class="px-4 py-2 text-sm text-gray-700">{{ user.name }}</td>
               <td class="px-4 py-2 text-sm text-gray-700">{{ user.email }}</td>
               <td class="px-4 py-2 text-sm text-gray-700">
                 {{ user.is_admin === 0 ? "Padrão" : "Administrador" }}
@@ -132,12 +132,12 @@ export default {
     updateUser(id) {
       this.showModalUpdate = true;
       this.idUser = id;
-      this.getAllUsers();
+      //this.getAllUsers();
     },
 
     async getAllUsers() {
       try {
-        let response = await axios.get(`${this.api}user`);
+        let response = await axios.get(`${this.api}/admin/users`);
         let data = response.data;
         this.users = data;
       } catch (error) {

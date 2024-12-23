@@ -1,4 +1,4 @@
-<template>
+''<template>
   <div
     class="absolute h-full w-52 bg-blue-600 text-white sidebar-admin flex flex-col"
   >
@@ -31,7 +31,7 @@ export default {
       menuItems: [
         { label: "Vagas em Aberto", to: "/admin/joblistpage" },
         { label: "Usuários", to: "/admin/userpage" },
-        { label: "Dados de Registro", to: "/admin/register_data" },
+        
       ],
     };
   },

@@ -49,7 +49,7 @@
           required
           class="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
-        <option option value="" disabled selected>Padrão</option>
+        
           <option
             v-for="(department, id) in departments"
             :key="id"
@@ -70,7 +70,7 @@
           required
           class="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
-          <option option value="" disabled selected>Padrão</option>
+          
           <option
             v-for="(category, id) in departments_categories"
             :key="id"
@@ -91,7 +91,7 @@
           required
           class="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
-        <option option value="" disabled selected>Padrão</option>
+        
           <option
             v-for="mobilities in mobilities_array"
             :value="mobilities.id"
@@ -112,7 +112,7 @@
           required
           class="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
-        <option option value="" disabled selected>Padrão</option>
+        
           <option
             v-for="(skills, id) in skills_array"
             :value="skills.id"
@@ -124,16 +124,16 @@
       </div>
 
       <div class="flex flex-col space-y-2">
-        <label for="skills" class="text-sm font-medium text-gray-700 text-start"
+        <label for="status" class="text-sm font-medium text-gray-700 text-start"
           >Status :</label
         >
         <select
-          id="mobilities"
+          id="status"
           v-model="form.status"
           required
           class="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
-        <option option value="" disabled selected>Padrão</option>
+        
           <option
             v-for="(status, id) in status_array"
             :value="status.id"

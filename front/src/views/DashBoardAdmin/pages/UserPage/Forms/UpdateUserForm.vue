@@ -10,13 +10,13 @@
     </div>
 
     <div class="mt-4">
-      <label for="named" class="block text-sm font-medium text-gray-700"
+      <label for="name" class="block text-sm font-medium text-gray-700"
         >Nome</label
       >
       <input
         type="text"
-        id="named"
-        v-model="form.named"
+        id="name"
+        v-model="form.name"
         class="mt-1 block w-fullborder border-gray-500 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 py-2 px-3 text-sm"
         placeholder="Digite seu nome"
       />
@@ -72,10 +72,10 @@ export default {
   data() {
     return {
       form: {
-        named: "",
+        name: "",
         password: "",
         email: "",
-        is_admin: 0,
+        
       },
       api: process.env.VUE_APP_API_URL,
     };
@@ -83,16 +83,13 @@ export default {
   methods: {
     async submitForm() {
       let form = {
-        named: this.named,
+        name: this.name,
         email: this.email,
         password: this.password,
-        is_admin: this.is_admin,
+        
       };
       try {
-        const response = await axios.put(
-          `${this.api}users/${this.idFromUser}`,
-          form
-        );
+        const response = await axios.put(`${this.api}/admin/user/${this.idFromUser}`, form );
         console.log(response);
 
         this.closeModal();
@@ -102,8 +99,10 @@ export default {
     },
     async getUserById() {
       try {
-        let response = await axios.get(`${this.api}users/${this.idFromUser}`);
+        let response = await axios.get(`${this.api}/admin/userByID/${this.idFromUser}`);
+
         this.form = response.data;
+
       } catch (error) {
         console.log(error);
       }

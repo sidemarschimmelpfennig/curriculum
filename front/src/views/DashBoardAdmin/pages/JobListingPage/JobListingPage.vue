@@ -183,9 +183,11 @@ export default {
   },
   methods: {
     async getJobs() {
+      axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('authToken')}`;
       try {
         const response = await axios.get(`${this.api}/jobs`);
         console.log('ADMIN VAGAS:', response);
+        
         this.joblist = response.data;
 
       } catch (error) {

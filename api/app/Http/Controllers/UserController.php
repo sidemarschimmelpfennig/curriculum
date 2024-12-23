@@ -35,19 +35,32 @@ class UserController extends Controller
 
     public function create(Request $request)
     {
-        $data = $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|string',
-            'password' => 'required|string'
-            
-        ]);
+        try {
+            $data = $request->validate([
+                'name' => 'required|string',
+                'email' => 'required|string',
+                'password' => 'required'
+                
+            ]);
+    
+            $user = $this->userService->create($data);
+            return response()->json($user, 201);
 
-        $user = $this->userService->create($data);
-        return response()->json([
-            'message' => 'Erro ao criar usuário!',
-            'user' => $user,
-        ], 400);
-        
+        } catch (\Throwable $th) {
+            return response()->json([
+                'erro' => 'Erro ao criar usuário',
+                'th' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getfile(),
+            ], 400);
+        }
+
+    }
+
+
+    public function update(int $id, Request $request)
+    {
+
     }
 
     public function delete(int $id)

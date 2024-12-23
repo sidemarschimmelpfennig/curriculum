@@ -68,7 +68,7 @@ class LoginController extends Controller
                 'token' => $token,
                 'user' => $currenteUser
 
-            ], 200);
+            ], 200)->header('Content-Type', 'application/json');
         
         } else {
             return response()->json([

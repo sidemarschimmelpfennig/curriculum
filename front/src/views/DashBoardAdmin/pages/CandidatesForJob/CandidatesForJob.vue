@@ -31,12 +31,12 @@
           :key="id"
           class="joblist-table-row flex items-center p-4 text-gray-600 hover:bg-gray-100 transition"
         >
-          <div class="w-1/5 truncate">{{ job.full_name }}</div>
+          <div class="w-1/5 truncate">{{ job.candidate_name }}</div>
           <div class="w-2/5 truncate">
             {{ job.email }}
           </div>
           <div class="w-1/5 truncate">
-            {{ job.contactphone }}
+            {{ job.phone }}
           </div>
           <div class="w-1/5 flex justify-center space-x-2">
             <button class="material-icons text-red-600 hover:text-red-800">
@@ -51,7 +51,7 @@
             </button>
             <button
               class="material-icons text-gray-600 hover:text-gray-800"
-              @click="download(job.id)"
+              @click="download(job.id, job.candidate_id)"
             >
               download
             </button>
@@ -70,28 +70,43 @@ export default {
     return {
       jobs: [],
       search: "",
+
+      api: process.env.VUE_APP_API_URL,
     };
   },
   methods: {
     async getJobs() {
       try {
-        let id = this.params.id;
+        let id = this.$route.params.id;
         console.log('ID', this.id)
         console.log('route', this.$route)
-        let response = await axios.get(`${this.api}/job/${id}`);
+        const response = await axios.get(`${this.api}/admin/candidates/job/${id}`);
 
-        //this.jobs = response.data.candidates;
-        console.log(response);
+        this.jobs = response.data;
+        console.log(response.data);
       } catch (error) {
         console.error('Erro linja 85:', error);
       }
     },
-    async download(id) {
+    async download(jobID, candidateID) {
       try {
-        let response = await axios.get(
-          `http://localhost:5000/api/candidates/download/id/${id}`
-        );
-        console.log(response);
+        const candidate = await axios.get(`${this.api}/candidate/${candidateID}`)
+        const response = await axios.get(`${this.api}/admin/download/candidate/${jobID}`, {
+          responseType: 'blob'
+
+        });
+        
+        const blob = new Blob([response.data], { type: response.headers['content-type'] });
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', `${candidate.data.id}_${candidate.data.full_name}`); // Set the default file name
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        //console.log('Response:', response.data)
+        
       } catch (error) {
         console.error(error);
       }

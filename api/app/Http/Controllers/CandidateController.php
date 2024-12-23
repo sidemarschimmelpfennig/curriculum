@@ -39,6 +39,8 @@ class CandidateController extends Controller
     public function create(Request $request)
     {
         try {
+            header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+
             $data = $request->validate([
                 'full_name' => 'required|string',
                 'email' => 'required|string',
@@ -90,6 +92,12 @@ class CandidateController extends Controller
         ], 200);
     }
 
+    public function findbyID(int $id)
+    {        
+        return response()->json($this->candidateService->findByID($id));
+
+    }
+
     public function findByJob(int $id)
     {
         try {
@@ -102,7 +110,20 @@ class CandidateController extends Controller
                 return response()->json('Não tem candidatos aplicados para essa vaga');
             }
         } catch (\Throwable $th) {
-            //throw $th;
+            return response()->json([
+                'erro' => 'Erro ao criar candidato',
+                'th' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getfile(),
+
+            ], 400);
         }
+    }
+
+    public function downloadFile(int $id)
+    {
+        $directory = $this->candidateService->downloadFile($id);
+        return response()->download($directory);
+
     }
 }

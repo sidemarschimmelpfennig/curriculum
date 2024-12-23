@@ -6,8 +6,7 @@ import CreateAccountView from "@/views/LoginView/CreateAccountView.vue";
 import LoginView from "@/views/LoginView/LoginView.vue";
 import authMiddleware from '../middleware/authMiddleware';
 import store from '../store';
-import { createRouter, createWebHistory } from "vue-router";
-import DataRegisterPage from "@/views/DashBoardAdmin/pages/DataRegisterPage/DataRegisterPage.vue";
+import { createRouter, createWebHistory } from "vue-router";11
 import JobListingPage from "@/views/DashBoardAdmin/pages/JobListingPage/JobListingPage.vue";
 import UsersPage from "@/views/DashBoardAdmin/pages/UserPage/UsersPage.vue";
 import CandidatesForJob from "@/views/DashBoardAdmin/pages/CandidatesForJob/CandidatesForJob.vue";
@@ -59,11 +58,6 @@ const routes = [
         path:"userpage",
         name: "userpage",
         component: UsersPage,
-      },
-      {
-        path:"register_data",
-        name: "register_data",
-        component: DataRegisterPage,
       },
       {
         path:"candidates/job/:id",

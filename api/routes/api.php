@@ -25,18 +25,16 @@ Route::put('/settings', [SettingsController::class, 'update'])->name('email.upda
 Route::put('/status/{candidateId}', [CandidateController::class, 'updateStatus']);
 
 Route::prefix('v1')->group( function () {
-    Route::get('/jobs', [JobController::class, 'getAll']);
-    Route::post('/candidate', [CandidateController::class, 'create']);
-
-    Route::post('/apply', [ApplyController::class, 'apply']);
-    Log::info('Memória usada ' . memory_get_usage(true));
-
     Route::post('/login', [LoginController::class, 'getData']);
     Route::get('/logout', [LoginController::class, 'logout']);
-    
-    Route::put('/candidate/{id}', [CandidateController::class, 'delete']);
 
-    //Route::middleware('auth:sanctum')->group(function (){ 
+    Route::get('/jobs', [JobController::class, 'getAll']);
+    Route::get('/candidate/{id}', [JobController::class, 'getAll']);
+
+    Route::post('/candidate', [CandidateController::class, 'create']);
+    Route::get('/candidate/{id}', [CandidateController::class, 'findbyID']);
+
+    Route::middleware('auth:sanctum')->group(function (){ 
         Route::prefix('/admin')->group(function (){    
             // + importante
             Route::get('/jobs', [JobController::class, 'getAll']);
@@ -67,11 +65,18 @@ Route::prefix('v1')->group( function () {
 
             Route::get('/status', [StatusController::class, 'getAll']);
             Route::put('/status', [StatusController::class, 'update']);
-            Route::post('/statusC', [StatusController::class, 'create']);
+            Route::post('/status', [StatusController::class, 'create']);
+
+            Route::get('/users', [UserController::class, 'getAll']);
+            Route::get('/userByID/{id}', [UserController::class, 'findByID']);
+            Route::put('/user/{id}', [UserController::class, 'update']);
+            Route::post('/user', [UserController::class, 'create']);
 
             Route::put('/update-status', [JobController::class, 'updateStatus']);
         
             Route::get('/candidates/job/{id}', [CandidateController::class, 'findByJob']);
+            Route::get('/download/candidate/{id}', [CandidateController::class, 'downloadFile']);
+            //Route::get('/download/candidate', [CandidateController::class, 'downloadFile']);
         });
-    //});
+    });
 });

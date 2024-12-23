@@ -22,6 +22,8 @@ return new class extends Migration
             $table->unsignedBigInteger('candidate_id')->unique();
             $table->foreign('candidate_id')->references('id')->on('candidates')->onDelete('cascade');
 			$table->string('candidate_name');
+            $table->string('email');
+            $table->string('phone');
 
             $table->string('curriculum')->nullable();
 

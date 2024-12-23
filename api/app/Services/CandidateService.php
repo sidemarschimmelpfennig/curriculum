@@ -45,4 +45,10 @@ class CandidateService
         return $this->repository->findByStatus($param);
         
     }
+
+    public function downloadFile(int $id)
+    {
+        return $this->repository->downloadFile($id);
+
+    }
 }

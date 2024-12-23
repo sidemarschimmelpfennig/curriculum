@@ -10,13 +10,13 @@
     </div>
 
     <div class="mt-4">
-      <label for="named" class="block text-sm font-medium text-gray-700"
+      <label for="name" class="block text-sm font-medium text-gray-700"
         >Nome</label
       >
       <input
         type="text"
-        id="named"
-        v-model="named"
+        id="name"
+        v-model="name"
         class="mt-1 block w-fullborder border-gray-500 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 py-2 px-3 text-sm"
         placeholder="Digite seu nome"
       />
@@ -70,23 +70,22 @@ export default {
       nomes: "",
       password: "",
       email: "",
-      is_admin: 1,
+
+      api: process.env.VUE_APP_API_URL,
     };
+    
   },
   methods: {
     async createUser() {
       let data = {
-        named: this.named,
+        name: this.name,
         email: this.email,
         password: this.password,
-        is_admin: this.is_admin,
+        
       };
 
       try {
-        let response = await axios.post(
-          `${process.env.VUE_APP_API_URL}users`,
-          data
-        );
+        let response = await axios.post(`${this.api}/admin/user`, data );
         this.closeModal();
       } catch (error) {
         console.log(error);

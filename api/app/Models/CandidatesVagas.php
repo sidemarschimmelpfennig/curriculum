@@ -20,13 +20,16 @@ class CandidatesVagas extends Model
         'job',
         'candidate_id',
         'candidate_name',
-        'curriculum'
+        'phone',
+        'email',
+        'curriculum',
 
     ];
 
     protected $hidden = [
         'updated_at',
-		'created_at',        
+		'created_at',
+                
     ];
 
 }

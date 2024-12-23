@@ -50,6 +50,7 @@ class JobController extends Controller
                 'status_id' => 'integer',
                 'skills_id' => 'integer',
                 'mobilities_id' => 'integer',
+                
             ]);
         
             $job = $this->jobService->create($data);
@@ -128,11 +129,8 @@ class JobController extends Controller
         try {
             $this->jobService->delete($id);
             $job = $this->jobService->findID($id);
-            return response()->json([
-                'message' => 'Vaga desativada com sucesso',
-                'job' => $job
-
-            ]);
+            return response()->json($job);
+            
         } catch (\Throwable $th) {
             return response()->json([
                 'message' => 'Não foi possível desativar a vaga',
