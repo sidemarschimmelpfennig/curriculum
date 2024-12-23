@@ -7,9 +7,15 @@ use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
 
 class Kernel extends HttpKernel 
 {
+    protected $middleware = [
+        \Illuminate\Http\Middleware\HandleCors::class,
+        
+    ];
+    
     protected $middlewareGroups = [
         'web' => [
             EnsureFrontendRequestsAreStateful::class,
+            \Illuminate\Http\Middleware\HandleCors::class,
 
         ],
     

@@ -25,17 +25,13 @@ class LoginController extends Controller
 
     public function getData(Request $request)
     {  
+        //return response()->json($request->all());
         try {
-            $dataRequest = $request->validated();
-            /*
-                return response()->json([
-                    'request' => $request
-                ]);  
-                {
-                    "email": "gabikochem55@gmail.com",
-                    "password": "g"
-                }
-            */
+            $dataRequest = $request->validate([
+                'email' => 'required|string',
+                'password' => 'required'
+
+            ]);
 
             $getUser = User::where('email', $dataRequest['email'])->first();
             $getCandidate = Candidates::where('email', $dataRequest['email'])->first();
@@ -67,6 +63,7 @@ class LoginController extends Controller
         { 
             $token = $currenteUser->createToken('AccessToken')->plainTextToken;
             return response()->json([
+                'success' => true,
                 'message' => "Usuario " . $currenteUser->full_name. " Logado!",
                 'token' => $token,
                 'user' => $currenteUser

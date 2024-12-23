@@ -31,7 +31,7 @@ Route::prefix('v1')->group( function () {
     Route::post('/apply', [ApplyController::class, 'apply']);
     Log::info('Memória usada ' . memory_get_usage(true));
 
-    Route::get('/login', [LoginController::class, 'getData']);
+    Route::post('/login', [LoginController::class, 'getData']);
     Route::get('/logout', [LoginController::class, 'logout']);
     
     Route::put('/candidate/{id}', [CandidateController::class, 'delete']);
@@ -42,7 +42,7 @@ Route::prefix('v1')->group( function () {
             Route::get('/jobs', [JobController::class, 'getAll']);
             Route::get('/jobBy/{id}', [JobController::class, 'findID']);
             Route::post('/job', [JobController::class, 'create']);
-            Route::put('/jobU/{id}', [JobController::class, 'update']);
+            Route::put('/job/{id}', [JobController::class, 'update']);
 
             Route::delete('/departament/{id}', [DepartamentController::class, 'delete']);
             Route::delete('/user/{id}', [UserController::class, 'delete']);
@@ -71,6 +71,7 @@ Route::prefix('v1')->group( function () {
 
             Route::put('/update-status', [JobController::class, 'updateStatus']);
         
+            Route::get('/candidates/job/{id}', [CandidateController::class, 'findByJob']);
         });
     //});
 });

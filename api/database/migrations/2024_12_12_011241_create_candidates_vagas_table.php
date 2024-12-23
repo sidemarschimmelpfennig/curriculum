@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('job_id')->references('id')->on('job_vacancies')->onDelete('cascade');
             $table->string('job', 65);
 
-            $table->unsignedBigInteger('candidate_id');
+            $table->unsignedBigInteger('candidate_id')->unique();
             $table->foreign('candidate_id')->references('id')->on('candidates')->onDelete('cascade');
 			$table->string('candidate_name');
 

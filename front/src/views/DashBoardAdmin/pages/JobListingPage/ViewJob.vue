@@ -1,8 +1,9 @@
 <template>
-  <div class="mx-auto p-6 bg-white shadow-md rounded-lg showModalComponent">
+      <div class="mx-auto p-6 bg-white shadow-md rounded-lg showModalComponent">
     <div class="text-xl font-semibold text-center flex">
       <h2 class="text-2xl font-semibold mb-4 pr-48 pl-5">
-        Cadastre uma nova vaga
+        Visualizar Vaga
+        
       </h2>
       <span
         class="material-icons text-white bold pl-8 hover:text-red-600 hover:cursor-pointer"
@@ -11,7 +12,7 @@
       >
     </div>
 
-    <form class="formModalComponent" @submit.prevent="submitForm">
+    <form class="formModalComponent">
       <div class="flex flex-col space-y-2">
         <label
           for="jobname"
@@ -66,17 +67,17 @@
         >
         <select
           id="category"
-          v-model="form.departament_categories"
+          v-model="form.departament_category"
           required
           class="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
           <option option value="" disabled selected>Padrão</option>
           <option
-            v-for="(category, id) in departments_categories"
+            v-for="(departament_category, id) in departments_categories"
             :key="id"
-            :value="category.id"
+            :value="departament_category.id"
           >
-            {{ category.departament_category }}
+            {{ departament_category.departament_category }}
           </option>
         </select>
       </div>
@@ -114,7 +115,7 @@
         >
         <option option value="" disabled selected>Padrão</option>
           <option
-            v-for="(skills, id) in skills_array"
+            v-for="skills in skills_array"
             :value="skills.id"
             :key="skills.id"
           >
@@ -135,7 +136,7 @@
         >
         <option option value="" disabled selected>Padrão</option>
           <option
-            v-for="(status, id) in status_array"
+            v-for="status in status_array"
             :value="status.id"
             :key="status.id"
           >
@@ -143,31 +144,24 @@
           </option>
         </select>
       </div>
-
-      <button
-        type="submit"
-        class="py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition mt-4"
-      >
-        Criar nova vaga
-      </button>
     </form>
   </div>
 </template>
+
 <script>
 import axios from "axios";
-
+//import data from "@/assets/data.json";
 export default {
   data() {
     return {
       form: {
         name: null,
         description: null,
-        departament: null,
-        departament_categories: null,
+        department: null,
+        departament_category: null,
         status: null,
         skills: null,
-        mobilities: null
-     
+        mobilities: null,
       },
       departments: [],
       departments_categories: [],
@@ -176,29 +170,52 @@ export default {
       status_array: [],
       api: process.env.VUE_APP_API_URL,
     };
-  },
-  methods: {
-    async submitForm() {
-      try {
-        const jobData = {
-          name: this.form.name,
-          description: this.form.description,
-          departament_id: this.form.departament,
-          departament_categories_id: this.form.departament_categories,
-          status_id: this.form.status,
-          skills_id: this.form.skills,
-          mobilities_id: this.form.mobilities,
-        
-        };
 
-        console.log('DADOS PARA ENVIO:"' , jobData)
-        const response = await axios.post(`${this.api}/admin/job`, jobData);
-        
-        console.log("Nova vaga cadastrada com sucesso!");
-        this.closeModal();
+  },
+  watch: {
+    editJob: {
+      handler(newValue){
+        if(newValue)
+        {
+          this.name = newValue.name,
+          this.description = newValue.description,
+          this.department = newValue.department,
+          this.departament_category = newValue.departament_category,
+          this.status = newValue.status,
+          this.skills = newValue.skills,
+          this.mobilities = newValue.mobilities
+
+        }
+      },
+      immediate: true,
+      deep: true
+    }
+  }, 
+
+  methods: {
+    closeModal() {
+      this.$emit("close");
+    },
+    submitForm() {},
+
+    async getJob() {
+      try {
+        const response = await axios.get(
+          `${this.api}/admin/jobBy/${this.idJobListing}`
+        );
+        const jobData = response.data;
+
+        this.form = {
+          name: jobData.name,
+          description: jobData.description,
+          departament: jobData.departament_id,
+          departament_category: jobData.departament_categories_id,
+          status: jobData.status_id, 
+          skills: jobData.skills_id, 
+          mobilities: jobData.mobilities_id,
+        };
       } catch (error) {
-        console.error("Erro ao enviar o formulário:", error);
-        alert("Erro ao enviar o formulário. Por favor, tente novamente.");
+        console.error("Erro ao buscar vaga:", error);
       }
     },
 
@@ -207,7 +224,7 @@ export default {
       try {
         const response = await axios.get(`${this.api}/admin/departament`);
         this.departments = response.data
-
+      
       } catch (error) {
         console.error("Erro ao enviar capturar os departamentos:", error);
       }
@@ -215,7 +232,7 @@ export default {
       try {
         const response = await axios.get(`${this.api}/admin/categorys`);
         this.departments_categories = response.data
-
+        
       } catch (error) {
         console.error("Erro ao enviar capturar as categorias:", error);
 
@@ -224,7 +241,7 @@ export default {
       try {
         const response = await axios.get(`${this.api}/admin/skills`);
         this.skills_array = response.data
-
+        
       } catch (error) {
         console.error("Erro ao enviar capturar as habilidades:", error);
 
@@ -242,15 +259,11 @@ export default {
       try {
         const response = await axios.get(`${this.api}/admin/status`);
         this.status_array = response.data
-      
+        
       } catch (error) {
         console.error("Erro ao enviar capturar as status:", error);
 
       }
-    },
-
-    closeModal() {
-      this.$emit("close");
     },
 
     handleKeydown(event) {
@@ -264,13 +277,19 @@ export default {
       type: Boolean,
       required: true,
     },
-    mobilities: {
-      type: Array,
+    isView: {
+      type: Boolean,
+      required: true
+
+    },
+    idJobListing: {
+      type: String,
       required: true,
     },
   },
   mounted() {
     window.addEventListener("keydown", this.handleKeydown);
+    this.getJob();
     this.getData();
 
   },
@@ -279,6 +298,7 @@ export default {
   },
 };
 </script>
+
 <style scoped lang="scss">
 @import "@/assets/scss/main";
 </style>

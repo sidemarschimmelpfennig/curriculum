@@ -58,9 +58,14 @@ class CandidateRepository implements CandidateInterface
         
     }
 
+    public function findByJob(int $id)
+    {
+        return CandidatesVagas::where('job_id', $id);
+    }
+
     public function update(int $id, array $data)
     {
-
+        return Candidates::where('id', $id)->update($data);
     }
 
     public function delete(int $id) {

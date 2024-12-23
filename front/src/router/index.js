@@ -66,7 +66,7 @@ const routes = [
         component: DataRegisterPage,
       },
       {
-        path:"candidatestojob/:id",
+        path:"candidates/job/:id",
         name: "candidatestojob",
         component: CandidatesForJob,
         props: true,

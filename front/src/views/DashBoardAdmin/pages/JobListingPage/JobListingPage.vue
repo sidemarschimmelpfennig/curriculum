@@ -81,12 +81,12 @@
             :routeText="textRouteDelete"
             class="activeModalShowClass"
           />
-          <UpdateOrViewJobForm
+          <ViewJob
             v-if="showModalView"
             :show="showModalView"
             @close="showModalView = false"
             :idJobListing="isIdForJob"
-            :isUpdate="isUpdate"
+            :isView="isView"
             class="activeModalShowClass"
           />
           <div class="w-1/5 truncate">
@@ -95,7 +95,9 @@
           <div class="w-2/5 truncate">
             {{ stringLimit(job.description, 40) }}
           </div>
-          <div class="w-1/5 truncate">{{ job.department }}</div>
+          <div class="w-1/5 truncate">
+            {{ job.departament }}
+          </div>
           <div class="w-1/5 truncate">
             {{ job.status }}
           </div>
@@ -119,6 +121,7 @@
             >
               visibility
             </button>
+            
             <button
               class="material-icons text-gray-600 hover:text-gray-800 border-none outline-none"
               @click="getCandidates(job.id)"
@@ -139,6 +142,7 @@ import axios from "axios";
 import CreateJobForm from "./Forms/CreateJobForm.vue";
 import UpdateOrViewJobForm from "./Forms/UpdateOrViewJobForm.vue";
 import DeleteMessage from "@/components/DeleteMessage.vue";
+import ViewJob from "./ViewJob.vue";
 
 export default {
   name: "JobListComponent",
@@ -157,7 +161,7 @@ export default {
       form: {},
       textDelete: "Deseja excluir esta vaga?",
       textRouteDelete: "",
-      mobilities: ["Hibrido", "Presencial", "Remoto"],
+      
       isIdForJob: "",
     };
   },
@@ -231,6 +235,7 @@ export default {
     CreateJobForm,
     UpdateOrViewJobForm,
     DeleteMessage,
+    ViewJob
   },
 };
 </script>

@@ -28,6 +28,11 @@ class CandidateService
         return $this->repository->findByID($id);
 
     }
+
+    public function findByJob(int $id)
+    {
+        return $this->repository->findByJob($id);
+    }
     
     public function delete(int $id)
     {

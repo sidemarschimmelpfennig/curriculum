@@ -91,7 +91,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from '@/axios.js';
 
 export default {
   data() {
@@ -99,7 +99,7 @@ export default {
       form: {
         full_name: "",
         email: "",
-        phonea: "",
+        phone: "",
         additional_info: "",
         status: 1,
         jobID: this.jobID, // Recebendo o jobID como propriedade
@@ -133,22 +133,18 @@ export default {
         console.log('ID da vaga: ', this.jobID)
 
         const response = await axios.post(
-          `http://127.0.0.1:8000/api/v1/candidate`,
+          `${this.api}/candidate`,
           form,
           {
             headers: {
               "Content-Type": "multipart/form-data",
+              'Access-Control-Allow-Origin': 'http://localhost:8080'
             },
           }
         );
 
         console.log(response.data);
-
-        if(response.status === 400 )
-        {
-          this.closeModal()
-
-        }
+        this.closeModal()
       } catch (error) {
         console.error("Erro ao enviar o formulário:", error);
         alert("Erro ao enviar o formulário. Por favor, tente novamente.");

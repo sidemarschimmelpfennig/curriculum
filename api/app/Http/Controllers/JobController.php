@@ -102,17 +102,8 @@ class JobController extends Controller
     public function update(int $id, Request $request)
     {
         try {
-            $data = $request->validate([
-                'name' => 'required|string',
-                'description' => 'required|string',
-                'departament_id' => 'required|integer',
-                'departament_categories_id' => 'required|integer',
-                'status_id' => 'required|integer',
-                'skills_id' => 'required|integer',
-                'mobilities_id' => 'required|integer',
-            ]);
-
-            $jobUpdate = $this->jobService->update($id, $data);
+            $this->jobService->update($id, $request->all());
+            $jobUpdate = $this->jobService->findID($id);
 
             return response()->json($jobUpdate);
 
