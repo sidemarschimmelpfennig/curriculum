@@ -135,6 +135,7 @@ export default {
           {
             headers: {
               "Content-Type": "multipart/form-data",
+              "Access-Control-Allow-Origin": "http://localhost:8000/api/v1/candidate"
             },
           }
         );

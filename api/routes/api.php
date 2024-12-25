@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\{
-    ApplyController,
     UserController,
     LoginController,
     
@@ -17,6 +16,7 @@ use App\Http\Controllers\{
     SkillsController,
     StatusController
 };
+
 use Illuminate\Support\Facades\Log;
 
 // Rotas de E-mail
@@ -25,6 +25,8 @@ Route::put('/settings', [SettingsController::class, 'update'])->name('email.upda
 Route::put('/status/{candidateId}', [CandidateController::class, 'updateStatus']);
 
 Route::prefix('v1')->group( function () {
+    Log::info('Get rotas');
+    
     Route::post('/login', [LoginController::class, 'getData']);
     Route::get('/logout', [LoginController::class, 'logout']);
 
@@ -34,49 +36,50 @@ Route::prefix('v1')->group( function () {
     Route::post('/candidate', [CandidateController::class, 'create']);
     Route::get('/candidate/{id}', [CandidateController::class, 'findbyID']);
 
+
     Route::middleware('auth:sanctum')->group(function (){ 
         Route::prefix('/admin')->group(function (){    
-            // + importante
-            Route::get('/jobs', [JobController::class, 'getAll']);
-            Route::get('/jobBy/{id}', [JobController::class, 'findID']);
-            Route::post('/job', [JobController::class, 'create']);
-            Route::put('/job/{id}', [JobController::class, 'update']);
+                // + importante
+        Route::get('/jobs', [JobController::class, 'getAll']);
+        Route::get('/jobBy/{id}', [JobController::class, 'findID']);
+        Route::post('/job', [JobController::class, 'create']);
+        Route::put('/job/{id}', [JobController::class, 'update']);
 
-            Route::delete('/departament/{id}', [DepartamentController::class, 'delete']);
-            Route::delete('/user/{id}', [UserController::class, 'delete']);
-            Route::delete('/candidate/{id}', [CandidateController::class, 'delete']);
-            Route::delete('/job/{id}', [JobController::class, 'delete']);
-        
-            Route::get('/departament', [DepartamentController::class, 'getAll']);
-            Route::put('/departament', [DepartamentController::class, 'update']);
-            Route::post('/departament', [DepartamentController::class, 'create']);
+        Route::delete('/departament/{id}', [DepartamentController::class, 'delete']);
+        Route::delete('/user/{id}', [UserController::class, 'delete']);
+        Route::delete('/candidate/{id}', [CandidateController::class, 'delete']);
+        Route::delete('/job/{id}', [JobController::class, 'delete']);
+            
+        Route::get('/departament', [DepartamentController::class, 'getAll']);
+        Route::put('/departament', [DepartamentController::class, 'update']);
+        Route::post('/departament', [DepartamentController::class, 'create']);
+        Route::get('/categorys', [DepartamentCategoryController::class, 'getAll']);
+        Route::put('/category', [DepartamentCategoryController::class, 'update']);
+        Route::post('/category', [DepartamentCategoryController::class, 'create']);
 
-            Route::get('/categorys', [DepartamentCategoryController::class, 'getAll']);
-            Route::put('/category', [DepartamentCategoryController::class, 'update']);
-            Route::post('/category', [DepartamentCategoryController::class, 'create']);
+        Route::get('/skills', [SkillsController::class, 'getAll']);
+        Route::put('/skills', [SkillsController::class, 'update']);
+        Route::post('/skill', [SkillsController::class, 'create']);
 
-            Route::get('/skills', [SkillsController::class, 'getAll']);
-            Route::put('/skills', [SkillsController::class, 'update']);
-            Route::post('/skill', [SkillsController::class, 'create']);
+        Route::get('/mobilites', [MobilitiesController::class, 'getAll']);
+        Route::put('/mobilites', [MobilitiesController::class, 'update']);
+        Route::post('/mobilites', [MobilitiesController::class, 'create']);
 
-            Route::get('/mobilites', [MobilitiesController::class, 'getAll']);
-            Route::put('/mobilites', [MobilitiesController::class, 'update']);
-            Route::post('/mobilites', [MobilitiesController::class, 'create']);
+        Route::get('/status', [StatusController::class, 'getAll']);
+        Route::put('/status', [StatusController::class, 'update']);
+        Route::post('/status', [StatusController::class, 'create']);
 
-            Route::get('/status', [StatusController::class, 'getAll']);
-            Route::put('/status', [StatusController::class, 'update']);
-            Route::post('/status', [StatusController::class, 'create']);
+        Route::get('/users', [UserController::class, 'getAll']);
+        Route::get('/userByID/{id}', [UserController::class, 'findByID']);
+        Route::put('/user/{id}', [UserController::class, 'update']);
+        Route::post('/user', [UserController::class, 'create']);
 
-            Route::get('/users', [UserController::class, 'getAll']);
-            Route::get('/userByID/{id}', [UserController::class, 'findByID']);
-            Route::put('/user/{id}', [UserController::class, 'update']);
-            Route::post('/user', [UserController::class, 'create']);
-
-            Route::put('/update-status', [JobController::class, 'updateStatus']);
-        
-            Route::get('/candidates/job/{id}', [CandidateController::class, 'findByJob']);
-            Route::get('/download/candidate/{id}', [CandidateController::class, 'downloadFile']);
+        Route::put('/update-status', [JobController::class, 'updateStatus']);
+            
+        Route::get('/candidates/job/{id}', [CandidateController::class, 'findByJob']);
+        Route::get('/download/candidate/{id}', [CandidateController::class, 'downloadFile']);
             //Route::get('/download/candidate', [CandidateController::class, 'downloadFile']);
         });
     });
 });
+        

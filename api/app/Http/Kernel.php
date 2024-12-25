@@ -11,7 +11,7 @@ class Kernel extends HttpKernel
         \Illuminate\Http\Middleware\HandleCors::class,
         
     ];
-    
+
     protected $middlewareGroups = [
         'web' => [
             EnsureFrontendRequestsAreStateful::class,
@@ -20,10 +20,11 @@ class Kernel extends HttpKernel
         ],
     
         'api' => [
-            
+            \Illuminate\Http\Middleware\HandleCors::class, 'handle',
             \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            
         ],
     ];
 }

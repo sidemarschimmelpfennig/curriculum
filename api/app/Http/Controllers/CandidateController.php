@@ -39,8 +39,6 @@ class CandidateController extends Controller
     public function create(Request $request)
     {
         try {
-            header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-
             $data = $request->validate([
                 'full_name' => 'required|string',
                 'email' => 'required|string',
