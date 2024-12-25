@@ -184,15 +184,21 @@ export default {
   methods: {
     async getJobs() {
       axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('authToken')}`;
+
       try {
-        const response = await axios.get(`${this.api}/jobs`);
-        console.log('ADMIN VAGAS:', response);
-        
+        const response = await axios.get(`${this.api}/admin/jobs`);        
         this.joblist = response.data;
 
       } catch (error) {
-        console.error("Erro ao buscar vagas:", error);
-        this.joblist = [];
+        if(error.response.status === 401 && error.response.status !== 200)
+        { 
+          this.$router.push({
+            path: "/login",
+            query:  { message: `Acesso negado, faça login para prosseguir ${error.response.status}` }
+          })
+
+        }
+
       }
     },
     stringLimit(text, limit) {

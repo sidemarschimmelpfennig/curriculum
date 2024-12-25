@@ -59,7 +59,7 @@
             >
               Entrar
             </button>
-            <p v-if="error" class="text-sm text-red-600">{{ error }}</p>
+            <p v-if="message" class="text-sm text-red-600">{{ message }}</p>
             <p class="text-sm font-light text-gray-500 dark:text-gray-400">
               Não tem uma conta?
               <a
@@ -83,7 +83,7 @@ export default {
     return {
       email: "",
       password: "",
-      error: null,
+      message: this.$route.query.message || null,
       api: process.env.VUE_APP_API_URL
     };
   },
@@ -103,7 +103,7 @@ export default {
           this.$router.push("/admin")
 
         } else {
-          this.error = 'Dados errados ou ausentes'
+          this.message = 'Dados errados ou ausentes'
 
         }
       } catch (error) {

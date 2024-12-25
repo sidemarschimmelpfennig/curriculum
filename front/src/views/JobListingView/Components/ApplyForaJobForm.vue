@@ -131,11 +131,12 @@ export default {
         form.append("curriculum", this.form.file);
         const response = await axios.post(
           `${this.api}/candidate`,
+          //`http://127.0.0.1:8000/api/v1/candidate`,
           form,
           {
             headers: {
               "Content-Type": "multipart/form-data",
-              "Access-Control-Allow-Origin": "http://localhost:8000/api/v1/candidate"
+              
             },
           }
         );
