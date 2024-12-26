@@ -44,6 +44,7 @@ class CandidateRepository implements CandidateInterface
             'candidate_name' =>  $candidate->full_name,
             'phone' => $candidate->phone,
             'email' => $candidate->email,
+            //'status-curriculum' => 
             'curriculum' => $filePath
              
         ]);
@@ -56,7 +57,7 @@ class CandidateRepository implements CandidateInterface
 
     public function findByID(int $id)
     {
-        return Candidates::find($id);
+        return CandidatesVagas::find($id)->get();
         
     }
 

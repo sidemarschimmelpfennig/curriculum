@@ -80,7 +80,7 @@
             {{ job.departament }}
           </div>
           <div class="w-1/5 truncate">
-            {{ job.active === 1 ? 'Vaga desativada' : job.status }}
+            {{ job.active === 1 ? job.status : 'Vaga desativada' }}
           </div>
           <div class="w-1/5 flex justify-center space-x-2">
             <button

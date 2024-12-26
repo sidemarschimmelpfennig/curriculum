@@ -123,27 +123,6 @@
         </select>
       </div>
 
-      <div class="flex flex-col space-y-2">
-        <label for="status" class="text-sm font-medium text-gray-700 text-start"
-          >Status :</label
-        >
-        <select
-          id="status"
-          v-model="form.status"
-          required
-          class="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-        >
-        
-          <option
-            v-for="(status, id) in status_array"
-            :value="status.id"
-            :key="status.id"
-          >
-            {{ status.status }}
-          </option>
-        </select>
-      </div>
-
       <button
         type="submit"
         class="py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition mt-4"
@@ -164,7 +143,6 @@ export default {
         description: null,
         departament: null,
         departament_categories: null,
-        status: null,
         skills: null,
         mobilities: null
      
@@ -173,7 +151,6 @@ export default {
       departments_categories: [],
       mobilities_array: [],
       skills_array: [],
-      status_array: [],
       api: process.env.VUE_APP_API_URL,
     };
   },
@@ -182,10 +159,10 @@ export default {
       try {
         const jobData = {
           name: this.form.name,
-          description: this.form.description,
+        description: this.form.description,
           departament_id: this.form.departament,
           departament_categories_id: this.form.departament_categories,
-          status_id: this.form.status,
+          status_id: 1,
           skills_id: this.form.skills,
           mobilities_id: this.form.mobilities,
         

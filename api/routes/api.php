@@ -30,13 +30,11 @@ Route::prefix('v1')->group( function () {
     Route::post('/login', [LoginController::class, 'getData']);
     Route::get('/logout', [LoginController::class, 'logout']);
 
-    Route::get('/jobs', [JobController::class, 'getAll']);
+    Route::get('/jobs', [JobController::class, 'getAll']);//
     Route::get('/candidate/{id}', [JobController::class, 'getAll']);
 
     Route::post('/candidate', [CandidateController::class, 'create']);
-    Route::get('/candidate/{id}', [CandidateController::class, 'findbyID']);
-
-
+    
     Route::middleware('auth:sanctum')->group(function (){ 
         Route::prefix('/admin')->group(function (){    
                 
@@ -74,9 +72,11 @@ Route::prefix('v1')->group( function () {
         Route::put('/user/{id}', [UserController::class, 'update']);
         Route::post('/user', [UserController::class, 'create']);
 
-        Route::put('/update-status', [JobController::class, 'updateStatus']);
+        Route::put('/update-status/job/{id}', [JobController::class, 'updateStatus']);
+        Route::put('/update-status/candidate/{id}', [CandidateController::class, 'updateStatus']);
             
         Route::get('/candidates/job/{id}', [CandidateController::class, 'findByJob']);
+        Route::get('/candidate/{id}', [CandidateController::class, 'findByID']);
         Route::get('/download/candidate/{id}', [CandidateController::class, 'downloadFile']);
            
         });

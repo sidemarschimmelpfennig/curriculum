@@ -12,7 +12,7 @@ use App\{
     Services\JobService
 
 };
-use Illuminate\Support\Facades\Log;
+
 use Illuminate\Support\Facades\Mail;
 
 class JobController extends Controller
