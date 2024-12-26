@@ -264,10 +264,7 @@ export default {
       type: Boolean,
       required: true,
     },
-    mobilities: {
-      type: Array,
-      required: true,
-    },
+   
   },
   mounted() {
     window.addEventListener("keydown", this.handleKeydown);

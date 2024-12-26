@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Log;
 // Rotas de E-mail
 Route::get('/settings', [SettingsController::class, 'showForm'])->name('email.form');
 Route::put('/settings', [SettingsController::class, 'update'])->name('email.update');
-Route::put('/status/{candidateId}', [CandidateController::class, 'updateStatus']);
+Route::put('/status/{candidateId}', [CandidateController::class, 'update']);
 
 Route::prefix('v1')->group( function () {
     Log::info('Get rotas');
@@ -39,7 +39,7 @@ Route::prefix('v1')->group( function () {
 
     Route::middleware('auth:sanctum')->group(function (){ 
         Route::prefix('/admin')->group(function (){    
-                // + importante
+                
         Route::get('/jobs', [JobController::class, 'getAll']);
         Route::get('/jobBy/{id}', [JobController::class, 'findID']);
         Route::post('/job', [JobController::class, 'create']);
@@ -78,7 +78,7 @@ Route::prefix('v1')->group( function () {
             
         Route::get('/candidates/job/{id}', [CandidateController::class, 'findByJob']);
         Route::get('/download/candidate/{id}', [CandidateController::class, 'downloadFile']);
-            //Route::get('/download/candidate', [CandidateController::class, 'downloadFile']);
+           
         });
     });
 });

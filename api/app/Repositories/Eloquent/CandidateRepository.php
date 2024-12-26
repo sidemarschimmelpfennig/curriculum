@@ -70,7 +70,7 @@ class CandidateRepository implements CandidateInterface
     {
         $candidateJob = CandidatesVagas::where('candidate_id', $id)->first();
         return $candidateJob->curriculum;
-
+        
     }
 
     public function update(int $id, array $data)

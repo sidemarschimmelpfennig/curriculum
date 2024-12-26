@@ -17,12 +17,15 @@
     </ul>
     <button
       class="flex items-center justify-start w-full p-4 hover:bg-blue-700"
+      @click="logout()"
     >
       <span class="material-icons pr-2 text-white">logout</span>Sair da Conta
     </button>
   </div>
 </template>
 <script>
+import axios from 'axios';
+
 export default {
   name: "SidebarAdmin",
   data() {
@@ -33,8 +36,21 @@ export default {
         { label: "Usuários", to: "/admin/userpage" },
         
       ],
+      api: process.env.VUE_APP_API_URL,
     };
   },
+
+  methods: {
+    async logout(){
+      try {
+        const response = await axios.get(`${this.api}/logout`) 
+        this.$router.push('/login')
+
+      } catch (error) {
+        console.error('Error linha 48', error)
+      }
+    }
+  }
 };
 </script>
 

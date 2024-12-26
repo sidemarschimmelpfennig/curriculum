@@ -18,30 +18,9 @@
         :show="showModalCreate"
         @close="closeModal()"
         class="activeModalShowClass"
-        :mobilities="mobilities"
+        
       />
 
-      <div class="flex flex-wrap justify-center gap-4">
-        <input
-          id="input1"
-          class="w-80 border pl-4 p-2 rounded-md focus:ring-2 focus:ring-blue-500 outline-none shadow-sm"
-          type="text"
-          placeholder="Vaga desejada"
-          v-model="searchText"
-        />
-        <form class="w-60">
-          <select
-            id="categories"
-            v-model="selectedCategory"
-            class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-2 focus:ring-blue-500 outline-none shadow-sm py-3"
-          >
-            <option value="">Todos os status</option>
-            <option v-for="(state, id) in status" :key="id" :value="state.name">
-              {{ state.name }}
-            </option>
-          </select>
-        </form>
-      </div>
     </div>
 
     <div
@@ -65,6 +44,7 @@
           v-for="(job, id) in filteredJobs"
           :key="id"
         >
+        
           <UpdateOrViewJobForm
             v-if="showModalUpdate"
             :show="showModalUpdate"
@@ -81,12 +61,13 @@
             :routeText="textRouteDelete"
             class="activeModalShowClass"
           />
+
           <ViewJob
             v-if="showModalView"
             :show="showModalView"
-            @close="showModalView = false"
+            @close="closeModal()"
             :idJobListing="isIdForJob"
-            :isView="isView"
+            
             class="activeModalShowClass"
           />
           <div class="w-1/5 truncate">
@@ -99,7 +80,7 @@
             {{ job.departament }}
           </div>
           <div class="w-1/5 truncate">
-            {{ job.status }}
+            {{ job.active === 1 ? 'Vaga desativada' : job.status }}
           </div>
           <div class="w-1/5 flex justify-center space-x-2">
             <button
@@ -187,8 +168,8 @@ export default {
 
       try {
         const response = await axios.get(`${this.api}/admin/jobs`);        
-        this.joblist = response.data;
-
+        this.joblist = response.data
+        
       } catch (error) {
         if(error.response.status === 401 && error.response.status !== 200)
         { 
@@ -230,6 +211,7 @@ export default {
       this.showModalUpdate = false;
       this.showModalCreate = false;
       this.showModalDelete = false;
+      this.showModalView = false;
       this.getJobs();
     },
     getCandidates(id) {

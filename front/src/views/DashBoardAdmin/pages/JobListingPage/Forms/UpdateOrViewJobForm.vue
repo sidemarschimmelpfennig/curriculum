@@ -140,7 +140,8 @@
             :value="status.id"
             :key="status.id"
           >
-            {{ status.status }}
+            {{ form.active === 1 ? 'Vaga desativada' : job.status }}
+            
           </option>
         </select>
       </div>
@@ -242,6 +243,7 @@ export default {
           status: jobData.status_id, // ID do status
           skills: jobData.skills_id, // ID das habilidades
           mobilities: jobData.mobilities_id, // ID da modalidade de trabalho
+          active: jobData.active
         };
       } catch (error) {
         console.error("Erro ao buscar vaga:", error);

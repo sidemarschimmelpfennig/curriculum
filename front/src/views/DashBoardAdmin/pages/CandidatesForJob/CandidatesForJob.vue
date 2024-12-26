@@ -2,13 +2,7 @@
   <div class="joblist-table p-5">
     <div class="flex flex-wrap justify-between items-center gap-4 mb-6">
       <div class="flex flex-wrap justify-center gap-4">
-        <input
-          id="input1"
-          class="w-80 border pl-4 p-2 rounded-md focus:ring-2 focus:ring-blue-500 outline-none shadow-sm"
-          type="text"
-          placeholder="Nome do Candidato"
-        />
-        <form class="w-60"></form>
+
       </div>
     </div>
 
@@ -39,16 +33,6 @@
             {{ job.phone }}
           </div>
           <div class="w-1/5 flex justify-center space-x-2">
-            <button class="material-icons text-red-600 hover:text-red-800">
-              delete
-            </button>
-            <button class="material-icons text-blue-600 hover:text-blue-800">
-              edit
-            </button>
-
-            <button class="material-icons text-gray-600 hover:text-gray-800">
-              visibility
-            </button>
             <button
               class="material-icons text-gray-600 hover:text-gray-800"
               @click="download(job.id, job.candidate_id)"

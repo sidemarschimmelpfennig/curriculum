@@ -140,7 +140,7 @@
             :value="status.id"
             :key="status.id"
           >
-            {{ status.status }}
+            {{ form.active === 1 ? 'Vaga desativada' : job.status }}
           </option>
         </select>
       </div>
@@ -171,25 +171,6 @@ export default {
       api: process.env.VUE_APP_API_URL,
     };
 
-  },
-  watch: {
-    editJob: {
-      handler(newValue){
-        if(newValue)
-        {
-          this.name = newValue.name,
-          this.description = newValue.description,
-          this.department = newValue.department,
-          this.departament_category = newValue.departament_category,
-          this.status = newValue.status,
-          this.skills = newValue.skills,
-          this.mobilities = newValue.mobilities
-
-        }
-      },
-      immediate: true,
-      deep: true
-    }
   }, 
 
   methods: {
@@ -213,6 +194,7 @@ export default {
           status: jobData.status_id, 
           skills: jobData.skills_id, 
           mobilities: jobData.mobilities_id,
+          active: jobData.active
         };
       } catch (error) {
         console.error("Erro ao buscar vaga:", error);
@@ -277,11 +259,7 @@ export default {
       type: Boolean,
       required: true,
     },
-    isView: {
-      type: Boolean,
-      required: true
-
-    },
+    
     idJobListing: {
       type: String,
       required: true,
