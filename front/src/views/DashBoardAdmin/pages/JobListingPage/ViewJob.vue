@@ -140,7 +140,7 @@
             :value="status.id"
             :key="status.id"
           >
-            {{ form.active === 1 ? job.status : 'Vaga desativada' }}
+            {{ form.active === 1 ? status.status : 'Vaga desativada' }}
           </option>
         </select>
       </div>

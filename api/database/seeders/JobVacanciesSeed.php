@@ -52,10 +52,18 @@ class JobVacanciesSeed extends Seeder
                 'status' => 'Pendente'
             ],
             [
+                'status' => 'Entrevista marcada'
+            ],
+
+            [
                 'status' => 'Analise'
             ],
             [
-                'status' => 'Finalizado'
+                'status' => 'Aprovado'
+            ],
+
+            [
+                'status' => 'Reprovado'
             ],
         ];
 

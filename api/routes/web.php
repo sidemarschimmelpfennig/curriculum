@@ -20,18 +20,18 @@ use App\Http\Controllers\{
 use Illuminate\Support\Facades\Log;
 
 // Rotas de E-mail
-Route::get('/settings', [SettingsController::class, 'showForm'])->name('email.form');
-Route::put('/settings', [SettingsController::class, 'update'])->name('email.update');
-Route::put('/status/{candidateId}', [CandidateController::class, 'update']);
+
 
 Route::prefix('v1')->group( function () {
 
     Route::post('/login', [LoginController::class, 'getData']);
     Route::get('/logout', [LoginController::class, 'logout']);
+    
+    Route::get('/jobs', [JobController::class, 'getAll']);
 
-    Route::get('/jobs', [JobController::class, 'getAll']);//
-
-    Route::post('/candidate', [CandidateController::class, 'create']);
+    Route::get('/settings', [SettingsController::class, 'showForm'])->name('email.form');
+    Route::put('/settings', [SettingsController::class, 'update'])->name('email.update');
+    Route::put('/status/{candidateId}', [CandidateController::class, 'update']);
     
     Route::middleware('auth:sanctum')->group(function (){ 
         Route::prefix('/admin')->group(function (){    
@@ -40,6 +40,8 @@ Route::prefix('v1')->group( function () {
         Route::get('/jobBy/{id}', [JobController::class, 'findID']);
         Route::post('/job', [JobController::class, 'create']);
         Route::put('/job/{id}', [JobController::class, 'update']);
+
+        Route::post('/candidate', [CandidateController::class, 'create']); // apply
 
         Route::delete('/departament/{id}', [DepartamentController::class, 'delete']);
         Route::delete('/user/{id}', [UserController::class, 'delete']);

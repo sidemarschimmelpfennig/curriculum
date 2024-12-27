@@ -86,7 +86,8 @@ export default {
       try {
         let id = this.$route.params.id;
         const response = await axios.get(`${this.api}/admin/candidates/job/${id}`);
-
+        console.log('Candidatos por vaga', response)
+        console.log('ID', id)
         this.jobs = response.data;
         
       } catch (error) {
@@ -105,7 +106,7 @@ export default {
         const url = window.URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = url;
-        link.setAttribute('download', `${candidate.data.id}_${candidate.data.full_name}`); // Set the default file name
+        link.setAttribute('download', `${candidate.data.id}_${candidate.data.candidate_name}`); // Set the default file name
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);

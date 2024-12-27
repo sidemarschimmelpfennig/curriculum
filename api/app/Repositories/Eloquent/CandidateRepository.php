@@ -43,6 +43,12 @@ class CandidateRepository implements CandidateInterface
         $filePath = $this->applyService->archiveFile($id, $file);
         $job = $this->jobService->findID($jobID);
         $candidate = $this->candidateFindByID($id);
+
+        return [
+            $filePath,
+            $job,
+            $candidate
+        ];
         
         return CandidatesVagas::create([
             'job_id' => $jobID,
@@ -58,7 +64,7 @@ class CandidateRepository implements CandidateInterface
 
     public function create(array $data)
     {
-        return Candidates::create($data);
+       
     }
 
     public function findByID(int $id)
@@ -113,7 +119,6 @@ class CandidateRepository implements CandidateInterface
             ], 400);
         }
         
-   
     }
 
     public function delete(int $id) {

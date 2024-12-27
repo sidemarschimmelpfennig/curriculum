@@ -124,7 +124,26 @@ class CandidateController extends Controller
     public function downloadFile(int $id)
     {
         $directory = $this->candidateService->downloadFile($id);
-        return response()->download($directory);
+        if($directory)
+        {
+            try {
+                return response()->download($directory); 
+            } catch (\Throwable $th) {
+                return response()->json([
+                    'erro' => 'Erro ao criar candidato',
+                    'th' => $th->getMessage(),
+                    'line' => $th->getLine(),
+                    'file' => $th->getfile(),
 
+                ], 400);
+            }
+         
+        } else {
+            return response()->json([
+                'erro' => 'Erro, arquivo não encontrado',
+
+            ]);
+        }
+            
     }
 }

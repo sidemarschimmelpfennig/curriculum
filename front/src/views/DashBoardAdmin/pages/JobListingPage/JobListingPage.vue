@@ -175,7 +175,7 @@ export default {
         { 
           this.$router.push({
             path: "/login",
-            query:  { message: `Acesso negado, faça login para prosseguir ${error.response.status}` }
+            query:  { message: `Acesso negado, faça login para prosseguir, code ${error.response.status}` }
           })
 
         }

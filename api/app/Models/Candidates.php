@@ -15,17 +15,18 @@ class Candidates extends Model
 {
     use HasFactory, Notifiable, HasApiTokens;
 
-    protected $table = 'candidates'; // Nome da tabela no banco de dados
+    protected $table = 'candidates'; 
 
     protected $fillable = [
         'full_name',
         'email',
+        'password',
         'phone',
         'additional_info',
-        
         'curriculum',
-        
-        'active'
+
+        'active',
+        'is_admin'
         
     ];
 

@@ -29,6 +29,13 @@ const routes = [
     meta: { requiresNavbar: false, requiresFooter: false  },
   },
   {
+    path: "/register",
+    name: "register",
+    //component: LoginView,
+    meta: { requiresNavbar: false, requiresFooter: false  },
+
+  },
+  {
 
     path: "/createacccount",
     name: "createacccount",
