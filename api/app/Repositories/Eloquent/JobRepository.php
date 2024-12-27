@@ -40,7 +40,7 @@ class JobRepository implements JobInterface
 
     public function getAll() 
     {
-        return JobVacancies::all()/*->where('active', 1) */;
+        return JobVacancies::all();
     }
     
     public function create(array $data)
@@ -111,14 +111,16 @@ class JobRepository implements JobInterface
             'skills_id' => $skills->id,
             'skills' => $skills->skills,
             'mobilities_id' => $mobilities->id,
-            'mobilities' => $mobilities->mobilities
+            'mobilities' => $mobilities->mobilities,
+            'active' => 1
         ]);
     }
 
     public function delete(int $id)
     {
         return JobVacancies::where('id', $id)->update([
-            'active' => false 
+            'status' => 'Vaga Desativada',
+            'active' => false
             
         ]);
     }

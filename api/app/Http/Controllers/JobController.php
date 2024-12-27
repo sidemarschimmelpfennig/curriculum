@@ -129,7 +129,11 @@ class JobController extends Controller
         try {
             $this->jobService->delete($id);
             $job = $this->jobService->findID($id);
-            return response()->json($job);
+            return response()->json([
+                'success' => true,
+                'job' => $job
+            
+            ]);
             
         } catch (\Throwable $th) {
             return response()->json([

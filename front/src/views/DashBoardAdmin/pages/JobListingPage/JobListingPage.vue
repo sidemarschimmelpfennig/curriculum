@@ -53,7 +53,7 @@
         class="flex text-sm font-semibold bg-gray-200 text-gray-700 p-4"
       >
         <div class="w-1/5">Vaga</div>
-        <div class="w-2/5">Descrição</div>
+        <div class="w-1/5">Descrição</div>
         <div class="w-1/5">Categoria</div>
         <div class="w-1/5">Status</div>
         <div class="w-1/5 text-center">Ações</div>
@@ -152,16 +152,16 @@ export default {
       status: [],
       searchText: "",
       selectedCategory: "",
-      api: process.env.VUE_APP_API_URL,
       showModalCreate: false,
       showModalUpdate: false,
       showModalView: false,
       showModalDelete: false,
       isUpdate: false,
       form: {},
-      textDelete: "Deseja excluir esta vaga?",
+      textDelete: "",
       textRouteDelete: "",
       
+      api: process.env.VUE_APP_API_URL,
       isIdForJob: "",
     };
   },
@@ -198,13 +198,12 @@ export default {
     stringLimit(text, limit) {
       return text.length > limit ? `${text.substring(0, limit)}...` : text;
     },
-    async deleteJob(id, name) {
+
+    async deleteJob(id) {
       try {
-        this.showModalDelete = true;
-        this.textDelete = `Deseja excluir a vaga de "${name}"?`;
         const response = axios.delete(`${this.api}/admin/job/${id}`);
 
-        console.log('VAGA DELETADA:', response)
+        console.log('Vaga:', response.promise)
       } catch (error) {
         console.error("Erro ao deletar vaga:", error);
       }

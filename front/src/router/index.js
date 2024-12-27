@@ -45,9 +45,11 @@ const routes = [
     },
     children:[
       {
-        path:"",
+        path:":currentUser",
         name:"default",
-        component:HomePageAdmin,
+        component: HomePageAdmin,
+        props: true,
+
       },
       {
         path:"joblistpage",

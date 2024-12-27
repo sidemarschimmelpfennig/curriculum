@@ -27,7 +27,7 @@ return new class extends Migration
 
             $table->unsignedBigInteger('status_id');
             $table->foreign('status_id')->references('id')->on('status')->onDelete('cascade');
-            $table->string('status', 10);
+            $table->string('status', 25);
 
             $table->unsignedBigInteger('skills_id');
             $table->foreign('skills_id')->references('id')->on('skills')->onDelete('cascade');

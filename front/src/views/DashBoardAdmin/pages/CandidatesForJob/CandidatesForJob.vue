@@ -39,16 +39,6 @@
             {{ job.phone }}
           </div>
           <div class="w-1/5 flex justify-center space-x-2">
-            <button class="material-icons text-red-600 hover:text-red-800">
-              delete
-            </button>
-            <button class="material-icons text-blue-600 hover:text-blue-800">
-              edit
-            </button>
-
-            <button class="material-icons text-gray-600 hover:text-gray-800">
-              visibility
-            </button>
             <button
               class="material-icons text-gray-600 hover:text-gray-800"
               @click="download(job.id, job.candidate_id)"

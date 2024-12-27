@@ -27,7 +27,7 @@
       </div>
 
       <div class="flex flex-col space-y-2">
-        <label for="email" class="text-sm font-medium text-gray-700"
+        <label for="email" class="text-sm font-medium text-gray-700 text-start"
           >Email</label
         >
         <input
@@ -39,7 +39,7 @@
         />
       </div>
       <div class="flex flex-col space-y-2">
-        <label for="phone" class="text-sm font-medium text-gray-700"
+        <label for="phone" class="text-sm font-medium text-gray-700 text-start"
           >Telefone</label
         >
         <input
@@ -82,7 +82,8 @@
 
       <button
         type="submit"
-        class="py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition mt-4"
+        class="py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition mt-5"
+        
       >
         Candidatar-se
       </button>
@@ -135,6 +136,7 @@ export default {
           {
             headers: {
               "Content-Type": "multipart/form-data",
+              
             },
           }
         );

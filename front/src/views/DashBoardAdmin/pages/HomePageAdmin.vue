@@ -11,15 +11,16 @@
 </template>
 <script>
 export default {
-  name: "Home",
+  name: "HomePageAdmin",
+
   data() {
     return {
-      user: {
-          
-      },
+      user: 
+
     };
 
   },
+
   mounted() {},
   methods: {},
 };

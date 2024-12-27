@@ -96,11 +96,13 @@ export default {
           password: this.password
           
         });
-        console.log('Retorno do login', response)
-
+      
         if (response.data.success === true && response.data.token) {
           localStorage.setItem('authToken', response.data.token);
-          this.$router.push("/admin")
+          let currentUser = response.data.user.name
+          this.$router.push({ name: "default", params: { currentUser: currentUser } })
+          console.log(currentUser)
+          console.log(a)
 
         } else {
           this.error = 'Dados errados ou ausentes'

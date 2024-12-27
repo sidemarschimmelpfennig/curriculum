@@ -29,7 +29,7 @@
       <div class="mt-2 job-content">
         <a
           class="text-2xl text-blue-800 font-bold hover:text-blue-600"
-          href="#"
+  
           >{{ jobs.name }}</a
         >
         <p class="mt-2 text-gray-600">{{ jobs.description }}</p>

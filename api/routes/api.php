@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\{
-    ApplyController,
     UserController,
     LoginController,
     
@@ -17,7 +16,6 @@ use App\Http\Controllers\{
     SkillsController,
     StatusController
 };
-use Illuminate\Support\Facades\Log;
 
 // Rotas de E-mail
 Route::get('/settings', [SettingsController::class, 'showForm'])->name('email.form');

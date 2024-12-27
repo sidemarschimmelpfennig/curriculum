@@ -125,11 +125,11 @@
       </div>
 
       <div class="flex flex-col space-y-2">
-        <label for="skills" class="text-sm font-medium text-gray-700 text-start"
+        <label for="status" class="text-sm font-medium text-gray-700 text-start"
           >Status :</label
         >
         <select
-          id="mobilities"
+          id="status"
           v-model="form.status"
           required
           class="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
@@ -140,7 +140,7 @@
             :value="status.id"
             :key="status.id"
           >
-            {{ status.status }}
+            {{ form.active !== 0 ? status.status : 'Vaga Desativada' }}
           </option>
         </select>
       </div>
@@ -162,6 +162,7 @@ export default {
         status: null,
         skills: null,
         mobilities: null,
+        active: null
       },
       departments: [],
       departments_categories: [],
@@ -172,25 +173,6 @@ export default {
     };
 
   },
-  watch: {
-    editJob: {
-      handler(newValue){
-        if(newValue)
-        {
-          this.name = newValue.name,
-          this.description = newValue.description,
-          this.department = newValue.department,
-          this.departament_category = newValue.departament_category,
-          this.status = newValue.status,
-          this.skills = newValue.skills,
-          this.mobilities = newValue.mobilities
-
-        }
-      },
-      immediate: true,
-      deep: true
-    }
-  }, 
 
   methods: {
     closeModal() {
@@ -213,6 +195,8 @@ export default {
           status: jobData.status_id, 
           skills: jobData.skills_id, 
           mobilities: jobData.mobilities_id,
+          active: jobData.active
+
         };
       } catch (error) {
         console.error("Erro ao buscar vaga:", error);
