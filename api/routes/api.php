@@ -16,11 +16,8 @@ use App\Http\Controllers\{
     SkillsController,
     StatusController
 };
-<<<<<<< HEAD
-=======
 
 use Illuminate\Support\Facades\Log;
->>>>>>> 453bb375831a5453ff0ed02c9a93222308ef7131
 
 // Rotas de E-mail
 Route::get('/settings', [SettingsController::class, 'showForm'])->name('email.form');

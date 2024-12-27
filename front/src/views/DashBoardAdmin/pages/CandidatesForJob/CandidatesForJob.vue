@@ -35,17 +35,6 @@
           </div>
           
           <div class="w-1/5 flex justify-center space-x-2">
-<<<<<<< HEAD
-=======
-          
-            <button
-              class="material-icons text-blue-600 hover:text-blue-800"
-              @click="updateCandidate(job.candidate_id)"
-            >
-              edit
-            </button>
-
->>>>>>> 453bb375831a5453ff0ed02c9a93222308ef7131
             <button
               class="material-icons text-gray-600 hover:text-gray-800"
               @click="download(job.id, job.candidate_id)"

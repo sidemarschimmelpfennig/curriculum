@@ -27,18 +27,10 @@
 
       </div>
       <div class="mt-2 job-content">
-<<<<<<< HEAD
-        <a
-          class="text-2xl text-blue-800 font-bold hover:text-blue-600"
-  
-          >{{ jobs.name }}</a
-        >
-=======
         <span class="text-2xl text-blue-800 font-bold hover:text-blue-600">
             {{ jobs.name }}
         </span>
         
->>>>>>> 453bb375831a5453ff0ed02c9a93222308ef7131
         <p class="mt-2 text-gray-600">{{ jobs.description }}</p>
       </div>
       <div class="mt-2 job-content">
