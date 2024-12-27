@@ -25,13 +25,11 @@ Route::put('/settings', [SettingsController::class, 'update'])->name('email.upda
 Route::put('/status/{candidateId}', [CandidateController::class, 'update']);
 
 Route::prefix('v1')->group( function () {
-    Log::info('Get rotas');
-    
+
     Route::post('/login', [LoginController::class, 'getData']);
     Route::get('/logout', [LoginController::class, 'logout']);
 
     Route::get('/jobs', [JobController::class, 'getAll']);//
-    Route::get('/candidate/{id}', [JobController::class, 'getAll']);
 
     Route::post('/candidate', [CandidateController::class, 'create']);
     

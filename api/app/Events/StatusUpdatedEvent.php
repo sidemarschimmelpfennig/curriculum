@@ -2,7 +2,7 @@
 
 namespace App\Events;
 
-use App\Models\Candidates;
+use App\Models\CandidatesVagas;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Foundation\Events\Dispatchable;
@@ -16,7 +16,7 @@ class StatusUpdatedEvent
     public $candidate;
     public $status;
 
-    public function __construct(Candidates $candidate, string $status)
+    public function __construct(CandidatesVagas $candidate, string $status)
     {
         $this->candidate = $candidate;
         $this->status = $status;

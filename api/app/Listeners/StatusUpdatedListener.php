@@ -14,23 +14,20 @@ use App\Services\{
 
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
+
 use Illuminate\Support\Facades\Config;
 
 class StatusUpdatedListener
 {
     protected $candidateService;
-    protected $statusService;
     
     public function __construct(
-        CandidateService $candidateService,
-        StatusService $statusService
+        CandidateService $candidateService,        
         
     )
     {
         $this->candidateService = $candidateService;
-        $this->statusService= $statusService;
+        
     }
 
     public function handle(StatusUpdatedEvent $event)
@@ -40,12 +37,7 @@ class StatusUpdatedListener
 
         $settings = Settings::first();
 
-        $nameStatus = $this->statusService->findByStatus($status);
-
-        if (!$nameStatus){
-            Log::error('Status não encontrado para continuar:' . $status);
-            return;
-        }
+        //$nameStatus = $this->statusService->findByStatus($status);
 
         Config::set('mail.mailers.smtp.host', $settings->smtp_host);
         Config::set('mail.mailers.smtp.port', $settings->smtp_port);
@@ -56,14 +48,14 @@ class StatusUpdatedListener
         Config::set('mail.from.name', $settings->smtp_username);
 
         $subject = "Atualização do status do currículo.";
-        $emailMessage = "Olá {$candidate->full_name}! Estamos entrando em contato através deste e-mail para informar o status do currículo enviado.";
+        $emailMessage = "Olá {$candidate->candidate_name}! Estamos entrando em contato através deste e-mail para informar o status do currículo enviado.";
 
         try {
             Mail::send('email', [
                 'subject' => $subject,
                 'emailMessage' => $emailMessage,
                 'candidate' => $candidate,
-                'status' => $nameStatus->status,
+                'status' => $status,
             ], function ($message) use ($candidate, $subject) {
                 $message->to($candidate->email)
                         ->subject($subject);

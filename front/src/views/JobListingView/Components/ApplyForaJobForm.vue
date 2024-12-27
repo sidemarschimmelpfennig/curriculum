@@ -126,13 +126,13 @@ export default {
         form.append("email", this.form.email);
         form.append("phone", this.form.phone);
         form.append("additional_info", this.form.additional_info);
-        form.append("status", this.form.status);
+        //form.append("status", this.form.status);
         form.append("jobID", this.form.jobID); 
 
         form.append("curriculum", this.form.file);
         const response = await axios.post(
           `${this.api}/candidate`,
-          //`http://127.0.0.1:8000/api/v1/candidate`,
+
           form,
           {
             headers: {

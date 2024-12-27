@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\StatusUpdatedEvent;
-use App\Models\Candidates;
 use Illuminate\Http\Request;
 use App\Services\CandidateService;
 
@@ -67,16 +65,32 @@ class CandidateController extends Controller
 
     }
 
-    public function updateStatus(Request $request, $candidateID)
+    public function updateStatus(Request $request, int $candidateID)
     {
-        
-        //event(new StatusUpdatedEvent($candidate, $newStatus));
+        try {
+            $status = $request->input('status_');
+            $a = $this->candidateService->updateStatus($candidateID, $status);
+            
+            $candidate = $this->candidateService->findByID($candidateID);
+            return response()->json([
+                'status' => $status,
+                'id' => $candidateID,
+                'candidate' => $candidate,
+                'a' => $a
+            ], 200);
 
-        return response()->json([
-            'message' => 'Status atualizado com sucesso!',
-            'request' => $request->all(),
-            'id' => $candidateID
-        ], 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'erro' => 'Erro ao alterar status do candidato',
+                'th' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getfile(),
+
+            ], 400);
+        
+        }
+        //$candidate = $this->candidateService->findByID($candidateID);
+        
     }
 
     public function findbyID(int $id)

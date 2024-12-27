@@ -40,10 +40,9 @@ class CandidateService
         
     }
 
-    public function findByStatus(string $param)
+    public function updateStatus(int $candidateID, string $status)
     {
-        return $this->repository->findByStatus($param);
-        
+        return $this->repository->updateStatus($candidateID, $status);
     }
 
     public function downloadFile(int $id)
