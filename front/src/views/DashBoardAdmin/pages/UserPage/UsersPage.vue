@@ -127,7 +127,7 @@ export default {
     deleteUser(id) {
       this.showModalDelete = true;
       this.textDelete = "Deseja excluir este usuário?";
-      this.textRouteDelete = `${this.api}users/${id}`;
+      this.textRouteDelete = `${this.api}/user/${id}`;
     },
     updateUser(id) {
       this.showModalUpdate = true;
@@ -137,7 +137,7 @@ export default {
 
     async getAllUsers() {
       try {
-        let response = await axios.get(`${this.api}/admin/users`);
+        const response = await axios.get(`${this.api}/admin/users`);
         let data = response.data;
         this.users = data;
       } catch (error) {

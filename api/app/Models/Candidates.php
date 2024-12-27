@@ -24,7 +24,7 @@ class Candidates extends Model
         'additional_info',
         
         'curriculum',
-        'status',
+        
         'active'
         
     ];

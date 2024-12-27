@@ -12,7 +12,7 @@ use App\{
     Services\JobService
 
 };
-use Illuminate\Support\Facades\Log;
+
 use Illuminate\Support\Facades\Mail;
 
 class JobController extends Controller
@@ -74,7 +74,7 @@ class JobController extends Controller
         
     }
  
-    public function updateStatus(int $id, Request $request)
+    /*public function updateStatus(int $id, Request $request)
     {
         try {
             $result = $this->jobService->updateStatus($id, $request['value']);
@@ -98,7 +98,7 @@ class JobController extends Controller
             $message->to($candidate->email)
                     ->subject('Teste de E-mail');
         });
-    } // <- Aleteração de status ou demais campos da vaga criada    
+    } */
     
     public function update(int $id, Request $request)
     {

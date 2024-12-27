@@ -47,7 +47,6 @@ class JobRepository implements JobInterface
     {
         $departament = $this->departamentService->findByDepartament($data['departament_id']);
         $departament_categories = $this->departamentCategoriesService->findByDepartamentCategory($data['departament_categories_id']);
-        $status = $this->statusService->findByStatus($data['status_id']);
         $skills = $this->skillsService->findBySkill($data['skills_id']);
         $mobilities = $this->mobilitiesService->findByMobilities($data['mobilities_id']);
 
@@ -58,8 +57,8 @@ class JobRepository implements JobInterface
             'departament' => $departament->departament,
             'departament_categories_id' => $departament_categories->id,
             'departament_categories' => $departament_categories->departament_category,
-            'status_id' => $status->id,
-            'status' => $status->status,
+            'status_id' => 1,
+            'status' => 'Pendente',
             'skills_id' => $skills->id,
             'skills' => $skills->skills,
             'mobilities_id' => $mobilities->id,

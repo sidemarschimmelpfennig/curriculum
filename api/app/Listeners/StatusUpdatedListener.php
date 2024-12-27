@@ -33,9 +33,6 @@ class StatusUpdatedListener
         $this->statusService= $statusService;
     }
 
-    /**
-     * Handle the event.
-     */
     public function handle(StatusUpdatedEvent $event)
     {
         $candidate = $event->candidate;

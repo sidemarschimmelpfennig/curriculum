@@ -140,7 +140,11 @@
             :value="status.id"
             :key="status.id"
           >
+<<<<<<< HEAD
             {{ form.active !== 0 ? status.status : 'Vaga Desativada' }}
+=======
+            {{ form.active === 1 ? 'Vaga desativada' : job.status }}
+>>>>>>> 453bb375831a5453ff0ed02c9a93222308ef7131
           </option>
         </select>
       </div>
@@ -172,7 +176,11 @@ export default {
       api: process.env.VUE_APP_API_URL,
     };
 
+<<<<<<< HEAD
   },
+=======
+  }, 
+>>>>>>> 453bb375831a5453ff0ed02c9a93222308ef7131
 
   methods: {
     closeModal() {
@@ -196,7 +204,10 @@ export default {
           skills: jobData.skills_id, 
           mobilities: jobData.mobilities_id,
           active: jobData.active
+<<<<<<< HEAD
 
+=======
+>>>>>>> 453bb375831a5453ff0ed02c9a93222308ef7131
         };
       } catch (error) {
         console.error("Erro ao buscar vaga:", error);
@@ -261,11 +272,7 @@ export default {
       type: Boolean,
       required: true,
     },
-    isView: {
-      type: Boolean,
-      required: true
-
-    },
+    
     idJobListing: {
       type: String,
       required: true,

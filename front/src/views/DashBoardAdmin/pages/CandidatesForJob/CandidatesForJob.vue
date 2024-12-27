@@ -1,16 +1,6 @@
 <template>
   <div class="joblist-table p-5">
-    <div class="flex flex-wrap justify-between items-center gap-4 mb-6">
-      <div class="flex flex-wrap justify-center gap-4">
-        <input
-          id="input1"
-          class="w-80 border pl-4 p-2 rounded-md focus:ring-2 focus:ring-blue-500 outline-none shadow-sm"
-          type="text"
-          placeholder="Nome do Candidato"
-        />
-        <form class="w-60"></form>
-      </div>
-    </div>
+  
 
     <div
       id="joblist-table"
@@ -21,8 +11,9 @@
         class="flex text-sm font-semibold bg-gray-200 text-gray-700 p-4"
       >
         <div class="w-1/5">Nome do Candidato</div>
-        <div class="w-2/5">Email</div>
+        <div class="w-1/5">Email</div>
         <div class="w-1/5">Telefone</div>
+        <div class="w-1/5">Status</div>
         <div class="w-1/5 text-center">Ações</div>
       </div>
       <div id="joblist-table-rows" class="divide-y">
@@ -32,27 +23,52 @@
           class="joblist-table-row flex items-center p-4 text-gray-600 hover:bg-gray-100 transition"
         >
           <div class="w-1/5 truncate">{{ job.candidate_name }}</div>
-          <div class="w-2/5 truncate">
+          <div class="w-1/5 truncate">
             {{ job.email }}
           </div>
           <div class="w-1/5 truncate">
             {{ job.phone }}
           </div>
+
+          <div class="w-1/5 truncate">
+            {{ job.status }}
+          </div>
+          
           <div class="w-1/5 flex justify-center space-x-2">
+<<<<<<< HEAD
+=======
+          
+            <button
+              class="material-icons text-blue-600 hover:text-blue-800"
+              @click="updateCandidate(job.candidate_id)"
+            >
+              edit
+            </button>
+
+>>>>>>> 453bb375831a5453ff0ed02c9a93222308ef7131
             <button
               class="material-icons text-gray-600 hover:text-gray-800"
               @click="download(job.id, job.candidate_id)"
+
             >
               download
             </button>
           </div>
         </div>
       </div>
+
+      <ViewCandidate
+        v-if="showModalUpdate"
+        :show="showModalUpdate"
+        :candidateID="candidateID"
+
+      />
     </div>
   </div>
 </template>
   <script>
 import axios from "axios";
+import ViewCandidate from "./Forms/ViewCandidate.vue";
 
 export default {
   name: "JobListComponent",
@@ -60,20 +76,23 @@ export default {
     return {
       jobs: [],
       search: "",
+      showModalUpdate: false,
 
+      candidateID: "",
       api: process.env.VUE_APP_API_URL,
     };
+  },
+  components: {
+    ViewCandidate
   },
   methods: {
     async getJobs() {
       try {
         let id = this.$route.params.id;
-        console.log('ID', this.id)
-        console.log('route', this.$route)
         const response = await axios.get(`${this.api}/admin/candidates/job/${id}`);
 
         this.jobs = response.data;
-        console.log(response.data);
+        
       } catch (error) {
         console.error('Erro linja 85:', error);
       }
@@ -94,13 +113,20 @@ export default {
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-
-        //console.log('Response:', response.data)
         
       } catch (error) {
         console.error(error);
       }
     },
+
+    updateCandidate(id)
+    {
+      this.candidateID = String(id)
+      this.showModalUpdate = true;
+
+    }
+
+  
   },
   mounted() {
     this.getJobs();

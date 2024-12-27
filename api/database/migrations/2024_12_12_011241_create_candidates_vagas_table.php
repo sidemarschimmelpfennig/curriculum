@@ -24,7 +24,7 @@ return new class extends Migration
 			$table->string('candidate_name');
             $table->string('email');
             $table->string('phone');
-
+            $table->string('status-curriculum')->default('Pendente');
             $table->string('curriculum')->nullable();
 
             $table->timestamps();

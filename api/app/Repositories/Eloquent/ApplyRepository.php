@@ -17,8 +17,6 @@ class ApplyRepository
 
     public function archiveFile(int $id, object $file)
     {
-        dump(memory_get_usage(true));
-
         $directory = public_path('uploads'); // Vai pegar o diretório
         $extension = $file->getClientOriginalExtension();
 

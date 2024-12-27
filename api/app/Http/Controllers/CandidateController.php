@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Events\StatusUpdatedEvent;
 use App\Models\Candidates;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Services\CandidateService;
-use Illuminate\Support\Facades\Log;
 
 class CandidateController extends Controller
 {
@@ -39,8 +37,6 @@ class CandidateController extends Controller
     public function create(Request $request)
     {
         try {
-            header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-
             $data = $request->validate([
                 'full_name' => 'required|string',
                 'email' => 'required|string',
@@ -73,22 +69,13 @@ class CandidateController extends Controller
 
     public function updateStatus(Request $request, $candidateID)
     {
-        $candidate = Candidates::find($candidateID);
-
-        if (!$candidate){
-            return response()->json([
-                'message' => 'Candidato não encontrado',
-            ], 404);
-        }
-
-        $newStatus = $request->input('status_id');
-        $candidate->status = $newStatus;
-        $candidate->save();
-
-        event(new StatusUpdatedEvent($candidate, $newStatus));
+        
+        //event(new StatusUpdatedEvent($candidate, $newStatus));
 
         return response()->json([
             'message' => 'Status atualizado com sucesso!',
+            'request' => $request->all(),
+            'id' => $candidateID
         ], 200);
     }
 
