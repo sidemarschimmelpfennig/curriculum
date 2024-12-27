@@ -15,7 +15,7 @@ class Kernel extends HttpKernel
         'web' => [
             EnsureFrontendRequestsAreStateful::class,
             \Illuminate\Http\Middleware\HandleCors::class, 'handle'
-
+            
         ],
     
         'api' => [

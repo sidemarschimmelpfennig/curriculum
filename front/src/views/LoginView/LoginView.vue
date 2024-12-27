@@ -63,7 +63,7 @@
             <p class="text-sm font-light text-gray-500 dark:text-gray-400">
               Não tem uma conta?
               <a
-                href="/register"
+                href="/createacccount"
                 class="font-medium text-primary-600 hover:underline dark:text-primary-500"
                 >Cadastre-se</a
               >
