@@ -45,11 +45,9 @@ class CandidateController extends Controller
                 
 
             ]);
-            //return response()->json($request->all());
-            $file = $request->file('curriculum');
+            
             $candidate = $this->candidateService->create($data);
-            //$apply = $this->candidateService->applyCreate($candidate->id, $file, $data['jobID']);
-
+            
             return response()->json([
                 'success' => true,
                 'candidate' => $candidate
@@ -59,11 +57,17 @@ class CandidateController extends Controller
             //return response()->json();
 
         } catch (\Throwable $th) {
+            if($th->getCode() == 2300)
+            {
+                return response()->json('E-mail já cadastado');
+            }
+
             return response()->json([
                 'erro' => 'Erro ao criar candidato',
                 'th' => $th->getMessage(),
                 'line' => $th->getLine(),
                 'file' => $th->getfile(),
+                'code' => $th->getCode(),
 
             ], 400);
         }

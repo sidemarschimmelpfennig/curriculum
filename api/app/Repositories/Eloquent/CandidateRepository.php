@@ -74,10 +74,12 @@ class CandidateRepository implements CandidateInterface
 
         ]);
         $file = $this->applyService->archiveFile($candidate->id, $data['curriculum']);
-        return $candidate->update([
+        $candidate->update([
             'curriculum' => $file
 
         ]);
+
+        return $candidate;
        
     }
 
@@ -96,6 +98,12 @@ class CandidateRepository implements CandidateInterface
     public function findByJob(int $id)
     {
         return CandidatesVagas::where('job_id', $id)->get();
+        
+    }
+
+    public function findByEmail(string $param)
+    {
+        return Candidates::where('email', $param)->first();
         
     }
 

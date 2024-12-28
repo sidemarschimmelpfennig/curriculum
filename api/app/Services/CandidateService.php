@@ -33,6 +33,12 @@ class CandidateService
     {
         return $this->repository->findByJob($id);
     }
+
+    public function findByEmail(string $param)
+    {
+        return $this->repository->findByEmail($param);
+        
+    }
     
     public function delete(int $id)
     {

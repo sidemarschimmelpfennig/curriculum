@@ -100,9 +100,16 @@ export default {
         if (response.data.success === true && response.data.token) {
           localStorage.setItem('authToken', response.data.token);
           let currentUser = response.data.currentUser.full_name
-          this.$router.push({ name: "default", params: { currentUser: currentUser } })
+
           console.log(currentUser)
-          console.log(a)
+
+          if(response.data.currentUser.is_admin === 1)
+          {
+            
+          } else {
+            this.$router.push({ name: "default", params: { currentUser: currentUser } })
+
+          }
 
         } else {
           this.message = 'Dados errados ou ausentes'

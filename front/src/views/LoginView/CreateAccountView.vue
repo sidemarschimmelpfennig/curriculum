@@ -263,7 +263,8 @@ export default {
       if(response.data.success === true)
       {
         console.log('Cadastro feito', response.data)
-        this.$router.push({ name: "/" })
+        const currentUser = response.data.candidate.full_name
+        this.$router.push({ name: "/login" , params: { currentUser: currentUser } })
       }
       
       } catch (error) {
