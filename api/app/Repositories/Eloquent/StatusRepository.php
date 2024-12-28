@@ -21,6 +21,7 @@ class StatusRepository implements StatusInterface
 
     public function findID(int $id)
     {
+        return Status::find($id);
         
     }
 

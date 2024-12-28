@@ -22,7 +22,7 @@
           >
             Crie sua conta
           </h1>
-          <form class="space-y-4 md:space-y-6" @submit.prevent="createUser">
+          <form class="space-y-4 md:space-y-6" @submit.prevent="getData">
             <div v-if="loginData">
                 <label
                   for="email"
@@ -31,12 +31,11 @@
                 >
                 <input
                   type="email"
-                  name="email"
-                  id="email"
+                  
                   class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Digite seu email"
                   required=""
-                  :value="email"
+                   v-model="this.form.email"
                 />
               
               <div>
@@ -47,12 +46,11 @@
                 >
                 <input
                   type="password"
-                  name="password"
-                  id="password"
+                  
                   placeholder="••••••••"
                   class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required
-                  :value="password"
+                   v-model="this.form.password"
                 />
               </div>
               <div>
@@ -64,12 +62,11 @@
                 </label>
                 <input
                   type="password"
-                  name="retrypassword"
-                  id="retrypassword"
                   placeholder="••••••••"
-                  :value="retrypassword"
+                  v-model="retrypassword"
                   class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required
+
                 />
                 <p v-if="passwordError" class="text-sm text-red-500 mt-1">
                   As senhas não coincidem.
@@ -77,11 +74,11 @@
               </div>
 
               <button
-                @click="createUser"
+                
                 type="submit"
                 class="w-full bg-slate-500 text-white signin hover:bg-slate-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
               >
-                Cadastre-se
+                Avançar
               </button>
 
               <p class="text-sm font-light text-gray-500 dark:text-gray-400">
@@ -101,13 +98,13 @@
                   >Nome completo</label
                 >
                 <input
-                  type="email"
+                  type="text"
                   name="email"
                   id="email"
                   class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Digite seu nome completo"
                   required
-                  :value="full_name"
+                   v-model="this.form.full_name"
                 />
               
               <div>
@@ -123,7 +120,7 @@
                   placeholder="Digite seu número de telefone"
                   class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required=""
-                  :value="phone"
+                   v-model="this.form.phone"
                 />
               </div>
               <div>
@@ -135,20 +132,37 @@
                 </label>
                 <input
                   type="text"
-                  name="retrypassword"
+                  name="additional_info"
                   id="retrypassword"
                   placeholder="Informações adicioanais"
-                  v-model="additional_info"
+                  v-model="this.form.additional_info"
                   class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required=""
                 />
+
+                <label
+                  for="additional_info"
+                  class="flex mb-2 text-sm justify-start font-medium text-gray-900 dark:text-white"
+                >
+                  Arquivo
+                </label>
+                <input
+                  type="file"
+                  name="retrypassword"
+                  id="retrypassword"
+                  placeholder="Informações adicioanais"
+                  @change="handleFileUpload($event)"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  required
+                />
+
+
                 <p v-if="passwordError" class="text-sm text-red-500 mt-1">
                   As senhas não coincidem.
                 </p>
               </div>
 
               <button
-                @click="createUser"
                 type="submit"
                 class="w-full bg-slate-500 text-white signin hover:bg-slate-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
               >
@@ -178,38 +192,81 @@ export default {
   name: "CreateAccountView",
   data() {
     return {
-      email: "",
-      password: "",
-      retrypassword: "",
-      full_name: "",
-      phone: "",
-      additional_info: "",
-      file: null,
+      form : {
+        email: "",
+        password: "",
+        full_name: "",
+        phone: "",
+        additional_info: "",
+        curriculum: null,
+    
+      },
+
+      retrypassword: "",      
       passwordError: false,
-
-      status: 1,
-      isAdmin: 0,
-      api: process.env.API_URL,
-
+    
       loginData: true,
       candidateData: false,
-
+      api: process.env.VUE_APP_API_URL,
     };
   },
   methods: {
-    async createUser() {    
-      console.log(this.email)
-        console.log(this.password)
-        console.log(this.retrypassword)  
-      if(this.email && this.password && this.retrypassword){
-        this.loginData = false
-        this.candidateData = true
-        console.log(this.email)
-        console.log(this.password)
-        console.log(this.retrypassword)
+    handleFileUpload(event) {
+      const file = event.target.files[0];
+      if (file && file.type === "application/pdf") {
+        this.form.curriculum = file;
+      } else {
+        alert("Por favor, envie um arquivo PDF.");
       }
-      
     },
+    
+     getData(){
+      if(this.form.password !== this.retrypassword){
+        this.passwordError = true
+        return;
+
+      } else {
+        try {
+          this.passwordError = false
+          this.loginData = false
+          this.candidateData = true
+
+          const form = new FormData()
+
+          form.append("email", this.form.email);
+          form.append("password", this.form.password)
+          form.append("full_name", this.form.full_name);
+          form.append("phone", this.form.phone);
+          form.append("additional_info", this.form.additional_info);
+          form.append("curriculum", this.form.curriculum);
+
+          if(this.form.curriculum !== null){
+            this.create(form)
+          }
+          
+        } catch (error) {
+          console.error('Erro', error)
+          
+        }
+       
+      }
+    },
+
+    async create(form){
+      const response = await axios.post(
+            `${this.api}/candidate`,
+
+            form,
+            {
+              headers: {
+                "Content-Type": "multipart/form-data",
+                
+              },
+            }
+          );
+
+          console.log(response.data)
+    }
   },
 };
 </script>

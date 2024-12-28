@@ -5,8 +5,8 @@ namespace App\Repositories\Eloquent;
 use App\Repositories\Interface\CandidateInterface;
 use App\Services\{
     ApplyService,
-    JobService
-
+    JobService,
+    StatusService
 };
 
 use App\Models\{
@@ -14,18 +14,24 @@ use App\Models\{
     CandidatesVagas
 
 };
+
+use App\Events\StatusUpdatedEvent;
+
 class CandidateRepository implements CandidateInterface
 {
     protected $applyService;
     protected $jobService;
+    protected $statusService;
 
     public function __construct(
         ApplyService $applyService,
-        JobService $jobService    
+        JobService $jobService,
+        StatusService $statusService
     )
     {
         $this->applyService = $applyService;
         $this->jobService = $jobService;
+        $this->statusService = $statusService;
     }
     public function getAll()
     {
@@ -36,7 +42,14 @@ class CandidateRepository implements CandidateInterface
     {    
         $filePath = $this->applyService->archiveFile($id, $file);
         $job = $this->jobService->findID($jobID);
-        $candidate = $this->findByID($id);
+        $candidate = $this->candidateFindByID($id);
+
+        return [
+            $filePath,
+            $job,
+            $candidate
+        ];
+        
         return CandidatesVagas::create([
             'job_id' => $jobID,
             'job' => $job->name,
@@ -44,7 +57,6 @@ class CandidateRepository implements CandidateInterface
             'candidate_name' =>  $candidate->full_name,
             'phone' => $candidate->phone,
             'email' => $candidate->email,
-            //'status-curriculum' => 
             'curriculum' => $filePath
              
         ]);
@@ -52,12 +64,19 @@ class CandidateRepository implements CandidateInterface
 
     public function create(array $data)
     {
-        return Candidates::create($data);
+       return Candidates::create($data);
+       
     }
 
     public function findByID(int $id)
     {
-        return CandidatesVagas::find($id)->get();
+        return CandidatesVagas::find($id)->first();
+        
+    }
+
+    public function candidateFindByID(int $id)
+    {
+        return Candidates::find($id)->first();
         
     }
 
@@ -77,6 +96,30 @@ class CandidateRepository implements CandidateInterface
     public function update(int $id, array $data)
     {
         return Candidates::where('id', $id)->update($data);
+
+    }
+    
+    public function updateStatus(int $candidateID, string $status)
+    {
+        try {
+            $candidate = CandidatesVagas::where('id', $candidateID)->first();
+
+            event(new StatusUpdatedEvent($candidate, $status));
+            
+            return $candidate->update([
+                'status_curriculum' => $status
+            
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'erro' => 'Erro ao alterar status do candidato',
+                'th' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getfile(),
+
+            ], 400);
+        }
+        
     }
 
     public function delete(int $id) {
@@ -84,13 +127,5 @@ class CandidateRepository implements CandidateInterface
             'active' => false
         ]);
     }
-
-    public function findByStatus(string $param)
-    {
-        return Candidates::where('status', $param)->first();
-        
-    }
-
     
 }
-

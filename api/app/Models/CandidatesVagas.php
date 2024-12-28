@@ -22,7 +22,7 @@ class CandidatesVagas extends Model
         'candidate_name',
         'phone',
         'email',
-        'status-curriculum',
+        'status_curriculum',
         'curriculum',
 
     ];

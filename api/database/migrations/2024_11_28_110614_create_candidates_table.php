@@ -12,11 +12,13 @@ return new class extends Migration
             $table->id();
             $table->string('full_name', 200);
             $table->string('email')->unique(); 
+            $table->string('password');
 			$table->string('phone');
             $table->text('additional_info', 200)->nullable();
             
             $table->string('curriculum')->nullable();
             $table->boolean('active')->default(1);
+            $table->boolean('is_admin')->default(0);
             
             $table->timestamps();
             

@@ -29,7 +29,7 @@ class CheckUser
                 'success' => false,
                 'message' => 'Acesso não autorizado!',
                 
-            ], 403);
+            ], 401);
 
         }
 
@@ -38,7 +38,7 @@ class CheckUser
                 'success' => false,
                 'message' => 'Acesso não autorizado!',
 
-            ], 403);
+            ], 401);
             
         }
 

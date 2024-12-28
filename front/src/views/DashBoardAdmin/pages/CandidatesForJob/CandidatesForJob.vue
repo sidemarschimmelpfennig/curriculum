@@ -31,10 +31,17 @@
           </div>
 
           <div class="w-1/5 truncate">
-            {{ job.status }}
+            {{ job.status_curriculum }}
           </div>
-          
+
           <div class="w-1/5 flex justify-center space-x-2">
+            <button
+              class="material-icons text-blue-600 hover:text-blue-800 border-none outline-none"
+              @click="updateCandidate(job.id)"
+            >
+              edit
+            </button>
+
             <button
               class="material-icons text-gray-600 hover:text-gray-800"
               @click="download(job.id, job.candidate_id)"
@@ -79,7 +86,8 @@ export default {
       try {
         let id = this.$route.params.id;
         const response = await axios.get(`${this.api}/admin/candidates/job/${id}`);
-
+        console.log('Candidatos por vaga', response)
+        console.log('ID', id)
         this.jobs = response.data;
         
       } catch (error) {
@@ -88,7 +96,7 @@ export default {
     },
     async download(jobID, candidateID) {
       try {
-        const candidate = await axios.get(`${this.api}/candidate/${candidateID}`)
+        const candidate = await axios.get(`${this.api}/admin/candidate/${candidateID}`)
         const response = await axios.get(`${this.api}/admin/download/candidate/${jobID}`, {
           responseType: 'blob'
 
@@ -98,7 +106,7 @@ export default {
         const url = window.URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = url;
-        link.setAttribute('download', `${candidate.data.id}_${candidate.data.full_name}`); // Set the default file name
+        link.setAttribute('download', `${candidate.data.id}_${candidate.data.candidate_name}`); // Set the default file name
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);

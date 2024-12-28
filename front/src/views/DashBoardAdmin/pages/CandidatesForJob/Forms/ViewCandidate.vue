@@ -2,13 +2,14 @@
     <h1>Editar Status do candidato</h1>
     
     <form @submit.prevent="updateStatus()">
-        <div v-for="(candidate, id) in candidateData" :key="id">
-            Status atual: {{ candidate.status }}
-            
-            <label for="status_id">Novo status</label>
+        <div>
+            Status atual: {{ candidateStatus }}
+        </div>    
+            <label for="status_">Novo status</label>
             <select 
-                v-model="status_id"
+                v-model="status_"
                 required
+                class="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
             >
             <option
                 v-for="status in statuss"
@@ -21,10 +22,10 @@
             </option>
 
             </select>
-        </div>
+        
         <button 
             type="submit"
-            @click="updateStatus(id)"
+            
         >
             Alterer Status
         </button>
@@ -38,9 +39,9 @@
         name: "ViewCandidate",
         data(){
             return {
-                candidateData: [],
+                candidateStatus: null,
                 statuss: [],
-                status_id: null,
+                status_: null,
                 api: process.env.VUE_APP_API_URL,
 
             }
@@ -62,23 +63,24 @@
             async getData()
             {
                 try {
-                    const candidateStatus = await axios.get(`${this.api}/candidate/${this.candidateID}`)                    
+                    const candidateStatus = await axios.get(`${this.api}/admin/candidate/${this.candidateID}`)                    
                     const status = await axios.get(`${this.api}/admin/status`)                    
-                    this.candidateData = candidateStatus.data
+                    this.candidateStatus = candidateStatus.data.status_curriculum
                     this.statuss = status.data
 
                     console.log('Todos os status', this.statuss)
+                    
 
                 } catch (error) {
                     console.error('Erro', error)
                 }
             },
 
-            async updateStatus(id)
+            async updateStatus()
             {
                 try {
                     const newStatus = {
-                        status_id: this.newStatus
+                        status_: this.status_
                     }
 
                     console.log('Novo Status de envio', newStatus)
@@ -92,7 +94,7 @@
 
         mounted() { 
             this.getData()
-            console.log(this.candidateID)
+            
         }
     }
     

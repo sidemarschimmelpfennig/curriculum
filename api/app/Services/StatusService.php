@@ -29,7 +29,7 @@ class StatusService implements StatusInterface
 
     public function findID(int $id)
     {
-        
+        return $this->repository->findID($id);
     }
 
     public function update(int $id, array $data)

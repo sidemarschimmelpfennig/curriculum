@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\StatusUpdatedEvent;
-use App\Models\Candidates;
 use Illuminate\Http\Request;
 use App\Services\CandidateService;
 
@@ -40,18 +38,19 @@ class CandidateController extends Controller
             $data = $request->validate([
                 'full_name' => 'required|string',
                 'email' => 'required|string',
+                'password' => 'required|string',
                 'phone' => 'required|string',
                 'additional_info' => 'required|string',
                 'curriculum' => 'required|file',
-                'jobID' => 'required|integer'
+                
 
             ]);
             //return response()->json($request->all());
             $file = $request->file('curriculum');
             $candidate = $this->candidateService->create($data);
-            $apply = $this->candidateService->applyCreate($candidate->id, $file, $data['jobID']);
+            //$apply = $this->candidateService->applyCreate($candidate->id, $file, $data['jobID']);
 
-            return response()->json($apply);
+            return response()->json($candidate, 201);
             
             //return response()->json();
 
@@ -67,16 +66,32 @@ class CandidateController extends Controller
 
     }
 
-    public function updateStatus(Request $request, $candidateID)
+    public function updateStatus(Request $request, int $candidateID)
     {
-        
-        //event(new StatusUpdatedEvent($candidate, $newStatus));
+        try {
+            $status = $request->input('status_');
+            $a = $this->candidateService->updateStatus($candidateID, $status);
+            
+            $candidate = $this->candidateService->findByID($candidateID);
+            return response()->json([
+                'status' => $status,
+                'id' => $candidateID,
+                'candidate' => $candidate,
+                'a' => $a
+            ], 200);
 
-        return response()->json([
-            'message' => 'Status atualizado com sucesso!',
-            'request' => $request->all(),
-            'id' => $candidateID
-        ], 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'erro' => 'Erro ao alterar status do candidato',
+                'th' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getfile(),
+
+            ], 400);
+        
+        }
+        //$candidate = $this->candidateService->findByID($candidateID);
+        
     }
 
     public function findbyID(int $id)
@@ -110,7 +125,26 @@ class CandidateController extends Controller
     public function downloadFile(int $id)
     {
         $directory = $this->candidateService->downloadFile($id);
-        return response()->download($directory);
+        if($directory)
+        {
+            try {
+                return response()->download($directory); 
+            } catch (\Throwable $th) {
+                return response()->json([
+                    'erro' => 'Erro ao criar candidato',
+                    'th' => $th->getMessage(),
+                    'line' => $th->getLine(),
+                    'file' => $th->getfile(),
 
+                ], 400);
+            }
+         
+        } else {
+            return response()->json([
+                'erro' => 'Erro, arquivo não encontrado',
+
+            ]);
+        }
+            
     }
 }
