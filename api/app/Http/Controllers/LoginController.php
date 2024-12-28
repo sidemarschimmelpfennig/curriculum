@@ -36,21 +36,23 @@ class LoginController extends Controller
     {  
         //return response()->json($request->all());
         try {
-            $dataRequest = $request->validate([
+            $data = $request->validate([
                 'email' => 'required|string',
                 'password' => 'required'
 
             ]);
 
-            //$getUser = $this-User::where('email', $dataRequest['email'])->first();
-            $getCandidate = Candidates::where('email', $dataRequest['email'])->first();
+
+            $getUser = $this->userService->findByEmail($data['email']);
+            $getCandidate = $this->candidateService->findByEmail($data['email']);
         
             if($getUser)
             {
-                return $this->login($dataRequest, $getUser);
+                return $this->login($data, $getUser);
                 
             } else {
-                return $this->login($dataRequest, $getCandidate);
+                return $this->login($data, $getCandidate);
+
             }
             
         } catch (\Throwable $th) {
@@ -66,19 +68,31 @@ class LoginController extends Controller
         
     }
 
-    public function login(array $dataRequest, object $currenteUser)
+    public function login(array $data, object $currenteUser)
     {
-        if(Hash::check($dataRequest['password'], $currenteUser->password))
+        if(Hash::check($data['password'], $currenteUser->password))
         { 
-            $token = $currenteUser->createToken('AccessToken')->plainTextToken;
-            return response()->json([
-                'success' => true,
-                'message' => "Usuario " . $currenteUser->full_name. " Logado!",
-                'token' => $token,
-                'currenteUser' => $currenteUser
-
-            ], 200)->header('Content-Type', 'application/json');
-        
+            try {
+                $token = $currenteUser->createToken('AccessToken')->plainTextToken;
+                return response()->json([
+                    'success' => true,
+                    'message' => "Usuario " . $currenteUser->full_name. " Logado!",
+                    'token' => $token,
+                    'currenteUser' => $currenteUser
+    
+                ], 200)->header('Content-Type', 'application/json');
+            
+            } catch (\Throwable $th) {
+                return response()->json([
+                    'message' => 'Erro ao logar',
+                    'th' => $th->getMessage(),
+                    'line' => $th->getLine(),
+                    'file' => $th->getFile(),
+    
+                ], 200);
+                
+            }
+            
         } else {
             return response()->json([
                 'message' => 'Senha incorreta'

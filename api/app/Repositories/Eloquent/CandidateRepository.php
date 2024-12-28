@@ -99,6 +99,12 @@ class CandidateRepository implements CandidateInterface
         
     }
 
+    public function findByEmail(string $param)
+    {
+        return Candidates::where('email', $param)->first();
+        
+    }
+
     public function downloadFile(int $id)
     {
         $candidateJob = CandidatesVagas::where('candidate_id', $id)->first();
