@@ -89,17 +89,17 @@ export default {
   },
   methods: {
     async handleLogin() {
-      
       try {  
         const response = await axios.post(`${this.api}/login`, {
           email: this.email,
           password: this.password
           
         });
+        console.log(response.data)
       
         if (response.data.success === true && response.data.token) {
           localStorage.setItem('authToken', response.data.token);
-          let currentUser = response.data.user.name
+          let currentUser = response.data.currentUser.full_name
           this.$router.push({ name: "default", params: { currentUser: currentUser } })
           console.log(currentUser)
           console.log(a)

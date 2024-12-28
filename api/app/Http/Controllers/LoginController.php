@@ -14,14 +14,23 @@ use App\Http\{
     
 };
 
-use App\Models\{
-    User,
-    Candidates,
-    
+use App\Services\{
+    UserService,
+    CandidateService
+
 };
 
 class LoginController extends Controller
 {
+    protected $userService;
+    protected $candidateService;
+
+    public function __construct(UserService $userService, CandidateService $candidateService)
+    {
+        $this->userService = $userService;
+        $this->candidateService = $candidateService;
+        
+    }
 
     public function getData(Request $request)
     {  
@@ -33,7 +42,7 @@ class LoginController extends Controller
 
             ]);
 
-            $getUser = User::where('email', $dataRequest['email'])->first();
+            //$getUser = $this-User::where('email', $dataRequest['email'])->first();
             $getCandidate = Candidates::where('email', $dataRequest['email'])->first();
         
             if($getUser)
@@ -66,7 +75,7 @@ class LoginController extends Controller
                 'success' => true,
                 'message' => "Usuario " . $currenteUser->full_name. " Logado!",
                 'token' => $token,
-                'user' => $currenteUser
+                'currenteUser' => $currenteUser
 
             ], 200)->header('Content-Type', 'application/json');
         

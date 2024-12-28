@@ -17,6 +17,11 @@ class UserRepository implements UserInterface
         return User::find($id);
         
     }
+
+    public function findByEmail(string $param)
+    {
+        return User::where('email', $param)->first();
+    }
     
     public function create(array $data)
     {
@@ -25,7 +30,7 @@ class UserRepository implements UserInterface
 
     public function update(int $id, array $data)
     {
-        
+        return User::where('id', $id)->update($data);
     }
 
     public function delete(int $id)

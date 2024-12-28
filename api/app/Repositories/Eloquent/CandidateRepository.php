@@ -16,6 +16,7 @@ use App\Models\{
 };
 
 use App\Events\StatusUpdatedEvent;
+use Illuminate\Support\Facades\Hash;
 
 class CandidateRepository implements CandidateInterface
 {
@@ -64,7 +65,19 @@ class CandidateRepository implements CandidateInterface
 
     public function create(array $data)
     {
-       return Candidates::create($data);
+       $candidate = Candidates::create([
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'full_name' => $data['full_name'],
+            'phone' => $data['phone'],
+            'additional_info' => $data['additional_info'],
+
+        ]);
+        $file = $this->applyService->archiveFile($candidate->id, $data['curriculum']);
+        return $candidate->update([
+            'curriculum' => $file
+
+        ]);
        
     }
 

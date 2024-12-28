@@ -226,7 +226,7 @@ export default {
         return;
 
       } else {
-        try {
+        
           this.passwordError = false
           this.loginData = false
           this.candidateData = true
@@ -243,29 +243,33 @@ export default {
           if(this.form.curriculum !== null){
             this.create(form)
           }
-          
-        } catch (error) {
-          console.error('Erro', error)
-          
-        }
-       
+               
       }
     },
 
     async create(form){
-      const response = await axios.post(
-            `${this.api}/candidate`,
+      try {
+        const response = await axios.post(
+          `${this.api}/candidate`,
 
-            form,
-            {
-              headers: {
-                "Content-Type": "multipart/form-data",
+          form,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
                 
-              },
-            }
-          );
-
-          console.log(response.data)
+            },
+          }
+      );
+      if(response.data.success === true)
+      {
+        console.log('Cadastro feito', response.data)
+        this.$router.push({ name: "/" })
+      }
+      
+      } catch (error) {
+        console.error('Erro ao criar o candidato:', error)
+      }
+      
     }
   },
 };

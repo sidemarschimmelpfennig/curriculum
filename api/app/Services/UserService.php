@@ -24,6 +24,12 @@ class UserService
 
     }
 
+    public function findByEmail(string $param)
+    {
+        return $this->repository->findByEmail($param);
+        
+    }
+
     public function create(array $data)
     {  
         return $this->repository->create([

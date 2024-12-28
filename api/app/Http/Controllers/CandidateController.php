@@ -50,7 +50,11 @@ class CandidateController extends Controller
             $candidate = $this->candidateService->create($data);
             //$apply = $this->candidateService->applyCreate($candidate->id, $file, $data['jobID']);
 
-            return response()->json($candidate, 201);
+            return response()->json([
+                'success' => true,
+                'candidate' => $candidate
+            
+            ], 201);
             
             //return response()->json();
 
