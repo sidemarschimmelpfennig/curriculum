@@ -42,6 +42,7 @@ class LoginController extends Controller
 
             ]);
 
+            
             //$getUser = $this-User::where('email', $dataRequest['email'])->first();
             $getCandidate = Candidates::where('email', $dataRequest['email'])->first();
         
