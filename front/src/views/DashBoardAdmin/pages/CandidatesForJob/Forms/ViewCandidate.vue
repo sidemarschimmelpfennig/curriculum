@@ -80,7 +80,7 @@
             {
                 try {
                     const newStatus = {
-                        status_: this.status_
+                        status_curriculum: this.status_
                     }
 
                     console.log('Novo Status de envio', newStatus)

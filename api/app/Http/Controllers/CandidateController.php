@@ -70,7 +70,7 @@ class CandidateController extends Controller
     public function updateStatus(Request $request, int $candidateID)
     {
         try {
-            $status = $request->input('status_');
+            $status = $request->input('status_curriculum');
             $a = $this->candidateService->updateStatus($candidateID, $status);
             
             $candidate = $this->candidateService->findByID($candidateID);
@@ -130,20 +130,14 @@ class CandidateController extends Controller
 
             ]);
 
-            return response()->json([
-                'success' => true,
-                'dados' => $data,
-                
-            ]);
-
-            /*$apply = $this->candidateService->apply($data['jobID'], $data['candidateID']);
+            $apply = $this->candidateService->apply($data['jobID'], $data['candidateID']);
 
             return response()->json([
                 'success' => true,
                 'dados' => $data,
                 'Aplicação' => $apply
 
-            ]);*/
+            ]);
         } catch (\Throwable $th) {
             return response()->json([
                 'erro' => 'Erro ao criar candidato',
@@ -161,18 +155,8 @@ class CandidateController extends Controller
         $directory = $this->candidateService->downloadFile($id);
         if($directory)
         {
-            try {
-                return response()->download($directory); 
-            } catch (\Throwable $th) {
-                return response()->json([
-                    'erro' => 'Erro ao criar candidato',
-                    'th' => $th->getMessage(),
-                    'line' => $th->getLine(),
-                    'file' => $th->getfile(),
+            return response()->download($directory); 
 
-                ], 400);
-            }
-         
         } else {
             return response()->json([
                 'erro' => 'Erro, arquivo não encontrado',
