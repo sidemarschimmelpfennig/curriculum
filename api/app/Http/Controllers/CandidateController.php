@@ -42,7 +42,6 @@ class CandidateController extends Controller
                 'phone' => 'required|string',
                 'additional_info' => 'required|string',
                 'curriculum' => 'required|file',
-                
 
             ]);
             
@@ -53,23 +52,17 @@ class CandidateController extends Controller
                 'candidate' => $candidate
             
             ], 201);
-            
-            //return response()->json();
 
         } catch (\Throwable $th) {
-            if($th->getCode() == 2300)
-            {
-                return response()->json('E-mail já cadastado');
-            }
-
             return response()->json([
                 'erro' => 'Erro ao criar candidato',
                 'th' => $th->getMessage(),
                 'line' => $th->getLine(),
                 'file' => $th->getfile(),
                 'code' => $th->getCode(),
+                'request' => $request->all()
 
-            ], 400);
+            ], 400);   
         }
 
     }
@@ -96,9 +89,7 @@ class CandidateController extends Controller
                 'file' => $th->getfile(),
 
             ], 400);
-        
         }
-        //$candidate = $this->candidateService->findByID($candidateID);
         
     }
 
@@ -128,6 +119,41 @@ class CandidateController extends Controller
 
             ], 400);
         }
+    }
+
+    public function apply(Request $request)
+    {
+        try {
+            $data = $request->validate([
+                'jobID' => 'required|integer',
+                'candidateID' => 'required|string'
+
+            ]);
+
+            return response()->json([
+                'success' => true,
+                'dados' => $data,
+                
+            ]);
+
+            /*$apply = $this->candidateService->apply($data['jobID'], $data['candidateID']);
+
+            return response()->json([
+                'success' => true,
+                'dados' => $data,
+                'Aplicação' => $apply
+
+            ]);*/
+        } catch (\Throwable $th) {
+            return response()->json([
+                'erro' => 'Erro ao criar candidato',
+                'th' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getfile(),
+
+            ], 400);
+        }
+
     }
 
     public function downloadFile(int $id)

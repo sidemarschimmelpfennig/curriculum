@@ -9,6 +9,7 @@
         @close="showModal = false"
         class="applyanewjob"
         :jobID="jobID"
+        
       />
     </div>
     <div
@@ -43,7 +44,7 @@
       <div class="flex justify-between items-center mt-4">
         <a
           class="readmore text-white hover:cursor-pointer"
-          @click="openModal(jobs.id)"
+          @click="applyJob(jobs.id)"
           >Candidatar
         </a>
 
@@ -57,12 +58,14 @@
 
 <script>
 import ApplyForaJobForm from "./ApplyForaJobForm.vue";
+import axios from "axios";
 export default {
   data() {
     return {
       joblist: [],
       showModal: false,
       jobID: null,
+      api: process.env.VUE_APP_API_URL,
     };
   },
   props: {
@@ -70,19 +73,40 @@ export default {
       type: Array,
       required: true,
     },
+    candidateID: {
+      type: Number,
+      required: true
+    }
+
   },
   components: {
     ApplyForaJobForm,
   },
   methods: {
-    openModal(jobid) {
-      this.jobID = jobid;
-      this.showModal = true;
+    async applyJob(jobid) {
+      try {
+        const data = {
+          jobID: jobid,
+          candidateID: this.candidateID
+
+        }
+
+        console.log('Dados de envio', data)
+        
+        const response = await axios.post(`${this.api}/apply`, data)
+        console.log('Retorno', response)
+        
+      } catch (error) {
+        console.error('Erro', error)
+      }
+      
     },
   },
 
   mounted() {
-    this.joblist = this.joblisting;
+    this.joblist = this.joblisting
+    console.log('Linha 104', this.candidateID)
+
   },
 };
 </script>

@@ -39,26 +39,19 @@ class CandidateRepository implements CandidateInterface
         return Candidates::all();
     }
 
-    public function applyCreate(int $id, object $file, int $jobID)
+    public function apply(int $id, int $jobID)
     {    
-        $filePath = $this->applyService->archiveFile($id, $file);
         $job = $this->jobService->findID($jobID);
         $candidate = $this->candidateFindByID($id);
-
-        return [
-            $filePath,
-            $job,
-            $candidate
-        ];
         
         return CandidatesVagas::create([
-            'job_id' => $jobID,
+            'job_id' => $job->id,
             'job' => $job->name,
-            'candidate_id' => $id,
+            'candidate_id' => $candidate->id,
             'candidate_name' =>  $candidate->full_name,
             'phone' => $candidate->phone,
             'email' => $candidate->email,
-            'curriculum' => $filePath
+            'curriculum' => $candidate->curriculum
              
         ]);
     }
@@ -109,8 +102,20 @@ class CandidateRepository implements CandidateInterface
 
     public function downloadFile(int $id)
     {
-        $candidateJob = CandidatesVagas::where('candidate_id', $id)->first();
-        return $candidateJob->curriculum;
+        try {
+            $candidateJob = CandidatesVagas::where('candidate_id', $id)->first();
+            return $candidateJob->curriculum;
+            
+        } catch (\Throwable $th) {
+            return response()->json([
+                'erro' => 'Erro ao criar candidato',
+                'th' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getfile(),
+
+            ], 400);
+        }
+        
         
     }
 

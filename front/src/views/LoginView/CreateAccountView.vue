@@ -251,6 +251,7 @@ export default {
       try {
         const response = await axios.post(
           `${this.api}/candidate`,
+          //`http://localhost/api/v1/candidate`,
 
           form,
           {
@@ -263,8 +264,8 @@ export default {
       if(response.data.success === true)
       {
         console.log('Cadastro feito', response.data)
-        const currentUser = response.data.candidate.full_name
-        this.$router.push({ name: "/login" , params: { currentUser: currentUser } })
+        //const currentUser = response.data.currentUser
+        this.$router.push("/login")
       }
       
       } catch (error) {

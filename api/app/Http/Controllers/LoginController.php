@@ -78,7 +78,9 @@ class LoginController extends Controller
                     'success' => true,
                     'message' => "Usuario " . $currenteUser->full_name. " Logado!",
                     'token' => $token,
-                    'currenteUser' => $currenteUser
+                    'full_name' => $currenteUser->full_name,
+                    'currenteUser' => $currenteUser,
+                    'is_admin' => $currenteUser->is_admin
     
                 ], 200)->header('Content-Type', 'application/json');
             

@@ -11,9 +11,9 @@ class CandidateService
         $this->repository = $repository;
     }
 
-    public function applyCreate(int $id, object $file, int $jobID)
+    public function apply(int $id, int $jobID)
     {
-        return $this->repository->applyCreate($id, $file, $jobID);
+        return $this->repository->apply($id, $jobID);
         
     }
 

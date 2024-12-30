@@ -79,6 +79,7 @@
 import axios from 'axios';
 
 export default {
+  name: "login",
   data() {
     return {
       email: "",
@@ -95,19 +96,21 @@ export default {
           password: this.password
           
         });
-        console.log(response.data)
-      
+        console.log("Retorno do login", response.data)
+
+        let currenteUser = response.data.currenteUser
+
+        console.log('Dados do usuário atual LoginView', currenteUser)
+        
         if (response.data.success === true && response.data.token) {
           localStorage.setItem('authToken', response.data.token);
-          let currentUser = response.data.currentUser.full_name
 
-          console.log(currentUser)
-
-          if(response.data.currentUser.is_admin === 1)
+          if(currenteUser.is_admin === 1)
           {
-            
+            this.$router.push({ name: "default", params: { currenteUser: currenteUser.full_name } })
+
           } else {
-            this.$router.push({ name: "default", params: { currentUser: currentUser } })
+            this.$router.push({ name: "joblisting", params: { currenteUser: currenteUser.id } })
 
           }
 
@@ -115,6 +118,7 @@ export default {
           this.message = 'Dados errados ou ausentes'
 
         }
+
       } catch (error) {
         console.error('Erro', error)
       }

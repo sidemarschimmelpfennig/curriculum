@@ -36,7 +36,10 @@
         Oportunidades Disponíveis
       </h1>
       <div v-if="filteredJobs.length > 0">
-        <JobListingComponent :joblisting="filteredJobs" />
+        <JobListingComponent 
+          :joblisting="filteredJobs"
+          :candidateID="candidateID"
+        />
       </div>
       <div v-else :class="{ isNull: arrayFromJobs <= 0 }">
         <h2>Nenhuma Vaga Disponível no momento</h2>
@@ -50,6 +53,7 @@ import axios from "axios";
 import JobListingComponent from "./Components/JobListingComponent.vue";
 
 export default {
+  name: "joblisting",
   data() {
     return {
       departments: [],
@@ -57,6 +61,7 @@ export default {
       searchText: "",
       arrayFromJobs: [],
       errorMessage: "",
+      candidateID: null,
       api: process.env.VUE_APP_API_URL,
     };
   },
@@ -95,6 +100,13 @@ export default {
         this.departments = [];
       }
     },
+
+    async getCandidate(){
+      const candidateID = this.$route.params.currenteUser
+      this.candidateID = candidateID
+      console.log('Caminho linha 107: ', this.candidateID)
+    }
+
   },
   computed: {
     filteredJobs() {
@@ -112,7 +124,7 @@ export default {
   },
   mounted() {
     this.getJobsListing();
-    //this.getDepartament();
+    this.getCandidate();
   },
   components: {
     JobListingComponent,

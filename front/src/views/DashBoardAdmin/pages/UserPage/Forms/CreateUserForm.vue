@@ -10,13 +10,13 @@
     </div>
 
     <div class="mt-4">
-      <label for="name" class="block text-sm font-medium text-gray-700"
+      <label for="full_name" class="block text-sm font-medium text-gray-700"
         >Nome</label
       >
       <input
         type="text"
         id="name"
-        v-model="name"
+        v-model="full_name"
         class="mt-1 block w-fullborder border-gray-500 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 py-2 px-3 text-sm"
         placeholder="Digite seu nome"
       />
@@ -78,7 +78,7 @@ export default {
   methods: {
     async createUser() {
       let data = {
-        name: this.name,
+        full_name: this.full_name,
         email: this.email,
         password: this.password,
         

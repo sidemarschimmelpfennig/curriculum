@@ -105,6 +105,7 @@ export default {
         status: 1,
         jobID: this.jobID, 
         file: null,
+        candidateID: this.candidateID
       },
       api: process.env.VUE_APP_API_URL,
     };
@@ -120,27 +121,7 @@ export default {
     },
     async submitForm() {
       try {
-        const form = new FormData();
-
-        form.append("full_name", this.form.full_name);
-        form.append("email", this.form.email);
-        form.append("phone", this.form.phone);
-        form.append("additional_info", this.form.additional_info);
-        //form.append("status", this.form.status);
-        form.append("jobID", this.form.jobID); 
-
-        form.append("curriculum", this.form.file);
-        const response = await axios.post(
-          `${this.api}/candidate`,
-
-          form,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-              
-            },
-          }
-        );
+        const response = await axios.post(`${this.api}/candidate`);
 
         console.log(response.data);
         this.closeModal()
@@ -164,12 +145,18 @@ export default {
       required: true,
     },
     jobID: {
-      type: String,
+      type: Number,
       required: true,
     },
+    candidateID: {
+      type: String,
+      required: true
+
+    }
   },
   mounted() {
     window.addEventListener("keydown", this.handleKeydown);
+    console.log('Caminho linha 163:', this.candidateID)
   },
   beforeUnmount() {
     window.removeEventListener("keydown", this.handleKeydown);

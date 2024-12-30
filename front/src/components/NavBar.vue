@@ -11,7 +11,10 @@
       <router-link class="nav-link" to="/joblisting"
         >Vagas disponiveis</router-link
       >
-      <router-link class="nav-link" to="/login">Faça seu Login</router-link>
+      <!--div v-if=""-->
+      <div>
+        <router-link class="nav-link" to="/login">Faça seu Login</router-link>
+      </div>
     </ul>
   </div>
 </template>

@@ -16,17 +16,22 @@ const routes = [
     path: "/",
     name: "home",
     component: HomeView,
+    props: true,
+
   },
   {
-    path: "/joblisting",
+    path: "/joblisting/:currenteUser",
     name: "joblisting",
     component: JobListingView,
+    props: true,
+
   },
   {
     path: "/login",
     name: "login",
     component: LoginView,
-    meta: { requiresNavbar: false, requiresFooter: false  },
+    props: true,
+
   },
   {
     path: "/register",
@@ -40,6 +45,8 @@ const routes = [
     path: "/createacccount",
     name: "createacccount",
     component: CreateAccountView,
+    props: true,
+
   }, 
   {
     path: "/admin",
@@ -52,7 +59,7 @@ const routes = [
     },
     children:[
       {
-        path:":currentUser",
+        path:":currenteUser",
         name:"default",
         component: HomePageAdmin,
         props: true,
