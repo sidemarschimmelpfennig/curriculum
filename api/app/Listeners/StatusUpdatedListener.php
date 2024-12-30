@@ -37,8 +37,6 @@ class StatusUpdatedListener
 
         $settings = Settings::first();
 
-        //$nameStatus = $this->statusService->findByStatus($status);
-
         Config::set('mail.mailers.smtp.host', $settings->smtp_host);
         Config::set('mail.mailers.smtp.port', $settings->smtp_port);
         Config::set('mail.mailers.smtp.username', $settings->email);
