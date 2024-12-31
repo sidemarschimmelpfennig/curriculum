@@ -32,9 +32,11 @@
       </div>
       <div class="flex justify-between items-center mt-4">
         <a
+          id="candidatar"
           class="readmore text-white hover:cursor-pointer"
           @click="applyJob(jobs.id)"
-          >Candidatar
+        >
+          Candidatar
         </a>
 
         <div>
@@ -52,6 +54,7 @@ export default {
   data() {
     return {
       joblist: [],
+      isApplied: [],
       showModal: false,
       jobID: null,
       api: process.env.VUE_APP_API_URL,
@@ -82,18 +85,19 @@ export default {
         
         const response = await axios.post(`${this.api}/apply`, data)
         console.log('Retorno', response)
+        if(response.data.success === true)
+        {
+          alert('Você está candidato a está vaga!')
+
+        }
         
       } catch (error) {
 
-        switch (error.response.data.code) {
-          case '23000':
-            alert('Chave duplicada')
-            break;
-    
-          default:
-            break;
+        if(error.response.data.code === '2300') {
+          alert('Você já se candidatou a essa vaga')
+            
         } 
-        console.error('Erro', error.response.data)
+        console.error('Erro', error)
       }
       
     },

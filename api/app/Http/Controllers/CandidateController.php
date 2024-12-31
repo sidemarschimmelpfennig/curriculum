@@ -84,7 +84,6 @@ class CandidateController extends Controller
             ]);
     
             $exists = $this->candidateService->toCheck($credentials);
-            //return response()->json($exists);
             if($exists == true)
             {
                 return response()->json([
