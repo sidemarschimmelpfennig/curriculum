@@ -220,30 +220,41 @@ export default {
       }
     },
     
-     getData(){
+    getData(){
+      
       if(this.form.password !== this.retrypassword){
         this.passwordError = true
         return;
 
       } else {
-        
-          this.passwordError = false
-          this.loginData = false
-          this.candidateData = true
+          try {
+            const credentials = axios.post(`${this.api}/check`, {
+            email: this.form.email
 
-          const form = new FormData()
+            })
 
-          form.append("email", this.form.email);
-          form.append("password", this.form.password)
-          form.append("full_name", this.form.full_name);
-          form.append("phone", this.form.phone);
-          form.append("additional_info", this.form.additional_info);
-          form.append("curriculum", this.form.curriculum);
+            console.log('Retorno 234 credentials', credentials)
 
-          if(this.form.curriculum !== null){
-            this.create(form)
+            this.passwordError = false
+            this.loginData = false
+            this.candidateData = true
+
+            const form = new FormData()
+
+            form.append("email", this.form.email);
+            form.append("password", this.form.password)
+            form.append("full_name", this.form.full_name);
+            form.append("phone", this.form.phone);
+            form.append("additional_info", this.form.additional_info);
+            form.append("curriculum", this.form.curriculum);
+
+            if(this.form.curriculum !== null){
+              this.create(form)
+            }
+          } catch (error) {
+            console.log('Erro ao criar a conta:', error)            
           }
-               
+
       }
     },
 

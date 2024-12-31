@@ -39,8 +39,6 @@ class UserRepository implements UserInterface
             'active' => false
 
         ]);
+        
     }
-
-    
-
 }

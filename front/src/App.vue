@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <NavBar v-if="$route.meta.requiresNavbar !== false" />
+    <NavBar 
+      v-if="$route.meta.requiresNavbar !== false"
+      
+    />
     <router-view />
     <FooterComponent v-if="$route.meta.requiresFooter !== false" />
   </div>

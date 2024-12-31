@@ -35,36 +35,79 @@ class CandidateController extends Controller
     public function create(Request $request)
     {
         try {
-            $data = $request->validate([
-                'full_name' => 'required|string',
-                'email' => 'required|string',
-                'password' => 'required|string',
-                'phone' => 'required|string',
-                'additional_info' => 'required|string',
-                'curriculum' => 'required|file',
+            
+                $data = $request->validate([
+                    'full_name' => 'required|string',
+                    'email' => 'required|string',
+                    'password' => 'required|string',
+                    'phone' => 'required|string',
+                    'additional_info' => 'required|string',
+                    'curriculum' => 'required|file',
 
-            ]);
+                ]);
+                
+                $candidate = $this->candidateService->create($data);
+                
+                return response()->json([
+                    'success' => true,
+                    'candidate' => $candidate
+                
+                ], 201);
             
-            $candidate = $this->candidateService->create($data);
-            
+        
+        } catch (\Illuminate\Database\QueryException $e) {
+            if($e->getCode() == '23000')
+            {
+                return response()->json([
+                    'erro' => 'Chave duplicada',
+                    'code' => $e->getCode()
+                ]);
+            }
+
             return response()->json([
-                'success' => true,
-                'candidate' => $candidate
-            
-            ], 201);
+                'error' => 'Erro durante a criação',
+                'message' => $e->getMessage(),
+                'code' => $e->getCode(),
+                'line' => $e->getLine(),
+                'file' => $e->getFile(),
+            ]);
+        }
 
+    }
+
+    public function toCheck(Request $request)
+    {
+        try {
+            $credentials = $request->validate([
+                'email' => 'required|string'
+    
+            ]);
+    
+            $exists = $this->candidateService->toCheck($credentials);
+            //return response()->json($exists);
+            if($exists == true)
+            {
+                return response()->json([
+                    'message' => 'Esse e-mail já está cadastrado'
+
+                ], 400);
+
+            } else {
+                return response()->json([
+                    'message' => 'Pode seguir'
+                ], 200);
+                
+            }
         } catch (\Throwable $th) {
             return response()->json([
-                'erro' => 'Erro ao criar candidato',
                 'th' => $th->getMessage(),
                 'line' => $th->getLine(),
                 'file' => $th->getfile(),
-                'code' => $th->getCode(),
                 'request' => $request->all()
 
-            ], 400);   
+            ], 400);
         }
-
+       
     }
 
     public function updateStatus(Request $request, int $candidateID)
@@ -138,12 +181,9 @@ class CandidateController extends Controller
                 'Aplicação' => $apply
 
             ]);
-        } catch (\Throwable $th) {
+        } catch (\Illuminate\Database\QueryException $e) {
             return response()->json([
-                'erro' => 'Erro ao criar candidato',
-                'th' => $th->getMessage(),
-                'line' => $th->getLine(),
-                'file' => $th->getfile(),
+                'code' => $e->getCode()
 
             ], 400);
         }

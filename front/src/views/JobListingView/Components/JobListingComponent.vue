@@ -1,17 +1,6 @@
 <template>
   <div class="relative w-full job">
-    <div
-      v-if="showModal"
-      class="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center z-50"
-    >
-      <ApplyForaJobForm
-        :show="showModal"
-        @close="showModal = false"
-        class="applyanewjob"
-        :jobID="jobID"
-        
-      />
-    </div>
+    
     <div
       class="w-full px-10 my-4 py-6 bg-white rounded-lg shadow-md job-component"
       v-for="(jobs, id) in joblisting"
@@ -57,7 +46,7 @@
 </template>
 
 <script>
-import ApplyForaJobForm from "./ApplyForaJobForm.vue";
+//import ApplyForaJobForm from "./__.vue";
 import axios from "axios";
 export default {
   data() {
@@ -79,9 +68,7 @@ export default {
     }
 
   },
-  components: {
-    ApplyForaJobForm,
-  },
+  
   methods: {
     async applyJob(jobid) {
       try {
@@ -97,7 +84,16 @@ export default {
         console.log('Retorno', response)
         
       } catch (error) {
-        console.error('Erro', error)
+
+        switch (error.response.data.code) {
+          case '23000':
+            alert('Chave duplicada')
+            break;
+    
+          default:
+            break;
+        } 
+        console.error('Erro', error.response.data)
       }
       
     },

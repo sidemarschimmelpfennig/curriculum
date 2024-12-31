@@ -30,6 +30,7 @@ Route::prefix('v1')->group( function () {
 
     Route::post('/candidate', [CandidateController::class, 'create']);
     Route::post('/apply', [CandidateController::class, 'apply']);
+    Route::post('/check', [CandidateController::class, 'toCheck']);
     
     Route::middleware('auth:sanctum')->group(function (){ 
         Route::prefix('/admin')->group(function (){    

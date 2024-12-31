@@ -76,6 +76,20 @@ class CandidateRepository implements CandidateInterface
        
     }
 
+    public function toCheck($credentials)
+    {
+        $query = Candidates::where('email', $credentials)->first();
+
+        if($query != null)
+        {
+            return true;
+
+        } else {
+            return false;
+
+        }
+    }
+
     public function findByID(int $id)
     {
         return CandidatesVagas::find($id)->first();

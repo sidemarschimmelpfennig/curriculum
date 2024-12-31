@@ -23,6 +23,11 @@ class CandidateService
 
     }
 
+    public function toCheck($credentials)
+    {
+        return $this->repository->toCheck($credentials);
+    }
+
     public function findByID(int $id)
     {
         return $this->repository->findByID($id);
