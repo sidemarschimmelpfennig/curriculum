@@ -220,7 +220,7 @@ export default {
       }
     },
     
-    getData(){
+    async getData(){
       
       if(this.form.password !== this.retrypassword){
         this.passwordError = true
@@ -228,12 +228,12 @@ export default {
 
       } else {
           try {
-            const credentials = axios.post(`${this.api}/check`, {
+            const credentials = await axios.post(`${this.api}/check`, {
             email: this.form.email
 
             })
 
-            console.log('Retorno 234 credentials', credentials)
+            console.log('Retorno linha 234 credentials', credentials)
 
             this.passwordError = false
             this.loginData = false
