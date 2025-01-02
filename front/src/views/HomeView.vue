@@ -16,7 +16,7 @@ export default {
   components: {},
   methods: {
     getJobs() {
-      return this.$router.push("/joblisting");
+      return this.$router.push("/login");
     },
   },
 };

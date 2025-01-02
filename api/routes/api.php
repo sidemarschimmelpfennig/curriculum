@@ -26,7 +26,6 @@ Route::prefix('v1')->group( function () {
 
     Route::get('/settings', [SettingsController::class, 'showForm'])->name('email.form');
     Route::put('/settings', [SettingsController::class, 'update'])->name('email.update');
-    Route::put('/status/{candidateId}', [CandidateController::class, 'update']);
 
     Route::post('/candidate', [CandidateController::class, 'create']);
     Route::post('/apply', [CandidateController::class, 'apply']);
@@ -76,7 +75,6 @@ Route::prefix('v1')->group( function () {
         Route::get('/candidate/{id}', [CandidateController::class, 'findByID']);
         Route::get('/download/candidate/{id}', [CandidateController::class, 'downloadFile']);
         
-           
         });
     });
 });

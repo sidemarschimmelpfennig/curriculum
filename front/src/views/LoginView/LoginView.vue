@@ -91,11 +91,15 @@ export default {
   methods: {
     async handleLogin() {
       try {  
-        const response = await axios.post(`${this.api}/login`, {
+        const data = {
           email: this.email,
           password: this.password
           
-        });
+        }
+        console.log("Dados para envio: ", data)
+
+
+        const response = await axios.post(`${this.api}/login`, data);
         console.log("Retorno do login", response.data)
 
         let currenteUser = response.data.currenteUser
