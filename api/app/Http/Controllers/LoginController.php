@@ -46,14 +46,19 @@ class LoginController extends Controller
             $getUser = $this->userService->findByEmail($data['email']);
             $getCandidate = $this->candidateService->findByEmail($data['email']);
         
-            if($getUser)
+            if(!empty($getUser))
             {
                 return $this->login($data, $getUser);
                 
-            } else {
-                return $this->login($data, $getCandidate);
-
             }
+            
+            if(!empty($getCandidate))
+            {
+                return $this->login($data, $getCandidate);
+            
+            }
+
+            return response()->json('não encontrado');
             
         } catch (\Throwable $th) {
             return response()->json([
@@ -61,7 +66,7 @@ class LoginController extends Controller
                 'th' => $th->getMessage(),
                 'line' => $th->getLine(),
                 'file' => $th->getFile(),
-
+                'request' => $request->all()
             ], 200);
         
         }
