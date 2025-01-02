@@ -34,6 +34,12 @@ class CandidateService
 
     }
 
+    public function candidateFindByID(int $id)
+    {
+        return $this->repository->candidateFindByID($id);
+
+    }
+
     public function findByJob(int $id)
     {
         return $this->repository->findByJob($id);

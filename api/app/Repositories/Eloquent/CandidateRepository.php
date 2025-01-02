@@ -43,7 +43,7 @@ class CandidateRepository implements CandidateInterface
     {    
         $job = $this->jobService->findID($jobID);
         $candidate = $this->candidateFindByID($candidateID);
-        
+
         return CandidatesVagas::create([
             'job_id' => $job->id,
             'job' => $job->name,
@@ -98,7 +98,8 @@ class CandidateRepository implements CandidateInterface
 
     public function candidateFindByID(int $id)
     {
-        return Candidates::find($id)->first();
+        
+        return Candidates::where('id', $id)->first();
         
     }
 

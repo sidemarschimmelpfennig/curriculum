@@ -135,7 +135,7 @@ class CandidateController extends Controller
 
     public function findbyID(int $id)
     {        
-        return response()->json($this->candidateService->findByID($id));
+        return response()->json($this->candidateService->candidateFindByID($id));
 
     }
 
@@ -205,6 +205,7 @@ class CandidateController extends Controller
         if($directory)
         {
             return response()->download($directory); 
+            //return response()->json($directory); 
 
         } else {
             return response()->json([
