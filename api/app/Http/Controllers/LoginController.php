@@ -57,7 +57,7 @@ class LoginController extends Controller
             
         } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'Erro ao logar',
+                'message' => 'Erro no login',
                 'th' => $th->getMessage(),
                 'line' => $th->getLine(),
                 'file' => $th->getFile(),
