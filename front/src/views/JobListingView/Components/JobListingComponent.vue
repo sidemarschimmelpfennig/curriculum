@@ -55,8 +55,8 @@ export default {
     return {
       joblist: [],
       isApplied: [],
-      showModal: false,
       jobID: null,
+      
       api: process.env.VUE_APP_API_URL,
     };
   },
@@ -73,6 +73,11 @@ export default {
   },
   
   methods: {
+    getCandidate(){
+      const candidateID = this.$route.params.currenteUser
+      this.candidateID = candidateID
+      console.log('Caminho linha 80: ', candidateID)
+    },
     async applyJob(jobid) {
       try {
         const data = {
@@ -81,23 +86,30 @@ export default {
 
         }
 
+        console.log('ID do usuário atual 90:', this.candidateID)
         console.log('Dados para envio', data)
         
-        const response = await axios.post(`${this.api}/apply`, data)
-
-        console.log('Retorno linha 88', response)
-        if(response.data.code === 23000)
-        { 
-          alert('Você já está candidatado a essa vaga!')  
-          console.log('Code', response.data.code)
-        }
-
-        if(response.data.success === true)
+        if(this.candidateID === '0')
         {
-          alert('Você está candidato a está vaga!')
+          this.$router.push("/login")
+
+        } else {
+          const response = await axios.post(`${this.api}/apply`, data)
+
+          console.log('Retorno linha 88', response)
+          if(response.data.code === 23000)
+          { 
+            alert('Você já está candidatado a essa vaga!')  
+            console.log('Code', response.data.code)
+          }
+
+          if(response.data.success === true)
+          {
+            alert('Você está candidatado a está vaga!')
+
+          }
 
         }
-
 
       } catch (error) {
         console.error('Erro: ', error)
@@ -109,7 +121,8 @@ export default {
 
   mounted() {
     this.joblist = this.joblisting
-    console.log('Linha 104', this.candidateID)
+    this.candidateIDVar = this.candidateID
+    //this.getCandidate()
 
   },
 };

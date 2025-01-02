@@ -26,6 +26,12 @@ const routes = [
     props: true,
 
   },
+  /*{
+    path: "/joblisting2",
+    name: "joblisting",
+    component: JobListingView,
+
+  },*/
   {
     path: "/login",
     name: "login",

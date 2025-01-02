@@ -8,7 +8,7 @@
     </div>
     <ul class="pr-4">
       <router-link class="nav-link" to="/">Inicio</router-link>
-      <router-link class="nav-link" to="/joblisting"
+      <router-link class="nav-link" to="/joblisting/0"
         >Vagas disponiveis</router-link
       >
       <!--div v-if=""-->
@@ -21,7 +21,13 @@
 
 <script>
 export default {
-  methods: {},
+  name: "NavBar",
+  methods: {
+    getToke()
+    {
+
+    }
+  },
 };
 </script>
 

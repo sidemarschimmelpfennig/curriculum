@@ -1,9 +1,11 @@
 <template>
+  <NavBar 
+    
+      
+  />
   <div
     class="joblist"
-    :class="{
-      'active-form': showModal,
-    }"
+    
   >
     <div class="p-5 w-full readme flex justify-center">
       <input
@@ -50,6 +52,7 @@
 
 <script>
 import axios from "axios";
+import NavBar from "@/components/NavBar.vue";
 import JobListingComponent from "./Components/JobListingComponent.vue";
 
 export default {
@@ -64,6 +67,10 @@ export default {
       candidateID: null,
       api: process.env.VUE_APP_API_URL,
     };
+  },
+
+  components:{
+    NavBar
   },
   methods: {
     async getJobsListing() {
@@ -104,7 +111,7 @@ export default {
     async getCandidate(){
       const candidateID = this.$route.params.currenteUser
       this.candidateID = candidateID
-      console.log('Caminho linha 107: ', this.candidateID)
+      console.log('Caminho linha 107: ', parseInt(this.candidateID, 10))
     }
 
   },
@@ -128,6 +135,7 @@ export default {
   },
   components: {
     JobListingComponent,
+    NavBar
   },
 };
 </script>

@@ -1,7 +1,10 @@
 <template>
     <h1>Editar Status do candidato</h1>
     
-    <form @submit.prevent="updateStatus()">
+    <form
+        @submit.prevent="updateStatus()"
+        
+    >
         <div>
             Status atual: {{ candidateStatus }}
         </div>    
@@ -11,19 +14,24 @@
                 required
                 class="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
             >
-            <option
-                v-for="status in statuss"
-                :key="status.id"
-                :value="status.status"
 
-            >
-            {{ status.status }}
+                <option value="Selecione um status" disabled selected>Selecione um status</option> 
 
-            </option>
+                <option
+                    v-for="status in statuss"
+                    :key="status.id"
+                    :value="status.status"
+
+                >
+                {{ status.status }}
+
+                </option>
 
             </select>
+            <br>
         
         <button 
+            class="border border-gray-300 p-2 rounded-md"
             type="submit"
             
         >
@@ -41,7 +49,7 @@
             return {
                 candidateStatus: null,
                 statuss: [],
-                status_: null,
+                status_: 'Selecione um status',
                 api: process.env.VUE_APP_API_URL,
 
             }

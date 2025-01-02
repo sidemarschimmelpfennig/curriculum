@@ -109,7 +109,7 @@ export default {
 
         } else {
           if (response.data.success === true && response.data.token) {
-          localStorage.setItem('authToken', response.data.token);
+          const authToken = localStorage.setItem('authToken', response.data.token);
           const currenteUser = response.data.currenteUser
 
           if(currenteUser.is_admin === 1)
@@ -117,7 +117,8 @@ export default {
               this.$router.push({ name: "default", params: { currenteUser: currenteUser.full_name } })
 
             } else {
-              this.$router.push({ name: "joblisting", params: { currenteUser: currenteUser.id } })
+              this.$router.push({ name: "joblisting", params: { currenteUser: Number(currenteUser.id) } })
+              //this.$router.push("/joblisting")
 
             }
 

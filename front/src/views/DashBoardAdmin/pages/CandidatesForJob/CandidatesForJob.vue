@@ -1,7 +1,5 @@
 <template>
   <div class="joblist-table p-5">
-  
-
     <div
       id="joblist-table"
       class="bg-white shadow-md rounded-lg overflow-hidden"
@@ -14,6 +12,7 @@
         <div class="w-1/5">Email</div>
         <div class="w-1/5">Telefone</div>
         <div class="w-1/5">Status</div>
+        <div class="w-1/5">Vaga</div>
         <div class="w-1/5 text-center">Ações</div>
       </div>
       <div id="joblist-table-rows" class="divide-y">
@@ -34,6 +33,11 @@
             {{ job.status_curriculum }}
           </div>
 
+          
+          <div class="w-1/5 truncate">
+            {{ job.job }}
+          </div>
+
           <div class="w-1/5 flex justify-center space-x-2">
             <button
               class="material-icons text-blue-600 hover:text-blue-800 border-none outline-none"
@@ -44,7 +48,7 @@
 
             <button
               class="material-icons text-gray-600 hover:text-gray-800"
-              @click="download(job.id, job.candidate_id)"
+              @click="download(job.candidate_id)"
 
             >
               download
@@ -87,26 +91,27 @@ export default {
         let id = this.$route.params.id;
         const response = await axios.get(`${this.api}/admin/candidates/job/${id}`);
         console.log('Candidatos por vaga', response)
-        console.log('ID', id)
+        //console.log('ID', id)
         this.jobs = response.data;
         
       } catch (error) {
         console.error('Erro linja 85:', error);
       }
     },
-    async download(jobID, candidateID) {
+    async download(candidateID) {
       try {
         const candidate = await axios.get(`${this.api}/admin/candidate/${candidateID}`)
-        const response = await axios.get(`${this.api}/admin/download/candidate/${jobID}`, {
+        const response = await axios.get(`${this.api}/admin/download/candidate/${candidateID}`, {
           responseType: 'blob'
 
         });
+        console.log('ID do usuário', candidateID)
         
         const blob = new Blob([response.data], { type: response.headers['content-type'] });
         const url = window.URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = url;
-        link.setAttribute('download', `${candidate.data.id}_${candidate.data.candidate_name}`); // Set the default file name
+        link.setAttribute('download', `${candidate.data.id}_${candidate.data.full_name}`); // Set the default file name
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);

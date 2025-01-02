@@ -1,4 +1,5 @@
 <template>
+  <NavBar/>
   <div class="home">
     <h1 class="title">Bem-vindos ao SGBR!</h1>
     <h2 class="subtitle">Junte-se à nossa equipe!</h2>
@@ -11,9 +12,13 @@
 </template>
 
 <script>
+import NavBar from '@/components/NavBar.vue';
+
 export default {
   name: "HomeView",
-  components: {},
+  components: {
+    NavBar
+  },
   methods: {
     getJobs() {
       return this.$router.push("/login");

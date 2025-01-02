@@ -20,23 +20,47 @@ use Illuminate\Support\Facades\Hash;
 
 class CandidateRepository implements CandidateInterface
 {
-    protected $applyService;
     protected $jobService;
     protected $statusService;
 
-    public function __construct(
-        ApplyService $applyService,
+    public function __construct(       
         JobService $jobService,
         StatusService $statusService
     )
     {
-        $this->applyService = $applyService;
         $this->jobService = $jobService;
         $this->statusService = $statusService;
+
     }
     public function getAll()
     {
         return Candidates::all();
+    }
+
+    public function archiveFile(int $id, object $file)
+    {
+        $directory = public_path('uploads'); // Vai pegar o diretório
+        $extension = $file->getClientOriginalExtension();
+
+        if(!is_dir($directory)){ 
+            mkdir($directory, 0755, true);
+
+        }
+
+        $candidate = $this->candidateFindByID($id);
+        $newName = "$candidate->id" . "_" . "$candidate->full_name" . ".$extension";
+
+        while (file_exists("$directory/$newName")) {
+            //.$newName
+            $newName = 'Candidato ' . $candidate->full_name . ', já cadastrado' . "." . $extension; // Adiciona o contador ao nome do arquivo
+
+        }
+    
+        // Move o arquivo para o diretório com o novo nome
+        //$path = $file->move($directory, $candidate->id . "_" . $candidate->full_name . "." . $extension); // Qualquer coisa só voltar para a lógica antiga
+        $path = $file->move($directory, $newName);
+    
+        return $path; // Retorna o caminho do arquivo
     }
 
     public function apply(int $jobID, int $candidateID)
@@ -66,7 +90,7 @@ class CandidateRepository implements CandidateInterface
             'additional_info' => $data['additional_info'],
 
         ]);
-        $file = $this->applyService->archiveFile($candidate->id, $data['curriculum']);
+        $file = $this->archiveFile($candidate->id, $data['curriculum']);
         $candidate->update([
             'curriculum' => $file
 
