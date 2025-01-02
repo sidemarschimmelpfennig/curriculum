@@ -101,27 +101,33 @@ export default {
 
         const response = await axios.post(`${this.api}/login`, data);
         console.log("Retorno do login", response.data)
-
-        let currenteUser = response.data.currenteUser
-
-        console.log('Dados do usuário atual LoginView', currenteUser)
+        console.log("Message login", response.data.message)
         
-        if (response.data.success === true && response.data.token) {
+        if(response.data.message === 'Não encontrado' && response.data.success === false)
+        {
+          this.message = 'Endereço de e-mail não encontrado'
+
+        } else {
+          if (response.data.success === true && response.data.token) {
           localStorage.setItem('authToken', response.data.token);
+          const currenteUser = response.data.currenteUser
 
           if(currenteUser.is_admin === 1)
           {
-            this.$router.push({ name: "default", params: { currenteUser: currenteUser.full_name } })
+              this.$router.push({ name: "default", params: { currenteUser: currenteUser.full_name } })
+
+            } else {
+              this.$router.push({ name: "joblisting", params: { currenteUser: currenteUser.id } })
+
+            }
 
           } else {
-            this.$router.push({ name: "joblisting", params: { currenteUser: currenteUser.id } })
+            this.message = 'Dados errados ou ausentes'
 
           }
-
-        } else {
-          this.message = 'Dados errados ou ausentes'
-
         }
+        
+        
 
       } catch (error) {
         console.error('Erro', error)

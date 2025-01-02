@@ -35,26 +35,24 @@ class CandidateController extends Controller
     public function create(Request $request)
     {
         try {
-            
-                $data = $request->validate([
-                    'full_name' => 'required|string',
-                    'email' => 'required|string',
-                    'password' => 'required|string',
-                    'phone' => 'required|string',
-                    'additional_info' => 'required|string',
-                    'curriculum' => 'required|file',
+            $data = $request->validate([
+                'full_name' => 'required|string',
+                'email' => 'required|string',
+                'password' => 'required|string',
+                'phone' => 'required|string',
+                'additional_info' => 'required|string',
+                'curriculum' => 'required|file',
 
-                ]);
+            ]);
                 
-                $candidate = $this->candidateService->create($data);
+            $candidate = $this->candidateService->create($data);
                 
-                return response()->json([
-                    'success' => true,
-                    'candidate' => $candidate
+            return response()->json([
+                'success' => true,
+                'candidate' => $candidate
                 
-                ], 201);
+            ], 201);
             
-        
         } catch (\Illuminate\Database\QueryException $e) {
             if($e->getCode() == '23000')
             {
@@ -154,7 +152,7 @@ class CandidateController extends Controller
             }
         } catch (\Throwable $th) {
             return response()->json([
-                'erro' => 'Erro ao criar candidato',
+                'erro' => 'Erro ao buscar candidato por vaga',
                 'th' => $th->getMessage(),
                 'line' => $th->getLine(),
                 'file' => $th->getfile(),
@@ -176,15 +174,27 @@ class CandidateController extends Controller
 
             return response()->json([
                 'success' => true,
-                'dados' => $data,
+                'dados' => $data['candidateID'],
                 'Aplicação' => $apply
 
             ]);
         } catch (\Illuminate\Database\QueryException $e) {
-            return response()->json([
-                'code' => $e->getCode()
+            if($e->getCode() == '23000')
+            {
+                return response()->json([
+                    'code' => $e->getCode()
 
-            ], 400);
+                ]);
+            } else {
+
+                return response()->json([
+                    'error' => 'Erro durante a criação',
+                    'message' => $e->getMessage(),
+                    'code' => $e->getCode(),
+                    'line' => $e->getLine(),
+                    'file' => $e->getFile(),
+                ]);
+            }
         }
 
     }

@@ -42,7 +42,6 @@ class LoginController extends Controller
 
             ]);
 
-
             $getUser = $this->userService->findByEmail($data['email']);
             $getCandidate = $this->candidateService->findByEmail($data['email']);
         
@@ -58,7 +57,9 @@ class LoginController extends Controller
             
             }
 
-            return response()->json('não encontrado');
+            return response()->json([
+                'success' => false,
+                'message' => 'Não encontrado']);
             
         } catch (\Throwable $th) {
             return response()->json([

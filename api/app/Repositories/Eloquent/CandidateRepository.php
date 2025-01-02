@@ -39,10 +39,10 @@ class CandidateRepository implements CandidateInterface
         return Candidates::all();
     }
 
-    public function apply(int $id, int $jobID)
+    public function apply(int $jobID, int $candidateID)
     {    
         $job = $this->jobService->findID($jobID);
-        $candidate = $this->candidateFindByID($id);
+        $candidate = $this->candidateFindByID($candidateID);
         
         return CandidatesVagas::create([
             'job_id' => $job->id,

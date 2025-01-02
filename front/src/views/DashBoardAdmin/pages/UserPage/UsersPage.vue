@@ -44,8 +44,9 @@
                 Email
               </th>
               <th class="px-4 py-2 text-left text-sm font-medium text-gray-600">
-                Nível
+                Status
               </th>
+
               <th class="px-4 py-2 text-left text-sm font-medium text-gray-600">
                 Ações
               </th>
@@ -64,11 +65,9 @@
                 :idFromUser="user.id"
                 class="openModal"
               />
-              <td class="px-4 py-2 text-sm text-gray-700">{{ user.name }}</td>
+              <td class="px-4 py-2 text-sm text-gray-700">{{ user.full_name }}</td>
               <td class="px-4 py-2 text-sm text-gray-700">{{ user.email }}</td>
-              <td class="px-4 py-2 text-sm text-gray-700">
-                {{ user.is_admin === 0 ? "Padrão" : "Administrador" }}
-              </td>
+              <td class="px-4 py-2 text-sm text-gray-700"> {{ user.active === 1 ? "Ativo": "Desativado" }}</td>
               <td class="px-4 py-2 text-sm text-gray-700">
                 <button
                   class="material-icons text-red-600 hover:text-red-800 pr-4 border-none outline-none"
@@ -127,7 +126,7 @@ export default {
     deleteUser(id) {
       this.showModalDelete = true;
       this.textDelete = "Deseja excluir este usuário?";
-      this.textRouteDelete = `${this.api}/user/${id}`;
+      this.textRouteDelete = `${this.api}/admin/user/${id}`;
     },
     updateUser(id) {
       this.showModalUpdate = true;

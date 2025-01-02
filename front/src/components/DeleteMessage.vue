@@ -35,8 +35,11 @@ export default {
     async deleteThisroute() {
       try {
         let response = await axios.delete(`${this.routeText}`);
-        if ((response.status = 200)) {
+        
+        if(response.data.success === true)
+        {
           this.closeModal();
+          
         }
       } catch (err) {
         console.log(err);
@@ -54,6 +57,7 @@ export default {
   },
   mounted() {
     window.addEventListener("keydown", this.handleKeydown);
+    console.log(`${this.routeText}`);
   },
   beforeUnmount() {
     window.removeEventListener("keydown", this.handleKeydown);

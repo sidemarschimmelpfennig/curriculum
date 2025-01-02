@@ -229,7 +229,7 @@ export default {
       } else {
           try {
             const credentials = await axios.post(`${this.api}/check`, {
-            email: this.form.email
+              email: this.form.email
 
             })
 

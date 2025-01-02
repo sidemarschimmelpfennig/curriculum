@@ -11,9 +11,9 @@ class CandidateService
         $this->repository = $repository;
     }
 
-    public function apply(int $id, int $jobID)
+    public function apply(int $jobID, int $candidateID)
     {
-        return $this->repository->apply($id, $jobID);
+        return $this->repository->apply($jobID, $candidateID);
         
     }
 

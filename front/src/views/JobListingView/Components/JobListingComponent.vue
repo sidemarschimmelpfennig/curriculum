@@ -81,23 +81,27 @@ export default {
 
         }
 
-        console.log('Dados de envio', data)
+        console.log('Dados para envio', data)
         
         const response = await axios.post(`${this.api}/apply`, data)
-        console.log('Retorno', response)
+
+        console.log('Retorno linha 88', response)
+        if(response.data.code === 23000)
+        { 
+          alert('Você já está candidatado a essa vaga!')  
+          console.log('Code', response.data.code)
+        }
+
         if(response.data.success === true)
         {
           alert('Você está candidato a está vaga!')
 
         }
-        
-      } catch (error) {
 
-        if(error.response.data.code === '2300') {
-          alert('Você já se candidatou a essa vaga')
-            
-        } 
-        console.error('Erro', error)
+
+      } catch (error) {
+        console.error('Erro: ', error)
+        
       }
       
     },

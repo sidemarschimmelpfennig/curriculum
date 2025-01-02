@@ -53,7 +53,7 @@ import axios from "axios";
 import JobListingComponent from "./Components/JobListingComponent.vue";
 
 export default {
-  name: "joblisting",
+  name: "JobListingView",
   data() {
     return {
       departments: [],
