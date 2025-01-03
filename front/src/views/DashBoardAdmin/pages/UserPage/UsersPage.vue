@@ -140,7 +140,15 @@ export default {
         let data = response.data;
         this.users = data;
       } catch (error) {
-        console.log(error.message);
+        if(error.response.status === 401 && error.response.status !== 200)
+        { 
+          this.$router.push({
+            path: "/login",
+            query:  { message: `Acesso negado, faça login para prosseguir` }
+
+          })
+
+        }
       }
     },
     resetForm() {

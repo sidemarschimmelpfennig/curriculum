@@ -34,6 +34,7 @@ export default {
       menuItems: [
         { label: "Vagas em Aberto", to: "/admin/joblistpage" },
         { label: "Usuários", to: "/admin/userpage" },
+        //{ label: "Todos os candidatos", to: "/admin/userpage" },
         
       ],
       api: process.env.VUE_APP_API_URL,

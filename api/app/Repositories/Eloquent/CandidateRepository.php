@@ -4,7 +4,6 @@ namespace App\Repositories\Eloquent;
 
 use App\Repositories\Interface\CandidateInterface;
 use App\Services\{
-    ApplyService,
     JobService,
     StatusService
 };
@@ -33,9 +32,15 @@ class CandidateRepository implements CandidateInterface
 
     }
 
+    public function getAllActive(int $active)
+    {
+        return Candidates::where('active', $active)->get();
+
+    }
+
     public function getAll()
     {
-        
+
     }
 
     public function countCandidate(int $jobID)

@@ -11,9 +11,39 @@ class CandidateService
         $this->repository = $repository;
     }
 
-    public function countCandidate(int $jobID)
+    public function getAllActive()
     {
-        return $this->repository->countCandidate($jobID);
+        try {
+            return $this->repository->getAllActive(1);
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'thLocal' => 'CandidateService',
+                'th' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getfile()
+
+            ], 400);
+
+        }
+    }
+
+    public function create(array $data)
+    {
+        try {
+            return response()->json($this->repository->create($data));
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'thLocal' => 'CandidateService',
+                'th' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getfile(),
+                'code' => $th->getCode()
+
+            ], 400);
+        }
+        
 
     }
 
@@ -23,9 +53,9 @@ class CandidateService
         
     }
 
-    public function create(array $data)
+    public function countCandidate(int $jobID)
     {
-        return $this->repository->create($data);
+        return $this->repository->countCandidate($jobID);
 
     }
 

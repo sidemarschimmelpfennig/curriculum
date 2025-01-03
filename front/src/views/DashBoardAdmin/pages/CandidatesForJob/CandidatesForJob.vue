@@ -153,19 +153,21 @@
   }
 
   .footer-ForJobs{
-    top: 35rem;
+    top: 32.5rem;
     bottom: 0;
     position: relative;
     width: 100%;
     border-radius: 5px;
     margin: auto;
-    background-color: #ccc;
+    background-color: rgba(59, 130, 246, 0.5);
+    color: #fff;
     padding: 15px;
     display: flex;
+    justify-content: center;
     
     .element{
       margin: 0 8rem 0 5px;
-
+      
     }
   }
 </style>

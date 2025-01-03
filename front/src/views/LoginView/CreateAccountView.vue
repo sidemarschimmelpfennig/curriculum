@@ -66,15 +66,20 @@
                   v-model="retrypassword"
                   class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required
-                  style="margin: 0 0 15px 0;"
+                  style="margin: 0 0 5px 0;"
                 />
-                <p v-if="passwordError" class="text-sm text-red-500 mt-1">
-                  As senhas não coincidem.
+                <p 
+                  v-if="messagePassword"
+                  class="text-sm text-red-500 mt-1"
+                  style="margin: 0 0 5px 0;"
+                >
+                   {{ messagePassword }}
+
                 </p>
               </div>
 
               <button
-                
+                style="margin: 10px 0 0 0;"
                 type="submit"
                 class="w-full bg-slate-500 text-white signin hover:bg-slate-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
               >
@@ -116,11 +121,13 @@
                 <input
                   type="tel"
                   name="phone"
-                  id="password"
+                  id="phone"
                   placeholder="Digite seu número de telefone"
                   class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required=""
-                   v-model="this.form.phone"
+                  v-model="this.form.phone"
+                  v-mask="['(##) ####-####', '(##) #####-####']" 
+                  
                 />
               </div>
               <div>
@@ -157,8 +164,8 @@
                 />
 
 
-                <p v-if="passwordError" class="text-sm text-red-500 mt-1">
-                  As senhas não coincidem.
+                <p v-if="message !== null" class="text-sm text-red-500 mt-1">
+                  {{ message }}
                 </p>
               </div>
 
@@ -187,9 +194,14 @@
 </template>
 <script>
 import axios from "axios";
+import { TheMask } from 'vue-the-mask'
 
 export default {
   name: "CreateAccountView",
+  components: {
+    TheMask
+  },
+
   data() {
     return {
       form : {
@@ -201,10 +213,10 @@ export default {
         curriculum: null,
     
       },
+      message: "",
+      messagePassword: "",
 
       retrypassword: "",      
-      passwordError: false,
-    
       loginData: true,
       candidateData: false,
       api: process.env.VUE_APP_API_URL,
@@ -216,14 +228,14 @@ export default {
       if (file && file.type === "application/pdf") {
         this.form.curriculum = file;
       } else {
-        alert("Por favor, envie um arquivo PDF.");
+        this.message = "Por favor, envie um arquivo PDF.";
       }
     },
     
     async getData(){
       
       if(this.form.password !== this.retrypassword){
-        this.passwordError = true
+        this.messagePassword = "As senhas não coincidem."
         return;
 
       } else {
@@ -276,11 +288,12 @@ export default {
       {
         console.log('Cadastro feito', response.data)
         //const currentUser = response.data.currentUser
-        this.$router.push("/login")
+        //this.$router.push("/login")
       }
       
       } catch (error) {
-        console.error('Erro ao criar o candidato:', error)
+        console.error('Code erro ao criar o candidato:', error.response.data)
+        
       }
       
     }

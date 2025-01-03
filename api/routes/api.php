@@ -71,7 +71,8 @@ Route::prefix('v1')->group( function () {
 
         Route::put('/update-status/job/{id}', [JobController::class, 'updateStatus']);
         Route::put('/update-status/candidate/{id}', [CandidateController::class, 'updateStatus']);
-            
+        
+        Route::get('/candidates', [CandidateController::class, 'getAllActive']);
         Route::get('/candidates/job/{id}', [CandidateController::class, 'findByJob']);
         Route::get('/candidate/{id}', [CandidateController::class, 'findByID']);
         Route::get('/download/candidate/{id}', [CandidateController::class, 'downloadFile']);

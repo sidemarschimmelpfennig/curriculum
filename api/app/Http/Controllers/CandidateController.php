@@ -14,55 +14,26 @@ class CandidateController extends Controller
 
     }
 
-    public function delete(int $id)
+    public function getAllActive()
     {
-        try {
-            $this->candidateService->delete($id);
-            $candidate = $this->candidateService->findByID($id);
-
-            return response()->json($candidate);
-                
-        } catch (\Throwable $th) {
-            return response()->json([
-                'erro' => 'Erro ao desativar candidato',
-                'th' => $th->getMessage(),
-                'line' => $th->getLine(),
-                'file' => $th->getfile(),
-            ], 400);
-        }
+        return response()->json($this->candidateService->getAllActive());
+        
     }
 
     public function create(Request $request)
     {
-        try {
-            $data = $request->validate([
-                'full_name' => 'required|string',
-                'email' => 'required|string',
-                'password' => 'required|string',
-                'phone' => 'required|string',
-                'additional_info' => 'required|string',
-                'curriculum' => 'required|file',
+        $data = $request->validate([
+            'full_name' => 'required|string',
+            'email' => 'required|string',
+            'password' => 'required|string',
+            'phone' => 'required|string',
+            'additional_info' => 'required|string',
+            'curriculum' => 'required|file',
 
-            ]);
-                
-            $candidate = $this->candidateService->create($data);
-                
-            return response()->json([
-                'success' => true,
-                'candidate' => $candidate
-                
-            ], 201);
+        ]);
             
-        } catch (\Throwable $th) {
-            return response()->json([
-                'th' => $th->getMessage(),
-                'line' => $th->getLine(),
-                'file' => $th->getfile(),
-                'request' => $request->all()
-
-            ], 400);
-        }
-
+        return $this->candidateService->create($data);
+        
     }
 
     public function toCheck(Request $request)
@@ -201,6 +172,24 @@ class CandidateController extends Controller
 
             ]);
         }
-            
+           
+    }
+    
+    public function delete(int $id)
+    {
+        try {
+            $this->candidateService->delete($id);
+            $candidate = $this->candidateService->findByID($id);
+
+            return response()->json($candidate);
+                
+        } catch (\Throwable $th) {
+            return response()->json([
+                'erro' => 'Erro ao desativar candidato',
+                'th' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getfile(),
+            ], 400);
+        }
     }
 }

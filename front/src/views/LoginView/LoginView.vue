@@ -85,6 +85,7 @@ export default {
       email: "",
       password: "",
       message: this.$route.query.message || null,
+      isLoanding: null,
       api: process.env.VUE_APP_API_URL
     };
   },
@@ -96,18 +97,15 @@ export default {
           password: this.password
           
         }
-        console.log("Dados para envio: ", data)
-
-
-        const response = await axios.post(`${this.api}/login`, data);
-        console.log("Retorno do login", response.data)
-        console.log("Message login", response.data.message)
         
+        const response = await axios.post(`${this.api}/login`, data);
+
         if(response.data.message === 'Não encontrado' && response.data.success === false)
         {
           this.message = 'Endereço de e-mail não encontrado'
 
         } else {
+          this.isLoanding = 'Carregando...'
           if (response.data.success === true && response.data.token) {
           const authToken = localStorage.setItem('authToken', response.data.token);
           const currenteUser = response.data.currenteUser
