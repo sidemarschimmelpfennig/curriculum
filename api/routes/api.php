@@ -23,6 +23,7 @@ Route::prefix('v1')->group( function () {
     Route::get('/logout', [LoginController::class, 'logout']);
     
     Route::get('/jobs', [JobController::class, 'getAll']);
+    Route::get('/count/{id}', [JobController::class, 'countCandidate']);
 
     Route::get('/settings', [SettingsController::class, 'showForm'])->name('email.form');
     Route::put('/settings', [SettingsController::class, 'update'])->name('email.update');

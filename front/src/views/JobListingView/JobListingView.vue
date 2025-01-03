@@ -1,8 +1,4 @@
 <template>
-  <NavBar 
-    
-      
-  />
   <div
     class="joblist"
     
@@ -76,7 +72,8 @@ export default {
     async getJobsListing() {
       try {
         let response = await axios.get(`${this.api}/jobs`);
-        console.log(response);
+        
+        console.log(response.data);
         if (response.status === 200) {
           if (response.data && response.data.length > 0) {
             this.arrayFromJobs = response.data;

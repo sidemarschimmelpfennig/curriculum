@@ -9,8 +9,8 @@ use Illuminate\{
 
 use App\{
     Http\Controllers\Controller,
-    Services\JobService
-
+    Services\JobService,
+    Services\CandidateService
 };
 
 use Illuminate\Support\Facades\Mail;
@@ -18,10 +18,16 @@ use Illuminate\Support\Facades\Mail;
 class JobController extends Controller
 {
     protected $jobService;
+    protected $candidateService;
 
-    public function __construct(JobService $jobService)
+    public function __construct(
+        JobService $jobService,
+        CandidateService $candidateService
+        
+    )
     {
         $this->jobService = $jobService;
+        $this->candidateService = $candidateService;
     }
 
     public function getAll()
@@ -29,6 +35,20 @@ class JobController extends Controller
         try {    
             return response()->json($this->jobService->getAll());
         
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'Erro ao carregar as vagas', 
+                'th' => $th->getMessage(),
+                'th' => $th->getMessage(),
+                'file' => $th->getFile(),
+            ], 400);
+        }
+    }
+    
+    public function countCandidate(int $jobID)
+    {
+        try {
+            return response()->json($this->candidateService->countCandidate($jobID));
         } catch (\Throwable $th) {
             return response()->json([
                 'message' => 'Erro ao carregar as vagas', 
@@ -74,32 +94,6 @@ class JobController extends Controller
         
     }
  
-    /*public function updateStatus(int $id, Request $request)
-    {
-        try {
-            $result = $this->jobService->updateStatus($id, $request['value']);
-            return response()->json([
-                'message' => 'Alteração realizada com sucesso!',
-                'resultado' => $result,
-                
-            ], 201);
-
-        } catch (\Throwable $th) {
-            return response()->json([
-                'message' => 'Alteração negada!',
-                'th' => $th->getMessage(),
-                'line' => $th->getLine(),
-                'file' => $th->getFile(),
-                
-            ], 400);
-        }
-
-        Mail::raw('Teste de envio direto do controller.', function ($message) use ($candidate) {
-            $message->to($candidate->email)
-                    ->subject('Teste de E-mail');
-        });
-    } */
-    
     public function update(int $id, Request $request)
     {
         try {

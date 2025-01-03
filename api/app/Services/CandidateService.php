@@ -11,6 +11,12 @@ class CandidateService
         $this->repository = $repository;
     }
 
+    public function countCandidate(int $jobID)
+    {
+        return $this->repository->countCandidate($jobID);
+
+    }
+
     public function apply(int $jobID, int $candidateID)
     {
         return $this->repository->apply($jobID, $candidateID);

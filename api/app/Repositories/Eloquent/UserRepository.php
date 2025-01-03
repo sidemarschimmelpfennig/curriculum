@@ -30,7 +30,12 @@ class UserRepository implements UserInterface
 
     public function update(int $id, array $data)
     {
-        return User::where('id', $id)->update($data);
+        return User::where('id', $id)->update([
+            'full_name' => $data['full_name'],
+            'email' => $data['email'],
+            'password' => $data['password']
+        
+        ]);
     }
 
     public function delete(int $id)

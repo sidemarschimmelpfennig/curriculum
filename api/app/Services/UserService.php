@@ -33,7 +33,7 @@ class UserService
     public function create(array $data)
     {  
         return $this->repository->create([
-            'name' => $data['name' ],
+            'full_name' => $data['full_name' ],
             'email' => $data['email' ],
             'password' => Hash::make($data['password']),
             'is_admin' => 1
@@ -46,5 +46,10 @@ class UserService
     {
         return $this->repository->delete($id);
         
+    }
+
+    public function update(int $id, array $data)
+    {
+        return $this->repository->update($id, $data);
     }
 }

@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    
     <router-view />
     <FooterComponent v-if="$route.meta.requiresFooter !== false" />
   </div>

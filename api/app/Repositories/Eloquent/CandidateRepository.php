@@ -32,9 +32,15 @@ class CandidateRepository implements CandidateInterface
         $this->statusService = $statusService;
 
     }
+
     public function getAll()
     {
-        return Candidates::all();
+        
+    }
+
+    public function countCandidate(int $jobID)
+    {
+        return CandidatesVagas::where('job_id', $jobID)->distinct('candidate_id')->count();
     }
 
     public function archiveFile(int $id, object $file)
@@ -63,11 +69,24 @@ class CandidateRepository implements CandidateInterface
         return $path; // Retorna o caminho do arquivo
     }
 
+    public function hasApplied(int $jobID, int $candidateID)
+    {
+        return CandidatesVagas::where('candidate_id', $candidateID)
+                                ->where('job_id', $jobID)
+                                ->exists();
+    }
+
     public function apply(int $jobID, int $candidateID)
     {    
+        if($this->hasApplied($jobID, $candidateID))
+        {  
+            return false;
+            
+        }
+
         $job = $this->jobService->findID($jobID);
         $candidate = $this->candidateFindByID($candidateID);
-
+        
         return CandidatesVagas::create([
             'job_id' => $job->id,
             'job' => $job->name,
@@ -113,10 +132,16 @@ class CandidateRepository implements CandidateInterface
 
         }
     }
+    
+    public function findByCandidateID(int $id)
+    {
+        return CandidatesVagas::where('candidate_id', $id)->first();
+        
+    }
 
     public function findByID(int $id)
     {
-        return CandidatesVagas::find($id)->first();
+        return CandidatesVagas::where('id', $id)->first();
         
     }
 

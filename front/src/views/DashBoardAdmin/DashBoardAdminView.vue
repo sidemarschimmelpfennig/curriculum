@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard-admin">
-    <SidebarAdmin class="sidebar" />
+    <SidebarAdmin/>
     <div class="dashboard-content">
       <router-view></router-view>
     </div>
@@ -8,6 +8,7 @@
 </template>
 
 <script>
+//import SidebarAdmin from
 import SidebarAdmin from "@/components/SidebarAdmin.vue";
 
 export default {

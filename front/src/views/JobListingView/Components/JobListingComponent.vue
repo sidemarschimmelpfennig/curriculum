@@ -22,11 +22,16 @@
         </span>
         
         <p class="mt-2 text-gray-600">{{ jobs.description }}</p>
+        
       </div>
       <div class="mt-2 job-content">
         <h3 class="text-blue-700 mb-4 font-bold">Requisitos:</h3>
         <span class="bg-blue-500 text-white font-bold rounded px-4 py-1 mx-4" >
           {{ jobs.skills }}
+        </span>
+
+        <span class="text-2xl text-blue-800 font-bold hover:text-blue-600">
+            Candidatos: {{ jobs.count }}
         </span>
         
       </div>
@@ -54,9 +59,9 @@ export default {
   data() {
     return {
       joblist: [],
-      isApplied: [],
+  
       jobID: null,
-      
+      candidateID: null,
       api: process.env.VUE_APP_API_URL,
     };
   },
@@ -73,10 +78,10 @@ export default {
   },
   
   methods: {
-    getCandidate(){
+    getData(){
       const candidateID = this.$route.params.currenteUser
       this.candidateID = candidateID
-      console.log('Caminho linha 80: ', candidateID)
+     
     },
     async applyJob(jobid) {
       try {
@@ -85,9 +90,6 @@ export default {
           candidateID: this.candidateID
 
         }
-
-        console.log('ID do usuário atual 90:', this.candidateID)
-        console.log('Dados para envio', data)
         
         if(this.candidateID === '0')
         {
@@ -97,10 +99,10 @@ export default {
           const response = await axios.post(`${this.api}/apply`, data)
 
           console.log('Retorno linha 88', response)
-          if(response.data.code === 23000)
+          if(response.data.success === false)
           { 
             alert('Você já está candidatado a essa vaga!')  
-            console.log('Code', response.data.code)
+
           }
 
           if(response.data.success === true)
@@ -117,12 +119,29 @@ export default {
       }
       
     },
+
+    async countCandidates(jobID)
+    {
+      try {
+        const response = await axios.get(`${this.api}/count/${jobID}`)
+        return response.data  
+
+      } catch (error) {
+        console.error('Erro ao buscar a contagem de candidatos:', error);
+
+      }
+    }
   },
 
   mounted() {
     this.joblist = this.joblisting
-    this.candidateIDVar = this.candidateID
-    //this.getCandidate()
+    this.getData()
+
+    this.joblist.forEach(job => {
+        this.countCandidates(job.id).then(count => {
+          job.count = count
+        })
+    });
 
   },
 };

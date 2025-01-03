@@ -1,4 +1,4 @@
-''<template>
+<template>
   <div
     class="absolute h-full w-52 bg-blue-600 text-white sidebar-admin flex flex-col"
   >

@@ -159,7 +159,7 @@ export default {
       try {
         const jobData = {
           name: this.form.name,
-        description: this.form.description,
+          description: this.form.description,
           departament_id: this.form.departament,
           departament_categories_id: this.form.departament_categories,
           status_id: 1,

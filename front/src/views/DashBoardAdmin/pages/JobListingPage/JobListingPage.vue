@@ -1,5 +1,4 @@
 <template>
-  
   <div
     class="joblist-table p-5"
     :class="{

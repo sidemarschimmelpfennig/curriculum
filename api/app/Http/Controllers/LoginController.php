@@ -44,7 +44,8 @@ class LoginController extends Controller
 
             $getUser = $this->userService->findByEmail($data['email']);
             $getCandidate = $this->candidateService->findByEmail($data['email']);
-        
+            $this->getIP($request);
+            
             if(!empty($getUser))
             {
                 return $this->login($data, $getUser);
@@ -80,6 +81,7 @@ class LoginController extends Controller
         { 
             try {
                 $token = $currenteUser->createToken('AccessToken')->plainTextToken;
+                
                 return response()->json([
                     'success' => true,
                     'message' => "Usuario " . $currenteUser->full_name. " Logado!",
@@ -118,10 +120,10 @@ class LoginController extends Controller
        
     }
 
-    public function getIP(Request $request)
+    public function getIP(object $data)
     {
         try {
-            $ip = $request->ip();
+            $ip = $data->ip();
             $file = fopen('IPs.txt', 'a');
             fwrite($file, $ip . " IP");
             fclose($file);

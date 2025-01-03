@@ -1,58 +1,60 @@
 <template>
   <div v-if="show" class="mt-6 bg-white text-gray-700 newuser" key="">
     <div class="text-xl font-semibold text-center flex">
-      <h3 class="pr-11">Adicionar Novo Usuário</h3>
+      <h3 class="pr-11">Editar Usuário {{ idFromUser }}</h3>
       <span
         class="material-icons bold pl-8 hover:text-red-600 hover:cursor-pointer text-gray-700"
         @click="closeModal()"
         >close</span
       >
     </div>
+    <form @submit.prevent="submitForm">
+      <div class="mt-4">
+        <label for="full_name" class="block text-sm font-medium text-gray-700"
+          >Nome</label
+        >
+          <input
+            type="text"
+            id="full_name"
+            v-model="form.full_name"
+            class="mt-1 block w-fullborder border-gray-500 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 py-2 px-3 text-sm"
+            placeholder="Digite seu nome"
+          />
+        </div>
+        <div class="mt-2">
+          <label for="email" class="block text-sm font-medium text-gray-700"
+            >Email</label
+          >
+          <input
+            type="email"
+            id="email"
+            v-model="form.email"
+            class="mt-1 block w-fullborder border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 py-2 px-3 text-sm"
+            placeholder="Digite o email"
+          />
+        </div>
 
-    <div class="mt-4">
-      <label for="name" class="block text-sm font-medium text-gray-700"
-        >Nome</label
-      >
-      <input
-        type="text"
-        id="name"
-        v-model="form.name"
-        class="mt-1 block w-fullborder border-gray-500 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 py-2 px-3 text-sm"
-        placeholder="Digite seu nome"
-      />
+        <div class="mt-2">
+          <label for="password" class="block text-sm font-medium text-gray-700"
+            >Senha</label
+          >
+          <input
+            type="password"
+            id="password"
+            v-model="form.password"
+            class="mt-1 block w-fullborder border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 py-2 px-3 text-sm"
+            placeholder="Digite a senha"
+          />
+        </div>
+        <button
+          @click="submitForm"
+          class="w-full py-2 px-4 mt-4 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 focus:ring-blue-500"
+        >
+          Salvar
+        </button>
+      </form>
     </div>
-    <div class="mt-2">
-      <label for="email" class="block text-sm font-medium text-gray-700"
-        >Email</label
-      >
-      <input
-        type="email"
-        id="email"
-        v-model="form.email"
-        class="mt-1 block w-fullborder border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 py-2 px-3 text-sm"
-        placeholder="Digite o email"
-      />
-    </div>
-
-    <div class="mt-2">
-      <label for="password" class="block text-sm font-medium text-gray-700"
-        >Senha</label
-      >
-      <input
-        type="password"
-        id="password"
-        v-model="form.password"
-        class="mt-1 block w-fullborder border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 py-2 px-3 text-sm"
-        placeholder="Digite a senha"
-      />
-    </div>
-    <button
-      @click="submitForm"
-      class="w-full py-2 px-4 mt-4 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 focus:ring-blue-500"
-    >
-      Salvar
-    </button>
-  </div>
+  
 </template>
     
 <script>
@@ -72,9 +74,9 @@ export default {
   data() {
     return {
       form: {
-        name: "",
-        password: "",
-        email: "",
+        full_name: null,
+        password: null,
+        email: null,
         
       },
       api: process.env.VUE_APP_API_URL,
@@ -82,17 +84,24 @@ export default {
   },
   methods: {
     async submitForm() {
-      let form = {
-        name: this.name,
-        email: this.email,
-        password: this.password,
-        
-      };
       try {
-        const response = await axios.put(`${this.api}/admin/user/${this.idFromUser}`, form );
-        console.log(response);
+        const data = {
+          full_name: this.form.full_name,
+          email: this.form.email,
+          password: this.form.password,
+          
+        };
+      
+        const response = await axios.put(`${this.api}/admin/user/${this.idFromUser}`, data );
+        
+        if(response.data.success === true)
+        {
+          this.closeModal();
+        } else {
+          alert('Algo deu errado na alteração do usuário')
 
-        this.closeModal();
+        }
+
       } catch (error) {
         console.log(error);
       }

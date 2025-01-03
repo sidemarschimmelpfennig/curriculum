@@ -37,7 +37,7 @@ class UserController extends Controller
     {
         try {
             $data = $request->validate([
-                'name' => 'required|string',
+                'full_name' => 'required|string',
                 'email' => 'required|string',
                 'password' => 'required'
                 
@@ -60,7 +60,26 @@ class UserController extends Controller
 
     public function update(int $id, Request $request)
     {
+        try {
+            $data = $request->validate([
+                'full_name' => 'required|string',
+                'email' => 'required|string',
+                'password' => 'required'
+            ]);
 
+            $this->userService->update($id, $data);
+            return response()->json([
+                'success' => true
+            ]);
+
+        }  catch (\Throwable $th) {
+            return response()->json([
+                'erro' => 'Erro ao alterar usuário',
+                'th' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getfile(),
+            ], 400);
+        }
     }
 
     public function delete(int $id)

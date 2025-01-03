@@ -53,22 +53,14 @@ class CandidateController extends Controller
                 
             ], 201);
             
-        } catch (\Illuminate\Database\QueryException $e) {
-            if($e->getCode() == '23000')
-            {
-                return response()->json([
-                    'erro' => 'Chave duplicada',
-                    'code' => $e->getCode()
-                ]);
-            }
-
+        } catch (\Throwable $th) {
             return response()->json([
-                'error' => 'Erro durante a criação',
-                'message' => $e->getMessage(),
-                'code' => $e->getCode(),
-                'line' => $e->getLine(),
-                'file' => $e->getFile(),
-            ]);
+                'th' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getfile(),
+                'request' => $request->all()
+
+            ], 400);
         }
 
     }
@@ -89,12 +81,7 @@ class CandidateController extends Controller
 
                 ], 400);
 
-            } else {
-                return response()->json([
-                    'message' => 'Pode seguir'
-                ], 200);
-                
-            }
+            } 
         } catch (\Throwable $th) {
             return response()->json([
                 'th' => $th->getMessage(),
@@ -172,29 +159,29 @@ class CandidateController extends Controller
 
             $apply = $this->candidateService->apply($data['jobID'], $data['candidateID']);
 
-            return response()->json([
-                'success' => true,
-                'dados' => $data['candidateID'],
-                'Aplicação' => $apply
-
-            ]);
-        } catch (\Illuminate\Database\QueryException $e) {
-            if($e->getCode() == '23000')
+            if($apply == false)
             {
                 return response()->json([
-                    'code' => $e->getCode()
-
+                    'success' => false,
+                    'apply' => $apply
+    
                 ]);
             } else {
-
                 return response()->json([
-                    'error' => 'Erro durante a criação',
-                    'message' => $e->getMessage(),
-                    'code' => $e->getCode(),
-                    'line' => $e->getLine(),
-                    'file' => $e->getFile(),
+                    'success' => true,
+                    'apply' => $apply
+    
                 ]);
             }
+            
+        } catch (\Throwable $th) {
+            return response()->json([
+                'erro' => 'Erro ao se candidatar na vaga',
+                'th' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getfile(),
+
+            ], 400);
         }
 
     }
