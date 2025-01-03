@@ -93,7 +93,10 @@
 
                     console.log('Novo Status de envio', newStatus)
                     const response = await axios.put(`${this.api}/admin/update-status/candidate/${this.candidateID}`, newStatus)
-                    console.log('Vaga alterada', response.data)
+                    if(response.data.success === true)
+                    {
+                        alert('Status do curriculo alterado com sucesso!')
+                    }
                 } catch (error) {
 
                 } 

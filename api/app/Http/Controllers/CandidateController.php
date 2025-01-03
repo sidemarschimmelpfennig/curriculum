@@ -102,10 +102,11 @@ class CandidateController extends Controller
             
             $candidate = $this->candidateService->findByID($candidateID);
             return response()->json([
+                'success' => $a,
                 'status' => $status,
                 'id' => $candidateID,
                 'candidate' => $candidate,
-                'a' => $a
+                
             ], 200);
 
         } catch (\Throwable $th) {

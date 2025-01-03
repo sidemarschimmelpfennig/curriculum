@@ -117,7 +117,7 @@ export default {
               this.$router.push({ name: "default", params: { currenteUser: currenteUser.full_name } })
 
             } else {
-              this.$router.push({ name: "joblisting", params: { currenteUser: Number(currenteUser.id) } })
+              this.$router.push({ name: "joblisting", params: { currenteUser: currenteUser.id } })
               //this.$router.push("/joblisting")
 
             }

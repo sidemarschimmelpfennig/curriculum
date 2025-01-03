@@ -8,12 +8,25 @@
     </div>
     <ul class="pr-4">
       <router-link class="nav-link" to="/">Inicio</router-link>
-      <router-link class="nav-link" to="/joblisting/0"
-        >Vagas disponiveis</router-link
-      >
-      <!--div v-if=""-->
-      <div>
+
+      <div v-if="this.candidateID === 0 || this.candidateID === undefined">
+        <router-link class="nav-link" to="/joblisting/0"
+          >Vagas disponiveis</router-link
+        >
+      
         <router-link class="nav-link" to="/login">Faça seu Login</router-link>
+      </div>
+      <div v-else>
+        <button
+        class="nav-link"
+          @click="redirectButton()"
+
+        >
+          Vagas disponiveis
+        </button>
+      
+        <router-link class="nav-link" to="/login">Faça seu Login</router-link>
+
       </div>
     </ul>
   </div>
@@ -22,12 +35,38 @@
 <script>
 export default {
   name: "NavBar",
-  methods: {
-    getToke()
-    {
-
+  data()
+  {
+    return{
+      candidateID: 0
+      
     }
   },
+  props: {
+    candidateID: {
+      type: Number,
+      required: true
+    }
+  },
+
+  methods: {
+    getData(){
+      const candidateID = this.$route.params.currenteUser
+      this.candidateID = candidateID
+     
+    },
+
+    redirectButton()
+    {
+      this.$router.push(`/joblisting/${this.candidateID}`)
+    }
+  },
+
+  mounted()
+  {
+    this.getData()
+    console.log('ID na view NavBar linha 45:', this.candidateID)
+  }
 };
 </script>
 

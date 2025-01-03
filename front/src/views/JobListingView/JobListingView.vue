@@ -1,4 +1,8 @@
 <template>
+  <NavBar 
+    :candidateID="this.candidateID"
+
+  /> 
   <div
     class="joblist"
     
@@ -108,7 +112,7 @@ export default {
     async getCandidate(){
       const candidateID = this.$route.params.currenteUser
       this.candidateID = candidateID
-      console.log('Caminho linha 107: ', parseInt(this.candidateID, 10))
+      console.log('Caminho linha 115: ', parseInt(this.candidateID, 10))
     }
 
   },
