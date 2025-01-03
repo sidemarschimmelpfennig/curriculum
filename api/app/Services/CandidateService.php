@@ -31,7 +31,10 @@ class CandidateService
     public function create(array $data)
     {
         try {
-            return response()->json($this->repository->create($data));
+            return response()->json([
+                'success' => true,
+                'candidateService' => $this->repository->create($data)
+            ]);
 
         } catch (\Throwable $th) {
             return response()->json([

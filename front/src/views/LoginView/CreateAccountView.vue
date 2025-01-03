@@ -124,9 +124,9 @@
                   id="phone"
                   placeholder="Digite seu número de telefone"
                   class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  required=""
+                  required
+                  @input="formatPhone"
                   v-model="this.form.phone"
-                  v-mask="['(##) ####-####', '(##) #####-####']" 
                   
                 />
               </div>
@@ -194,13 +194,9 @@
 </template>
 <script>
 import axios from "axios";
-import { TheMask } from 'vue-the-mask'
 
 export default {
   name: "CreateAccountView",
-  components: {
-    TheMask
-  },
 
   data() {
     return {
@@ -264,7 +260,12 @@ export default {
               this.create(form)
             }
           } catch (error) {
-            console.log('Erro ao criar a conta:', error)            
+            console.error('Erro ao criar a conta:', error.response.data.message) 
+            this.messagePassword = error.response.data.message
+            this.form.email = ''
+            this.form.password = ''
+            this.retrypassword = ''
+
           }
 
       }
@@ -284,16 +285,20 @@ export default {
             },
           }
       );
+      
       if(response.data.success === true)
       {
         console.log('Cadastro feito', response.data)
-        //const currentUser = response.data.currentUser
-        //this.$router.push("/login")
+        const currentUser = response.data.currentUser
+        this.$router.push("/login")
       }
       
       } catch (error) {
         console.error('Code erro ao criar o candidato:', error.response.data)
-        
+        if(error.response.data.code === "22001")
+        {
+          this.message = 'Um ou mais campos excederam o limite de tamanho'
+        }
       }
       
     }
@@ -301,5 +306,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "@/assets/scss/views/createaccountview";
+  @import "@/assets/scss/views/createaccountview";
+  
 </style>
