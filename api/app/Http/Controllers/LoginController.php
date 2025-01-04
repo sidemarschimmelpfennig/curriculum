@@ -35,53 +35,44 @@ class LoginController extends Controller
     public function getData(Request $request)
     {  
         //return response()->json($request->all());
-        try {
-            $data = $request->validate([
-                'email' => 'required|string',
-                'password' => 'required'
+        $data = $request->validate([
+            'email' => 'required|string',
+            'password' => 'required'
 
-            ]);
+        ]);
 
-            $getUser = $this->userService->findByEmail($data['email']);
-            $getCandidate = $this->candidateService->findByEmail($data['email']);
-            $this->getIP($request);
-            
-            if(!empty($getUser))
-            {
-                return $this->login($data, $getUser);
-                
-            }
-            
-            if(!empty($getCandidate))
-            {
-                return $this->login($data, $getCandidate);
-            
-            }
+        $getUser = $this->userService->findByEmail($data['email']);
+        $getCandidate = $this->candidateService->findByEmail($data['email']);
+        $password = $data['password'];
+        $this->getIP($request);
 
-            return response()->json([
-                'success' => false,
-                'message' => 'Não encontrado']);
+        if(!empty($getUser))
+        {
+            return $this->login($password, $getUser);
             
-        } catch (\Throwable $th) {
-            return response()->json([
-                'message' => 'Erro no login',
-                'th' => $th->getMessage(),
-                'line' => $th->getLine(),
-                'file' => $th->getFile(),
-                'request' => $request->all()
-            ], 200);
+        }
+        
+        if(!empty($getCandidate))
+        {
+            return $this->login($password, $getCandidate);
         
         }
+
+        return response()->json([
+            'success' => false,
+            'message' => 'Não encontrado'
+        ]);
         
     }
 
-    public function login(array $data, object $currenteUser)
+    public function login(string $password, object $currenteUser)
     {
-        if(Hash::check($data['password'], $currenteUser->password))
-        { 
-            try {
+        
+        try {
+            if(Hash::check($password, $currenteUser->password))
+            { 
                 $token = $currenteUser->createToken('AccessToken')->plainTextToken;
-                
+                    
                 return response()->json([
                     'success' => true,
                     'message' => "Usuario " . $currenteUser->full_name. " Logado!",
@@ -92,23 +83,22 @@ class LoginController extends Controller
     
                 ], 200)->header('Content-Type', 'application/json');
             
-            } catch (\Throwable $th) {
+            } else {
                 return response()->json([
-                    'message' => 'Erro ao logar',
-                    'th' => $th->getMessage(),
-                    'line' => $th->getLine(),
-                    'file' => $th->getFile(),
-    
+                    'message' => 'Senha incorreta'
                 ], 200);
-                
+    
             }
-            
-        } else {
+        } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'Senha incorreta'
-            ], 200);
-
+                'success' => false,
+                'th' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getfile(),
+            ]);
+            
         }
+        
     }
 
     public function logout()

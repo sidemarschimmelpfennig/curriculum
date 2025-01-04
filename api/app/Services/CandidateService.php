@@ -45,7 +45,7 @@ class CandidateService
             return response()->json([
                 'success' => true,
                 'create' => $this->repository->create($data)
-            ]);
+            ], 201);
 
         } catch (\Throwable $th) {
             return $this->returnResponseTh($th);
@@ -159,7 +159,7 @@ class CandidateService
     public function findByEmail(string $param)
     {
         try {
-            return $this->repository->findByEmail($param);
+            return response()->json($this->repository->findByEmail($param));
 
         } catch (\Throwable $th) {
             return $this->returnResponseTh($th);

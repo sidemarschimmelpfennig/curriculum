@@ -53,6 +53,9 @@
                 required
               />
             </div>
+            <div v-if="!isLoanding"> 
+              {{ isLoanding }}
+            </div>
             <button
               type="submit"
               class="w-full text-white signin hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
@@ -122,14 +125,14 @@ export default {
 
           } else {
             this.message = 'Dados errados ou ausentes'
-
+            console.log(response.data)
           }
         }
         
         
 
       } catch (error) {
-        console.error('Erro', error)
+        console.log('Erro', error.response.data)
       }
 
     },
