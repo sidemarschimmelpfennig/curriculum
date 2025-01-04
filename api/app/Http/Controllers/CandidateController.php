@@ -14,9 +14,9 @@ class CandidateController extends Controller
 
     }
 
-    public function getAllActive()
+    public function getAll()
     {
-        return response()->json($this->candidateService->getAllActive());
+        return $this->candidateService->getAll();
         
     }
 
@@ -36,160 +36,65 @@ class CandidateController extends Controller
         
     }
 
+    public function apply(Request $request)
+    {
+        $data = $request->validate([
+            'jobID' => 'required|integer',
+            'candidateID' => 'required|string'
+
+        ]);
+
+        return $this->candidateService->apply($data['jobID'], $data['candidateID']);
+    }
+
     public function toCheck(Request $request)
     {
-        try {
-            $credentials = $request->validate([
-                'email' => 'required|string'
+        $credentials = $request->validate([
+            'email' => 'required|string'
+
+        ]);
+        
+       return $this->candidateService->toCheck($credentials);
+
+    }
+
+    public function candidateFindByID(int $id)
+    {        
+        return $this->candidateService->candidateFindByID($id);
+
+    }
     
-            ]);
+    public function findByID(int $id)
+    {
+        return $this->candidateService->findByID($id);
+    }
     
-            $exists = $this->candidateService->toCheck($credentials);
-            if($exists == true)
-            {
-                return response()->json([
-                    'message' => 'Esse e-mail já está cadastrado'
+    public function findByJob(int $id)
+    {
+        return $this->candidateService->findByJob($id);
 
-                ], 400);
+    }
 
-            } 
-        } catch (\Throwable $th) {
-            return response()->json([
-                'th' => $th->getMessage(),
-                'line' => $th->getLine(),
-                'file' => $th->getfile(),
-                'request' => $request->all()
-
-            ], 400);
-        }
-       
+    public function delete(int $id)
+    {
+        return $this->candidateService->delete($id);
+         
     }
 
     public function updateStatus(Request $request, int $candidateID)
     {
-        try {
-            $status = $request->input('status_curriculum');
-            $a = $this->candidateService->updateStatus($candidateID, $status);
+        return $this->candidateService->updateStatus(
+            $candidateID,
+            $request->input('status_curriculum')
             
-            $candidate = $this->candidateService->findByID($candidateID);
-            return response()->json([
-                'success' => $a,
-                'status' => $status,
-                'id' => $candidateID,
-                'candidate' => $candidate,
-                
-            ], 200);
-
-        } catch (\Throwable $th) {
-            return response()->json([
-                'erro' => 'Erro ao alterar status do candidato',
-                'th' => $th->getMessage(),
-                'line' => $th->getLine(),
-                'file' => $th->getfile(),
-
-            ], 400);
-        }
-        
-    }
-
-    public function findbyID(int $id)
-    {        
-        return response()->json($this->candidateService->candidateFindByID($id));
-
-    }
-
-    public function findByJob(int $id)
-    {
-        try {
-            $candidate = $this->candidateService->findByJob($id);
-            if($candidate)
-            {
-                return response()->json($candidate);
-
-            } else {
-                return response()->json('Não tem candidatos aplicados para essa vaga');
-            }
-        } catch (\Throwable $th) {
-            return response()->json([
-                'erro' => 'Erro ao buscar candidato por vaga',
-                'th' => $th->getMessage(),
-                'line' => $th->getLine(),
-                'file' => $th->getfile(),
-
-            ], 400);
-        }
-    }
-
-    public function apply(Request $request)
-    {
-        try {
-            $data = $request->validate([
-                'jobID' => 'required|integer',
-                'candidateID' => 'required|string'
-
-            ]);
-
-            $apply = $this->candidateService->apply($data['jobID'], $data['candidateID']);
-
-            if($apply == false)
-            {
-                return response()->json([
-                    'success' => false,
-                    'apply' => $apply
-    
-                ]);
-            } else {
-                return response()->json([
-                    'success' => true,
-                    'apply' => $apply
-    
-                ]);
-            }
-            
-        } catch (\Throwable $th) {
-            return response()->json([
-                'erro' => 'Erro ao se candidatar na vaga',
-                'th' => $th->getMessage(),
-                'line' => $th->getLine(),
-                'file' => $th->getfile(),
-
-            ], 400);
-        }
+        );
 
     }
 
     public function downloadFile(int $id)
     {
-        $directory = $this->candidateService->downloadFile($id);
-        if($directory)
-        {
-            return response()->download($directory); 
-            //return response()->json($directory); 
-
-        } else {
-            return response()->json([
-                'erro' => 'Erro, arquivo não encontrado',
-
-            ]);
-        }
+        return $this->candidateService->downloadFile($id);
            
     }
     
-    public function delete(int $id)
-    {
-        try {
-            $this->candidateService->delete($id);
-            $candidate = $this->candidateService->findByID($id);
-
-            return response()->json($candidate);
-                
-        } catch (\Throwable $th) {
-            return response()->json([
-                'erro' => 'Erro ao desativar candidato',
-                'th' => $th->getMessage(),
-                'line' => $th->getLine(),
-                'file' => $th->getfile(),
-            ], 400);
-        }
-    }
 }

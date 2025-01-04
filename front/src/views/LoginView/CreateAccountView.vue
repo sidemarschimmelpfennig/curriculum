@@ -260,7 +260,7 @@ export default {
               this.create(form)
             }
           } catch (error) {
-            console.error('Erro ao criar a conta:', error.response.data.message) 
+            console.error('Erro ao criar a conta:', error) 
             this.messagePassword = error.response.data.message
             this.form.email = ''
             this.form.password = ''

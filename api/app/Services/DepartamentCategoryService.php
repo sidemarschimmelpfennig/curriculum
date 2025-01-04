@@ -9,44 +9,93 @@ class DepartamentCategoryService implements DepartamentCategoryInterface
 {
     protected $repository;
 
+    public function returnResponseTh($th)
+    {
+        return response()->json([
+            'thLocal' => 'CandidateService',
+            'success' => false,
+            'th' => $th->getMessage(),
+            'line' => $th->getLine(),
+            'file' => $th->getfile(),
+            'code' => $th->getCode()
+
+        ], 400);
+    }
+
     public function __construct(DepartamentCategoryRepository $repository)
     {
         $this->repository = $repository;
-
     }
 
     public function getAll()
     {
-        return $this->repository->getAll();
+        try {
+            return response()->json([
+                'success' => true, 
+                'all' => $this->repository->getAll()
 
+            ]);
+
+        } catch (\Throwable $th) {
+            return $this->returnResponseTh($th);
+
+        }
     }
-
-    public function findByDepartamentCategory(int $id)
+    
+    public function create(array $data)
     {
-        return $this->repository->findByDepartamentCategory($id);
-        
-    }
+        try {
+            return response()->json([
+                'success' => true, 
+                'create' => $this->repository->create($data)
 
-    public function findID(int $id)
-    {
-        
+            ]);
+
+        } catch (\Throwable $th) {
+            return $this->returnResponseTh($th);
+        }
     }
 
     public function update(int $id, array $data)
     {
-        return $this->repository->update($id, $data);
+        try {
+            $this->repository->update($id, $data);
+            return response()->json([
+                'success' => true, 
+                'update' => $this->repository->findByDepartamentCategory($id)
 
-    }
+            ]);
 
-    public function create(array $data)
-    {
-        return $this->repository->create($data);
-
-    }
-
+        } catch (\Throwable $th) {
+            return $this->returnResponseTh($th);
+        }
+    }  
+    
     public function delete($id)
     {
-        return $this->repository->delete($id);
-        
+        try {
+            $this->repository->delete($id);
+            return response()->json([
+                'success' => true, 
+                'delete' => $this->repository->findByDepartamentCategory($id)
+            ]);
+
+        } catch (\Throwable $th) {
+            return $this->returnResponseTh($th);
+
+        }   
     }
+
+    public function findByDepartamentCategory(int $id)
+    {
+        try {
+            return $this->repository->findByDepartamentCategory($id);
+
+        } catch (\Throwable $th) {
+            return $this->returnResponseTh($th);
+
+        }
+    }
+
+    public function findByID(int $id){}   
 }

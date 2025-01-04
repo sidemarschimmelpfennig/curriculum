@@ -206,7 +206,7 @@ export default {
     {
       try {
         const response = await axios.get(`${this.api}/admin/departament`);
-        this.departments = response.data
+        this.departments = response.data.all
       
       } catch (error) {
         console.error("Erro ao enviar capturar os departamentos:", error);
@@ -214,7 +214,7 @@ export default {
 
       try {
         const response = await axios.get(`${this.api}/admin/categorys`);
-        this.departments_categories = response.data
+        this.departments_categories = response.data.all
         
       } catch (error) {
         console.error("Erro ao enviar capturar as categorias:", error);

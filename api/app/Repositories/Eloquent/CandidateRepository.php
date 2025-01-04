@@ -32,14 +32,10 @@ class CandidateRepository implements CandidateInterface
 
     }
 
-    public function getAllActive(int $active)
-    {
-        return Candidates::where('active', $active)->get();
-
-    }
-
     public function getAll()
     {
+        $active = 1;
+        return Candidates::where('active', $active)->get();
 
     }
 
@@ -171,28 +167,12 @@ class CandidateRepository implements CandidateInterface
 
     public function downloadFile(int $id)
     {
-        try {
-            $candidateJob = CandidatesVagas::where('candidate_id', $id)->first();
-            return $candidateJob->curriculum;
-            
-        } catch (\Throwable $th) {
-            return response()->json([
-                'erro' => 'Erro ao criar candidato',
-                'th' => $th->getMessage(),
-                'line' => $th->getLine(),
-                'file' => $th->getfile(),
+        
+        $candidateJob = CandidatesVagas::where('candidate_id', $id)->first();
+        return $candidateJob->curriculum;
 
-            ], 400);
-        }
-        
-        
     }
 
-    public function update(int $id, array $data)
-    {
-        return Candidates::where('id', $id)->update($data);
-
-    }
     
     public function updateStatus(int $candidateID, string $status)
     {
@@ -218,9 +198,21 @@ class CandidateRepository implements CandidateInterface
     }
 
     public function delete(int $id) {
-        return Candidates::where('id', $id)->update([
-            'active' => false
-        ]);
+        try {
+            return Candidates::where('id', $id)->update([
+                'active' => false
+            ]);
+            
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+        
+    }
+    
+    public function update(int $id, array $data)
+    {
+        return Candidates::where('id', $id)->update($data);
+
     }
     
 }

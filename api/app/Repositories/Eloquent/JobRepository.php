@@ -40,7 +40,8 @@ class JobRepository implements JobInterface
 
     public function getAll() 
     {
-        return JobVacancies::all();
+        $active = 1;
+        return JobVacancies::where('active', $active)->get();
     }
     
     public function create(array $data)

@@ -16,89 +16,32 @@ class DepartamentCategoryController extends Controller
 
     public function getAll()
     {
-        try { 
-            return response()->json($this->departamentCategoryService->getAll());
-
-        } catch (\Throwable $th) {
-            return response()->json([
-                'message' => 'Erro',
-                'line' => $th->getLine(),
-                'file' => $th->getFile(),
-                'th' => $th->getMessage()
-
-            ]);
-        }
+        return $this->departamentCategoryService->getAll();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function crate(Request $request)
     {
-        try {
-            $data = $request->validate([
-                'departament_category' => 'required|string'
-                
-            ]);
-    
-            return response()->json([
-                'message' => 'Departamento criado com sucesso!',
-                'departament' => $this->departamentCategoryService->create($data)
+        $data = $request->validate([
+            'departament_category' => 'required|string'
             
-            ]);
+        ]);
 
-        } catch (\Throwable $th) {
-            return response()->json([
-                'message' => 'Erro ao criar o departamento',
-                'line' => $th->getLine(),
-                'file' => $th->getFile(),
-                'th' => $th->getMessage()
-
-            ]);
-        }
+        return $this->departamentCategoryService->create($data);
+        
     }
 
     public function update(Request $request, int $id)
     {
-        try {
-            $data = $request->validate([
-                'departament' => 'required|string'
-            ]);
-            
-            $departament = $this->departamentCategoryService->update($id, $data);
+        $data = $request->validate([
+            'departament_category' => 'required|string'
+        ]);
 
-            return response()->json([
-                'message' => 'Departamento alterado com sucesso!',
-                'departament' => $departament
-
-            ]);
-
-        } catch (\Throwable $th) {
-            //throw $th;
-        }
+        return $this->departamentCategoryService->update($id, $data);
     }
 
     public function delete(int $id)
     {
-        try {
-            $this->departamentCategoryService->delete($id);
-            
-            $departament = $this->departamentCategoryService->findByDepartamentCategory($id);
+        return $this->departamentCategoryService->delete($id);
 
-            return response()->json([
-                'message' => 'Departamento desativado com sucesso!',
-                'departament' => $departament
-
-            ]);
-
-        } catch (\Throwable $th) {
-            return response()->json([
-                'message' => 'Erro ao alterar o departamento', 
-                'th' => $th->getMessage(),
-                'th' => $th->getMessage(),
-                'file' => $th->getFile(),
-            ], 400);
-            
-        }
     }
 }

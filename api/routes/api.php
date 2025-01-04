@@ -74,7 +74,7 @@ Route::prefix('v1')->group( function () {
         
         Route::get('/candidates', [CandidateController::class, 'getAllActive']);
         Route::get('/candidates/job/{id}', [CandidateController::class, 'findByJob']);
-        Route::get('/candidate/{id}', [CandidateController::class, 'findByID']);
+        Route::get('/candidate/{id}', [CandidateController::class, 'candidateFindByID']);
         Route::get('/download/candidate/{id}', [CandidateController::class, 'downloadFile']);
         
         });

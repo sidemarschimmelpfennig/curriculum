@@ -10,7 +10,8 @@ class DepartamentCategoryRepository implements DepartamentCategoryInterface
 {
     public function getAll()
     {
-        return Departament_Categories::all();
+        $active = 1;
+        return Departament_Categories::where('active', $active)->get();
 
     }
 

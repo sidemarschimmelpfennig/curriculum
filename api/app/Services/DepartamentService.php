@@ -12,6 +12,19 @@ class DepartamentService implements DepartamentInterface
 {
     protected $repository;
 
+    public function returnResponseTh($th)
+    {
+        return response()->json([
+            'thLocal' => 'CandidateService',
+            'success' => false, 
+            'th' => $th->getMessage(),
+            'line' => $th->getLine(),
+            'file' => $th->getfile(),
+            'code' => $th->getCode()
+
+        ], 400);
+    }
+
     public function __construct(DepartamentRepository $repository)
     {
         $this->repository = $repository;
@@ -20,7 +33,56 @@ class DepartamentService implements DepartamentInterface
 
     public function getAll()
     {
-        return $this->repository->getAll();
+        try {
+            return response()->json([
+                'success' => false, 
+                'all' => $this->repository->getAll()
+            
+            ]);
+        } catch (\Throwable $th) {
+            return $this->returnResponseTh($th);
+
+        }
+    }
+
+    public function create(array $data)
+    {
+        try {
+            return response()->json([
+                'success' => true, 
+                'create' => $this->repository->create($data)]);
+
+        } catch (\Throwable $th) {
+            return $this->returnResponseTh($th);
+        }
+    }
+
+    public function update(int $id, array $data)
+    {
+        try {
+            return response()->json([
+                'success' => true, 
+                'update' => $this->repository->update($id, $data)
+            ]);
+        } catch (\Throwable $th) {
+            return $this->returnResponseTh($th);
+        }
+    }
+
+    public function delete($id)
+    {
+        try {
+            $this->repository->delete($id);
+            return response()->json([
+                'success' => true, 
+                'delete' => $this->repository->findByDepartament($id)
+                
+            ]);
+
+        } catch (\Throwable $th) {
+            return $this->returnResponseTh($th);
+
+        }
 
     }
 
@@ -30,26 +92,5 @@ class DepartamentService implements DepartamentInterface
         
     }
 
-    public function findID(int $id)
-    {
-        
-    }
-
-    public function update(int $id, array $data)
-    {
-        return $this->repository->update($id, $data);
-
-    }
-
-    public function create(array $data)
-    {
-        return $this->repository->create($data);
-
-    }
-
-    public function delete($id)
-    {
-        return $this->repository->delete($id);
-        
-    }
+    public function findID(int $id){}
 }

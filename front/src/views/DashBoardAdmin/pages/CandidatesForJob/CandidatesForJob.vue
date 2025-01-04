@@ -97,7 +97,7 @@
         try {
           let id = this.$route.params.id;
           const response = await axios.get(`${this.api}/admin/candidates/job/${id}`);
-          console.log('Candidatos por vaga', response)
+          console.log('Candidatos por vaga', response.data)
           //console.log('ID', id)
           this.jobs = response.data;
           
@@ -124,7 +124,7 @@
           document.body.removeChild(link);
           
         } catch (error) {
-          console.error(error);
+          console.error('Erro no donwload:', error.candidate.response.data);
         }
       },
 
