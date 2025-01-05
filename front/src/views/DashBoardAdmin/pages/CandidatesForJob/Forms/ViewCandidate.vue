@@ -96,7 +96,7 @@
                     if(response.data.success === true)
                     {
                         this.isLoanding = ''
-                        this.show = false
+                      
                         alert('Status do curriculo alterado com sucesso!')
                     }
                 } catch (error) {
