@@ -30,11 +30,12 @@
             {{ department.departament }}
           </option>
         </select>
+       
       </form>
     </div>
 
     <div class="bg-blue-400 w-full">
-      <h1 class="font-bold text-3xl mb-3 pt-4 text-white">
+      <h1 class="font-bold text-3xl pt-4 text-white">
         Oportunidades Disponíveis
       </h1>
       <div v-if="filteredJobs.length > 0">
@@ -43,8 +44,8 @@
           :candidateID="candidateID"
         />
       </div>
-      <div v-else :class="{ isNull: arrayFromJobs <= 0 }">
-        <h2>Nenhuma Vaga Disponível no momento</h2>
+      <div v-else :class="{ isNull : arrayFromJobs <= 0 }">
+        <h2 class="text-white">Nenhuma Vaga Disponível no momento</h2>
       </div>
     </div>
   </div>
@@ -91,6 +92,7 @@ export default {
         this.errorMessage = "Ocorreu um erro ao tentar carregar as vagas.";
       }
     },
+
     async getDepartament() {
       try {
         let response = await axios.get(`${this.api}/departament`);

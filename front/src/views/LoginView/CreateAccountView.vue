@@ -175,11 +175,10 @@
                 </label>
                 <div>
                   <select 
-                    name=""
                     v-model="form.gender"
                     class="flex w-24 h-7 px-2 bg-gray-700 rounded-full shadow text-white text-xs mt-0 my-5 font-semibold "
                   >
-                    <option value="Selecione um status" disabled selected>Gênero</option> 
+                    <option value="Gênero" selected>Gênero</option> 
                     <option :value="'F'">Femenino</option>
                     <option :value="'M'">Masculino</option>
                     <option :value="'O'">Outro</option>
@@ -259,6 +258,7 @@ export default {
         this.form.curriculum = file;
       } else {
         this.message = "Por favor, envie um arquivo PDF.";
+
       }
     },
     

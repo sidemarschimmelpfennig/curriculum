@@ -13,8 +13,8 @@ use App\Http\Controllers\{
     DepartamentController,
     MobilitiesController,
     SettingsController,
-    SkillsController,
     StatusController
+
 };
 
 Route::prefix('v1')->group( function () {
@@ -51,10 +51,6 @@ Route::prefix('v1')->group( function () {
         Route::get('/categorys', [DepartamentCategoryController::class, 'getAll']);
         Route::put('/category', [DepartamentCategoryController::class, 'update']);
         Route::post('/category', [DepartamentCategoryController::class, 'create']);
-
-        Route::get('/skills', [SkillsController::class, 'getAll']);
-        Route::put('/skills', [SkillsController::class, 'update']);
-        Route::post('/skill', [SkillsController::class, 'create']);
 
         Route::get('/mobilites', [MobilitiesController::class, 'getAll']);
         Route::put('/mobilites', [MobilitiesController::class, 'update']);

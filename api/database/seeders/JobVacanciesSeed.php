@@ -6,8 +6,8 @@ use App\Models\{
     Departament,
     Departament_Categories,
     Status,
-    Skills,
     Mobilities
+
 };
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -70,15 +70,6 @@ class JobVacanciesSeed extends Seeder
         foreach ($statuss as $status) {
             Status::create($status);
         }       
-        $skills = [
-            ['skills' => 'Comunicação'],
-            ['skills' => 'Trabalho em equipe'],
-            ['skills' => 'Resiliência'],
-            ['skills' => 'Pensamento crítico']
-        ];
-        foreach ($skills as $skill) {
-            Skills::create($skill);
-        }
 
         $mobilities = [
             ['mobilities' => 'Home Office'],

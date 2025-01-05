@@ -20,8 +20,7 @@ class JobVacancies extends Model
 
 		'status_id',
 		'status',
-
-		'skills_id',
+		
 		'skills',
 
 		'mobilities_id',
