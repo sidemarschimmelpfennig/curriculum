@@ -108,6 +108,7 @@ class CandidateRepository implements CandidateInterface
             'full_name' => $data['full_name'],
             'phone' => $data['phone'],
             'additional_info' => $data['additional_info'],
+            'gender' => $data['gender']
 
         ]);
         $file = $this->archiveFile($candidate->id, $data['curriculum']);
@@ -167,7 +168,6 @@ class CandidateRepository implements CandidateInterface
 
     public function downloadFile(int $id)
     {
-        
         $candidateJob = CandidatesVagas::where('candidate_id', $id)->first();
         return $candidateJob->curriculum;
 
@@ -176,37 +176,21 @@ class CandidateRepository implements CandidateInterface
     
     public function updateStatus(int $candidateID, string $status)
     {
-        try {
-            $candidate = CandidatesVagas::where('id', $candidateID)->first();
+        $candidate = CandidatesVagas::find($candidateID);
+        event(new StatusUpdatedEvent($candidate, $status));
 
-            event(new StatusUpdatedEvent($candidate, $status));
-            
-            return $candidate->update([
-                'status_curriculum' => $status
-            
-            ]);
-        } catch (\Throwable $th) {
-            return response()->json([
-                'erro' => 'Erro ao alterar status do candidato',
-                'th' => $th->getMessage(),
-                'line' => $th->getLine(),
-                'file' => $th->getfile(),
+        return CandidatesVagas::where('id', $candidateID)->update([
+            'status_curriculum' => $status
 
-            ], 400);
-        }
+        ]);
         
+            
     }
 
     public function delete(int $id) {
-        try {
-            return Candidates::where('id', $id)->update([
-                'active' => false
-            ]);
-            
-        } catch (\Throwable $th) {
-            //throw $th;
-        }
-        
+        return Candidates::where('id', $id)->update([
+            'active' => false
+        ]);        
     }
     
     public function update(int $id, array $data)

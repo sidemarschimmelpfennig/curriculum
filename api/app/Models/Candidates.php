@@ -23,11 +23,11 @@ class Candidates extends Model
         'password',
         'phone',
         'additional_info',
+        'gender',
         'curriculum',
 
         'active',
         'is_admin'
-        
     ];
 
     protected $hidden = [

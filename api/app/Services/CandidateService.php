@@ -159,7 +159,7 @@ class CandidateService
     public function findByEmail(string $param)
     {
         try {
-            return response()->json($this->repository->findByEmail($param));
+            return $this->repository->findByEmail($param);
 
         } catch (\Throwable $th) {
             return $this->returnResponseTh($th);
@@ -184,16 +184,12 @@ class CandidateService
     public function updateStatus(int $candidateID, string $status)
     {
         try {
-            $update = $this->repository->updateStatus($candidateID, $status);
-            
-            $candidate = $this->repository->findByID($candidateID);
-
+            $this->repository->updateStatus($candidateID, $status);
+        
             return response()->json([
-                'success' => $update,
+                'success' => true,
                 'status' => $status,
-                'id' => $candidateID,
-                'candidate' => $candidate,
-                
+                'candidate' => $this->repository->findByID($candidateID)
             ], 200);
 
             return $this->repository->updateStatus($candidateID, $status);

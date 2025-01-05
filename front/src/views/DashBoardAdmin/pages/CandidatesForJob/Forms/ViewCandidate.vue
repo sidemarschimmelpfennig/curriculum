@@ -37,6 +37,8 @@
         >
             Alterer Status
         </button>
+
+        <div v-if="isLoanding"> {{ isLoanding }} </div>
     </form>
 </template>
 
@@ -51,7 +53,7 @@
                 statuss: [],
                 status_: 'Selecione um status',
                 api: process.env.VUE_APP_API_URL,
-
+                isLoanding: null,
             }
                 
         },
@@ -76,9 +78,6 @@
                     this.candidateStatus = candidateStatus.data.status_curriculum
                     this.statuss = status.data
 
-                    console.log('Todos os status', this.statuss)
-                    
-
                 } catch (error) {
                     console.error('Erro', error)
                 }
@@ -90,14 +89,18 @@
                     const newStatus = {
                         status_curriculum: this.status_
                     }
-
-                    console.log('Novo Status de envio', newStatus)
+                    this.isLoanding = 'Carregando...'
+                    
                     const response = await axios.put(`${this.api}/admin/update-status/candidate/${this.candidateID}`, newStatus)
+                    console.log(response.data)
                     if(response.data.success === true)
                     {
+                        this.isLoanding = ''
+                        this.show = false
                         alert('Status do curriculo alterado com sucesso!')
                     }
                 } catch (error) {
+                    console.error('Erro ao altere', error)
 
                 } 
             }

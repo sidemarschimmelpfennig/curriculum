@@ -8,7 +8,6 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 
-
 class StatusUpdatedEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
@@ -20,6 +19,7 @@ class StatusUpdatedEvent
     {
         $this->candidate = $candidate;
         $this->status = $status;
+        
     }
 
     /**

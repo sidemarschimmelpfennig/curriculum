@@ -15,6 +15,7 @@ return new class extends Migration
             $table->string('password', 100);
 			$table->string('phone', 16);
             $table->text('additional_info', 200)->nullable();
+            $table->string('gender', 6);
             
             $table->string('curriculum')->nullable();
             $table->boolean('active')->default(1);

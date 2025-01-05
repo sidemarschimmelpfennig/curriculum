@@ -40,21 +40,20 @@ class LoginController extends Controller
             'password' => 'required'
 
         ]);
-
+        
         $getUser = $this->userService->findByEmail($data['email']);
         $getCandidate = $this->candidateService->findByEmail($data['email']);
-        $password = $data['password'];
         $this->getIP($request);
 
         if(!empty($getUser))
         {
-            return $this->login($password, $getUser);
+            return $this->login($data['password'], $getUser);
             
         }
         
         if(!empty($getCandidate))
         {
-            return $this->login($password, $getCandidate);
+            return $this->login($data['password'], $getCandidate);
         
         }
 
@@ -67,7 +66,6 @@ class LoginController extends Controller
 
     public function login(string $password, object $currenteUser)
     {
-        
         try {
             if(Hash::check($password, $currenteUser->password))
             { 
@@ -92,7 +90,7 @@ class LoginController extends Controller
         } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,
-                'th' => $th->getMessage(),
+                'message' => $th->getMessage(),
                 'line' => $th->getLine(),
                 'file' => $th->getfile(),
             ]);

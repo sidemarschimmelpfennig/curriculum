@@ -53,7 +53,7 @@
                 required
               />
             </div>
-            <div v-if="!isLoanding"> 
+            <div v-if="isLoanding" class="w-full text-white"> 
               {{ isLoanding }}
             </div>
             <button
@@ -91,6 +91,7 @@ export default {
       isLoanding: null,
       api: process.env.VUE_APP_API_URL
     };
+    
   },
   methods: {
     async handleLogin() {
@@ -100,37 +101,38 @@ export default {
           password: this.password
           
         }
-        
-        const response = await axios.post(`${this.api}/login`, data);
 
+        this.isLoanding = 'Carregando...'
+        const response = await axios.post(`${this.api}/login`, data);
+      
+        this.isLoanding = ''
         if(response.data.message === 'Não encontrado' && response.data.success === false)
         {
-          this.message = 'Endereço de e-mail não encontrado'
+          this.message = response.data.message
+
+        } else if (response.data.message === 'Senha incorreta') {
+          this.message = response.data.message
 
         } else {
-          this.isLoanding = 'Carregando...'
           if (response.data.success === true && response.data.token) {
-          const authToken = localStorage.setItem('authToken', response.data.token);
+          localStorage.setItem('authToken', response.data.token);
           const currenteUser = response.data.currenteUser
 
-          if(currenteUser.is_admin === 1)
-          {
+            if(currenteUser.is_admin === 1)
+            {
               this.$router.push({ name: "default", params: { currenteUser: currenteUser.full_name } })
 
             } else {
               this.$router.push({ name: "joblisting", params: { currenteUser: currenteUser.id } })
-              //this.$router.push("/joblisting")
-
+              
             }
 
           } else {
-            this.message = 'Dados errados ou ausentes'
+            this.message = 'Não foi possível fazer login'
             console.log(response.data)
           }
         }
-        
-        
-
+      
       } catch (error) {
         console.log('Erro', error.response.data)
       }

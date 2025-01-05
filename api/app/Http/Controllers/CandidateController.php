@@ -28,6 +28,7 @@ class CandidateController extends Controller
             'password' => 'required|string',
             'phone' => 'required|string',
             'additional_info' => 'required|string',
+            'gender' => 'required|string',
             'curriculum' => 'required|file',
 
         ]);
@@ -83,11 +84,11 @@ class CandidateController extends Controller
 
     public function updateStatus(Request $request, int $candidateID)
     {
-        return $this->candidateService->updateStatus(
-            $candidateID,
-            $request->input('status_curriculum')
-            
-        );
+        /*return response()->json([
+            'id' => $candidateID,
+            'status' => $request->input('status_curriculum')
+        ]);*/
+        return $this->candidateService->updateStatus($candidateID, $request->input('status_curriculum'));
 
     }
 
