@@ -1,7 +1,10 @@
 <template>
     <h1>Editar Status do candidato</h1>
     
-    <form @submit.prevent="updateStatus()">
+    <form
+        @submit.prevent="updateStatus()"
+        
+    >
         <div>
             Status atual: {{ candidateStatus }}
         </div>    
@@ -11,24 +14,31 @@
                 required
                 class="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
             >
-            <option
-                v-for="status in statuss"
-                :key="status.id"
-                :value="status.status"
 
-            >
-            {{ status.status }}
+                <option value="Selecione um status" disabled selected>Selecione um status</option> 
 
-            </option>
+                <option
+                    v-for="status in statuss"
+                    :key="status.id"
+                    :value="status.status"
+
+                >
+                {{ status.status }}
+
+                </option>
 
             </select>
+            <br>
         
         <button 
+            class="border border-gray-300 p-2 rounded-md"
             type="submit"
             
         >
             Alterer Status
         </button>
+
+        <div v-if="isLoanding"> {{ isLoanding }} </div>
     </form>
 </template>
 
@@ -41,9 +51,9 @@
             return {
                 candidateStatus: null,
                 statuss: [],
-                status_: null,
+                status_: 'Selecione um status',
                 api: process.env.VUE_APP_API_URL,
-
+                isLoanding: null,
             }
                 
         },
@@ -68,9 +78,6 @@
                     this.candidateStatus = candidateStatus.data.status_curriculum
                     this.statuss = status.data
 
-                    console.log('Todos os status', this.statuss)
-                    
-
                 } catch (error) {
                     console.error('Erro', error)
                 }
@@ -82,11 +89,18 @@
                     const newStatus = {
                         status_curriculum: this.status_
                     }
-
-                    console.log('Novo Status de envio', newStatus)
+                    this.isLoanding = 'Carregando...'
+                    
                     const response = await axios.put(`${this.api}/admin/update-status/candidate/${this.candidateID}`, newStatus)
-                    console.log('Vaga alterada', response.data)
+                    console.log(response.data)
+                    if(response.data.success === true)
+                    {
+                        this.isLoanding = ''
+                      
+                        alert('Status do curriculo alterado com sucesso!')
+                    }
                 } catch (error) {
+                    console.error('Erro ao altere', error)
 
                 } 
             }

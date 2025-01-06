@@ -45,13 +45,13 @@
                   >Senha</label
                 >
                 <input
-                  type="password"
-                  
-                  placeholder="••••••••"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  required
-                   v-model="this.form.password"
-                />
+                type="password"
+                id="password"
+                v-model="form.password"
+                class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="••••••••"
+                required
+              />
               </div>
               <div>
                 <label
@@ -66,15 +66,29 @@
                   v-model="retrypassword"
                   class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required
-
+                  style="margin: 0 0 5px 0;"
                 />
-                <p v-if="passwordError" class="text-sm text-red-500 mt-1">
-                  As senhas não coincidem.
+                <p 
+                  v-if="messagePassword"
+                  class="text-sm text-red-500 mt-1"
+                  style="margin: 0 0 5px 0;"
+                >
+                   {{ messagePassword }}
+
+                </p>
+
+                <p 
+                  v-if="isLoanding"
+                  class="text-sm text-white mt-1"
+                  style="margin: 0 0 5px 0;"
+                >
+                   {{ isLoanding }}
+
                 </p>
               </div>
 
               <button
-                
+                style="margin: 10px 0 0 0;"
                 type="submit"
                 class="w-full bg-slate-500 text-white signin hover:bg-slate-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
               >
@@ -116,11 +130,13 @@
                 <input
                   type="tel"
                   name="phone"
-                  id="password"
+                  id="phone"
                   placeholder="Digite seu número de telefone"
                   class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  required=""
-                   v-model="this.form.phone"
+                  required
+                  @input="formatPhone"
+                  v-model="this.form.phone"
+                  
                 />
               </div>
               <div>
@@ -137,28 +153,51 @@
                   placeholder="Informações adicioanais"
                   v-model="this.form.additional_info"
                   class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  required=""
+                  
                 />
 
                 <label
-                  for="additional_info"
-                  class="flex mb-2 text-sm justify-start font-medium text-gray-900 dark:text-white"
+                  for="curriculum"
+                  class="flex mb-2 text-sm justify-start font-medium mt-2 dark:text-white"
                 >
                   Arquivo
                 </label>
-                <input
-                  type="file"
-                  name="retrypassword"
-                  id="retrypassword"
-                  placeholder="Informações adicioanais"
-                  @change="handleFileUpload($event)"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  required
-                />
+                <label>
+                  <input 
+                    type="file"
+                    hidden 
+                    id="curriculum"
+                    name="curriculum"
+                    @change="handleFileUpload($event)"
+                    required
+                  />
+                  <div class="flex w-32 max-w-28 h-11 px-2 flex-col bg-gray-700 rounded-full shadow text-white text-xs mt-0 my-5 font-semibold leading-4 items-center justify-center cursor-pointer focus:outline-none">Escolha seu arquivo aqui</div>
+                </label>
+                <div>
+                  <select 
+                    v-model="form.gender"
+                    class="flex w-24 h-7 px-2 bg-gray-700 rounded-full shadow text-white text-xs mt-0 my-5 font-semibold "
+                  >
+                    <option value="" selected disabled>Gênero</option>
+                    <option :value="'F'">Femenino</option>
+                    <option :value="'M'">Masculino</option>
+                    <option :value="'O'">Outro</option>
+                  </select>
+                </div>
+                <p 
+                  v-if="message"
+                  class="text-sm text-red-500 mt-1">
+                  {{ message }}
+                  \
+                </p>
 
+                <p 
+                  v-if="isLoanding"
+                  class="text-sm text-white mt-1"
+                  style="margin: 0 0 5px 0;"
+                >
+                   {{ isLoanding }}
 
-                <p v-if="passwordError" class="text-sm text-red-500 mt-1">
-                  As senhas não coincidem.
                 </p>
               </div>
 
@@ -190,6 +229,7 @@ import axios from "axios";
 
 export default {
   name: "CreateAccountView",
+
   data() {
     return {
       form : {
@@ -198,14 +238,16 @@ export default {
         full_name: "",
         phone: "",
         additional_info: "",
+        gender: "",
         curriculum: null,
     
       },
+      message: "",
+      isLoanding: "",
+      messagePassword: "",
 
       retrypassword: "",      
-      passwordError: false,
-    
-      loginData: true,
+      loginData: true, 
       candidateData: false,
       api: process.env.VUE_APP_API_URL,
     };
@@ -213,27 +255,30 @@ export default {
   methods: {
     handleFileUpload(event) {
       const file = event.target.files[0];
-      if (file && file.type === "application/pdf") {
+      if (file && file.type === "application/pdf" || file.type === "application/msword" || file.type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document") {
         this.form.curriculum = file;
       } else {
-        alert("Por favor, envie um arquivo PDF.");
+        this.message = "Por favor, envie um arquivo PDF/Docx/Doc.";
+
       }
     },
     
-    getData(){
+    async getData(){
       
       if(this.form.password !== this.retrypassword){
-        this.passwordError = true
+        this.messagePassword = "As senhas não coincidem."
         return;
 
       } else {
           try {
-            const credentials = axios.post(`${this.api}/check`, {
-            email: this.form.email
+            this.isLoanding = 'Verificando dados...'
+            const credentials = await axios.post(`${this.api}/check`, {
+              email: this.form.email
 
             })
 
-            console.log('Retorno 234 credentials', credentials)
+            console.log('Retorno linha 234 check', credentials)
+            this.isLoanding = ''
 
             this.passwordError = false
             this.loginData = false
@@ -246,13 +291,21 @@ export default {
             form.append("full_name", this.form.full_name);
             form.append("phone", this.form.phone);
             form.append("additional_info", this.form.additional_info);
+            form.append("gender", this.form.gender);
             form.append("curriculum", this.form.curriculum);
 
             if(this.form.curriculum !== null){
+              this.message = ''
               this.create(form)
             }
           } catch (error) {
-            console.log('Erro ao criar a conta:', error)            
+            console.error('Erro ao criar a conta:', error) 
+            this.messagePassword = error.response.data.message
+            this.form.email = ''
+            this.form.password = ''
+            this.retrypassword = ''
+            this.isLoanding = ''
+            this.form.email !== '' ? this.messagePassword = '' : this.messagePassword = error.response.data.message
           }
 
       }
@@ -260,6 +313,8 @@ export default {
 
     async create(form){
       try {
+
+        this.isLoanding = 'Sua conta está sendo criada ...'
         const response = await axios.post(
           `${this.api}/candidate`,
           //`http://localhost/api/v1/candidate`,
@@ -272,15 +327,23 @@ export default {
             },
           }
       );
+      this.isLoanding = ''
+      
       if(response.data.success === true)
       {
         console.log('Cadastro feito', response.data)
-        //const currentUser = response.data.currentUser
+        const currentUser = response.data.currentUser
         this.$router.push("/login")
       }
       
       } catch (error) {
-        console.error('Erro ao criar o candidato:', error)
+        this.isLoanding = ''
+        this.message = 'Algo deu errado!'
+        
+        if(error.response.data.code === "22001")
+        {
+          this.message = 'Um ou mais campos excederam o limite de tamanho'
+        }
       }
       
     }
@@ -288,5 +351,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "@/assets/scss/views/createaccountview";
+  @import "@/assets/scss/views/createaccountview";
+
 </style>
