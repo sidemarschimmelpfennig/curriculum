@@ -171,14 +171,14 @@
                     @change="handleFileUpload($event)"
                     required
                   />
-                  <div class="flex w-24 max-w-24 h-9 px-2 flex-col bg-gray-700 rounded-full shadow text-white text-xs mt-0 my-5 font-semibold leading-4 items-center justify-center cursor-pointer focus:outline-none">Choose File</div>
+                  <div class="flex w-32 max-w-28 h-11 px-2 flex-col bg-gray-700 rounded-full shadow text-white text-xs mt-0 my-5 font-semibold leading-4 items-center justify-center cursor-pointer focus:outline-none">Escolha seu arquivo aqui</div>
                 </label>
                 <div>
                   <select 
                     v-model="form.gender"
                     class="flex w-24 h-7 px-2 bg-gray-700 rounded-full shadow text-white text-xs mt-0 my-5 font-semibold "
                   >
-                    <option value="Gênero" selected>Gênero</option> 
+                    <option value="" selected disabled>Gênero</option>
                     <option :value="'F'">Femenino</option>
                     <option :value="'M'">Masculino</option>
                     <option :value="'O'">Outro</option>
@@ -188,6 +188,7 @@
                   v-if="message"
                   class="text-sm text-red-500 mt-1">
                   {{ message }}
+                  \
                 </p>
 
                 <p 

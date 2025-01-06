@@ -1,7 +1,7 @@
 <template>
   <NavBar/>
   <div class="home">
-    <h1 class="title">Bem-vindos a SGBR!</h1>
+    <h1 class="title">Bem-vindo a SGBR!</h1>
     <h2 class="subtitle">Junte-se à nossa equipe!</h2>
     <h3 class="subtitle">Venha crescer conosco e com excelência.</h3>
     <br />
