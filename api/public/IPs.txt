@@ -1,8 +1,5 @@
-192.168.1.5 IP do: Laura Refosco
-192.168.1.5 IP do: Laura Refosco
-192.168.1.9 IP do: Gabriel Kochem Ichazo
-192.168.1.6 IP do: Cleusa da Silva Refosco
-192.168.1.8 IP do: Admin
-192.168.1.9 IP do: Admin
-192.168.1.5 IP do: Laura Refosco
-192.168.1.5 IP do: Admin
+192.168.98.32 IP do: Admin
+192.168.98.32 IP do: Gabriel Kochem Ichazo
+192.168.98.32 IP do: Admin
+192.168.98.32 IP do: Admin
+192.168.98.53 IP do: Iago Colling

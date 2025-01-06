@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('departament_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('departament_category', 25)->unique();
+            $table->string('departament_category', 45)->unique();
             $table->boolean('active')->default(1);
             $table->timestamps();
         });

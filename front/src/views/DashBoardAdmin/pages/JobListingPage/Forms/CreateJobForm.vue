@@ -160,7 +160,7 @@ export default {
         
         };
 
-        console.log('DADOS PARA ENVIO:"' , jobData)
+        console.log('DADOS PARA ENVIO:' , jobData)
         const response = await axios.post(`${this.api}/admin/job`, jobData);
         
         console.log("Nova vaga cadastrada com sucesso!", response.data);

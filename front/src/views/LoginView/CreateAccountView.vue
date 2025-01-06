@@ -179,7 +179,7 @@
                     class="flex w-24 h-7 px-2 bg-gray-700 rounded-full shadow text-white text-xs mt-0 my-5 font-semibold "
                   >
                     <option value="" selected disabled>Gênero</option>
-                    <option :value="'F'">Femenino</option>
+                    <option :value="'F'">Feminino</option>
                     <option :value="'M'">Masculino</option>
                     <option :value="'O'">Outro</option>
                   </select>
