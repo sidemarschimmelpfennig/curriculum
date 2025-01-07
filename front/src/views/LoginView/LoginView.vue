@@ -134,7 +134,7 @@ export default {
         }
       
       } catch (error) {
-        console.log('Erro', error.response.data)
+        console.log('Erro', error.response)
       }
 
     },
