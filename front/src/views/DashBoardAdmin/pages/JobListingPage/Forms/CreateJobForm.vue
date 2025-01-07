@@ -41,7 +41,7 @@
       </div>
       <div class="flex flex-col space-y-2">
         <label for="category" class="text-sm font-medium text-gray-700"
-          >Setor :</label
+          >Setor:</label
         >
         <select
           id="category"
@@ -62,7 +62,7 @@
 
       <div class="flex flex-col space-y-2">
         <label for="category" class="text-sm font-medium text-gray-700"
-          >Categorias a:</label
+          >Categorias:</label
         >
         <select
           id="category"
@@ -83,7 +83,7 @@
 
       <div class="flex flex-col space-y-2">
         <label for="mobilities" class="text-sm font-medium text-gray-700"
-          >Modelo de trabalho :</label
+          >Modelo de trabalho:</label
         >
         <select
           id="mobilities"
@@ -102,25 +102,18 @@
         </select>
       </div>
 
-      <div class="flex flex-col space-y-2">
-        <label for="skills" class="text-sm font-medium text-gray-700 text-start"
-          >Requisitos :</label
+      <div class="flex flex-col space-y-2 h-40">
+        <label
+          for="description"
+          class="text-sm font-medium text-gray-700 text-start"
+          >Requisitos</label
         >
-        <select
-          id="mobilities"
+        <textarea
+          id="description"
           v-model="form.skills"
-          required
           class="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-        >
-        
-          <option
-            v-for="(skills, id) in skills_array"
-            :value="skills.id"
-            :key="skills.id"
-          >
-            {{ skills.skills }}
-          </option>
-        </select>
+          placeholder="Descreva a vaga aqui"
+        ></textarea>
       </div>
 
       <button
@@ -150,7 +143,6 @@ export default {
       departments: [],
       departments_categories: [],
       mobilities_array: [],
-      skills_array: [],
       api: process.env.VUE_APP_API_URL,
     };
   },
@@ -163,15 +155,15 @@ export default {
           departament_id: this.form.departament,
           departament_categories_id: this.form.departament_categories,
           status_id: 1,
-          skills_id: this.form.skills,
+          skills: this.form.skills,
           mobilities_id: this.form.mobilities,
         
         };
 
-        console.log('DADOS PARA ENVIO:"' , jobData)
+        console.log('DADOS PARA ENVIO:' , jobData)
         const response = await axios.post(`${this.api}/admin/job`, jobData);
         
-        console.log("Nova vaga cadastrada com sucesso!");
+        console.log("Nova vaga cadastrada com sucesso!", response.data);
         this.closeModal();
       } catch (error) {
         console.error("Erro ao enviar o formulário:", error);
@@ -195,15 +187,6 @@ export default {
 
       } catch (error) {
         console.error("Erro ao enviar capturar as categorias:", error);
-
-      }
-
-      try {
-        const response = await axios.get(`${this.api}/admin/skills`);
-        this.skills_array = response.data
-
-      } catch (error) {
-        console.error("Erro ao enviar capturar as habilidades:", error);
 
       }
 

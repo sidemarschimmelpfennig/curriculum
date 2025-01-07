@@ -6,11 +6,10 @@ use App\Models\{
     Departament,
     Departament_Categories,
     Status,
-    Skills,
     Mobilities
+
 };
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class JobVacanciesSeed extends Seeder
@@ -19,14 +18,26 @@ class JobVacanciesSeed extends Seeder
     {
         $departaments = [
             [
-                'departament' => 'Web'
+                'departament' => 'Desenvolvimento'
             ],
             [
-                'departament' => 'Desktop'
+                'departament' => 'Qualidade'
+            ],
+            [
+                'departament' => 'Marketing'   
+            ],
+            [
+                'departament' => 'Suporte'
+            ],
+            [
+                'departament' => 'Vendas'
             ],
             [
                 'departament' => 'Financeiro'
-            ]
+            ],
+            [
+                'departament' => 'RH'
+            ],
             
         ];
         foreach ($departaments as $departament) {
@@ -35,13 +46,49 @@ class JobVacanciesSeed extends Seeder
 
         $departament_categories = [
             [
-                'departament_category' => 'FrontEnd'
+                'departament_category' => 'Web - FrontEnd'
             ],  
             [
-                'departament_category' => 'BackEnd'
+                'departament_category' => 'Web - BackEnd'
             ],
             [
-                'departament_category' => 'Auxiliar'
+                'departament_category' => 'Qualidade - Web'
+            ],
+            [
+                'departament_category' => 'Desktop'
+            ],
+            [
+                'departament_category' => 'Qualidade - Desktop'
+            ],
+            [
+                'departament_category' => 'Mobile'
+            ],
+            [
+                'departament_category' => 'Qualidade - Mobile'
+            ],
+            [
+                'departament_category' => 'Design Gráfico'
+            ],
+            [
+                'departament_category' => 'Edito de vídeos'
+            ],
+            [
+                'departament_category' => 'Ui/Ux design'
+            ],
+            [
+                'departament_category' => 'Auxiliar de Suporte técnico'
+            ],
+            [
+                'departament_category' => 'Consultoria'
+            ],
+            [
+                'departament_category' => 'Auxiliar Financeiro'
+            ],
+            [
+                'departament_category' => 'Analista de RH'
+            ],
+            [
+                'departament_category' => 'Auxiliar de RH'
             ]
         ];
         foreach ($departament_categories as $departament_categorie) {
@@ -70,15 +117,6 @@ class JobVacanciesSeed extends Seeder
         foreach ($statuss as $status) {
             Status::create($status);
         }       
-        $skills = [
-            ['skills' => 'Comunicação'],
-            ['skills' => 'Trabalho em equipe'],
-            ['skills' => 'Resiliência'],
-            ['skills' => 'Pensamento crítico']
-        ];
-        foreach ($skills as $skill) {
-            Skills::create($skill);
-        }
 
         $mobilities = [
             ['mobilities' => 'Home Office'],

@@ -10,6 +10,7 @@ import { createRouter, createWebHistory } from "vue-router";11
 import JobListingPage from "@/views/DashBoardAdmin/pages/JobListingPage/JobListingPage.vue";
 import UsersPage from "@/views/DashBoardAdmin/pages/UserPage/UsersPage.vue";
 import CandidatesForJob from "@/views/DashBoardAdmin/pages/CandidatesForJob/CandidatesForJob.vue";
+import CandidatesPage from "@/views/DashBoardAdmin/pages/CandidatesPage/CandidatesPage.vue";
 
 const routes = [
   {
@@ -26,12 +27,6 @@ const routes = [
     props: true,
 
   },
-  /*{
-    path: "/joblisting2",
-    name: "joblisting",
-    component: JobListingView,
-
-  },*/
   {
     path: "/login",
     name: "login",
@@ -76,10 +71,16 @@ const routes = [
         name:'job-listpage',
         component:JobListingPage,
         meta:{authMiddleware: true},
-      },{
+      },
+      {
         path:"userpage",
         name: "userpage",
         component: UsersPage,
+      },
+      {
+        path:"candidatepage",
+        name: "candidatepage",
+        component: CandidatesPage,
       },
       {
         path:"candidates/job/:id",

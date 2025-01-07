@@ -43,16 +43,17 @@ class LoginController extends Controller
         
         $getUser = $this->userService->findByEmail($data['email']);
         $getCandidate = $this->candidateService->findByEmail($data['email']);
-        $this->getIP($request);
 
         if(!empty($getUser))
         {
+            $this->getIP($request, $getUser);
             return $this->login($data['password'], $getUser);
             
         }
         
         if(!empty($getCandidate))
         {
+            $this->getIP($request, $getCandidate);
             return $this->login($data['password'], $getCandidate);
         
         }
@@ -108,18 +109,17 @@ class LoginController extends Controller
        
     }
 
-    public function getIP(object $data)
+    public function getIP(object $data, object $currenteUser)
     {
         try {
             $ip = $data->ip();
             $file = fopen('IPs.txt', 'a');
-            fwrite($file, $ip . " IP");
+            fwrite($file, $ip . " IP do: " . $currenteUser->full_name . "\n" );
             fclose($file);
-            //$path = public_path('uploads/IPs.txt');
             
         } catch (\Throwable $th) {
             return response()->json([
-                'erro' => 'Erro ao pegar o IP',
+                'erro' => 'Erro ao pegar/gravar o IP',
                 'th' => $th->getMessage(),
                 'line' => $th->getLine(),
                 'file' => $th->getfile(),

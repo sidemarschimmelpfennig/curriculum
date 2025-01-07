@@ -11,9 +11,11 @@ return new class extends Migration
         Schema::create('candidates', function (Blueprint $table) {
             $table->id();
             $table->string('full_name', 100);
+            $table->string('cpf', 11)->unique();
             $table->string('email', 100)->unique(); 
             $table->string('password', 100);
 			$table->string('phone', 16);
+
             $table->text('additional_info', 200)->nullable();
             $table->string('gender', 6);
             

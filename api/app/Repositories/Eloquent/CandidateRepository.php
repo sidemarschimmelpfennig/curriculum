@@ -55,7 +55,7 @@ class CandidateRepository implements CandidateInterface
         }
 
         $candidate = $this->candidateFindByID($id);
-        $newName = "$candidate->id" . "_" . "$candidate->full_name" . ".$extension";
+        $newName = "$candidate->id" . "_" . $candidate->cpf . "_" . "$candidate->full_name" . ".$extension";
 
         while (file_exists("$directory/$newName")) {
             //.$newName
@@ -103,9 +103,10 @@ class CandidateRepository implements CandidateInterface
     public function create(array $data)
     {
        $candidate = Candidates::create([
+            'full_name' => $data['full_name'],
+            'cpf' => $data['cpf'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'full_name' => $data['full_name'],
             'phone' => $data['phone'],
             'additional_info' => $data['additional_info'],
             'gender' => $data['gender']
@@ -121,11 +122,26 @@ class CandidateRepository implements CandidateInterface
        
     }
 
-    public function toCheck($credentials)
+    public function toCheckEmail(string $email)
     {
-        $query = Candidates::where('email', $credentials)->first();
+        $email = Candidates::where('email', $email)->first();
 
-        if($query != null)
+
+        if($email != null)
+        {
+            return true;
+
+        } else {
+            return false;
+        }
+
+    }
+
+    public function toCheckCPF(string $cpf)
+    {
+        $cpf = Candidates::where('cpf', $cpf)->first();
+
+        if($cpf != null)
         {
             return true;
 
@@ -133,7 +149,10 @@ class CandidateRepository implements CandidateInterface
             return false;
 
         }
+
     }
+
+    
     
     public function findByCandidateID(int $id)
     {

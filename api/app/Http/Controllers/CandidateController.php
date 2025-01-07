@@ -14,7 +14,7 @@ class CandidateController extends Controller
 
     }
 
-    public function getAll()
+    public function getAllActive()
     {
         return $this->candidateService->getAll();
         
@@ -24,6 +24,7 @@ class CandidateController extends Controller
     {
         $data = $request->validate([
             'full_name' => 'required|string',
+            'cpf' => 'required',
             'email' => 'required|string',
             'password' => 'required|string',
             'phone' => 'required|string',
@@ -48,14 +49,15 @@ class CandidateController extends Controller
         return $this->candidateService->apply($data['jobID'], $data['candidateID']);
     }
 
-    public function toCheck(Request $request)
+    public function toCheckEmail(Request $request)
     {
-        $credentials = $request->validate([
-            'email' => 'required|string'
+       return $this->candidateService->toCheckEmail($request['email']);
 
-        ]);
-        
-       return $this->candidateService->toCheck($credentials);
+    }
+
+    public function toCheckCPF(Request $request)
+    {
+       return $this->candidateService->toCheckCPF($request['cpf']);
 
     }
 

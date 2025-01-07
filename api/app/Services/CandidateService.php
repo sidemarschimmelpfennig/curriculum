@@ -92,17 +92,17 @@ class CandidateService
         
     }
 
-    public function toCheck($credentials)
+    public function toCheckEmail(string $email)
     {
         try {
-            $exists = $this->repository->toCheck($credentials);
+            $exists = $this->repository->toCheckEmail($email);
+
             if($exists == true)
             {
                 return response()->json([
                     'message' => 'Esse e-mail já está cadastrado'
     
-                ], 400);
-    
+                ]);
             } 
     
             return response()->json(false);
@@ -111,8 +111,27 @@ class CandidateService
             return $this->returnResponseTh($th);
 
         }
-        
+    }
+
+    public function toCheckCPF(string $cpf)
+    {
+        try {
+            $exists = $this->repository->toCheckCPF($cpf);
+
+            if($exists == true)
+            {
+                return response()->json([
+                    'message' => 'Esse CPF já está cadastrado'
     
+                ]);
+            } 
+    
+            return response()->json(false);
+
+        } catch (\Throwable $th) {
+            return $this->returnResponseTh($th);
+
+        }
     }
     
     public function candidateFindByID(int $id)

@@ -38,13 +38,13 @@ class JobController extends Controller
     public function create(Request $request)
     {     
         $data = $request->validate([
-            'name' => 'string',
-            'description' => 'string',
-            'departament_id' => 'integer',
-            'departament_categories_id' => 'integer',
-            'status_id' => 'integer',
-            'skills_id' => 'integer',
-            'mobilities_id' => 'integer',
+            'name' => 'required|string',
+            'description' => 'required|string',
+            'departament_id' => 'required|integer',
+            'departament_categories_id' => 'required|integer',
+            'status_id' => 'required|integer',
+            'skills' => 'required|string',
+            'mobilities_id' => 'required|integer',
             
         ]);
         return $this->jobService->create($data);
@@ -53,13 +53,13 @@ class JobController extends Controller
     public function update(int $id, Request $request)
     {
         $data = $request->validate([
-            'name' => 'string',
-            'description' => 'string',
-            'departament_id' => 'integer',
-            'departament_categories_id' => 'integer',
-            'status_id' => 'integer',
-            'skills_id' => 'integer',
-            'mobilities_id' => 'integer',
+            'name' => 'required|string',
+            'description' => 'required|string',
+            'departament_id' => 'required|integer',
+            'departament_categories_id' => 'required|integer',
+            'status_id' => 'required|integer',
+            'skills' => 'required|string',
+            'mobilities_id' => 'required|integer',
             
         ]);
         

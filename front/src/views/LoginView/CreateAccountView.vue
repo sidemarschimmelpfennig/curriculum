@@ -120,6 +120,21 @@
                   required
                    v-model="this.form.full_name"
                 />
+
+                <label
+                  for="full_name"
+                  class="flex mb-2 text-sm font-medium justify-start text-gray-900 dark:text-white"
+                  >CPF</label
+                >
+                <input
+                  type="text"
+                  name="email"
+                  id="email"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Digite seu nome completo"
+                  required
+                   v-model="this.form.cpf"
+                />
               
               <div>
                 <label
@@ -134,7 +149,6 @@
                   placeholder="Digite seu número de telefone"
                   class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required
-                  @input="formatPhone"
                   v-model="this.form.phone"
                   
                 />
@@ -171,16 +185,15 @@
                     @change="handleFileUpload($event)"
                     required
                   />
-                  <div class="flex w-24 max-w-24 h-9 px-2 flex-col bg-gray-700 rounded-full shadow text-white text-xs mt-0 my-5 font-semibold leading-4 items-center justify-center cursor-pointer focus:outline-none">Choose File</div>
+                  <div class="flex w-32 max-w-28 h-11 px-2 flex-col bg-gray-700 rounded-full shadow text-white text-xs mt-0 my-5 font-semibold leading-4 items-center justify-center cursor-pointer focus:outline-none">Escolha seu arquivo aqui</div>
                 </label>
                 <div>
                   <select 
-                    name=""
                     v-model="form.gender"
                     class="flex w-24 h-7 px-2 bg-gray-700 rounded-full shadow text-white text-xs mt-0 my-5 font-semibold "
                   >
-                    <option value="Selecione um status" disabled selected>Gênero</option> 
-                    <option :value="'F'">Femenino</option>
+                    <option value="" selected disabled>Gênero</option>
+                    <option :value="'F'">Feminino</option>
                     <option :value="'M'">Masculino</option>
                     <option :value="'O'">Outro</option>
                   </select>
@@ -189,6 +202,7 @@
                   v-if="message"
                   class="text-sm text-red-500 mt-1">
                   {{ message }}
+                  
                 </p>
 
                 <p 
@@ -236,6 +250,7 @@ export default {
         email: "",
         password: "",
         full_name: "",
+        cpf: "",
         phone: "",
         additional_info: "",
         gender: "",
@@ -255,10 +270,11 @@ export default {
   methods: {
     handleFileUpload(event) {
       const file = event.target.files[0];
-      if (file && file.type === "application/pdf") {
+      if (file && file.type === "application/pdf" || file.type === "application/msword" || file.type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document") {
         this.form.curriculum = file;
       } else {
-        this.message = "Por favor, envie um arquivo PDF.";
+        this.message = "Por favor, envie um arquivo PDF/Docx/Doc.";
+
       }
     },
     
@@ -271,39 +287,62 @@ export default {
       } else {
           try {
             this.isLoanding = 'Verificando dados...'
-            const credentials = await axios.post(`${this.api}/check`, {
-              email: this.form.email
+            const checkEmail = await axios.post(`${this.api}/checkEmail`, {
+              email: this.form.email,
 
             })
 
-            console.log('Retorno linha 234 check', credentials)
-            this.isLoanding = ''
+            console.log('Retorno linha 234 check', checkEmail.data)
 
-            this.passwordError = false
-            this.loginData = false
-            this.candidateData = true
+            if(checkEmail.data.message === 'Esse e-mail já está cadastrado'){
+              this.messagePassword = checkEmail.data.message              
+              this.form.email = ''
+              this.form.password = ''
+              this.retrypassword = ''
+              this.isLoanding = ''
 
-            const form = new FormData()
+            } else {
+              this.isLoanding = ''
+              this.loginData = false
+              this.candidateData = true
+              
+              this.passwordError = false
 
-            form.append("email", this.form.email);
-            form.append("password", this.form.password)
-            form.append("full_name", this.form.full_name);
-            form.append("phone", this.form.phone);
-            form.append("additional_info", this.form.additional_info);
-            form.append("gender", this.form.gender);
-            form.append("curriculum", this.form.curriculum);
+              const form = new FormData()
 
-            if(this.form.curriculum !== null){
-              this.create(form)
+              form.append("email", this.form.email);
+              form.append("password", this.form.password)
+              form.append("full_name", this.form.full_name);
+              form.append("cpf", this.form.cpf);
+              form.append("phone", this.form.phone);
+              form.append("additional_info", this.form.additional_info);
+              form.append("gender", this.form.gender);
+              form.append("curriculum", this.form.curriculum);
+
+              if(this.form.cpf)
+              {
+                const checkCPF = await axios.post(`${this.api}/checkCPF`, {
+                cpf: this.form.cpf
+
+                })
+                console.log('checkCPF', checkCPF)
+                if(checkCPF.data.message !== 'Esse CPF já está cadastrado' && this.form.curriculum !== null)
+                {
+                  this.message = ''
+                  this.create(form)
+                } 
+
+                this.message = checkCPF.data.message
+
+              }
             }
+            
           } catch (error) {
-            console.error('Erro ao criar a conta:', error) 
-            this.messagePassword = error.response.data.message
-            this.form.email = ''
-            this.form.password = ''
-            this.retrypassword = ''
-            this.isLoanding = ''
-            this.form.email !== '' ? this.messagePassword = '' : this.messagePassword = error.response.data.message
+            console.error('Erro ao criar a conta:') 
+            console.error('Message:', error) 
+    
+            
+      
           }
 
       }
@@ -330,14 +369,14 @@ export default {
       if(response.data.success === true)
       {
         console.log('Cadastro feito', response.data)
-        const currentUser = response.data.currentUser
         this.$router.push("/login")
+
       }
       
       } catch (error) {
         this.isLoanding = ''
         this.message = 'Algo deu errado!'
-        
+        console.log(error)
         if(error.response.data.code === "22001")
         {
           this.message = 'Um ou mais campos excederam o limite de tamanho'
