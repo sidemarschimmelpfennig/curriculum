@@ -9,14 +9,7 @@
     <ul class="pr-4">
       <router-link class="nav-link" to="/">Inicio</router-link>
 
-      <div v-if="this.candidateID === 0 || this.candidateID === undefined">
-        <router-link class="nav-link" to="/joblisting/0"
-          >Vagas disponiveis</router-link
-        >
-      
-        <router-link class="nav-link" to="/login">Faça seu Login</router-link>
-      </div>
-      <div v-else>
+      <div v-if="token">
         <button
         class="nav-link"
           @click="redirectButton()"
@@ -24,6 +17,19 @@
         >
           Vagas disponiveis
         </button>
+      
+        <button
+          class="nav-link"
+          @click="logout"
+        >
+          Sair da conta
+        </button>
+        
+      </div>
+      <div v-else>
+        <router-link class="nav-link" to="/joblisting/0"
+          >Vagas disponiveis</router-link
+        >
       
         <router-link class="nav-link" to="/login">Faça seu Login</router-link>
 
@@ -33,19 +39,14 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: "NavBar",
   data()
   {
     return{
-      candidateID: 0
-      
-    }
-  },
-  props: {
-    candidateID: {
-      type: Number,
-      required: true
+      token: null,
+      api: process.env.VUE_APP_API_URL
     }
   },
 
@@ -58,14 +59,25 @@ export default {
 
     redirectButton()
     {
-      this.$router.push(`/joblisting/${this.candidateID}`)
+      this.$router.push(`/joblisting/0`)
+    },
+
+    async logout(){
+      try {
+        const response = await axios.get(`${this.api}/logout`) 
+        this.$router.push('/login')
+
+      } catch (error) {
+        console.error('Error linha 48', error.response)
+      }
     }
   },
 
   mounted()
   {
-    this.getData()
-    console.log('ID na view NavBar linha 45:', this.candidateID)
+    //this.getData()
+    this.token = axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('authToken')}`;
+   
   }
 };
 </script>

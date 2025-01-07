@@ -2,9 +2,9 @@
   <div
     class="absolute h-full w-52 bg-blue-600 text-white sidebar-admin flex flex-col"
   >
-    <router-link to="/admin">
-      <img :src="logo" alt="Logo" class="flex m-auto p-4 h-24 w-auto" />
-    </router-link>
+    
+    <img :src="logo" alt="Logo" class="flex m-auto p-4 h-24 w-auto" />
+    
     <ul class="flex-grow flex flex-col text-start">
       <li v-for="(item, index) in menuItems" :key="index">
         <router-link
@@ -46,7 +46,7 @@ export default {
     async logout(){
       try {
         const response = await axios.get(`${this.api}/logout`) 
-        this.$router.push('/login')
+        //this.$router.push('/login')
 
       } catch (error) {
         console.error('Error linha 48', error)

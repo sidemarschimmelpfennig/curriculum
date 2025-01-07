@@ -111,7 +111,7 @@ class JobController extends Controller
 
     public function countCandidate(int $jobID)
     {
-        return response()->json($this->candidateService->countCandidate($jobID));
+        return $this->candidateService->countCandidate($jobID);
         
     }
 }

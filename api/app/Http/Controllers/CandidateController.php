@@ -86,10 +86,6 @@ class CandidateController extends Controller
 
     public function updateStatus(Request $request, int $candidateID)
     {
-        /*return response()->json([
-            'id' => $candidateID,
-            'status' => $request->input('status_curriculum')
-        ]);*/
         return $this->candidateService->updateStatus($candidateID, $request->input('status_curriculum'));
 
     }
@@ -99,5 +95,5 @@ class CandidateController extends Controller
         return $this->candidateService->downloadFile($id);
            
     }
-    
+
 }

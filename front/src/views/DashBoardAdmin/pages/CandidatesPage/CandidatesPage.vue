@@ -1,28 +1,16 @@
 <template>
   <div
     class="userpage"
-    :class="{ activeModalClass: showModal || showModalDelete }"
+    :class="{ activeModalClass: showModal }"
   >
+    <ViewCandidate
+      v-if="showModal"
+      :showModal="showModal"
+    />
     <div
       class="grid grid-cols-1 gap-4 p-6 mx-auto bg-white rounded-lg shadow-md"
     >
       <div class="flex items-center justify-between">
-        
-        <CreateUserForm
-          v-if="showModal"
-          :show="showModal"
-          @close="closeModal()"
-          class="activeModalShowClass"
-        />
-        <DeleteMessage
-          v-if="showModalDelete"
-          :show="showModalDelete"
-          @close="closeModal()"
-          :labelText="textDelete"
-          :routeText="textRouteDelete"
-          class="activeModalShowClass"
-        />
-
         <h2 class="text-2xl font-semibold text-center flex-1">
           Todos os candidatos do Sistema
         </h2>
@@ -39,6 +27,9 @@
                 Email
               </th>
               <th class="px-4 py-2 text-left text-sm font-medium text-gray-600">
+                CPF
+              </th>
+              <th class="px-4 py-2 text-left text-sm font-medium text-gray-600">
                 Status
               </th>
 
@@ -47,36 +38,27 @@
               </th>
             </tr>
           </thead>
-          <tbody v-if="users.length">
+          <tbody v-if="candidates.length">
             <tr
-              v-for="user in users"
-              :key="user.id"
+              v-for="candidate in candidates"
+              :key="candidate.id"
               class="border-b text-start"
             >
-              <UpdateUserForm
-                v-if="showModalUpdate && idUser === user.id"
-                :show="showModalUpdate"
-                @close="closeModal()"
-                :idFromUser="user.id"
-                class="openModal"
-              />
-              <td class="px-4 py-2 text-sm text-gray-700">{{ user.full_name }}</td>
-              <td class="px-4 py-2 text-sm text-gray-700">{{ user.email }}</td>
-              <td class="px-4 py-2 text-sm text-gray-700"> {{ user.active === 1 ? "Ativo": "Desativado" }}</td>
+              
+              <td class="px-4 py-2 text-sm text-gray-700">{{ candidate.full_name }}</td>
+              <td class="px-4 py-2 text-sm text-gray-700">{{ candidate.email }}</td>
+              <td class="px-4 py-2 text-sm text-gray-700">{{ candidate.cpf }}</td>
+              <td class="px-4 py-2 text-sm text-gray-700"> {{ candidate.active === 1 ? "Ativo": "Desativado" }}</td>
+
               <td class="px-4 py-2 text-sm text-gray-700">
                 <button
-                  class="material-icons text-red-600 hover:text-red-800 pr-4 border-none outline-none"
-                  @click="deleteUser(user.id)"
+                  class="material-icons text-gray-600 hover:text-gray-800 border-none outline-none"
+                  @click="viewModal"
                 >
-                  delete
-                </button>
-                <button
-                  class="material-icons text-blue-600 hover:text-blue-800 pr-4 border-none outline-none"
-                  @click="updateUser(user.id)"
-                >
-                  edit
+                  visibility
                 </button>
               </td>
+
             </tr>
           </tbody>
           <div
@@ -86,46 +68,51 @@
             Nenhum usuário encontrado.
           </div>
         </table>
+       
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import DeleteMessage from "@/components/DeleteMessage.vue";
-import CreateUserForm from "./Forms/CreateUserForm.vue";
 import axios from "axios";
-import UpdateUserForm from "./Forms/UpdateUserForm.vue";
+import ViewCandidate from "./ViewCandidate.vue";
 
 export default {
   name: "CandidatesPage",
   data() {
     return {
-      users: [],
+      candidates: [],
       showModal: false,
-      showModalDelete: false,
-      showModalUpdate: false,
-      textDelete: "",
-      idUser: "",
-      textRouteDelete: "",
       api: process.env.VUE_APP_API_URL,
     };
   },
+
+  components: {
+    ViewCandidate
+
+  },
   methods: {
     closeModal() {
-      this.showModalUpdate = false;
       this.showModal = false;
-      this.showModalDelete = false;
       this.getAllUsers();
+
+    },
+
+    viewModal()
+    {
+      this.showModal = true
     },
    
     async getAllUsers() {
+      axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('authToken')}`;
+      
       try {
         const response = await axios.get(`${this.api}/admin/candidates`);
-        let data = response.data;
-        console.log(data)
+        this.candidates = response.data.all;
+        
       } catch (error) {
-        if(error.response.status === 401 && error.response.status !== 200)
+        if(error.response.status === 401 )
         { 
           this.$router.push({
             path: "/login",
@@ -138,25 +125,15 @@ export default {
         console.error('Erro ao pegar todos os candidatos:', error)
       }
     },
-    resetForm() {
-      this.form = {
-        email: "",
-        password: "",
-        is_admin: "0",
-      };
-    },
   },
   mounted() {
     this.getAllUsers();
   },
-  components: {
-    CreateUserForm,
-    DeleteMessage,
-    UpdateUserForm,
-  },
+  
 };
 </script>
 
-<style  lang="scss" scoped>
-@import "@/assets/scss/admin/pages/userpage";
+<style lang="scss" scoped>
+  @import "@/assets/scss/admin/pages/userpage";
+
 </style>
