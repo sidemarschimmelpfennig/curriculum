@@ -80,7 +80,7 @@
             {{ job.departament }}
           </div>
           <div class="w-1/5 truncate">
-            {{ job.active === 1 ? job.status : 'Vaga desativada' }}
+            {{ job.active === 1 ? 'job.status' : 'Vaga desativada' }}
           </div>
           <div class="w-1/5 flex justify-center space-x-2">
             <button
@@ -130,7 +130,6 @@ export default {
   data() {
     return {
       joblist: [],
-      status: [],
       searchText: "",
       selectedCategory: "",
       showModalCreate: false,

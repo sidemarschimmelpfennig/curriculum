@@ -134,13 +134,7 @@ export default {
         }
       
       } catch (error) {
-        if(error.response.data)
-        {
-          console.log('Erro', error.response.data)
-        } else {
-          console.log('Erro', error.response)
-          
-        }
+        console.log('Erro', error)
         
       }
 

@@ -254,7 +254,7 @@ export default {
         phone: "",
         additional_info: "",
         gender: "",
-        curriculum: null,
+        curriculum: "",
     
       },
       message: "",
@@ -292,8 +292,6 @@ export default {
 
             })
 
-            console.log('Retorno linha 234 check', checkEmail.data)
-
             if(checkEmail.data.message === 'Esse e-mail já está cadastrado'){
               this.messagePassword = checkEmail.data.message              
               this.form.email = ''
@@ -325,7 +323,7 @@ export default {
                 cpf: this.form.cpf
 
                 })
-                console.log('checkCPF', checkCPF)
+                
                 if(checkCPF.data.message !== 'Esse CPF já está cadastrado' && this.form.curriculum !== null)
                 {
                   this.message = ''
@@ -341,10 +339,7 @@ export default {
             console.error('Erro ao criar a conta:') 
             console.error('Message:', error) 
     
-            
-      
           }
-
       }
     },
 
@@ -368,7 +363,6 @@ export default {
       
       if(response.data.success === true)
       {
-        console.log('Cadastro feito', response.data)
         this.$router.push("/login")
 
       }

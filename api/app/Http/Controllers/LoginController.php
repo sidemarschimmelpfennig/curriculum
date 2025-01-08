@@ -86,8 +86,8 @@ class LoginController extends Controller
                 return response()->json([
                     'message' => 'Senha incorreta'
                 ], 200);
-    
             }
+            
         } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,
@@ -102,11 +102,19 @@ class LoginController extends Controller
 
     public function logout()
     {
-        Auth::logout();
-        return response()->json([
-            'message' => 'Usuário deslogado com sucesso!',  
-        ]);
-       
+        try {
+            Auth::logout();
+            return response()->json([
+                'message' => 'Usuário deslogado com sucesso!',  
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false,
+                'message' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getfile(),
+            ]);
+        }
     }
 
     public function getIP(object $data, object $currenteUser)

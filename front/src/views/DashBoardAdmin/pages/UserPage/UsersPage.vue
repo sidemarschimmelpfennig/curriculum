@@ -135,10 +135,12 @@ export default {
     },
 
     async getAllUsers() {
+      axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('authToken')}`;
+
       try {
         const response = await axios.get(`${this.api}/admin/users`);
-        let data = response.data;
-        this.users = data;
+        this.users = response.data.all;
+        
       } catch (error) {
         if(error.response.status === 401 && error.response.status !== 200)
         { 
@@ -150,13 +152,6 @@ export default {
 
         }
       }
-    },
-    resetForm() {
-      this.form = {
-        email: "",
-        password: "",
-        is_admin: "0",
-      };
     },
   },
   mounted() {

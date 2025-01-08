@@ -57,14 +57,13 @@ class CandidateRepository implements CandidateInterface
         $candidate = $this->candidateFindByID($id);
         $newName = "$candidate->id" . "_" . $candidate->cpf . "_" . "$candidate->full_name" . ".$extension";
 
-        while (file_exists("$directory/$newName")) {
+        /*while (file_exists("$directory/$newName")) {
             //.$newName
             $newName = 'Candidato ' . $candidate->full_name . ', já cadastrado' . "." . $extension; // Adiciona o contador ao nome do arquivo
 
-        }
+        }*/
     
         // Move o arquivo para o diretório com o novo nome
-        //$path = $file->move($directory, $candidate->id . "_" . $candidate->full_name . "." . $extension); // Qualquer coisa só voltar para a lógica antiga
         $path = $file->move($directory, $newName);
     
         return $path; // Retorna o caminho do arquivo
@@ -217,5 +216,4 @@ class CandidateRepository implements CandidateInterface
         return Candidates::where('id', $id)->update($data);
 
     }
-    
 }

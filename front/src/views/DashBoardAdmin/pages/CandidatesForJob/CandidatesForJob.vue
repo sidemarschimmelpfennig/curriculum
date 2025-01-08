@@ -64,13 +64,7 @@
 
       />
     </div>
-    <div class="footer-ForJobs">
-      <h1 class="element">Todal Pendetes:</h1>
-      <h1 class="element">Total de entrevista marcada: </h1>
-      <h1 class="element">Total em Analise: </h1>
-      <h1 class="element">Total Finalizada: </h1>
 
-    </div>
   </div>
 </template>
   <script>

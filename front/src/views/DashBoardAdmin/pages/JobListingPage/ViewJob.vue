@@ -1,6 +1,6 @@
 <template>
-      <div class="mx-auto p-6 bg-white shadow-md rounded-lg showModalComponent">
-    <div class="text-xl font-semibold text-center flex">
+    <div class="mx-auto p-6 bg-white shadow-md rounded-lg showModalComponent">
+      <div class="text-xl font-semibold text-center flex">
       <h2 class="text-2xl font-semibold mb-4 pr-48 pl-5">
         Visualizar Vaga
         

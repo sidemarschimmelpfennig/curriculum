@@ -112,6 +112,7 @@ export default {
     },
 
     async getCandidate(){
+      
       const candidateID = this.$route.params.currenteUser
       this.candidateID = candidateID
       console.log('Caminho linha 115: ', parseInt(this.candidateID, 10))
@@ -133,6 +134,7 @@ export default {
     },
   },
   mounted() {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('authToken')}`;
     this.getJobsListing();
     this.getCandidate();
   },

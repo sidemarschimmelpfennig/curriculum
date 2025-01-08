@@ -232,7 +232,6 @@ class CandidateService
     
                 ]);
             }
-            //return $this->repository->downloadFile($id);
 
         } catch (\Throwable $th) {
             return $this->returnResponseTh($th);
@@ -243,7 +242,11 @@ class CandidateService
     
     public function countCandidate(int $jobID)
     {
-        return $this->repository->countCandidate($jobID);
-
+        try {
+            return response()->json($this->repository->countCandidate($jobID));
+        } catch (\Throwable $th) {
+            return $this->returnResponseTh($th);
+        }
     }
+
 }
